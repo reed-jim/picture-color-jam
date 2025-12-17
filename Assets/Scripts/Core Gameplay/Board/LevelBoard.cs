@@ -10,4 +10,9 @@ public class LevelBoard : MonoBehaviour
 
     public int numColumn;
     public int numRow;
+
+    void Awake()
+    {
+        GamePersistentVariable.levelBoard = this;
+    }
 }

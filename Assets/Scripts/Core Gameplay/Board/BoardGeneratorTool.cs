@@ -9,6 +9,7 @@ using UnityEngine.SceneManagement;
 using System.Threading.Tasks;
 using System.Linq;
 using System.IO;
+using Saferio.Util.SaferioTween;
 
 public class BoardGeneratorTool : EditorWindow
 {
@@ -300,7 +301,21 @@ public class BoardGeneratorTool : EditorWindow
             (numRow - 1) * 2 - 1
         );
 
-        // CommonUtil.SetSpriteWorldSize(levelBoard.ground, boardSize);
+        if (numColumn <= 6)
+        {
+            levelBoard.ground.size = new Vector2(
+                (numColumn - 1) * 2,
+                levelBoard.ground.size.y
+            );
+        }
+
+        if (numRow <= 6)
+        {
+            levelBoard.ground.size = new Vector2(
+                levelBoard.ground.size.x,
+                (numColumn - 1) * 2
+            );
+        }
 
         SetBoxColliderWorldSize(levelBoard.leftEdgeCollider, new Vector2(0.1f * boardSize.x, boardSize.y));
         SetBoxColliderWorldSize(levelBoard.rightEdgeCollider, new Vector2(0.1f * boardSize.x, boardSize.y));
@@ -311,6 +326,20 @@ public class BoardGeneratorTool : EditorWindow
         levelBoard.rightEdgeCollider.transform.position = new Vector2((numColumn + 2) / 2f * tileSize, 0);
         levelBoard.topEdgeCollider.transform.position = new Vector2(0, (numRow + 2) / 2f * tileSize);
         levelBoard.bottomEdgeCollider.transform.position = new Vector2(0, -(numRow + 2) / 2f * tileSize);
+
+        Vector3 boardPosition = Vector3.zero;
+
+        if (numColumn % 2 == 0)
+        {
+            boardPosition.x = -0.5f * tileSize;
+        }
+
+        if (numRow % 2 == 0)
+        {
+            boardPosition.y = -0.5f * tileSize;
+        }
+
+        levelBoard.transform.position = boardPosition;
 
         GamePersistentVariable.levelBoard = levelBoard;
     }
@@ -496,7 +525,7 @@ public class BoardGeneratorTool : EditorWindow
 
             Vector3 placedPosition = new Vector3();
 
-            placedPosition = TileMapper.TileToWorld(coordinator - new Vector2Int(numColumn / 2 + 1, 1));
+            placedPosition = TileMapper.TileToWorld(coordinator - new Vector2Int(numColumn / 2 + 1, 2));
 
             block.transform.position = placedPosition;
             block.SnapImmediately();

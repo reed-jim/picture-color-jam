@@ -20,6 +20,16 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 45efa42121db0584dafaccd2827e2cb3
+    m_Address: Level 5
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a89bf90a8dd7fc74da12f3fd4fb5e7bd
+    m_Address: Level 6
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: d302836d4dab53a4a8feea2a3f5540ca
     m_Address: Level 1
     m_ReadOnly: 0
