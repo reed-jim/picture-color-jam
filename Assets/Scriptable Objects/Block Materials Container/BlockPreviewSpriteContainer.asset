@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 125b45561e5cbe54887be0cd01e698cb, type: 3}
+  m_Name: BlockPreviewSpriteContainer
+  m_EditorClassIdentifier: 
+  blockPreviewSnapSprites:
+  - {fileID: 21300000, guid: e6c88048d5905cb4898b0f2f474908aa, type: 3}
+  - {fileID: 21300000, guid: 073240a3910c3c84f87c799ece2d3e07, type: 3}
+  - {fileID: 21300000, guid: 1743518d360511145aa5184cd33278fc, type: 3}
+  - {fileID: 21300000, guid: dec0c2c10ca052242b63355c75eb233a, type: 3}
+  - {fileID: 21300000, guid: 568eb85ec2b65a649a50db730187d862, type: 3}
+  - {fileID: 21300000, guid: 5f954f532c961ae419e64f1c17060923, type: 3}
+  - {fileID: 21300000, guid: 4ab9747267ba59a499ce9e804c4597c3, type: 3}
+  - {fileID: 21300000, guid: 4ea9688c2e6beb146bc3f2b4ece2bf6c, type: 3}
+  - {fileID: 21300000, guid: ae2df5f9962ea134489cacce0649fd29, type: 3}

@@ -1,0 +1,1240 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using PrimeTween;
+using Saferio.Util.SaferioTween;
+using Unity.VisualScripting;
+using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
+using static GameEnum;
+
+public class BaseBlock : MonoBehaviour
+{
+    private BlockServiceLocator blockServiceLocator;
+    [SerializeField] private BlockProperty blockProperty;
+
+    protected List<Tween> _tweens;
+    private Rigidbody2D _blockRigidBody;
+    private MeshCollider _blockCollider;
+    private Vector3 _targetPosition;
+    private bool _isMovingLastFrame;
+    private Vector3 _prevTargetPosition;
+    private Vector3 _prevDirection;
+
+    [Header("CUSTOMIZE")]
+    [SerializeField] private float speedMultiplier;
+    [SerializeField] private float snappingLerpRatio = 0.2f;
+    [SerializeField] private LayerMask layerMaskCheckTile;
+    [SerializeField] private bool isSecondLayer;
+
+    [Header("Scriptable Object")]
+    [SerializeField] private GameFactionSpriteContainer gameFactionSpriteContainer;
+
+    #region PRIVATE FIELD
+    private Camera _mainCamera;
+    private Vector3 _initialPosition;
+    private Vector3 _snapPosition;
+    private bool _isSnapping;
+    private float _tileSize;
+    #endregion
+
+    #region Property
+    [SerializeField] public List<Vector2Int> originalTileIndexes;
+    [SerializeField] public List<Vector2Int> tileIndexes;
+    [SerializeField] public string spriteType;
+
+    public int NumTileX
+    {
+        get
+        {
+            return tileIndexes.Max(item => item.x) + 1;
+        }
+    }
+
+    public int NumTileY
+    {
+        get
+        {
+            return tileIndexes.Max(item => item.y) + 1;
+        }
+    }
+    #endregion
+
+    #region MOVEMENT
+    private Vector3 _moveDirection;
+    bool _isLockedHorizontal;
+    bool _isLockedVertical;
+    private float _lockHorizontalTime;
+    private float _lockVericalTime;
+    private int _horizontalColliderInstanceId;
+    private int _verticalColliderInstanceId;
+    private Vector3 _prevPosition;
+    private Vector3 _lastEnqueuedDestination;
+    private int _countdownPreviewSnapping;
+    private List<BoardTileMaterialPropertyBlock> _prevPreviewSnappingTiles;
+    private Vector3 _initialExpectedPosition;
+    private Vector3 _blockOffset;
+    #endregion
+
+    public BlockServiceLocator BlockServiceLocator
+    {
+        get => blockServiceLocator;
+    }
+
+    public BlockProperty BlockProperty
+    {
+        get => blockProperty;
+    }
+
+    public Rigidbody2D BlockRigidbody
+    {
+        get => _blockRigidBody;
+    }
+
+    public GameFaction Faction
+    {
+        get => blockProperty.Faction;
+        set => blockProperty.Faction = value;
+    }
+
+    public bool IsSecondLayer
+    {
+        get => isSecondLayer;
+    }
+
+    public static event Action disintegrateBlockEvent;
+    public static event Action blockCompletedEvent;
+    public static event Action<int, bool> movePairedBlock;
+    public static event Action disableHighlightTilesEvent;
+    public static event Action useTeleportBoosterEvent;
+
+
+    #region TEST MOVE
+    private Vector3 _startMovingPosition;
+    private Vector3 _startMovingMousePosition;
+    private Direction _prevDirectional;
+    private Vector3 _safePos;
+    private bool _isMoveToSafePos;
+    private bool _isInCountdownBounceBack;
+    private Queue<Vector3> _destinations;
+    private Vector3 _currentDestination;
+    private Vector2 _inputDirection;
+    private BoxCollider[] _boxColliders;
+    List<MeshCollider> _meshColliders;
+    List<Vector3> _initialMeshColliderScales;
+    private Vector3[] _boxColliderSize;
+    private Vector3[] _boundSize;
+    #endregion
+
+    #region SNAP PREVIEW
+    private bool _isPreviewSnap;
+    private Transform _snapPreviewSprite;
+    private Vector3 _snapPreviewPosition;
+    private BlockPreviewSpriteContainer _blockPreviewSpriteContainer;
+    #endregion
+
+    #region LIFE CYCLE
+    private void Awake()
+    {
+        BlockSelectionInput.vacumnEvent += Vacumn;
+        BoosterItemUI.useBoosterEvent += UseTeleportBooster;
+        useTeleportBoosterEvent += OnTeleportBoosterAlreadyUsed;
+
+        _tweens = new List<Tween>();
+
+        _mainCamera = Camera.main;
+
+        blockServiceLocator = GetComponent<BlockServiceLocator>();
+        _blockRigidBody = GetComponent<Rigidbody2D>();
+
+        // _blockRigidBody.constraints |= RigidbodyConstraints.FreezePositionY;
+        // _blockRigidBody.isKinematic = true;
+
+        speedMultiplier = 10f;
+        snappingLerpRatio = 1f / 2;
+
+        _destinations = new Queue<Vector3>();
+
+        // if (transform.parent.GetComponent<BaseBlock>() == null)
+        // {
+        //     transform.position = transform.position.ChangeY(1.3f);
+        //     transform.localScale = 1.99f * Vector3.one;
+        // }
+
+        _tileSize = GameConstants.tileSize;
+        _initialPosition = transform.position;
+
+        _blockRigidBody.bodyType = RigidbodyType2D.Static;
+
+        SetupProperty();
+
+        return;
+
+        _boxColliders = GetComponents<BoxCollider>();
+
+        _boxColliderSize = new Vector3[_boxColliders.Length];
+        _boundSize = new Vector3[_boxColliders.Length];
+
+        // Find Mesh Colliders
+        _meshColliders = new List<MeshCollider>();
+        _initialMeshColliderScales = new List<Vector3>();
+
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            MeshCollider meshCollider = transform.GetChild(i).GetComponent<MeshCollider>();
+
+            if (meshCollider != null)
+            {
+                _meshColliders.Add(meshCollider);
+                _initialMeshColliderScales.Add(meshCollider.transform.localScale);
+
+                meshCollider.transform.localScale *= 0.98f;
+            }
+        }
+
+        // Physics Material
+        PhysicsMaterial physicsMaterial = new PhysicsMaterial();
+
+        physicsMaterial.staticFriction = 0;
+        physicsMaterial.dynamicFriction = 0;
+        physicsMaterial.frictionCombine = PhysicsMaterialCombine.Minimum;
+        physicsMaterial.bounceCombine = PhysicsMaterialCombine.Minimum;
+
+        for (int i = 0; i < _boxColliders.Length; i++)
+        {
+            _boxColliders[i].size = 0.98f * _boxColliders[i].size.ChangeZ(1.3f * _boxColliders[i].size.z);
+            _boxColliderSize[i] = _boxColliders[i].size;
+            _boundSize[i] = _boxColliders[i].bounds.size;
+
+            _boxColliders[i].material = physicsMaterial;
+
+            _boxColliders[i].enabled = false;
+        }
+
+        // Preview Snapping
+        _countdownPreviewSnapping = 8;
+
+        // Remove Old Outline
+        Outline oldOutlineComponent = GetComponent<Outline>();
+
+        if (oldOutlineComponent != null)
+        {
+            Destroy(oldOutlineComponent);
+        }
+
+        ScaleOnLevelStarted();
+
+        MoreLogicInAwake();
+    }
+
+    void Start()
+    {
+        SnapImmediately();
+    }
+
+    protected virtual void MoreLogicInAwake()
+    {
+
+    }
+
+    private void OnValidate()
+    {
+        if (blockServiceLocator == null)
+        {
+            blockServiceLocator = GetComponent<BlockServiceLocator>();
+        }
+
+        blockServiceLocator.Init();
+
+        // blockServiceLocator.blockMaterialPropertyBlock.SetFaction(blockProperty.Faction);
+    }
+
+    private void OnDestroy()
+    {
+        BlockSelectionInput.vacumnEvent -= Vacumn;
+        BoosterItemUI.useBoosterEvent -= UseTeleportBooster;
+        useTeleportBoosterEvent -= OnTeleportBoosterAlreadyUsed;
+
+        CommonUtil.StopAllTweens(_tweens);
+
+        MoreLogicOnDestroy();
+    }
+
+    protected virtual void MoreLogicOnDestroy()
+    {
+
+    }
+
+    void Update()
+    {
+        if (blockProperty.IsMoving && !blockProperty.IsDisintegrating)
+        {
+            CheckDisintegration();
+        }
+
+        if (_isSnapping)
+        {
+            transform.position = Vector3.Lerp(transform.position, _snapPosition, snappingLerpRatio);
+
+            if (Vector3.Distance(transform.position, _snapPosition) < GameConstants.TINY_FLOAT_VALUE)
+            {
+                Vector3 direction;
+                float maxDistance;
+
+                CheckDisintegration();
+
+                _isSnapping = false;
+            }
+        }
+
+        // if (blockProperty.IsMoving)
+        // {
+        //     _snapPreviewSprite.position = Vector3.Lerp(_snapPreviewSprite.position, _snapPreviewPosition, 1 / 3f);
+        // }
+        // else
+        // {
+        //     if (_snapPreviewSprite != null)
+        //     {
+        //         _snapPreviewSprite.gameObject.SetActive(false);
+        //     }
+        // }
+
+        if (blockProperty.IsRotating)
+        {
+            transform.RotateAround(Vector3.up, 6);
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        if (blockProperty.IsDisintegrating)
+        {
+            return;
+        }
+
+        if (blockProperty.IsMoving && !_isMoveToSafePos)
+        {
+            Vector3 expectedDestination = Vector3.zero;
+
+            if (Input.GetMouseButton(0))
+            {
+                Ray toGroundRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+                RaycastHit2D groundHit = Physics2D.GetRayIntersection(toGroundRay, distance: Mathf.Infinity, layerMask: LayerMask.GetMask("Ground"));
+
+                if (groundHit.collider != null)
+                {
+                    expectedDestination = groundHit.point;
+                }
+                else
+                {
+                    return;
+                }
+            }
+            else
+            {
+                return;
+            }
+
+            if (!_isMovingLastFrame)
+            {
+                _isMovingLastFrame = true;
+
+                _blockOffset = expectedDestination - transform.position;
+            }
+            else
+            {
+                Vector2 intepolatedDestination = Vector2.Lerp(transform.position, expectedDestination - _blockOffset, 1f / 3);
+
+                _blockRigidBody.MovePosition(intepolatedDestination);
+            }
+
+            PreviewSnapping();
+
+            _prevTargetPosition = _targetPosition;
+            _prevDirection = _moveDirection;
+            _prevPosition = expectedDestination;
+            // _prevPosition = transform.position;
+        }
+    }
+    #endregion
+
+    #region Property
+    private void SetupProperty()
+    {
+        spriteType = blockServiceLocator.iconRenderer.sprite.name;
+    }
+    #endregion
+
+    private void CheckDisintegration()
+    {
+        return;
+
+        Vector3 direction;
+        float maxDistance;
+
+        if (transform.position.x > 0)
+        {
+            direction = Vector3.right;
+        }
+        else
+        {
+            direction = -Vector3.right;
+        }
+
+        maxDistance = 0.3f * blockServiceLocator.Size.x;
+
+        bool IsDisintegrate = blockServiceLocator.blockCollider.CheckDisintegration(direction, maxDistance);
+
+        if (blockProperty.isCheckDisintegrationBothRightLeft)
+        {
+            if (!IsDisintegrate)
+            {
+                IsDisintegrate = blockServiceLocator.blockCollider.CheckDisintegration(-direction, maxDistance);
+            }
+        }
+
+        if (!IsDisintegrate)
+        {
+            if (transform.position.z > 0)
+            {
+                direction = Vector3.forward;
+            }
+            else
+            {
+                direction = -Vector3.forward;
+            }
+
+            maxDistance = 0.3f * blockServiceLocator.Size.z;
+
+            IsDisintegrate = blockServiceLocator.blockCollider.CheckDisintegration(direction, maxDistance);
+        }
+    }
+
+    #region FOR BETTER GAME FEEL
+    private void ScaleOnLevelStarted()
+    {
+        Vector3 _prevScale = transform.localScale;
+
+        transform.localScale = Vector3.zero;
+
+        _tweens.Add(Tween.Scale(transform, _prevScale, duration: 0.5f));
+
+        CreateSnapPreviewSpriteAsync();
+    }
+    #endregion 
+
+    #region PRVIEW SNAPPING
+    private async Task CreateSnapPreviewSpriteAsync()
+    {
+        AsyncOperationHandle<BlockPreviewSpriteContainer> handle = Addressables.LoadAssetAsync<BlockPreviewSpriteContainer>(GameConstants.SNAP_PREVIEW_SPRITE_CONTAINER);
+
+        await handle.Task;
+
+        if (handle.Status == AsyncOperationStatus.Succeeded)
+        {
+            _blockPreviewSpriteContainer = handle.Result;
+        }
+        else
+        {
+            return;
+        }
+
+        AsyncOperationHandle<GameObject> loadSnapPreviewPrefabHandle = Addressables.LoadAssetAsync<GameObject>(GameConstants.SNAP_PREVIEW_SPRITE);
+
+        loadSnapPreviewPrefabHandle.Completed += async (op) =>
+        {
+            if (op.Status == AsyncOperationStatus.Succeeded)
+            {
+                _snapPreviewSprite = Instantiate(op.Result, transform).transform;
+
+                _snapPreviewSprite.localPosition = new Vector3(0, 0, 1);
+                _snapPreviewSprite.localScale = Vector3.one;
+                _snapPreviewSprite.localEulerAngles = Vector3.one;
+                // _snapPreviewSprite.eulerAngles = new Vector3(90, 0, 0);
+
+                PreviewSnapBlockMaterialPropertyBlock materialPropertyBlock = _snapPreviewSprite.GetComponent<PreviewSnapBlockMaterialPropertyBlock>();
+
+                _snapPreviewSprite.GetComponent<MeshFilter>().mesh = GetComponent<MeshFilter>().mesh;
+
+                // _snapPreviewSprite.GetComponent<SpriteRenderer>().sprite = _blockPreviewSpriteContainer.BlockPreviewSnapSprites[(int)blockProperty.Faction];
+
+                materialPropertyBlock.SetTexture(GetComponent<BlockServiceLocator>().blockMaterialPropertyBlock.GetMainTexture());
+
+                _snapPreviewSprite.gameObject.SetActive(false);
+
+
+
+
+                // _snapPreviewSprite = Instantiate(op.Result, transform).transform;
+
+                // _snapPreviewSprite.localScale = new Vector3(0.4f * blockProperty.NumTileX, 0.4f * blockProperty.NumTileZ, 1);
+                // _snapPreviewSprite.eulerAngles = new Vector3(90, 0, 0);
+
+                // PreviewSnapSpriteMaterialPropertyBlock materialPropertyBlock = _snapPreviewSprite.GetComponent<PreviewSnapSpriteMaterialPropertyBlock>();
+
+                // _snapPreviewSprite.GetComponent<SpriteRenderer>().sprite = _blockPreviewSpriteContainer.BlockPreviewSnapSprites[(int)blockProperty.Faction];
+
+                // materialPropertyBlock.SetTiling(new Vector2(2 * blockProperty.NumTileX, 2 * blockProperty.NumTileZ));
+
+                // _snapPreviewSprite.gameObject.SetActive(false);
+            }
+        };
+    }
+    #endregion
+
+    #region MOVEMENT
+    public virtual void Move(Vector2 direction)
+    {
+        if (blockProperty.IsDisintegrating)
+        {
+            return;
+        }
+
+        if (_isSnapping)
+        {
+            return;
+        }
+
+        if (!blockProperty.IsMoving)
+        {
+            blockServiceLocator.blockMaterialPropertyBlock.ShowOutline(true);
+
+            blockServiceLocator.spriteRenderer.sortingOrder = 997;
+            blockServiceLocator.iconMaskSortingGroup.sortingOrder = blockServiceLocator.spriteRenderer.sortingOrder + 1;
+
+            _blockRigidBody.bodyType = RigidbodyType2D.Dynamic;
+
+            movePairedBlock?.Invoke(gameObject.GetInstanceID(), true);
+
+            _isSnapping = false;
+
+            blockProperty.IsMoving = true;
+
+            _startMovingPosition = transform.position;
+            _startMovingMousePosition = Input.mousePosition;
+
+            // teleport booster
+            if (blockProperty.IsTeleportBoosterReady)
+            {
+                gameObject.layer = LayerMask.NameToLayer("Teleport");
+
+                blockProperty.IsTeleportBoosterReady = false;
+                blockProperty.IsUsingTeleportBooster = true;
+
+                blockServiceLocator.spriteRenderer.sortingOrder += 10;
+                blockServiceLocator.iconMaskSortingGroup.sortingOrder += 10;
+
+                useTeleportBoosterEvent?.Invoke();
+            }
+        }
+
+        _moveDirection = new Vector2(direction.x, direction.y);
+
+        Vector3 expectedDestination;
+
+        expectedDestination.x = _startMovingPosition.x + (Input.mousePosition.x - _startMovingMousePosition.x) * 0.03f;
+        expectedDestination.y = _startMovingPosition.y + (Input.mousePosition.y - _startMovingMousePosition.y) * 0.03f;
+        expectedDestination.z = transform.position.z;
+
+        if (Vector3.Distance(expectedDestination, _lastEnqueuedDestination) > 1f)
+        {
+            _destinations.Enqueue(expectedDestination);
+
+            _lastEnqueuedDestination = expectedDestination;
+        }
+
+        _inputDirection = direction;
+    }
+
+    public virtual void Stop()
+    {
+        // if (blockProperty.IsDisintegrating)
+        // {
+        //     return;
+        // }
+
+        _blockRigidBody.bodyType = RigidbodyType2D.Static;
+
+        movePairedBlock?.Invoke(gameObject.GetInstanceID(), false);
+
+        Snap();
+
+        blockProperty.IsMoving = false;
+
+        _isMovingLastFrame = false;
+
+        _destinations.Clear();
+    }
+
+    private void PreviewSnapping()
+    {
+        if (!_isPreviewSnap)
+        {
+            return;
+        }
+
+        if (_countdownPreviewSnapping != 0)
+        {
+            _countdownPreviewSnapping--;
+
+            return;
+        }
+        else
+        {
+            _countdownPreviewSnapping = 8;
+        }
+
+
+        float tileDistance = GamePersistentVariable.tileDistance;
+
+        Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 5, layerMaskCheckTile);
+
+        if (hit.collider != null)
+        {
+            _snapPreviewPosition = hit.collider.transform.position;
+
+            if (_snapPreviewPosition.x > transform.position.x)
+            {
+                _snapPreviewPosition.x -= (BlockProperty.NumTileX - 1) / 2f * tileDistance;
+            }
+            else
+            {
+                _snapPreviewPosition.x += (BlockProperty.NumTileX - 1) / 2f * tileDistance;
+            }
+
+            if (_snapPreviewPosition.z > transform.position.z)
+            {
+                _snapPreviewPosition.z -= (BlockProperty.NumTileZ - 1) / 2f * tileDistance;
+            }
+            else
+            {
+                _snapPreviewPosition.z += (BlockProperty.NumTileZ - 1) / 2f * tileDistance;
+            }
+
+            if (BlockProperty.NumTileX % 2 == 1)
+            {
+                _snapPreviewPosition.x = hit.collider.transform.position.x;
+            }
+
+            if (BlockProperty.NumTileZ % 2 == 1)
+            {
+                _snapPreviewPosition.z = hit.collider.transform.position.z;
+            }
+
+            _snapPreviewPosition.y = transform.position.y - 0.1f;
+
+            if (!_snapPreviewSprite.gameObject.activeSelf)
+            {
+                _snapPreviewSprite.transform.position = transform.position.ChangeY(_snapPreviewPosition.y);
+                _snapPreviewSprite.gameObject.SetActive(true);
+            }
+        }
+
+
+        // if (blockProperty.NumTileZ > blockProperty.NumTileX)
+        // {
+        //     List<BoardTileMaterialPropertyBlock> orderedListHorizontal = someList
+        //         .OrderBy(item => Mathf.Abs(item.Value.z))
+        //         .OrderBy(item => Mathf.Abs(item.Value.x)).Select(item => item.Key).ToList();
+
+        //     for (int i = 0; i < orderedListHorizontal.Count; i++)
+        //     {
+        //         if (i / blockProperty.NumTileZ <= blockProperty.NumTileX - 1)
+        //         {
+        //             finalList.Add(orderedListHorizontal[i]);
+        //         }
+        //         else
+        //         {
+        //             _prevPreviewSnappingTiles.Remove(orderedListHorizontal[i]);
+        //         }
+        //     }
+        // }
+        // else if (blockProperty.NumTileZ < blockProperty.NumTileX)
+        // {
+        //     List<BoardTileMaterialPropertyBlock> orderedListVertical = someList
+        //         .OrderBy(item => Mathf.Abs(item.Value.x))
+        //         .OrderBy(item => Mathf.Abs(item.Value.z)).Select(item => item.Key).ToList();
+
+        //     for (int i = 0; i < orderedListVertical.Count; i++)
+        //     {
+        //         if (i / blockProperty.NumTileX <= blockProperty.NumTileZ - 1)
+        //         {
+        //             finalList.Add(orderedListVertical[i]);
+        //         }
+        //         else
+        //         {
+        //             _prevPreviewSnappingTiles.Remove(orderedListVertical[i]);
+        //         }
+        //     }
+        // }
+        // else
+        // {
+
+        // }
+
+        // for (int i = 0; i < finalList.Count; i++)
+        // {
+        //     finalList[i].Highlight(true);
+
+        //     if (disableHighlightTiles == null)
+        //     {
+        //         continue;
+        //     }
+
+        //     for (int k = 0; k < disableHighlightTiles.Count; k++)
+        //     {
+        //         if (disableHighlightTiles[k].GetInstanceID() == finalList[i].GetInstanceID())
+        //         {
+        //             duplicateHighlightTiles.Add(finalList[i]);
+        //         }
+        //     }
+        // }
+
+        // if (disableHighlightTiles == null)
+        // {
+        //     return;
+        // }
+
+        // for (int i = 0; i < duplicateHighlightTiles.Count; i++)
+        // {
+        //     disableHighlightTiles.Remove(duplicateHighlightTiles[i]);
+        // }
+
+        // for (int i = 0; i < disableHighlightTiles.Count; i++)
+        // {
+        //     disableHighlightTiles[i].Highlight(false);
+        // }
+    }
+
+    private void DisablePreviewSnapping()
+    {
+        if (_prevPreviewSnappingTiles == null)
+        {
+            return;
+        }
+
+        for (int i = 0; i < _prevPreviewSnappingTiles.Count; i++)
+        {
+            _prevPreviewSnappingTiles[i].Highlight(false);
+        }
+
+        _countdownPreviewSnapping = 8;
+    }
+
+    public void Snap()
+    {
+        GetSnapPosition();
+
+        blockServiceLocator.spriteRenderer.sortingOrder = 15 - (int)_snapPosition.y;
+        blockServiceLocator.iconMaskSortingGroup.sortingOrder = blockServiceLocator.spriteRenderer.sortingOrder + 1;
+
+        _blockRigidBody.bodyType = RigidbodyType2D.Static;
+
+        _isSnapping = true;
+
+        blockServiceLocator.blockMaterialPropertyBlock.ShowOutline(false);
+
+        BlockManager.Instance.CheckMergeBlocks();
+
+        if (blockProperty.IsUsingTeleportBooster)
+        {
+            gameObject.layer = LayerMask.NameToLayer("Default");
+
+            blockProperty.IsUsingTeleportBooster = false;
+
+            // _blockRigidBody.MovePosition(transform.position);
+
+            StartCoroutine(ResolveBlockOverlapping(transform));
+        }
+
+        return;
+
+        float tileDistance = GamePersistentVariable.tileDistance;
+
+        DisablePreviewSnapping();
+
+        blockServiceLocator.blockMaterialPropertyBlock.ShowOutline(false);
+
+        Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 5, layerMaskCheckTile);
+
+        if (hit.collider != null)
+        {
+            _snapPosition = hit.collider.transform.position;
+
+            if (_snapPosition.x > transform.position.x)
+            {
+                _snapPosition.x -= (BlockProperty.NumTileX - 1) / 2f * tileDistance;
+            }
+            else
+            {
+                _snapPosition.x += (BlockProperty.NumTileX - 1) / 2f * tileDistance;
+            }
+
+            if (_snapPosition.z > transform.position.z)
+            {
+                _snapPosition.z -= (BlockProperty.NumTileZ - 1) / 2f * tileDistance;
+            }
+            else
+            {
+                _snapPosition.z += (BlockProperty.NumTileZ - 1) / 2f * tileDistance;
+            }
+
+            if (BlockProperty.NumTileX % 2 == 1)
+            {
+                _snapPosition.x = hit.collider.transform.position.x;
+            }
+
+            if (BlockProperty.NumTileZ % 2 == 1)
+            {
+                _snapPosition.z = hit.collider.transform.position.z;
+            }
+
+            // _snapPosition.x -= (BlockProperty.NumTileX - 1) / 2f * tileDistance;
+            // _snapPosition.z += (BlockProperty.NumTileZ - 1) / 2f * tileDistance;
+
+            _snapPosition.y = _initialPosition.y;
+
+            _blockRigidBody.isKinematic = true;
+
+            _isSnapping = true;
+        }
+    }
+
+    public void SnapImmediately()
+    {
+        GetSnapPosition();
+
+        transform.position = _snapPosition;
+
+        blockServiceLocator.spriteRenderer.sortingOrder = 15 - (int)_snapPosition.y;
+        blockServiceLocator.iconMaskSortingGroup.sortingOrder = blockServiceLocator.spriteRenderer.sortingOrder + 1;
+    }
+
+    private void GetSnapPosition()
+    {
+        float tileSize = GameConstants.tileSize;
+
+        int minIndexX = tileIndexes.Min(item => item.x);
+        int maxIndexX = tileIndexes.Max(item => item.x);
+        int minIndexY = tileIndexes.Min(item => item.y);
+        int maxIndexY = tileIndexes.Max(item => item.y);
+
+        int numTileX = (maxIndexX - minIndexX) + 1;
+        int numTileY = (maxIndexY - minIndexY) + 1;
+
+        Vector2 snappedPosition = new Vector2(
+            Mathf.Round(transform.position.x / tileSize) * tileSize,
+            Mathf.Round(transform.position.y / tileSize) * tileSize
+        );
+
+        if (numTileX % 2 == 0)
+        {
+            if (Mathf.Abs((snappedPosition.x - 0.5f * tileSize) - transform.position.x) < Mathf.Abs((snappedPosition.x + 0.5f * tileSize) - transform.position.x))
+            {
+                snappedPosition.x -= 0.5f * tileSize;
+            }
+            else
+            {
+                snappedPosition.x += 0.5f * tileSize;
+            }
+        }
+
+        if (numTileY % 2 == 0)
+        {
+            if (Mathf.Abs((snappedPosition.y - 0.5f * tileSize) - transform.position.y) < Mathf.Abs((snappedPosition.y + 0.5f * tileSize) - transform.position.y))
+            {
+                snappedPosition.y -= 0.5f * tileSize;
+            }
+            else
+            {
+                snappedPosition.y += 0.5f * tileSize;
+            }
+        }
+
+        // snappedPosition.y -= 0.06f;
+
+        _snapPosition = snappedPosition;
+    }
+    #endregion
+
+    #region DISINTEGRATE
+    public async Task Disintegrate(Direction direction)
+    {
+        if (blockProperty.IsDisintegrating)
+        {
+            return;
+        }
+
+        // blockServiceLocator.blockMaterialPropertyBlock.ShowOutline(false);
+        blockServiceLocator.blockMaterialPropertyBlock.HideOutlineCompletely();
+
+        Snap();
+
+        blockServiceLocator.blockMaterialPropertyBlock.DisableOutline();
+
+        blockProperty.IsMoving = false;
+        blockProperty.IsDisintegrating = true;
+
+        blockProperty.IsReadyTriggerDisintegrateFx = true;
+
+        while (_isSnapping)
+        {
+            await Task.Delay(2);
+        }
+
+        // if (blockProperty.IsPreventDisintegrating)
+        // {
+        //     blockProperty.IsDisintegrating = false;
+
+        //     return;
+        // }
+
+        // blockProperty.IsReadyTriggerDisintegrateFx = true;
+
+        disintegrateBlockEvent?.Invoke();
+
+        // _blockCollider.enabled = false;
+
+        if (GamePersistentVariable.IsVibrate)
+        {
+            CandyCoded.HapticFeedback.HapticFeedback.HeavyFeedback();
+        }
+
+        SoundManager.Instance.PlaySoundBreakObject();
+
+        // Disable Collider
+        for (int i = 0; i < _meshColliders.Count; i++)
+        {
+            _meshColliders[i].isTrigger = true;
+        }
+
+        if (direction == Direction.Right)
+        {
+            blockServiceLocator.blockMaterialPropertyBlock.SetMaskingRight(transform.position.x + 0.5f * (blockProperty.NumTileX + 1) * _tileSize);
+
+            _tweens.Add(Tween.PositionX(transform, transform.position.x + (blockProperty.NumTileX + 1) * _tileSize, duration: GameGeneralConfiguration.DISINTEGRATION_TIME));
+        }
+        if (direction == Direction.Left)
+        {
+            blockServiceLocator.blockMaterialPropertyBlock.SetMaskingLeft(transform.position.x - 0.5f * (blockProperty.NumTileX + 1) * _tileSize);
+
+            _tweens.Add(Tween.PositionX(transform, transform.position.x - (blockProperty.NumTileX + 1) * _tileSize, duration: GameGeneralConfiguration.DISINTEGRATION_TIME));
+        }
+        if (direction == Direction.Up)
+        {
+            blockServiceLocator.blockMaterialPropertyBlock.SetMaskingTop(transform.position.z + 0.5f * (blockProperty.NumTileZ + 1) * _tileSize);
+
+            _tweens.Add(Tween.PositionZ(transform, transform.position.z + (blockProperty.NumTileZ + 1) * _tileSize, duration: GameGeneralConfiguration.DISINTEGRATION_TIME));
+        }
+        else if (direction == Direction.Down)
+        {
+            blockServiceLocator.blockMaterialPropertyBlock.SetMaskingBottom(transform.position.z - 0.5f * (blockProperty.NumTileZ + 1) * _tileSize);
+
+            _tweens.Add(Tween.PositionZ(transform, transform.position.z - (blockProperty.NumTileZ + 1) * _tileSize, duration: GameGeneralConfiguration.DISINTEGRATION_TIME));
+        }
+
+        blockServiceLocator.blockMaterialPropertyBlock.Disintegrate(direction);
+
+        // DOUBLE BLOCK
+        EnableInsideBlock();
+
+        // KEY
+        UnlockKey();
+
+        // ELEMENT
+        UseElement();
+    }
+
+    public void StopDisintegrating()
+    {
+        CommonUtil.StopAllTweens(_tweens);
+
+        blockServiceLocator.blockMaterialPropertyBlock.StopDisintegrating();
+
+        blockProperty.IsDisintegrating = false;
+    }
+    #endregion
+
+    #region BOOSTER
+    public void Break()
+    {
+        BoosterHammer hammer = ObjectPoolingEverything.GetFromPool<BoosterHammer>(GameConstants.HAMMER);
+
+        hammer.HitTarget(transform, onCompletedAction: () =>
+        {
+            Tween.ShakeScale(transform, 1.5f * Vector3.one, duration: 0.3f).OnComplete(() =>
+            {
+                gameObject.SetActive(false);
+
+                SpawnBlocksAfterBreak();
+
+                blockProperty.IsDone = true;
+
+                blockCompletedEvent?.Invoke();
+            });
+        });
+
+        // KEY
+        UnlockKey();
+    }
+
+    private void SpawnBlocksAfterBreak()
+    {
+        Dictionary<BaseBlock, List<Vector2Int>> worldTileIndexesOfBlock = new Dictionary<BaseBlock, List<Vector2Int>>();
+
+        BaseBlock[] smallBlocks = TileMapper.Instance.SplitBlock(this);
+
+        BlockManager.Instance.Blocks.AddRange(smallBlocks);
+
+        int numTileX;
+        int numTileY;
+
+        TileMapper.GetNumTile(this, out numTileX, out numTileY);
+
+        float maxY = -(numTileY - 1) / 2 * _tileSize;
+
+        Vector2 smallBlockIconPosition;
+
+        for (int i = 0; i < smallBlocks.Length; i++)
+        {
+            BaseBlock smallBlock = smallBlocks[i];
+
+            smallBlock.originalTileIndexes = this.originalTileIndexes;
+            smallBlock.tileIndexes = new List<Vector2Int>() { this.tileIndexes[i] };
+            smallBlock.spriteType = this.spriteType;
+            smallBlock.Faction = this.Faction;
+            smallBlock.blockServiceLocator.blockFaction.Faction = blockServiceLocator.blockFaction.Faction;
+            smallBlock.blockServiceLocator.blockFaction.UpdateFaction();
+
+            smallBlock.blockServiceLocator.iconRenderer.sprite = gameFactionSpriteContainer.factionSprites[int.Parse(smallBlock.spriteType) - 1];
+
+            smallBlockIconPosition.x = ((numTileX - 1) / 2f - this.tileIndexes[i].x) * _tileSize + 0.4f;
+            smallBlockIconPosition.y = (-(numTileY - 1) / 2f + this.tileIndexes[i].y) * _tileSize;
+
+            smallBlock.blockServiceLocator.iconRenderer.transform.localPosition = smallBlockIconPosition;
+        }
+    }
+
+    public void Vacumn()
+    {
+        Vector2 endPosition = TileMapper.Instance.GetBlockVacumnPosition(this);
+
+        Tween.Position(transform, endPosition, duration: 1f)
+        .OnComplete(() =>
+        {
+            ParticleSystem fx = ObjectPoolingEverything.GetFromPool<ParticleSystem>(GameConstants.blockMergeFx);
+
+            fx.gameObject.SetActive(true);
+            fx.transform.position = transform.position;
+            fx.Play();
+
+            gameObject.SetActive(false);
+
+            blockProperty.IsDone = true;
+
+            blockCompletedEvent?.Invoke();
+        });
+
+        // blockProperty.IsRotating = true;
+
+        // KEY
+        UnlockKey();
+    }
+
+    public void Vacumn(string spriteType)
+    {
+        if (blockProperty.IsRotating)
+        {
+            return;
+        }
+
+        if (spriteType == this.spriteType)
+        {
+            Vacumn();
+        }
+    }
+
+    private void UseTeleportBooster(BoosterType booster)
+    {
+        if (booster == BoosterType.Teleport)
+        {
+            blockProperty.IsTeleportBoosterReady = true;
+        }
+    }
+
+    private void OnTeleportBoosterAlreadyUsed()
+    {
+        if (blockProperty.IsTeleportBoosterReady)
+        {
+            blockProperty.IsTeleportBoosterReady = false;
+        }
+    }
+
+    IEnumerator ResolveBlockOverlapping(Transform block)
+    {
+        WaitForSeconds waitForSeconds = new WaitForSeconds(1f / 60);
+        float step = 0.2f;
+        float max = 100f;
+        float moved = 0f;
+
+        blockProperty.isResolveBlockOverlapping = true;
+        _isSnapping = false;
+
+        int maxCount = 32;
+        int count = 0;
+
+        while (count < maxCount)
+        {
+            Collider2D col = blockServiceLocator.blockCollider2D;
+
+            Collider2D[] hits = Physics2D.OverlapBoxAll(col.bounds.center, col.bounds.size, 0, LayerMask.GetMask("Default"));
+
+            if (hits.Length == 0)
+            {
+                yield break;
+            }
+
+            foreach (var h in hits)
+            {
+                if (h == col) continue;
+
+                var dist = col.Distance(h);     // gives direction + distance out of overlap
+                col.transform.position += 0.1f * (Vector3)dist.normal * dist.distance;
+            }
+
+            count++;
+
+            yield return waitForSeconds;
+        }
+
+        GetSnapPosition();
+
+        blockProperty.isResolveBlockOverlapping = false;
+        _isSnapping = false;
+    }
+    #endregion
+
+    #region UTIL
+    public void InvokeBlockCompletedEvent()
+    {
+        blockCompletedEvent?.Invoke();
+    }
+    #endregion
+
+    #region DOUBLE BLOCK
+    private void InitInsideBlock()
+    {
+        if (transform.childCount > 0)
+        {
+            for (int i = 0; i < transform.childCount; i++)
+            {
+                BaseBlock insideBlock = transform.GetChild(i).GetComponent<BaseBlock>();
+
+                if (insideBlock == null)
+                {
+                    continue;
+                }
+
+                insideBlock.BlockServiceLocator.blockMaterialPropertyBlock.EnableOutline(false);
+
+                Collider[] colliders = TransformUtil.GetComponentsFromAllChildren<Collider>(insideBlock.transform).ToArray();
+
+                foreach (var collider in colliders)
+                {
+                    collider.enabled = false;
+                }
+            }
+        }
+    }
+
+    private void EnableInsideBlock()
+    {
+        if (transform.childCount > 0)
+        {
+            for (int i = 0; i < transform.childCount; i++)
+            {
+                BaseBlock insideBlock = transform.GetChild(i).GetComponent<BaseBlock>();
+
+                if (insideBlock == null)
+                {
+                    continue;
+                }
+
+                insideBlock.transform.SetParent(transform.parent);
+
+                insideBlock.transform.position = insideBlock.transform.position.ChangeY(1.3f);
+                insideBlock.transform.localScale = 1.99f * Vector3.one;
+
+                // insideBlock.GetComponent<MeshFilter>().mesh = blockServiceLocator.meshFilter.mesh;
+
+                insideBlock.BlockServiceLocator.blockMaterialPropertyBlock.EnableOutline(true);
+
+                Tween.Scale(insideBlock.transform, transform.localScale, duration: 0.3f)
+                .OnComplete(() =>
+                {
+                    MeshCollider[] colliders = TransformUtil.GetComponentsFromAllChildren<MeshCollider>(insideBlock.transform).ToArray();
+
+                    foreach (var collider in colliders)
+                    {
+                        collider.enabled = true;
+                    }
+                });
+
+                for (int j = 0; j < insideBlock.transform.childCount; j++)
+                {
+                    if (insideBlock.transform.GetChild(j).name == "Outline Sprite (1)")
+                    {
+                        insideBlock.transform.GetChild(j).gameObject.SetActive(false);
+
+                        break;
+                    }
+                }
+            }
+        }
+    }
+    #endregion
+
+    #region KEY
+    private void UnlockKey()
+    {
+        if (transform.childCount > 0)
+        {
+            for (int i = 0; i < transform.childCount; i++)
+            {
+                Key key = transform.GetChild(i).GetComponent<Key>();
+
+                if (key != null)
+                {
+                    key.transform.SetParent(transform.parent);
+
+                    key.Unlock();
+                }
+            }
+        }
+    }
+    #endregion
+
+    #region ELEMENTS
+    private void UseElement()
+    {
+        if (transform.childCount > 0)
+        {
+            for (int i = 0; i < transform.childCount; i++)
+            {
+                BaseElement element = transform.GetChild(i).GetComponent<BaseElement>();
+
+                if (element != null)
+                {
+                    element.transform.SetParent(transform.parent);
+
+                    element.Use();
+                }
+            }
+        }
+    }
+    #endregion
+}

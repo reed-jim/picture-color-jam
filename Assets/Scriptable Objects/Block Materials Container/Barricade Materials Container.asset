@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29a13900c7fe6bc409bf096a7b5fc6bb, type: 3}
+  m_Name: Barricade Materials Container
+  m_EditorClassIdentifier: 
+  barricadeMaterials:
+  - {fileID: 2100000, guid: e09b3a79e8d65b14ebca2a01f56a7f81, type: 2}
+  - {fileID: 2100000, guid: ba7791c3a1b460e42873221f64a6f654, type: 2}
+  - {fileID: 2100000, guid: b944475981e8fdf49a15eab9a51908f0, type: 2}
+  - {fileID: 2100000, guid: 870c9f83b577e3a4bba672094d609263, type: 2}
+  - {fileID: 2100000, guid: 1da61e95e5c4af44f8ff34fa82b1c289, type: 2}
+  - {fileID: 2100000, guid: d9f906d0587de514ebf4ea808a799960, type: 2}
+  - {fileID: 2100000, guid: 33719e8c2c7a0744bbda195f58c3ff4f, type: 2}
+  - {fileID: 2100000, guid: 05f9733f05023214d989a1380bd6893d, type: 2}
+  - {fileID: 2100000, guid: 9f19a37c451f6f2409867e84ebb7c254, type: 2}
+  - {fileID: 2100000, guid: ea0bfbfd09e90ea459d6a4b1baf01e0a, type: 2}

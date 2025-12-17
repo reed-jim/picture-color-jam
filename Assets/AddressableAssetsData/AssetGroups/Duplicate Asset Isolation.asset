@@ -1,0 +1,328 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Duplicate Asset Isolation
+  m_EditorClassIdentifier: Unity.Addressables.Editor::UnityEditor.AddressableAssets.Settings.AddressableAssetGroup
+  m_GroupName: Duplicate Asset Isolation
+  m_GUID: e0e7f3d0988f5184395913af0398a805
+  m_SerializeEntries:
+  - m_GUID: 038960ab5686d4040ad208bb994ae5d3
+    m_Address: Assets/Picture Block Jam/Sprite/Elements/36.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 08d9eae074d722c4182a6b62986e80ae
+    m_Address: Assets/Picture Block Jam/Sprite/Elements/7.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0c81a4b7f2e09c04f9b05a755c65df5a
+    m_Address: Assets/Picture Block Jam/Sprite/Elements/32.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 10a1d24ad0b22e246baf69188fe48c0b
+    m_Address: Assets/Picture Block Jam/Sprite/Elements/16.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 13c02b14c4d048fa9653293d54f6e0e1
+    m_Address: Packages/com.unity.render-pipelines.universal/Shaders/2D/Sprite-Unlit-Default.shader
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 15d0c3709176029428a0da2f8cecf0b5
+    m_Address: Packages/com.unity.render-pipelines.universal/Runtime/Materials/SpriteMask-Default.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 17c865de81fd3024db5602e2d4a71517
+    m_Address: Assets/Picture Block Jam/Sprite/Elements/47.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 19603e98725a12c49a538f7b5e389387
+    m_Address: Assets/Picture Block Jam/Shader/Picture Block.shadergraph
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1bd05329771dc624cb7fc9748e1566cb
+    m_Address: Assets/Picture Block Jam/Sprite/Elements/44.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 210c26583cc82de4d98b7da37d76424d
+    m_Address: Assets/Picture Block Jam/Sprite/Ui art/demo_gp/demo_gp_1.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 257a32035445edd4d8370dd6804a6fc5
+    m_Address: Assets/Picture Block Jam/Sprite/Elements/37.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2c4ecab02b069c043b62cd4d8be89066
+    m_Address: Assets/Picture Block Jam/Sprite/Elements/34.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 30d62dd467906ab4c86be1170b1d4356
+    m_Address: Assets/Picture Block Jam/Sprite/Elements/23.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 392c96ccf4552d547be4fe039f203d6f
+    m_Address: Assets/Picture Block Jam/Sprite/Elements/4.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3ada3dee29f751548a695fba59a3b7c8
+    m_Address: Assets/Picture Block Jam/Sprite/Elements/22.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 43a07556266552c49abc85764893b713
+    m_Address: Assets/Picture Block Jam/Sprite/Elements/30.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 47d7c40e45bbb9249b5a52e91ae8497b
+    m_Address: Assets/Picture Block Jam/Sprite/Elements/9.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4c0456b36dd5cb54cba17b85ddd58b11
+    m_Address: Assets/Picture Block Jam/Sprite/Elements/3.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4fa54062be6267e4ebcbeba1a8614dc7
+    m_Address: Assets/Picture Block Jam/Sprite/Elements/48.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 508450dcfffe3e04eacff2f087e499c0
+    m_Address: Assets/Picture Block Jam/Sprite/Elements/43.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 561a9ee3c0613f44bab2d3062b4e5979
+    m_Address: Assets/Picture Block Jam/Sprite/Elements/19.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 56b2ba6eae1dd314aa0008e01739ad0b
+    m_Address: Assets/Picture Block Jam/Sprite/Elements/33.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5bd1a223ef347c44b80070de932cdb69
+    m_Address: Assets/Picture Block Jam/Sprite/Elements/1.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 67d2def52666c1d46836a25ad4e22a89
+    m_Address: Assets/Picture Block Jam/Sprite/Elements/29.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 695129c1e2902fa4e953710e711c2928
+    m_Address: Assets/Picture Block Jam/Sprite/Elements/12.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 75d3c6377ca9e3e439d5cb3732d14103
+    m_Address: Assets/Picture Block Jam/Sprite/Elements/46.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 77bc8162c7d7d604b8ea154e08c60601
+    m_Address: Assets/Picture Block Jam/Sprite/Elements/42.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 78ad78cff28b01748afdeae571149482
+    m_Address: Assets/Picture Block Jam/Sprite/Elements/17.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7942b8b14ffd05241ae626a52ce3e77e
+    m_Address: Assets/Physics Materials/Friction.physicsMaterial2D
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7c39846314adffa4f9c0cc917ca0ecba
+    m_Address: Assets/Picture Block Jam/Sprite/Elements/45.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 80acb4b987f2c944dae9d9537f77f8f0
+    m_Address: Assets/Picture Block Jam/Sprite/Elements/41.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8ae327796f822d443bb43e79377cd218
+    m_Address: Assets/Picture Block Jam/Sprite/Elements/39.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8b9c477faf4c80f49bb1c088656fca74
+    m_Address: Assets/Picture Block Jam/Sprite/Elements/21.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 950040fe995d97c4494b870eb0e37915
+    m_Address: Assets/Picture Block Jam/Sprite/Elements/2.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 95b3e0005f58c494396ebc27b209e02b
+    m_Address: Assets/Picture Block Jam/Sprite/Elements/15.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9a0859651942b1e4b8f2be312f9fbd41
+    m_Address: Assets/Picture Block Jam/Sprite/Ui art/demo_gp/demo_gp_2.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9a943872bd6be594e8930adf24ff3555
+    m_Address: Assets/Picture Block Jam/Sprite/Elements/35.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9bfda6dc1e8f3c7478ab5abdb9af238b
+    m_Address: Assets/Picture Block Jam/Sprite/Elements/6.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9dfc825aed78fcd4ba02077103263b40
+    m_Address: Packages/com.unity.render-pipelines.universal/Runtime/Materials/Sprite-Unlit-Default.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a1810ee28cac55b4f915919044cda1d7
+    m_Address: Assets/Picture Block Jam/Sprite/Elements/10.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a34016d7bb6b10d41a383739a02943a1
+    m_Address: Assets/Picture Block Jam/Material/Picture Block Purple.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a5501c946227bdc4bac996a937f77fe3
+    m_Address: Assets/Picture Block Jam/Sprite/Ui art/mask/mask_1.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a8a7f773fea14aa40bac7daef7137c6f
+    m_Address: Assets/Picture Block Jam/Sprite/Elements/40.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ac5326c85a3bf144db520a36cc8bd002
+    m_Address: Assets/Picture Block Jam/Sprite/Elements/28.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c4e648260856f2e49a7703ce3897b423
+    m_Address: Assets/Picture Block Jam/Sprite/Elements/31.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c78ebaa66ab211b45a730459daceeb08
+    m_Address: Assets/Picture Block Jam/Sprite/Elements/14.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c8eba7b75776a8f48ae70d81bedb91e4
+    m_Address: Assets/Picture Block Jam/Sprite/Elements/26.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cb821b63c0bfd9c4a9919e22232c3b49
+    m_Address: Assets/Picture Block Jam/Sprite/Elements/8.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d34ae97009178ed48a821ab2a561b185
+    m_Address: Assets/Picture Block Jam/Sprite/Elements/18.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d478cdbb06a5ce14eb86902b9a06ab60
+    m_Address: Assets/Picture Block Jam/Sprite/Elements/27.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e39bd598ce13f44ba8af997d3e42cd18
+    m_Address: Packages/com.unity.render-pipelines.universal/Shaders/2D/Sprite-Mask.shader
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e674b362aca8b1142bc6fd81d373888f
+    m_Address: Assets/Picture Block Jam/Sprite/Elements/49.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e93c85fd5f1ed054689d983c24cc43b1
+    m_Address: Assets/Picture Block Jam/Sprite/Elements/20.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e9c07309d94c53d4288cfaf8d77b23b7
+    m_Address: Assets/Picture Block Jam/Sprite/Elements/25.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e9dabf66f16e1064aaa2cf807741edb7
+    m_Address: Assets/Picture Block Jam/Sprite/Elements/38.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: eabb9a333a6275e47ad1b70845759401
+    m_Address: Assets/Picture Block Jam/Sprite/Elements/13.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ec5b62d75a1d9364cb19e11f1b47fb36
+    m_Address: Assets/Picture Block Jam/Sprite/Elements/24.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: eedc5eb5e320c414da2813d6c8fc3c8f
+    m_Address: Assets/Picture Block Jam/Sprite/Elements/11.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f1bcb13797be6fb4f84217261cbfafce
+    m_Address: Assets/Picture Block Jam/Material/Picture Block Green.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fd7f9978b8144624d87362e31ba535ac
+    m_Address: Assets/Picture Block Jam/Sprite/Elements/5.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fecf61ed2fa02be488de036f6f3d355d
+    m_Address: Assets/Picture Block Jam/Sprite/Elements/50.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: d97d32b5c6c49254d93832847aef3ff7, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 7e336f1fdc715da40a3173a3748368bb, type: 2}
+    - {fileID: 11400000, guid: aa1e56657a8bb2146ae42432ce9812b9, type: 2}

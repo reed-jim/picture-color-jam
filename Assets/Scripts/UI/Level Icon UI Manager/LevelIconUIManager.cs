@@ -1,0 +1,161 @@
+using System.Collections.Generic;
+using System.Linq;
+using PrimeTween;
+using UnityEngine;
+
+public class LevelIconUIManager : Singleton<LevelIconUIManager>
+{
+    [SerializeField] private LevelIconUIItem itemPrefab;
+    [SerializeField] private Canvas canvas;
+    [SerializeField] private RectTransform container;
+
+    [SerializeField] private LevelIconUIItem[] items;
+
+    [SerializeField] private int maxItem;
+
+    private List<Tween> _placeItemTweens;
+    private BaseBlock[] _blocks;
+    private string[] _levelIcons;
+
+    protected override void MoreActionOnAwake()
+    {
+        _placeItemTweens = new List<Tween>();
+
+        Init();
+    }
+
+    private void Init()
+    {
+        items = new LevelIconUIItem[maxItem];
+
+        for (int i = 0; i < maxItem; i++)
+        {
+            items[i] = Instantiate(itemPrefab, container);
+        }
+    }
+
+    public void SetupForLevel(List<BaseBlock> blocks)
+    {
+        SetupForLevel(blocks.ToArray());
+    }
+
+    public void SetupForLevel(BaseBlock[] blocks)
+    {
+        Reset();
+        HideAllItems();
+
+        string[] uniqueIcons = blocks
+            .Where(item => item.gameObject.activeSelf)
+            .GroupBy(p => p.spriteType)
+            .Select(g => g.First().spriteType).ToArray();
+
+        for (int i = 0; i < uniqueIcons.Length; i++)
+        {
+            items[i].gameObject.SetActive(true);
+            items[i].SetFaction(uniqueIcons[i]);
+        }
+
+        PlaceElements(uniqueIcons.Length, 0.3f);
+
+        _blocks = blocks;
+    }
+
+    private void Reset()
+    {
+        for (int i = 0; i < items.Length; i++)
+        {
+            items[i].Reset();
+        }
+    }
+
+    public void HideIcon(BaseBlock mergedBlock, string spriteType)
+    {
+        LevelIconUIItem item = items.First(item => item.Faction == spriteType);
+
+        item.movingIcon.gameObject.SetActive(true);
+        MatchMovingIconWithBlockIcon(item.movingIcon.rectTransform, mergedBlock);
+
+        // Find new unique icons
+        string[] uniqueIcons = _blocks
+            .Where(item => item.gameObject.activeSelf)
+            .GroupBy(p => p.spriteType)
+            .Select(g => g.First().spriteType).ToArray();
+
+        TweenUtil.PunchShow(item.movingIcon.rectTransform, item.icon.transform.localScale, onCompleted: () =>
+        {
+            Tween.LocalPosition(item.movingIcon.rectTransform, item.icon.rectTransform.localPosition, duration: 0.6f, ease: Ease.InOutSine)
+            .OnComplete(() =>
+            {
+                TweenUtil.PunchHide(item.rectTransform, onCompleted: () =>
+                {
+                    PlaceElements(uniqueIcons.Length, 0.3f);
+                });
+            });
+        });
+    }
+
+    private void MatchMovingIconWithBlockIcon(RectTransform movingIcon, BaseBlock block)
+    {
+        Vector3 screenPos = Camera.main.WorldToScreenPoint(block.transform.position);
+
+        // Screen → UI
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(
+            container,
+            screenPos,
+            null,
+            out Vector2 uiPos
+        );
+
+        movingIcon.anchoredPosition = uiPos;
+
+        // // Size
+        // Vector2 spriteSize = block.BlockServiceLocator.iconRenderer.bounds.size;
+
+        // float pixelsPerUnit = block.BlockServiceLocator.iconRenderer.sprite.pixelsPerUnit;
+        // float scaleFactor = canvas.scaleFactor;
+
+        // Vector2 uiSize = spriteSize * pixelsPerUnit / scaleFactor;
+
+        // movingIcon.sizeDelta = uiSize;
+    }
+
+    private void HideAllItems()
+    {
+        for (int i = 0; i < items.Length; i++)
+        {
+            items[i].gameObject.SetActive(false);
+        }
+    }
+
+    #region Horizontal Placement
+    private void PlaceElements(int numValidItem, float distanceRatio)
+    {
+        Vector2 itemSize = items[0].rectTransform.sizeDelta;
+
+        CommonUtil.StopAllTweens(_placeItemTweens);
+
+        int validItemIndex = 0;
+
+        for (int i = 0; i < items.Length; i++)
+        {
+            if (!items[i].gameObject.activeSelf)
+            {
+                continue;
+            }
+
+            float x = (-(numValidItem - 1) / 2f + validItemIndex) * (1 + distanceRatio) * itemSize.x;
+
+            _placeItemTweens.Add(Tween.LocalPosition(items[i].rectTransform, new Vector2(x, 0), duration: 0.3f, ease: Ease.InOutSine));
+
+            validItemIndex++;
+        }
+    }
+
+    private float GetHorizontalPlacementPosition(int index, int numItem, float distanceRatio)
+    {
+        Vector2 itemSize = items[0].rectTransform.sizeDelta;
+
+        return (-(numItem - 1) / 2 + (index + distanceRatio)) * itemSize.x;
+    }
+    #endregion
+}
