@@ -210,7 +210,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7df8374da1c280043a0cbbe262548917, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelIconUIItem
-  rectTransform: {fileID: 3521118118109339183}
+  container: {fileID: 3521118118109339183}
   icon: {fileID: 567300147383454529}
   movingIcon: {fileID: 6202560456499135837}
   gameFactionSpriteContainer: {fileID: 11400000, guid: 350a6fe689bfc5e47ad7fe34e3946221, type: 2}

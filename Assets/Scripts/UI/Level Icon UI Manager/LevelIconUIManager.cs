@@ -73,7 +73,7 @@ public class LevelIconUIManager : Singleton<LevelIconUIManager>
         LevelIconUIItem item = items.First(item => item.Faction == spriteType);
 
         item.movingIcon.gameObject.SetActive(true);
-        MatchMovingIconWithBlockIcon(item.movingIcon.rectTransform, iconWorldPosition);
+        MatchMovingIconWithBlockIcon(item, iconWorldPosition);
 
         // Find new unique icons
         string[] uniqueIcons = _blocks
@@ -86,7 +86,7 @@ public class LevelIconUIManager : Singleton<LevelIconUIManager>
             Tween.LocalPosition(item.movingIcon.rectTransform, item.icon.rectTransform.localPosition, duration: 0.6f, ease: Ease.InOutSine)
             .OnComplete(() =>
             {
-                TweenUtil.PunchHide(item.rectTransform, onCompleted: () =>
+                TweenUtil.PunchHide(item.container, onCompleted: () =>
                 {
                     PlaceElements(uniqueIcons.Length, 0.3f);
                 });
@@ -94,19 +94,19 @@ public class LevelIconUIManager : Singleton<LevelIconUIManager>
         });
     }
 
-    private void MatchMovingIconWithBlockIcon(RectTransform movingIcon, Vector3 iconWorldPosition)
+    private void MatchMovingIconWithBlockIcon(LevelIconUIItem levelIconUIItem, Vector3 iconWorldPosition)
     {
         Vector3 screenPos = Camera.main.WorldToScreenPoint(iconWorldPosition);
 
         // Screen → UI
         RectTransformUtility.ScreenPointToLocalPointInRectangle(
-            container,
+            levelIconUIItem.container,
             screenPos,
             null,
             out Vector2 uiPos
         );
 
-        movingIcon.anchoredPosition = uiPos;
+        levelIconUIItem.movingIcon.rectTransform.anchoredPosition = uiPos;
 
         // // Size
         // Vector2 spriteSize = block.BlockServiceLocator.iconRenderer.bounds.size;
@@ -130,7 +130,7 @@ public class LevelIconUIManager : Singleton<LevelIconUIManager>
     #region Horizontal Placement
     private void PlaceElements(int numValidItem, float distanceRatio)
     {
-        Vector2 itemSize = items[0].rectTransform.sizeDelta;
+        Vector2 itemSize = items[0].container.sizeDelta;
 
         CommonUtil.StopAllTweens(_placeItemTweens);
 
@@ -145,7 +145,7 @@ public class LevelIconUIManager : Singleton<LevelIconUIManager>
 
             float x = (-(numValidItem - 1) / 2f + validItemIndex) * (1 + distanceRatio) * itemSize.x;
 
-            _placeItemTweens.Add(Tween.LocalPosition(items[i].rectTransform, new Vector2(x, 0), duration: 0.3f, ease: Ease.InOutSine));
+            _placeItemTweens.Add(Tween.LocalPosition(items[i].container, new Vector2(x, 0), duration: 0.3f, ease: Ease.InOutSine));
 
             validItemIndex++;
         }
@@ -153,7 +153,7 @@ public class LevelIconUIManager : Singleton<LevelIconUIManager>
 
     private float GetHorizontalPlacementPosition(int index, int numItem, float distanceRatio)
     {
-        Vector2 itemSize = items[0].rectTransform.sizeDelta;
+        Vector2 itemSize = items[0].container.sizeDelta;
 
         return (-(numItem - 1) / 2 + (index + distanceRatio)) * itemSize.x;
     }

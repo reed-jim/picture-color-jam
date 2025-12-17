@@ -148,7 +148,7 @@ public class BlockManager : Singleton<BlockManager>
                 }
 
                 Vector3 iconWorldPosition = AveragePosition(blocksWithSameType);
-
+                
                 LevelIconUIManager.Instance.HideIcon(iconWorldPosition, blocksWithSameType[0].spriteType);
             }
         }

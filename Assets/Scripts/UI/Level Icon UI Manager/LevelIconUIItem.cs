@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class LevelIconUIItem : MonoBehaviour
 {
-    public RectTransform rectTransform;
+    public RectTransform container;
     public Image icon;
     public Image movingIcon;
 
