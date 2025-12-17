@@ -296,8 +296,8 @@ public class BoardGeneratorTool : EditorWindow
         Vector2 boardSize = tileSize * new Vector2(numColumn, numRow);
 
         levelBoard.ground.size = new Vector2(
-            numColumn + 4,
-            numRow + 4
+            (numColumn - 1) * 2 - 1,
+            (numRow - 1) * 2 - 1
         );
 
         // CommonUtil.SetSpriteWorldSize(levelBoard.ground, boardSize);
@@ -311,6 +311,8 @@ public class BoardGeneratorTool : EditorWindow
         levelBoard.rightEdgeCollider.transform.position = new Vector2((numColumn + 2) / 2f * tileSize, 0);
         levelBoard.topEdgeCollider.transform.position = new Vector2(0, (numRow + 2) / 2f * tileSize);
         levelBoard.bottomEdgeCollider.transform.position = new Vector2(0, -(numRow + 2) / 2f * tileSize);
+
+        GamePersistentVariable.levelBoard = levelBoard;
     }
 
     private void GenerateBlocks(Transform container)

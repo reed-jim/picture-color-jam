@@ -15,6 +15,10 @@ public static class GamePersistentVariable
     public static int levelPrefab;
     #endregion
 
+    #region Level
+    public static LevelBoard levelBoard;
+    #endregion
+
     #region GAME FLOW
     public static bool hasAppJustLaunched;
     public static bool isPendingReplay;
