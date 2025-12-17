@@ -50,7 +50,7 @@ public class BaseBlock : MonoBehaviour
     {
         get
         {
-            return tileIndexes.Max(item => item.x) + 1;
+            return (tileIndexes.Max(item => item.x) - tileIndexes.Min(item => item.x)) + 1;
         }
     }
 
@@ -58,7 +58,7 @@ public class BaseBlock : MonoBehaviour
     {
         get
         {
-            return tileIndexes.Max(item => item.y) + 1;
+            return (tileIndexes.Max(item => item.y) - tileIndexes.Min(item => item.y)) + 1;
         }
     }
     #endregion
@@ -820,79 +820,69 @@ public class BaseBlock : MonoBehaviour
         int numRow = GamePersistentVariable.levelBoard.numRow;
         float tileSize = GameConstants.tileSize;
 
-        // for (int i = -numRow; i < numRow; i++)
+        float offsetX = (numColumn % 2 == 0) ? 0.5f * tileSize : 0f;
+        float offsetY = (numRow % 2 == 0) ? 0.5f * tileSize : 0f;
+
+        // Adjust for even num tiles
+        // if (NumTileX % 2 == 0)
         // {
-        //     for (int j = -numColumn; j < numColumn; j++)
-        //     {
-        //         Vector2 tilePosition = new Vector2(j * tileSize, i * tileSize);
-
-        //         if (numColumn % 2 == 0)
-        //         {
-        //             tilePosition.x += 0.5f * tileSize;
-        //         }
-
-        //         if (numRow % 2 == 0)
-        //         {
-        //             tilePosition.y += 0.5f * tileSize;
-        //         }
-        //     }
+        //     offsetX += 0.5f * tileSize;
         // }
 
-        // return;
+        // if (NumTileY % 2 == 0)
+        // {
+        //     offsetY += 0.5f * tileSize;
+        // }
 
-
-
-
-        int minIndexX = tileIndexes.Min(item => item.x);
-        int maxIndexX = tileIndexes.Max(item => item.x);
-        int minIndexY = tileIndexes.Min(item => item.y);
-        int maxIndexY = tileIndexes.Max(item => item.y);
-
-        int numTileX = (maxIndexX - minIndexX) + 1;
-        int numTileY = (maxIndexY - minIndexY) + 1;
-
-        Vector2 snappedPosition = new Vector2(
+        _snapPosition = new Vector2
+        (
             Mathf.Round(transform.position.x / tileSize) * tileSize,
             Mathf.Round(transform.position.y / tileSize) * tileSize
         );
 
-        if (numColumn % 2 == 0)
+        if (Mathf.Abs((_snapPosition.x + offsetX) - transform.position.x) < Mathf.Abs((_snapPosition.x - offsetX) - transform.position.x))
         {
-            snappedPosition.x += 0.5f * tileSize;
+            _snapPosition.x += offsetX;
+        }
+        else
+        {
+            _snapPosition.x -= offsetX;
         }
 
-        if (numRow % 2 == 0)
+        if (Mathf.Abs((_snapPosition.y + offsetY) - transform.position.y) < Mathf.Abs((_snapPosition.y - offsetY) - transform.position.y))
         {
-            snappedPosition.y += 0.5f * tileSize;
+            _snapPosition.y += offsetY;
+        }
+        else
+        {
+            _snapPosition.y -= offsetY;
         }
 
-        if (numTileX % 2 == 0)
+        if (NumTileX % 2 == 0)
         {
-            if (Mathf.Abs((snappedPosition.x - 0.5f * tileSize) - transform.position.x) < Mathf.Abs((snappedPosition.x + 0.5f * tileSize) - transform.position.x))
+            if (Mathf.Abs((_snapPosition.x + offsetX) - transform.position.x) < Mathf.Abs((_snapPosition.x - offsetX) - transform.position.x))
             {
-                snappedPosition.x -= 0.5f * tileSize;
+                _snapPosition.x += offsetX;
             }
             else
             {
-                snappedPosition.x += 0.5f * tileSize;
+                _snapPosition.x -= offsetX;
             }
         }
 
-        if (numTileY % 2 == 0)
+        if (NumTileY % 2 == 0)
         {
-            if (Mathf.Abs((snappedPosition.y - 0.5f * tileSize) - transform.position.y) < Mathf.Abs((snappedPosition.y + 0.5f * tileSize) - transform.position.y))
+            if (Mathf.Abs((_snapPosition.y + offsetY) - transform.position.y) < Mathf.Abs((_snapPosition.y - offsetY) - transform.position.y))
             {
-                snappedPosition.y -= 0.5f * tileSize;
+                _snapPosition.y += offsetY;
             }
             else
             {
-                snappedPosition.y += 0.5f * tileSize;
+                _snapPosition.y -= offsetY;
             }
         }
 
-        // snappedPosition.y -= 0.06f;
-
-        _snapPosition = snappedPosition;
+        // _snapPosition.y -= 0.06f;
     }
     #endregion
 
