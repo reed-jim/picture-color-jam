@@ -816,7 +816,32 @@ public class BaseBlock : MonoBehaviour
 
     private void GetSnapPosition()
     {
+        int numColumn = GamePersistentVariable.levelBoard.numColumn;
+        int numRow = GamePersistentVariable.levelBoard.numRow;
         float tileSize = GameConstants.tileSize;
+
+        // for (int i = -numRow; i < numRow; i++)
+        // {
+        //     for (int j = -numColumn; j < numColumn; j++)
+        //     {
+        //         Vector2 tilePosition = new Vector2(j * tileSize, i * tileSize);
+
+        //         if (numColumn % 2 == 0)
+        //         {
+        //             tilePosition.x += 0.5f * tileSize;
+        //         }
+
+        //         if (numRow % 2 == 0)
+        //         {
+        //             tilePosition.y += 0.5f * tileSize;
+        //         }
+        //     }
+        // }
+
+        // return;
+
+
+
 
         int minIndexX = tileIndexes.Min(item => item.x);
         int maxIndexX = tileIndexes.Max(item => item.x);
@@ -830,6 +855,16 @@ public class BaseBlock : MonoBehaviour
             Mathf.Round(transform.position.x / tileSize) * tileSize,
             Mathf.Round(transform.position.y / tileSize) * tileSize
         );
+
+        if (numColumn % 2 == 0)
+        {
+            snappedPosition.x += 0.5f * tileSize;
+        }
+
+        if (numRow % 2 == 0)
+        {
+            snappedPosition.y += 0.5f * tileSize;
+        }
 
         if (numTileX % 2 == 0)
         {

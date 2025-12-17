@@ -147,7 +147,9 @@ public class BlockManager : Singleton<BlockManager>
                     blocksWithSameType[i].gameObject.SetActive(false);
                 }
 
-                LevelIconUIManager.Instance.HideIcon(blocksWithSameType[0], blocksWithSameType[0].spriteType);
+                Vector3 iconWorldPosition = AveragePosition(blocksWithSameType);
+
+                LevelIconUIManager.Instance.HideIcon(iconWorldPosition, blocksWithSameType[0].spriteType);
             }
         }
 
@@ -178,6 +180,17 @@ public class BlockManager : Singleton<BlockManager>
             }
 
             return false;
+        }
+
+        Vector3 AveragePosition(List<BaseBlock> blocks)
+        {
+            Vector3 sum = Vector3.zero;
+            int count = blocks.Count;
+
+            for (int i = 0; i < count; i++)
+                sum += blocks[i].transform.position;
+
+            return count > 0 ? sum / count : Vector3.zero;
         }
     }
     #endregion

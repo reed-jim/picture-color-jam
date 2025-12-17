@@ -68,12 +68,12 @@ public class LevelIconUIManager : Singleton<LevelIconUIManager>
         }
     }
 
-    public void HideIcon(BaseBlock mergedBlock, string spriteType)
+    public void HideIcon(Vector3 iconWorldPosition, string spriteType)
     {
         LevelIconUIItem item = items.First(item => item.Faction == spriteType);
 
         item.movingIcon.gameObject.SetActive(true);
-        MatchMovingIconWithBlockIcon(item.movingIcon.rectTransform, mergedBlock);
+        MatchMovingIconWithBlockIcon(item.movingIcon.rectTransform, iconWorldPosition);
 
         // Find new unique icons
         string[] uniqueIcons = _blocks
@@ -94,9 +94,9 @@ public class LevelIconUIManager : Singleton<LevelIconUIManager>
         });
     }
 
-    private void MatchMovingIconWithBlockIcon(RectTransform movingIcon, BaseBlock block)
+    private void MatchMovingIconWithBlockIcon(RectTransform movingIcon, Vector3 iconWorldPosition)
     {
-        Vector3 screenPos = Camera.main.WorldToScreenPoint(block.transform.position);
+        Vector3 screenPos = Camera.main.WorldToScreenPoint(iconWorldPosition);
 
         // Screen → UI
         RectTransformUtility.ScreenPointToLocalPointInRectangle(

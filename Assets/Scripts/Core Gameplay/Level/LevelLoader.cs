@@ -142,6 +142,8 @@ public class LevelLoader : MonoBehaviour
 
                 ManageBaseBlocks(level.transform);
 
+                AutoFitLevelCamera();
+
                 // AssignPhysicsMaterialAll(level.transform);
 
                 if (!isLoopLevel)
@@ -468,5 +470,21 @@ public class LevelLoader : MonoBehaviour
 
         bottomLeftCorner.position = new Vector3(leftBound - 1f, 1.4f, bottomBound - 1f);
         bottomLeftCorner.eulerAngles = new Vector3(0, -90, 0);
+    }
+
+    private void AutoFitLevelCamera()
+    {
+        Camera camera = Camera.main;
+
+        float tileSize = GameConstants.tileSize;
+
+        LevelBoard levelBoard = GamePersistentVariable.levelBoard;
+
+        float sizeX = tileSize * levelBoard.numColumn;
+        float sizeY = tileSize * levelBoard.numRow;
+
+        float finalCameraFOV = 10 * sizeX;
+
+        camera.fieldOfView = finalCameraFOV;
     }
 }

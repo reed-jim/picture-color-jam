@@ -14,5 +14,10 @@ public class LevelBoard : MonoBehaviour
     void Awake()
     {
         GamePersistentVariable.levelBoard = this;
+
+        // center the level
+        Transform level = transform.parent;
+
+        level.transform.position -= new Vector3(transform.position.x, 0, 0);
     }
 }
