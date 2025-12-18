@@ -329,16 +329,6 @@ public class BoardGeneratorTool : EditorWindow
 
         Vector3 boardPosition = Vector3.zero;
 
-        if (numColumn % 2 == 0)
-        {
-            boardPosition.x = -0.5f * tileSize;
-        }
-
-        if (numRow % 2 == 0)
-        {
-            boardPosition.y = -0.5f * tileSize;
-        }
-
         levelBoard.transform.position = boardPosition;
 
         GamePersistentVariable.levelBoard = levelBoard;
