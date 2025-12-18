@@ -61,6 +61,22 @@ public class BaseBlock : MonoBehaviour
             return (tileIndexes.Max(item => item.y) - tileIndexes.Min(item => item.y)) + 1;
         }
     }
+
+    public int NumOriginalTileX
+    {
+        get
+        {
+            return (originalTileIndexes.Max(item => item.x) - originalTileIndexes.Min(item => item.x)) + 1;
+        }
+    }
+
+    public int NumOriginalTileY
+    {
+        get
+        {
+            return (originalTileIndexes.Max(item => item.y) - originalTileIndexes.Min(item => item.y)) + 1;
+        }
+    }
     #endregion
 
     #region MOVEMENT

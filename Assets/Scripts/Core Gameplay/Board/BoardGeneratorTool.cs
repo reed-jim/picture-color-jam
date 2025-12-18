@@ -132,6 +132,11 @@ public class BoardGeneratorTool : EditorWindow
             SetIcon(iconIndex);
         }
 
+        if (GUILayout.Button("Snap Icon"))
+        {
+            PlaceBlockIcon(Selection.activeTransform.GetComponent<BaseBlock>());
+        }
+
         if (GUILayout.Button("Set Faction"))
         {
             SetFaction(faction);
@@ -553,13 +558,16 @@ public class BoardGeneratorTool : EditorWindow
             // #endregion
 
             remainingTile -= numTile;
-
-            Debug.Log("SAFERIO GenerateBlocks 2 " + remainingTile + "/" + totalTile);
         }
 
         for (int i = 0; i < generatedBlocks.Count; i += 2)
         {
             LinkTwoBlocks(generatedBlocks[i], generatedBlocks[i + 1]);
+        }
+
+        for (int i = 0; i < generatedBlocks.Count; i++)
+        {
+            PlaceBlockIcon(generatedBlocks[i]);
         }
 
         #region FREEZED BLOCK
@@ -659,6 +667,37 @@ public class BoardGeneratorTool : EditorWindow
         }
 
         EditorUtility.SetDirty(Selection.activeTransform);
+    }
+
+    private void PlaceBlockIcon(BaseBlock block)
+    {
+        float tileSize = GameConstants.tileSize;
+
+        float sizeX = block.NumTileX * tileSize;
+        float sizeY = block.NumTileY * tileSize;
+
+        Vector2 iconCenterIndex;
+
+        iconCenterIndex.x = (block.originalTileIndexes.Max(item => item.x) + block.originalTileIndexes.Min(item => item.x)) / 2f;
+        iconCenterIndex.y = (block.originalTileIndexes.Max(item => item.y) + block.originalTileIndexes.Min(item => item.y)) / 2f;
+
+        Vector2 blockCenterIndex;
+
+        if (block.tileIndexes.Count > 1)
+        {
+            blockCenterIndex.x = (block.tileIndexes.Max(item => item.x) + block.tileIndexes.Min(item => item.x)) / 2f;
+            blockCenterIndex.y = (block.tileIndexes.Max(item => item.y) + block.tileIndexes.Min(item => item.y)) / 2f;
+        }
+        else
+        {
+            blockCenterIndex = block.tileIndexes[0];
+        }
+
+        Vector2 indexDistanceToCenter = new Vector2(iconCenterIndex.x - blockCenterIndex.x, blockCenterIndex.y - iconCenterIndex.y);
+
+        Vector2 iconLocalPosition = indexDistanceToCenter * tileSize;
+
+        block.BlockServiceLocator.iconRenderer.transform.localPosition = iconLocalPosition;
     }
 
     #region DIFFICULTY
