@@ -70,6 +70,11 @@ public class BlockManager : Singleton<BlockManager>
                     continue;
                 }
 
+                if (!block.IsValidToMerge())
+                {
+                    continue;
+                }
+
                 List<Vector2Int> blockTileIndexes = TileMapper.Instance.GetBlockTilePositions(block);
                 worldTileIndexesOfBlock.Add(block, blockTileIndexes);
 
@@ -94,6 +99,11 @@ public class BlockManager : Singleton<BlockManager>
                 BaseBlock block = blocksWithSameType[i];
 
                 if (!block.gameObject.activeSelf)
+                {
+                    continue;
+                }
+
+                if (!block.IsValidToMerge())
                 {
                     continue;
                 }

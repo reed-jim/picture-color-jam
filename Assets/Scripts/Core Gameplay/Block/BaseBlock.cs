@@ -905,6 +905,11 @@ public class BaseBlock : MonoBehaviour
     #endregion
 
     #region Merge
+    public virtual bool IsValidToMerge()
+    {
+        return true;
+    }
+
     public void HandleOnMerge()
     {
         gameObject.SetActive(false);

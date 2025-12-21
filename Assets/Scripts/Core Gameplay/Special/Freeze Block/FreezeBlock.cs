@@ -76,6 +76,11 @@ public class FreezeBlock : BaseBlock
         canvas.sortingOrder = BlockServiceLocator.spriteRenderer.sortingOrder + 2;
     }
 
+    public override bool IsValidToMerge()
+    {
+        return !_isFreeze;
+    }
+
     private void OnBlockDisintegrated()
     {
         if (remainingBlockToMelt <= 0)
