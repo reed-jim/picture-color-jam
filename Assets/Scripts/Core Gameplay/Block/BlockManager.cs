@@ -13,6 +13,7 @@ public class BlockManager : Singleton<BlockManager>
     private Coroutine _checkingWinCoroutine;
 
     public static event Action winLevelEvent;
+    public static event Action mergeBlockEvent;
 
     protected override void MoreActionOnAwake()
     {
@@ -144,8 +145,10 @@ public class BlockManager : Singleton<BlockManager>
 
                 for (int i = 0; i < blocksWithSameType.Count; i++)
                 {
-                    blocksWithSameType[i].gameObject.SetActive(false);
+                    blocksWithSameType[i].HandleOnMerge();
                 }
+
+                mergeBlockEvent?.Invoke();
 
                 Vector3 iconWorldPosition = AveragePosition(blocksWithSameType);
                 

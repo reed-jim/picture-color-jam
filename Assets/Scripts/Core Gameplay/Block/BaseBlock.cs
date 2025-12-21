@@ -187,6 +187,8 @@ public class BaseBlock : MonoBehaviour
 
         SetupProperty();
 
+        MoreLogicInAwake();
+
         return;
 
         _boxColliders = GetComponents<BoxCollider>();
@@ -820,7 +822,7 @@ public class BaseBlock : MonoBehaviour
         }
     }
 
-    public void SnapImmediately()
+    public virtual void SnapImmediately()
     {
         GetSnapPosition();
 
@@ -899,6 +901,15 @@ public class BaseBlock : MonoBehaviour
         }
 
         // _snapPosition.y -= 0.06f;
+    }
+    #endregion
+
+    #region Merge
+    public void HandleOnMerge()
+    {
+        gameObject.SetActive(false);
+
+        InvokeBlockCompletedEvent();
     }
     #endregion
 

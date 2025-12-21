@@ -6,10 +6,10 @@ public class FreezeBlock : BaseBlock
 {
     [Header("FREEZE BLOCK")]
     [SerializeField] private int remainingBlockToMelt = 3;
-    [SerializeField] private GameObject ice;
-    [SerializeField] private IceMaterialPropertyBlock iceMaterialPropertyBlock;
+    // [SerializeField] private GameObject ice;
+    [SerializeField] private Canvas canvas;
     [SerializeField] private TMP_Text remainingBlockToMeltText;
-    [SerializeField] private ParticleSystem breakIceFx;
+    // [SerializeField] private ParticleSystem breakIceFx;
 
     private bool _isFreeze;
     private bool _isInTransition;
@@ -22,27 +22,16 @@ public class FreezeBlock : BaseBlock
 
     protected override void MoreLogicInAwake()
     {
-        blockCompletedEvent += OnBlockDisintegrated;
+        BlockManager.mergeBlockEvent += OnBlockDisintegrated;
 
         _isFreeze = true;
 
-        BlockServiceLocator.blockMaterialPropertyBlock.EnableOutline(false);
-
         remainingBlockToMeltText.text = $"{remainingBlockToMelt}";
-
-        Outline iceOutline = ice.GetComponent<Outline>();
-
-        if (iceOutline != null)
-        {
-            Destroy(iceOutline);
-        }
-
-        iceMaterialPropertyBlock = ice.AddComponent<IceMaterialPropertyBlock>();
     }
 
     protected override void MoreLogicOnDestroy()
     {
-        blockCompletedEvent -= OnBlockDisintegrated;
+        BlockManager.mergeBlockEvent -= OnBlockDisintegrated;
     }
 
     public override void Move(Vector2 direction)
@@ -80,6 +69,13 @@ public class FreezeBlock : BaseBlock
         base.Stop();
     }
 
+    public override void SnapImmediately()
+    {
+        base.SnapImmediately();
+
+        canvas.sortingOrder = BlockServiceLocator.spriteRenderer.sortingOrder + 2;
+    }
+
     private void OnBlockDisintegrated()
     {
         if (remainingBlockToMelt <= 0)
@@ -93,15 +89,7 @@ public class FreezeBlock : BaseBlock
         {
             _isFreeze = false;
 
-            BlockServiceLocator.blockMaterialPropertyBlock.EnableOutline(true);
-
-            remainingBlockToMeltText.gameObject.SetActive(false);
-
-            iceMaterialPropertyBlock.Dissolve();
-            // ice.SetActive(false);
-
-            breakIceFx.gameObject.SetActive(false);
-            // breakIceFx.Play();
+            TweenUtil.PunchHide(remainingBlockToMeltText.transform);
         }
 
         remainingBlockToMeltText.text = $"{remainingBlockToMelt}";
