@@ -303,8 +303,13 @@ public class BaseBlock : MonoBehaviour
                 float maxDistance;
 
                 CheckDisintegration();
+                BlockManager.Instance.CheckMergeBlocks();
 
                 _isSnapping = false;
+            }
+            else
+            {
+                transform.position = _snapPosition;
             }
         }
 
@@ -756,7 +761,7 @@ public class BaseBlock : MonoBehaviour
 
         blockServiceLocator.blockMaterialPropertyBlock.ShowOutline(false);
 
-        BlockManager.Instance.CheckMergeBlocks();
+        // BlockManager.Instance.CheckMergeBlocks();
 
         if (blockProperty.IsUsingTeleportBooster)
         {
@@ -841,17 +846,6 @@ public class BaseBlock : MonoBehaviour
         float offsetX = (numColumn % 2 == 0) ? 0.5f * tileSize : 0f;
         float offsetY = (numRow % 2 == 0) ? 0.5f * tileSize : 0f;
 
-        // Adjust for even num tiles
-        // if (NumTileX % 2 == 0)
-        // {
-        //     offsetX += 0.5f * tileSize;
-        // }
-
-        // if (NumTileY % 2 == 0)
-        // {
-        //     offsetY += 0.5f * tileSize;
-        // }
-
         _snapPosition = new Vector2
         (
             Mathf.Round(transform.position.x / tileSize) * tileSize,
@@ -878,25 +872,25 @@ public class BaseBlock : MonoBehaviour
 
         if (NumTileX % 2 == 0)
         {
-            if (Mathf.Abs((_snapPosition.x + offsetX) - transform.position.x) < Mathf.Abs((_snapPosition.x - offsetX) - transform.position.x))
+            if (Mathf.Abs((_snapPosition.x + 0.5f * tileSize) - transform.position.x) < Mathf.Abs((_snapPosition.x - 0.5f * tileSize) - transform.position.x))
             {
-                _snapPosition.x += offsetX;
+                _snapPosition.x += 0.5f * tileSize;
             }
             else
             {
-                _snapPosition.x -= offsetX;
+                _snapPosition.x -= 0.5f * tileSize;
             }
         }
 
         if (NumTileY % 2 == 0)
         {
-            if (Mathf.Abs((_snapPosition.y + offsetY) - transform.position.y) < Mathf.Abs((_snapPosition.y - offsetY) - transform.position.y))
+            if (Mathf.Abs((_snapPosition.y + 0.5f * tileSize) - transform.position.y) < Mathf.Abs((_snapPosition.y - 0.5f * tileSize) - transform.position.y))
             {
-                _snapPosition.y += offsetY;
+                _snapPosition.y += 0.5f * tileSize;
             }
             else
             {
-                _snapPosition.y -= offsetY;
+                _snapPosition.y -= 0.5f * tileSize;
             }
         }
 
