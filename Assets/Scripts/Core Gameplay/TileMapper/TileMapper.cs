@@ -63,8 +63,8 @@ public class TileMapper : Singleton<TileMapper>
 
     public Vector2Int WorldToTile(Vector2 worldPosition)
     {
-        int xTile = (int)Mathf.Ceil(worldPosition.x / tileSize);
-        int yTile = (int)Mathf.Ceil(worldPosition.y / tileSize);
+        int xTile = (int)Mathf.Round(worldPosition.x / tileSize);
+        int yTile = (int)Mathf.Round(worldPosition.y / tileSize);
 
         return new Vector2Int(xTile, yTile);
     }

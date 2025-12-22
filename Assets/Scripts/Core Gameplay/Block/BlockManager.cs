@@ -61,9 +61,19 @@ public class BlockManager : Singleton<BlockManager>
         {
             List<BaseBlock> blocksWithSameType = groupByType[spriteType];
 
+            Dictionary<int, List<BaseBlock>> groupByTotalTileCount = GroupBlocksByTotalTileCount(blocksWithSameType);
+
+            foreach (var group in groupByTotalTileCount.Values)
+            {
+                CheckMergeForBlockGroup(group);
+            }
+        }
+
+        void CheckMergeForBlockGroup(List<BaseBlock> group)
+        {
             Dictionary<BaseBlock, List<Vector2Int>> worldTileIndexesOfBlock = new Dictionary<BaseBlock, List<Vector2Int>>();
 
-            foreach (var block in blocksWithSameType)
+            foreach (var block in group)
             {
                 if (!block.gameObject.activeSelf)
                 {
@@ -80,12 +90,12 @@ public class BlockManager : Singleton<BlockManager>
 
                 // foreach (var item in blockTileIndexes)
                 // {
-                //     Debug.Log($"SAFERIO CheckMergeBlocks World {block} : {item}");
+                //     Debug.Log($"SAFERIO CheckMergeBlocks World {block.transform.GetSiblingIndex()} {block} : {item}");
                 // }
             }
 
             List<Vector2Int> originalTileIndexes = new List<Vector2Int>();
-            originalTileIndexes.AddRange(blocksWithSameType[0].originalTileIndexes);
+            originalTileIndexes.AddRange(group[0].originalTileIndexes);
 
             int requiredMatch = originalTileIndexes.Count;
             int currentMatch = 0;
@@ -94,9 +104,9 @@ public class BlockManager : Singleton<BlockManager>
 
             // Debug.Log($"SAFERIO CheckMergeBlocks Local ==============================");
 
-            for (int i = 0; i < blocksWithSameType.Count; i++)
+            for (int i = 0; i < group.Count; i++)
             {
-                BaseBlock block = blocksWithSameType[i];
+                BaseBlock block = group[i];
 
                 if (!block.gameObject.activeSelf)
                 {
@@ -128,9 +138,9 @@ public class BlockManager : Singleton<BlockManager>
                 }
 
                 // Last item
-                if (i == blocksWithSameType.Count - 1)
+                if (i == group.Count - 1)
                 {
-                    if (ExistsLaterWithSameYSmallerX(blocksWithSameType))
+                    if (ExistsLaterWithSameYSmallerX(group))
                     {
                         currentMatch = 0;
                     }
@@ -153,16 +163,16 @@ public class BlockManager : Singleton<BlockManager>
                     }
                 }
 
-                for (int i = 0; i < blocksWithSameType.Count; i++)
+                for (int i = 0; i < group.Count; i++)
                 {
-                    blocksWithSameType[i].HandleOnMerge();
+                    group[i].HandleOnMerge();
                 }
 
                 mergeBlockEvent?.Invoke();
 
-                Vector3 iconWorldPosition = AveragePosition(blocksWithSameType);
-                
-                LevelIconUIManager.Instance.HideIcon(iconWorldPosition, blocksWithSameType[0].spriteType);
+                Vector3 iconWorldPosition = AveragePosition(group);
+
+                LevelIconUIManager.Instance.HideIcon(iconWorldPosition, group[0].spriteType);
             }
         }
 
@@ -170,6 +180,13 @@ public class BlockManager : Singleton<BlockManager>
         {
             return blocks
                 .GroupBy(block => block.spriteType)
+                .ToDictionary(group => group.Key, group => group.ToList());
+        }
+
+        Dictionary<int, List<BaseBlock>> GroupBlocksByTotalTileCount(List<BaseBlock> blocks)
+        {
+            return blocks
+                .GroupBy(block => block.originalTileIndexes.Count)
                 .ToDictionary(group => group.Key, group => group.ToList());
         }
 
