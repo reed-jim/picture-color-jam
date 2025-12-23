@@ -229,30 +229,31 @@ public class BlockManager : Singleton<BlockManager>
     {
         WaitForSeconds waitForSeconds = new WaitForSeconds(3f);
 
-        yield break;
-
         while (true)
         {
-            int remainingBlocks = 0;
-
-            for (int i = 0; i < _blocks.Count; i++)
+            if (!GamePersistentVariable.isPlayingHideIconAnimation)
             {
-                try
+                int remainingBlocks = 0;
+
+                for (int i = 0; i < _blocks.Count; i++)
                 {
-                    if (_blocks[i].gameObject.activeInHierarchy)
+                    try
+                    {
+                        if (_blocks[i].gameObject.activeInHierarchy)
+                        {
+                            remainingBlocks++;
+                        }
+                    }
+                    catch (System.Exception)
                     {
                         remainingBlocks++;
                     }
                 }
-                catch (System.Exception)
-                {
-                    remainingBlocks++;
-                }
-            }
 
-            if (remainingBlocks == 0)
-            {
-                winLevelEvent?.Invoke();
+                if (remainingBlocks == 0)
+                {
+                    winLevelEvent?.Invoke();
+                }
             }
 
             yield return waitForSeconds;

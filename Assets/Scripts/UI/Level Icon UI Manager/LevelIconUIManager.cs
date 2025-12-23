@@ -81,6 +81,8 @@ public class LevelIconUIManager : Singleton<LevelIconUIManager>
             .GroupBy(p => p.spriteType)
             .Select(g => g.First().spriteType).ToArray();
 
+        GamePersistentVariable.isPlayingHideIconAnimation = true;
+
         TweenUtil.PunchShow(item.movingIcon.rectTransform, item.icon.transform.localScale, onCompleted: () =>
         {
             Tween.LocalPosition(item.movingIcon.rectTransform, item.icon.rectTransform.localPosition, duration: 0.6f, ease: Ease.InOutSine)
@@ -89,6 +91,8 @@ public class LevelIconUIManager : Singleton<LevelIconUIManager>
                 TweenUtil.PunchHide(item.container, onCompleted: () =>
                 {
                     PlaceElements(uniqueIcons.Length, 0.3f);
+
+                    GamePersistentVariable.isPlayingHideIconAnimation = false;
                 });
             });
         });

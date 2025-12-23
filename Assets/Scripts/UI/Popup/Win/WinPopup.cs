@@ -54,7 +54,7 @@ public class WinPopup : BasePopup
     {
         AdmobAdsMax.Instance.ShowBannerCollap();
 
-        coinText.text = $"{0}";
+        coinText.text = $"+{0}";
         continueButton.transform.localScale = Vector3.zero;
 
         continueButton.interactable = true;
@@ -113,13 +113,13 @@ public class WinPopup : BasePopup
 
     private void CollectCoin(int numCoin, Action onCompletedAction = null)
     {
-        coinText.text = $"{_currentCollectedCoin}";
+        coinText.text = $"+{_currentCollectedCoin}";
 
         int deltaCoin = (int)(numCoin / 10f);
 
         _tweens.Add(Tween.Custom(_currentCollectedCoin, numCoin, duration: timeCollectCoin, onValueChange: newVal =>
         {
-            coinText.text = $"{(int)newVal}";
+            coinText.text = $"+{(int)newVal}";
         })
         .OnComplete(() =>
             {

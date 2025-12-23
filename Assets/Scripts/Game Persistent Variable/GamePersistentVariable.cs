@@ -26,6 +26,7 @@ public static class GamePersistentVariable
     public static bool isLoadingComplete;
     public static bool isMenuLoading;
     public static bool isLevelLost;
+    public static bool isPlayingHideIconAnimation;
     #endregion
 
     #region LIVES
