@@ -894,7 +894,7 @@ public class BaseBlock : MonoBehaviour
             }
         }
 
-        // _snapPosition.y -= 0.06f;
+        _snapPosition.y -= 0.1f;
     }
     #endregion
 

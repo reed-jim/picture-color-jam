@@ -28,6 +28,7 @@ public class LevelLoader : MonoBehaviour
     public static event Action<float> setLevelCameraOrthographicSize;
     public static event Action<ScreenRoute> switchRouteEvent;
     public static event Action setIsLevelLoadedEvent;
+    public static event Action updateCameraEvent;
 
     private void Awake()
     {
@@ -114,7 +115,8 @@ public class LevelLoader : MonoBehaviour
 
         setLevelNumberEvent?.Invoke();
 
-        nextLevel = RemoteConfigLevelManager.GetReplacedLevelIndex(nextLevel);
+        Debug.Log("SAFERIO check later");
+        // nextLevel = RemoteConfigLevelManager.GetReplacedLevelIndex(nextLevel);
 
         GamePersistentVariable.levelPrefab = nextLevel;
 
@@ -483,8 +485,10 @@ public class LevelLoader : MonoBehaviour
         float sizeX = tileSize * levelBoard.numColumn;
         float sizeY = tileSize * levelBoard.numRow;
 
-        float finalCameraFOV = 10 * sizeX;
+        float finalCameraFOV = 8 * sizeX;
 
         camera.fieldOfView = finalCameraFOV;
+
+        updateCameraEvent?.Invoke();
     }
 }

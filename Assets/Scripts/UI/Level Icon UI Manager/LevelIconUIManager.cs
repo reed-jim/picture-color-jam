@@ -55,7 +55,7 @@ public class LevelIconUIManager : Singleton<LevelIconUIManager>
             items[i].SetFaction(uniqueIcons[i]);
         }
 
-        PlaceElements(uniqueIcons.Length, 0.3f);
+        PlaceElements(uniqueIcons.Length, 0.3f / uniqueIcons.Length);
 
         _blocks = blocks;
     }
@@ -90,7 +90,7 @@ public class LevelIconUIManager : Singleton<LevelIconUIManager>
             {
                 TweenUtil.PunchHide(item.container, onCompleted: () =>
                 {
-                    PlaceElements(uniqueIcons.Length, 0.3f);
+                    PlaceElements(uniqueIcons.Length, 0.3f / uniqueIcons.Length);
 
                     GamePersistentVariable.isPlayingHideIconAnimation = false;
                 });
