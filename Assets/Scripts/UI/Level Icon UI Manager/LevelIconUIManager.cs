@@ -92,6 +92,8 @@ public class LevelIconUIManager : Singleton<LevelIconUIManager>
                 {
                     PlaceElements(uniqueIcons.Length, 0.3f / uniqueIcons.Length);
 
+                    BlockManager.Instance.CheckWin();
+
                     GamePersistentVariable.isPlayingHideIconAnimation = false;
                 });
             });

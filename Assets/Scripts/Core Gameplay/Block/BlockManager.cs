@@ -233,30 +233,35 @@ public class BlockManager : Singleton<BlockManager>
         {
             if (!GamePersistentVariable.isPlayingHideIconAnimation)
             {
-                int remainingBlocks = 0;
-
-                for (int i = 0; i < _blocks.Count; i++)
-                {
-                    try
-                    {
-                        if (_blocks[i].gameObject.activeInHierarchy)
-                        {
-                            remainingBlocks++;
-                        }
-                    }
-                    catch (System.Exception)
-                    {
-                        remainingBlocks++;
-                    }
-                }
-
-                if (remainingBlocks == 0)
-                {
-                    winLevelEvent?.Invoke();
-                }
+                CheckWin();
             }
 
             yield return waitForSeconds;
+        }
+    }
+
+    public void CheckWin()
+    {
+        int remainingBlocks = 0;
+
+        for (int i = 0; i < _blocks.Count; i++)
+        {
+            try
+            {
+                if (_blocks[i].gameObject.activeInHierarchy)
+                {
+                    remainingBlocks++;
+                }
+            }
+            catch (System.Exception)
+            {
+                remainingBlocks++;
+            }
+        }
+
+        if (remainingBlocks == 0)
+        {
+            winLevelEvent?.Invoke();
         }
     }
 
