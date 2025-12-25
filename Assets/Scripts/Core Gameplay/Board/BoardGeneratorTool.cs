@@ -168,9 +168,7 @@ public class BoardGeneratorTool : EditorWindow
 
         tilePrefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Color Block Jam/Board/Tile.prefab");
 
-        GameObject TileContainerPrefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Color Block Jam/Containers/Tile Container.prefab");
         GameObject BlockContainerPrefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Color Block Jam/Containers/Block Container.prefab");
-        GameObject BarricadeContainerPrefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Color Block Jam/Containers/Barricade Container.prefab");
 
         // Remove all existing blocks
         List<GameObject> toRemoveList = new List<GameObject>();
@@ -182,12 +180,10 @@ public class BoardGeneratorTool : EditorWindow
 
         foreach (var item in toRemoveList)
         {
-            DestroyImmediate(item);
+            DestroyImmediate(item, allowDestroyingAssets: true);
         }
 
-        Transform tileContainer = ((GameObject)PrefabUtility.InstantiatePrefab(TileContainerPrefab, level)).transform;
         Transform blockContainer = ((GameObject)PrefabUtility.InstantiatePrefab(BlockContainerPrefab, level)).transform;
-        Transform barricadeContainer = ((GameObject)PrefabUtility.InstantiatePrefab(BarricadeContainerPrefab, level)).transform;
 
         GenerateBoard();
         GenerateBlocks(blockContainer);
@@ -199,6 +195,13 @@ public class BoardGeneratorTool : EditorWindow
         Transform level = Selection.activeTransform;
 
         BaseBlock[] blocks = TransformUtil.GetComponentsFromAllChildren<BaseBlock>(level).ToArray();
+
+        LevelBoard levelBoard = level.GetComponentInChildren<LevelBoard>();
+
+        if (levelBoard != null)
+        {
+            GamePersistentVariable.levelBoard = levelBoard;
+        }
 
         for (int i = 0; i < blocks.Length; i++)
         {
@@ -287,11 +290,7 @@ public class BoardGeneratorTool : EditorWindow
 
         GameObject boardPrefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Picture Block Jam/Prefab/Board/Board.prefab");
 
-        RemoveAllGameObjectsWithComponent<LevelBoard>(level);
-
-        PrefabUtility.InstantiatePrefab(boardPrefab, level);
-
-        LevelBoard levelBoard = boardPrefab.GetComponent<LevelBoard>();
+        LevelBoard levelBoard = PrefabUtility.InstantiatePrefab(boardPrefab, level).GetComponent<LevelBoard>();
 
         levelBoard.numColumn = numColumn;
         levelBoard.numRow = numRow;
@@ -351,8 +350,6 @@ public class BoardGeneratorTool : EditorWindow
         int maxTryTime = 100;
 
         BaseBlock selectedPrefab;
-
-        RemoveAllGameObjectsWithComponent<BaseBlock>(container);
 
         List<BaseBlock> toGeneratedBlocks = new List<BaseBlock>();
         List<GameFaction> toGeneratedFaction = new List<GameFaction>();
@@ -1091,7 +1088,7 @@ public class BoardGeneratorTool : EditorWindow
 
         foreach (var item in toRemoveList)
         {
-            DestroyImmediate(item);
+            DestroyImmediate(item, allowDestroyingAssets: true);
         }
     }
 
