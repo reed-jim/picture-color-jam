@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Saferio.Util.SaferioTween;
 using UnityEngine;
 
 public class TileMapper : Singleton<TileMapper>
@@ -183,16 +184,20 @@ public class TileMapper : Singleton<TileMapper>
     #region Vacumn
     public Vector2 GetBlockVacumnPosition(BaseBlock block)
     {
-        Vector2Int leftTopCoordinator = block.tileIndexes[0];
+        int minIndexX = block.tileIndexes.Min(item => item.x);
+        int maxIndexX = block.tileIndexes.Max(item => item.x);
+        int minIndexY = block.tileIndexes.Min(item => item.y);
+        int maxIndexY = block.tileIndexes.Max(item => item.y);
 
-        Vector2 topLeftWorld = TileToWorld(leftTopCoordinator);
+        float centerX = (minIndexX + maxIndexX) / 2f;
+        float centerY = (minIndexY + maxIndexY) / 2f;
 
-        int numTileX;
-        int numTileY;
+        Vector2 vacumnPosition = new Vector2();
 
-        GetNumTile(block, out numTileX, out numTileY);
+        vacumnPosition.x = centerX * tileSize;
+        vacumnPosition.y = -centerY * tileSize;
 
-        return LeftTopToBlockPosition(topLeftWorld, numTileX, numTileY, tileSize);
+        return vacumnPosition;
     }
     #endregion
 }

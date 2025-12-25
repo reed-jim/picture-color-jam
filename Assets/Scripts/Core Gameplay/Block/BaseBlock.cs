@@ -324,11 +324,6 @@ public class BaseBlock : MonoBehaviour
         //         _snapPreviewSprite.gameObject.SetActive(false);
         //     }
         // }
-
-        if (blockProperty.IsRotating)
-        {
-            transform.RotateAround(Vector3.up, 6);
-        }
     }
 
     private void FixedUpdate()
@@ -1070,11 +1065,15 @@ public class BaseBlock : MonoBehaviour
         }
     }
 
-    public void Vacumn()
+    public void Vacumn(bool isHideIconAfterDone = false)
     {
         Vector2 endPosition = TileMapper.Instance.GetBlockVacumnPosition(this);
 
-        Tween.Position(transform, endPosition, duration: 1f)
+        _blockRigidBody.simulated = false;
+
+        blockProperty.IsMagneting = true;
+
+        Tween.Position(transform, endPosition, duration: 1f, ease: Ease.InOutSine)
         .OnComplete(() =>
         {
             ParticleSystem fx = ObjectPoolingEverything.GetFromPool<ParticleSystem>(GameConstants.blockMergeFx);
@@ -1088,9 +1087,12 @@ public class BaseBlock : MonoBehaviour
             blockProperty.IsDone = true;
 
             blockCompletedEvent?.Invoke();
-        });
 
-        // blockProperty.IsRotating = true;
+            if (isHideIconAfterDone)
+            {
+                LevelIconUIManager.Instance.HideIcon(Vector3.zero, spriteType);
+            }
+        });
 
         // KEY
         UnlockKey();
@@ -1098,7 +1100,7 @@ public class BaseBlock : MonoBehaviour
 
     public void Vacumn(string spriteType)
     {
-        if (blockProperty.IsRotating)
+        if (blockProperty.IsMagneting)
         {
             return;
         }

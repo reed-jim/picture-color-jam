@@ -206,7 +206,7 @@ public class BlockSelectionInput : MonoBehaviour
         {
             Vector3 vacumnHead = vacumnPosition + new Vector3(0, 0, 8);
 
-            block.Vacumn();
+            block.Vacumn(isHideIconAfterDone: true);
 
             SoundManager.Instance.PlaySoundBreakObject();
 

@@ -15,7 +15,7 @@ public class BlockProperty
 
     private bool _isMoving;
     private bool _isDisintegrating;
-    private bool _isRotating;
+    private bool _isMagneting;
     private bool _isPreventDisintegrating;
     private bool _isReadyTriggerDisintegrateFx;
     private bool _isDone;
@@ -41,10 +41,10 @@ public class BlockProperty
         set => _isDisintegrating = value;
     }
 
-    public bool IsRotating
+    public bool IsMagneting
     {
-        get => _isRotating;
-        set => _isRotating = value;
+        get => _isMagneting;
+        set => _isMagneting = value;
     }
 
     public bool IsPreventDisintegrating
