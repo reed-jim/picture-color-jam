@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using PrimeTween;
@@ -83,6 +85,13 @@ public class LevelIconUIManager : Singleton<LevelIconUIManager>
 
         GamePersistentVariable.isPlayingHideIconAnimation = true;
 
+        if (GamePersistentVariable.hidingIconQueue == null)
+        {
+            GamePersistentVariable.hidingIconQueue = new Queue();
+        }
+
+        GamePersistentVariable.hidingIconQueue.Enqueue(spriteType);
+
         TweenUtil.PunchShow(item.movingIcon.rectTransform, 1.8f * item.icon.transform.localScale, onCompleted: () =>
         {
             Tween.Scale(item.movingIcon.rectTransform, item.icon.transform.localScale, duration: 0.5f);
@@ -92,6 +101,8 @@ public class LevelIconUIManager : Singleton<LevelIconUIManager>
                 TweenUtil.PunchHide(item.container, onCompleted: () =>
                 {
                     PlaceElements(uniqueIcons.Length, 0.3f / uniqueIcons.Length);
+
+                    GamePersistentVariable.hidingIconQueue.Dequeue();
 
                     BlockManager.Instance.CheckWin();
 
@@ -137,6 +148,11 @@ public class LevelIconUIManager : Singleton<LevelIconUIManager>
     #region Horizontal Placement
     private void PlaceElements(int numValidItem, float distanceRatio)
     {
+        if (numValidItem <= 0)
+        {
+            return;
+        }
+
         Vector2 itemSize = items[0].container.sizeDelta;
 
         CommonUtil.StopAllTweens(_placeItemTweens);
@@ -157,7 +173,7 @@ public class LevelIconUIManager : Singleton<LevelIconUIManager>
             validItemIndex++;
         }
 
-        Tween.Scale(container, 1 - 0.03f * numValidItem, duration: 0.3f);
+        Tween.Scale(container, (float)(1 - 0.03f * Math.Pow(numValidItem - 1, 1.3f)), duration: 0.3f);
     }
 
     private float GetHorizontalPlacementPosition(int index, int numItem, float distanceRatio)

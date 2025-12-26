@@ -246,6 +246,11 @@ public class BlockManager : Singleton<BlockManager>
 
     public void CheckWin()
     {
+        if (GamePersistentVariable.hidingIconQueue.Count > 0)
+        {
+            return;
+        }
+
         int remainingBlocks = 0;
 
         for (int i = 0; i < _blocks.Count; i++)

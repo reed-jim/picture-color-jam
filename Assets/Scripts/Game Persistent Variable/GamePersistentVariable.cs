@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public static class GamePersistentVariable
@@ -27,6 +28,7 @@ public static class GamePersistentVariable
     public static bool isMenuLoading;
     public static bool isLevelLost;
     public static bool isPlayingHideIconAnimation;
+    public static Queue hidingIconQueue;
     #endregion
 
     #region LIVES
