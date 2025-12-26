@@ -28,6 +28,10 @@ public class BoardGeneratorTool : EditorWindow
     private BaseBarricade[] barricades;
     private Transform blockContainer;
 
+    #region UTIL
+    private float deltaPosition;
+    #endregion
+
     private string folderPath = "Assets/Picture Block Jam/Prefab/Block/All Blocks";
 
     [MenuItem("Saferio/Level Tool")]
@@ -156,6 +160,13 @@ public class BoardGeneratorTool : EditorWindow
         // {
         //     MergeBarricades();
         // }
+
+        deltaPosition = EditorGUILayout.FloatField("Delta Position", deltaPosition);
+
+        if (GUILayout.Button("Change Position"))
+        {
+            ChangePositions();
+        }
 
         GUILayout.EndArea();
     }
@@ -946,6 +957,18 @@ public class BoardGeneratorTool : EditorWindow
             }
         }
         return true;
+    }
+    #endregion
+
+    #region Transform Util
+    private void ChangePositions()
+    {
+        Transform[] transforms = Selection.transforms;
+
+        foreach (var item in transforms)
+        {
+            item.transform.localPosition += new Vector3(0, deltaPosition);
+        }
     }
     #endregion
 
