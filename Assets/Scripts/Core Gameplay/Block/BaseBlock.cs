@@ -796,7 +796,7 @@ public class BaseBlock : MonoBehaviour
     {
         GetSnapPosition();
 
-        blockServiceLocator.spriteRenderer.sortingOrder = 15 - (int)_snapPosition.y;
+        blockServiceLocator.spriteRenderer.sortingOrder = (int)(2 * (15 - _snapPosition.y));;
         blockServiceLocator.iconMaskSortingGroup.sortingOrder = blockServiceLocator.spriteRenderer.sortingOrder + 1;
 
         _blockRigidBody.bodyType = RigidbodyType2D.Static;
@@ -877,7 +877,8 @@ public class BaseBlock : MonoBehaviour
 
         transform.position = _snapPosition;
 
-        blockServiceLocator.spriteRenderer.sortingOrder = 15 - (int)_snapPosition.y;
+        // x2 help tell layers apart better
+        blockServiceLocator.spriteRenderer.sortingOrder = (int)(2 * (15 - _snapPosition.y));
         blockServiceLocator.iconMaskSortingGroup.sortingOrder = blockServiceLocator.spriteRenderer.sortingOrder + 1;
     }
 
