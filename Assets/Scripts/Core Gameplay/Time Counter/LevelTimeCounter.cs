@@ -19,6 +19,7 @@ public class LevelTimeCounter : MonoBehaviour
     [SerializeField] private Image movingFreezeClockImage;
 
     [SerializeField] private ParticleSystem snowFx;
+    [SerializeField] private ParticleSystem breakClockFx;
 
     [SerializeField] private int totalSecond;
 
@@ -156,17 +157,14 @@ public class LevelTimeCounter : MonoBehaviour
 
         snowFx.Play();
 
-        _sequences.Add(Tween.LocalPosition(movingFreezeClock, _initialMovingFreezeClockPosition - new Vector3(80, 80, 0), duration: 0.3f)
-        .Chain(Tween.Delay(0.1f))
-        .Chain(
-            Tween.LocalPosition(movingFreezeClock, timeText.rectTransform.localPosition, duration: 0.6f)
+        Tween.LocalPosition(movingFreezeClock, timeText.rectTransform.localPosition, duration: 0.6f)
             .OnComplete(() =>
             {
-                _tweens.Add(Tween.Alpha(movingFreezeClockImage, 0, duration: 0.3f).OnComplete(() =>
-                {
-                    movingFreezeClockImage.color = Color.white;
-                    movingFreezeClock.gameObject.SetActive(false);
-                }));
+                breakClockFx.gameObject.SetActive(true);
+                breakClockFx.transform.localPosition = movingFreezeClock.transform.localPosition;
+                breakClockFx.Play();
+
+                movingFreezeClock.gameObject.SetActive(false);
 
                 // progress bar
                 _tweens.Add(Tween.Custom(0, 1, duration: 0.3f, onValueChange: newVal =>
@@ -201,12 +199,7 @@ public class LevelTimeCounter : MonoBehaviour
                 }));
 
                 FreezedEffect(isFreeze: true);
-            })
-        ));
-
-        // _tweens.Add(Tween.LocalPosition(movingFreezeClock, timeText.rectTransform.localPosition, duration: 0.6f)
-
-        // );
+            });
     }
 
     private void FreezedEffect(bool isFreeze)

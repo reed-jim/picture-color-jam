@@ -2526,6 +2526,7 @@ MonoBehaviour:
   _blocks:
   - {fileID: 0}
   - {fileID: 0}
+  gameSetting: {fileID: 11400000, guid: a2c6756a77a053e48bc88637f241a4a1, type: 2}
 --- !u!1001 &664427086
 PrefabInstance:
   m_ObjectHideFlags: 0

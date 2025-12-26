@@ -2,11 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using CandyCoded.HapticFeedback;
 using UnityEngine;
 
 public class BlockManager : Singleton<BlockManager>
 {
     [SerializeField] private List<BaseBlock> _blocks;
+
+    [SerializeField] private GameSetting gameSetting;
 
     public List<BaseBlock> Blocks
     {
@@ -165,6 +168,11 @@ public class BlockManager : Singleton<BlockManager>
                         fx.transform.position = TileMapper.TileToWorld(worldTileIndexesOfBlock[block][i]);
                         fx.Play();
                     }
+                }
+
+                if (GamePersistentVariable.IsVibrate)
+                {
+                    HapticFeedback.HeavyFeedback();
                 }
 
                 for (int i = 0; i < group.Count; i++)
