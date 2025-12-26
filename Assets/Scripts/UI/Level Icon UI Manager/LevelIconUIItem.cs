@@ -23,8 +23,29 @@ public class LevelIconUIItem : MonoBehaviour
         icon.sprite = gameFactionSpriteContainer.factionSprites.First(item => item.name == faction);
         icon.SetNativeSize();
 
+        bool isFitByX = icon.rectTransform.sizeDelta.x > icon.rectTransform.sizeDelta.y;
+
+        Vector2 finalSize;
+
+        if (isFitByX)
+        {
+            float ratioYToX = icon.rectTransform.sizeDelta.y / icon.rectTransform.sizeDelta.x;
+
+            finalSize.x = (0.65f - 0.05f * ratioYToX) * container.sizeDelta.x;
+            finalSize.y = ratioYToX * finalSize.x;
+        }
+        else
+        {
+            float ratioXToY = icon.rectTransform.sizeDelta.x / icon.rectTransform.sizeDelta.y;
+
+            finalSize.y = (0.65f - 0.05f * ratioXToY) * container.sizeDelta.y;
+            finalSize.x = ratioXToY * finalSize.y;
+        }
+
+        icon.rectTransform.sizeDelta = finalSize;
+
         movingIcon.sprite = icon.sprite;
-        movingIcon.SetNativeSize();
+        movingIcon.rectTransform.sizeDelta = icon.rectTransform.sizeDelta;
 
         movingIcon.gameObject.SetActive(false);
 
