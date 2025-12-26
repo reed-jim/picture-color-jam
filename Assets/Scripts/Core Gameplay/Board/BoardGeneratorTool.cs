@@ -151,6 +151,11 @@ public class BoardGeneratorTool : EditorWindow
             LinkTwoBlocks();
         }
 
+        if (GUILayout.Button("Set Board Colliders"))
+        {
+            SetBoardColliders();
+        }
+
         // if (GUILayout.Button("Calculate Difficulty", buttonStyle))
         // {
         //     CalculateDifficulty();
@@ -707,6 +712,22 @@ public class BoardGeneratorTool : EditorWindow
 
         block.BlockServiceLocator.iconRenderer.transform.localPosition = iconLocalPosition;
     }
+
+    #region Collider
+    private void SetBoardColliders()
+    {
+        Transform level = Selection.activeTransform;
+
+        LevelBoard levelBoard = level.GetComponentInChildren<LevelBoard>();
+
+        Vector2 boardSize = GameConstants.tileSize * new Vector2(levelBoard.numColumn, levelBoard.numRow);
+
+        SetBoxColliderWorldSize(levelBoard.leftEdgeCollider, new Vector2(0.1f * boardSize.x, boardSize.y));
+        SetBoxColliderWorldSize(levelBoard.rightEdgeCollider, new Vector2(0.1f * boardSize.x, boardSize.y));
+        SetBoxColliderWorldSize(levelBoard.topEdgeCollider, new Vector2(boardSize.x, 0.1f * boardSize.y));
+        SetBoxColliderWorldSize(levelBoard.bottomEdgeCollider, new Vector2(boardSize.x, 0.1f * boardSize.y));
+    }
+    #endregion
 
     #region DIFFICULTY
     private void CalculateDifficulty()
