@@ -45,9 +45,9 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _ColorMultiplier: 2.4
+    - _ColorMultiplier: 2.3
     - _MaxZ: 0.55
-    - _Saturation: 1.6
+    - _Saturation: 1.1
     - _WarpMultiplier: 0
     m_Colors:
     - _Color: {r: 1, g: 0.4117647, b: 0.7058824, a: 1}

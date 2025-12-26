@@ -45,12 +45,12 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _ColorMultiplier: 2.4
+    - _ColorMultiplier: 2.3
     - _MaxZ: 0.55
-    - _Saturation: 1.6
+    - _Saturation: 1.1
     - _WarpMultiplier: 0
     m_Colors:
-    - _Color: {r: 0.9019608, g: 0.23137248, b: 0.18823522, a: 1}
+    - _Color: {r: 0.9019608, g: 0.23137245, b: 0.1882352, a: 1}
     - _IconOffset: {r: 0, g: 0, b: 0, a: 0}
     - _IconTiling: {r: 1, g: 1, b: 0, a: 0}
     - _Tiling: {r: 1, g: 1, b: 0, a: 0}
