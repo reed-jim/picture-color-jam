@@ -156,6 +156,8 @@ public class LevelIconUIManager : Singleton<LevelIconUIManager>
 
             validItemIndex++;
         }
+
+        Tween.Scale(container, 1 - 0.03f * numValidItem, duration: 0.3f);
     }
 
     private float GetHorizontalPlacementPosition(int index, int numItem, float distanceRatio)

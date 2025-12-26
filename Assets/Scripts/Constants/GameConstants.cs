@@ -173,6 +173,7 @@ public static class GameConstants
     public static string BOOSTER_CLOCK_ITEM = "BOOSTER_CLOCK_ITEM";
     public static string IS_PREVIEW_SNAPPING = "IS_PREVIEW_SNAPPING";
     public static float tileSize = 1.4f;
+    public static int maxSortingLayer = 1999;
     #endregion
 
     #region ADDRESSABLES

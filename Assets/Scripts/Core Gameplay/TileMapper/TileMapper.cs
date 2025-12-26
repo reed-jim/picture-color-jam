@@ -70,7 +70,7 @@ public class TileMapper : Singleton<TileMapper>
         return new Vector2Int(xTile, yTile);
     }
 
-    public static Vector2 TileToWorld(Vector2Int tilePosition)
+    public static Vector2 TileToWorld(Vector2 tilePosition)
     {
         float xWorld = tilePosition.x * GameConstants.tileSize;
         float yWorld = tilePosition.y * GameConstants.tileSize;
@@ -184,18 +184,15 @@ public class TileMapper : Singleton<TileMapper>
     #region Vacumn
     public Vector2 GetBlockVacumnPosition(BaseBlock block)
     {
-        int minIndexX = block.tileIndexes.Min(item => item.x);
-        int maxIndexX = block.tileIndexes.Max(item => item.x);
-        int minIndexY = block.tileIndexes.Min(item => item.y);
-        int maxIndexY = block.tileIndexes.Max(item => item.y);
-
-        float centerX = (minIndexX + maxIndexX) / 2f;
-        float centerY = (minIndexY + maxIndexY) / 2f;
+        float centerX = block.CenterX;
+        float centerY = block.CenterY;
+        float originalCenterX = block.OriginalCenterX;
+        float originalCenterY = block.OriginalCenterY;
 
         Vector2 vacumnPosition = new Vector2();
 
-        vacumnPosition.x = centerX * tileSize;
-        vacumnPosition.y = -centerY * tileSize;
+        vacumnPosition.x = (centerX - originalCenterX) * tileSize;
+        vacumnPosition.y = -(centerY - originalCenterY) * tileSize;
 
         return vacumnPosition;
     }

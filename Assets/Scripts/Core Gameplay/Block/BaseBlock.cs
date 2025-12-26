@@ -77,6 +77,55 @@ public class BaseBlock : MonoBehaviour
             return (originalTileIndexes.Max(item => item.y) - originalTileIndexes.Min(item => item.y)) + 1;
         }
     }
+
+    public float CenterX
+    {
+        get
+        {
+            int minIndexX = tileIndexes.Min(item => item.x);
+            int maxIndexX = tileIndexes.Max(item => item.x);
+
+            return (minIndexX + maxIndexX) / 2f;
+        }
+    }
+
+    public float CenterY
+    {
+        get
+        {
+            int minIndexY = tileIndexes.Min(item => item.y);
+            int maxIndexY = tileIndexes.Max(item => item.y);
+
+            return (minIndexY + maxIndexY) / 2f;
+        }
+    }
+
+    public float OriginalCenterX
+    {
+        get
+        {
+            int minIndexX = originalTileIndexes.Min(item => item.x);
+            int maxIndexX = originalTileIndexes.Max(item => item.x);
+
+            return (minIndexX + maxIndexX) / 2f;
+        }
+    }
+
+    public float OriginalCenterY
+    {
+        get
+        {
+            int minIndexY = originalTileIndexes.Min(item => item.y);
+            int maxIndexY = originalTileIndexes.Max(item => item.y);
+
+            return (minIndexY + maxIndexY) / 2f;
+        }
+    }
+
+    public Vector2 OriginalCenter
+    {
+        get => new Vector2(OriginalCenterX, OriginalCenterY);
+    }
     #endregion
 
     #region MOVEMENT
@@ -1035,6 +1084,7 @@ public class BaseBlock : MonoBehaviour
         BaseBlock[] smallBlocks = TileMapper.Instance.SplitBlock(this);
 
         BlockManager.Instance.Blocks.AddRange(smallBlocks);
+        BlockManager.Instance.Blocks = BlockManager.Instance.Blocks.Distinct().ToList();
 
         int numTileX;
         int numTileY;
@@ -1073,15 +1123,12 @@ public class BaseBlock : MonoBehaviour
 
         blockProperty.IsMagneting = true;
 
-        Tween.Position(transform, endPosition, duration: 1f, ease: Ease.InOutSine)
+        blockServiceLocator.spriteRenderer.sortingOrder = GameConstants.maxSortingLayer - (int)endPosition.y;
+        blockServiceLocator.iconMaskSortingGroup.sortingOrder = blockServiceLocator.spriteRenderer.sortingOrder + 1;
+
+        Tween.Position(transform, endPosition, duration: 0.8f)
         .OnComplete(() =>
         {
-            ParticleSystem fx = ObjectPoolingEverything.GetFromPool<ParticleSystem>(GameConstants.blockMergeFx);
-
-            fx.gameObject.SetActive(true);
-            fx.transform.position = transform.position;
-            fx.Play();
-
             gameObject.SetActive(false);
 
             blockProperty.IsDone = true;
@@ -1090,7 +1137,22 @@ public class BaseBlock : MonoBehaviour
 
             if (isHideIconAfterDone)
             {
-                LevelIconUIManager.Instance.HideIcon(Vector3.zero, spriteType);
+                // wait for other blocks to be magneted
+                Tween.Delay(1 / 60f, onComplete: () =>
+                {
+                    Vector2 originalCenter = OriginalCenter;
+
+                    for (int i = 0; i < originalTileIndexes.Count; i++)
+                    {
+                        ParticleSystem fx = ObjectPoolingEverything.GetFromPool<ParticleSystem>(GameConstants.blockMergeFx);
+
+                        fx.gameObject.SetActive(true);
+                        fx.transform.position = TileMapper.TileToWorld(originalTileIndexes[i] - originalCenter);
+                        fx.Play();
+                    }
+
+                    LevelIconUIManager.Instance.HideIcon(Vector3.zero, spriteType);
+                });
             }
         });
 
