@@ -8,7 +8,11 @@ public class BlockManager : Singleton<BlockManager>
 {
     [SerializeField] private List<BaseBlock> _blocks;
 
-    public List<BaseBlock> Blocks => _blocks;
+    public List<BaseBlock> Blocks
+    {
+        get => _blocks;
+        set => _blocks = value;
+    }
 
     private Coroutine _checkingWinCoroutine;
 
@@ -33,12 +37,12 @@ public class BlockManager : Singleton<BlockManager>
     {
         _blocks = blocks.ToList();
 
-        if (_checkingWinCoroutine != null)
-        {
-            StopCoroutine(_checkingWinCoroutine);
-        }
+        // if (_checkingWinCoroutine != null)
+        // {
+        //     StopCoroutine(_checkingWinCoroutine);
+        // }
 
-        _checkingWinCoroutine = StartCoroutine(CheckingWin());
+        // _checkingWinCoroutine = StartCoroutine(CheckingWin());
 
         StartCoroutine(DelaySetupIconForLevel(blocks));
     }

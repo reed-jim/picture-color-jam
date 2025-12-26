@@ -485,7 +485,14 @@ public class LevelLoader : MonoBehaviour
         float sizeX = tileSize * levelBoard.numColumn;
         float sizeY = tileSize * levelBoard.numRow;
 
+        bool isFitByX = levelBoard.numColumn >= levelBoard.numRow;
+
         float finalCameraFOV = 8 * sizeX;
+
+        if (!isFitByX)
+        {
+            finalCameraFOV = 8 * sizeY;
+        }
 
         camera.fieldOfView = finalCameraFOV;
 
