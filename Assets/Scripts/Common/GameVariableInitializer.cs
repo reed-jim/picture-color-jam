@@ -34,6 +34,7 @@ public class GameVariableInitializer : MonoBehaviour
         PrimeTweenConfig.warnEndValueEqualsCurrent = false;
         PrimeTweenConfig.warnZeroDuration = false;
         PrimeTweenConfig.warnTweenOnDisabledTarget = false;
+        PrimeTweenConfig.defaultEase = Ease.InOutSine;
 
         canvasSize.Value = canvas.sizeDelta;
 
