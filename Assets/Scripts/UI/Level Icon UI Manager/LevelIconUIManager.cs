@@ -92,7 +92,7 @@ public class LevelIconUIManager : Singleton<LevelIconUIManager>
 
         GamePersistentVariable.hidingIconQueue.Enqueue(spriteType);
 
-        TweenUtil.PunchShow(item.movingIcon.rectTransform, 1.8f * item.icon.transform.localScale, onCompleted: () =>
+        TweenUtil.PunchShow(item.movingIcon.rectTransform, 2f * item.icon.transform.localScale, onCompleted: () =>
         {
             Tween.Scale(item.movingIcon.rectTransform, item.icon.transform.localScale, duration: 0.5f);
             Tween.LocalPosition(item.movingIcon.rectTransform, item.icon.rectTransform.localPosition, duration: 0.5f, ease: Ease.InOutSine)

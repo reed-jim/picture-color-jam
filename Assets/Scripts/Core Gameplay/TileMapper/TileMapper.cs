@@ -64,7 +64,9 @@ public class TileMapper : Singleton<TileMapper>
 
     public Vector2Int WorldToTile(Vector2 worldPosition)
     {
-        int xTile = (int)Mathf.Round(worldPosition.x / tileSize);
+        float offsetX = GamePersistentVariable.levelBoard.numColumn % 2 == 0 ? 0.5f * tileSize : 0;
+
+        int xTile = (int)Mathf.Round((worldPosition.x - offsetX) / tileSize);
         int yTile = (int)Mathf.Round(worldPosition.y / tileSize);
 
         return new Vector2Int(xTile, yTile);
@@ -72,7 +74,9 @@ public class TileMapper : Singleton<TileMapper>
 
     public static Vector2 TileToWorld(Vector2 tilePosition)
     {
-        float xWorld = tilePosition.x * GameConstants.tileSize;
+        float offsetX = GamePersistentVariable.levelBoard.numColumn % 2 == 0 ? 0.5f * GameConstants.tileSize : 0;
+
+        float xWorld = tilePosition.x * GameConstants.tileSize + offsetX;
         float yWorld = tilePosition.y * GameConstants.tileSize;
 
         return new Vector2(xWorld, yWorld);
@@ -132,6 +136,8 @@ public class TileMapper : Singleton<TileMapper>
         position.y = coordinator.y * tileSize;
 
         block.transform.position = position;
+
+        block.SetSortingLayer(block.transform.position);
 
         return block;
     }
