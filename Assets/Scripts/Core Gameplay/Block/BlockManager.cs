@@ -182,7 +182,14 @@ public class BlockManager : Singleton<BlockManager>
 
                 mergeBlockEvent?.Invoke();
 
-                Vector3 iconWorldPosition = AveragePosition(group);
+                List<Vector2Int> worldTileCoordinators = new List<Vector2Int>();
+
+                foreach (var value in worldTileIndexesOfBlock.Values)
+                {
+                    worldTileCoordinators.AddRange(value);
+                }
+
+                Vector3 iconWorldPosition = AveragePosition(worldTileCoordinators);
 
                 LevelIconUIManager.Instance.HideIcon(iconWorldPosition, group[0].spriteType);
             }
@@ -224,15 +231,17 @@ public class BlockManager : Singleton<BlockManager>
             return false;
         }
 
-        Vector3 AveragePosition(List<BaseBlock> blocks)
+        Vector2 AveragePosition(List<Vector2Int> worldTileCoordinators)
         {
-            Vector3 sum = Vector3.zero;
-            int count = blocks.Count;
+            Vector2 sum = Vector2.zero;
+            int count = worldTileCoordinators.Count;
 
             for (int i = 0; i < count; i++)
-                sum += blocks[i].transform.position;
+            {
+                sum += TileMapper.TileToWorld(worldTileCoordinators[i]);
+            }
 
-            return count > 0 ? sum / count : Vector3.zero;
+            return count > 0 ? sum / count : Vector2.zero;
         }
     }
     #endregion
