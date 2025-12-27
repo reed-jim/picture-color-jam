@@ -6250,9 +6250,9 @@ MonoBehaviour:
   primarySizeReference: 800
   blurShift: 1
   dilateShift: 2
-  dilateIterations: 4
+  dilateIterations: 2
   dilateQuality: 0
-  blurIterations: 1
+  blurIterations: 0
   blurType: 1
 --- !u!1 &2009875064
 GameObject:

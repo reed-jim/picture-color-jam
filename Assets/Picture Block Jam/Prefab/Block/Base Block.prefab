@@ -262,7 +262,7 @@ MonoBehaviour:
     CullMode: 0
     cutoutTextureName: 
     cutoutTextureIndex: 0
-  renderStyle: 1
+  renderStyle: 2
   outlineParameters:
     enabled: 1
     color: {r: 1, g: 1, b: 1, a: 0}
@@ -273,7 +273,7 @@ MonoBehaviour:
       serializedProperties: []
   backParameters:
     enabled: 1
-    color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+    color: {r: 1, g: 1, b: 1, a: 0}
     dilateShift: 1
     blurShift: 1
     fillPass:
@@ -281,7 +281,7 @@ MonoBehaviour:
       serializedProperties: []
   frontParameters:
     enabled: 1
-    color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+    color: {r: 1, g: 1, b: 1, a: 0}
     dilateShift: 1
     blurShift: 1
     fillPass:

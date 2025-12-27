@@ -284,7 +284,10 @@ public class BlockMaterialPropertyBlock : MonoBehaviour
 
         if (outlinable != null)
         {
-            outlinable.OutlineParameters.Color = ColorUtil.WhiteWithAlpha(0);
+            // outlinable.FrontParameters.Color = ColorUtil.WhiteWithAlpha(0);
+            // outlinable.BackParameters.Color = ColorUtil.WhiteWithAlpha(0);
+
+            outlinable.enabled = false;
         }
     }
 
@@ -314,14 +317,19 @@ public class BlockMaterialPropertyBlock : MonoBehaviour
             endValue = 0;
         }
 
+        outlinable.enabled = true;
+
         _outlineTween = Tween.Custom(startValue, endValue, duration: 0.3f, onValueChange: newVal =>
         {
-            outlinable.OutlineParameters.Color = ColorUtil.WhiteWithAlpha(newVal);
+            outlinable.FrontParameters.Color = ColorUtil.WhiteWithAlpha(newVal);
+            outlinable.BackParameters.Color = ColorUtil.WhiteWithAlpha(newVal);
         })
         .OnComplete(() =>
         {
             if (!isShow)
             {
+                outlinable.enabled = false;
+
                 // outlineSprite.gameObject.SetActive(false);
             }
         });
