@@ -720,12 +720,20 @@ public class BoardGeneratorTool : EditorWindow
 
         LevelBoard levelBoard = level.GetComponentInChildren<LevelBoard>();
 
-        Vector2 boardSize = GameConstants.tileSize * new Vector2(levelBoard.numColumn, levelBoard.numRow);
+        float tileSize = GameConstants.tileSize;
+        Vector2 boardSize = tileSize * new Vector2(levelBoard.numColumn, levelBoard.numRow);
 
-        SetBoxColliderWorldSize(levelBoard.leftEdgeCollider, new Vector2(0.1f * boardSize.x, boardSize.y));
-        SetBoxColliderWorldSize(levelBoard.rightEdgeCollider, new Vector2(0.1f * boardSize.x, boardSize.y));
-        SetBoxColliderWorldSize(levelBoard.topEdgeCollider, new Vector2(boardSize.x, 0.1f * boardSize.y));
-        SetBoxColliderWorldSize(levelBoard.bottomEdgeCollider, new Vector2(boardSize.x, 0.1f * boardSize.y));
+        SetBoxColliderWorldSize(levelBoard.leftEdgeCollider, new Vector2(0.1f * boardSize.x, 2 * boardSize.y));
+        SetBoxColliderWorldSize(levelBoard.rightEdgeCollider, new Vector2(0.1f * boardSize.x, 2 * boardSize.y));
+        SetBoxColliderWorldSize(levelBoard.topEdgeCollider, new Vector2(2 * boardSize.x, 0.1f * boardSize.y));
+        SetBoxColliderWorldSize(levelBoard.bottomEdgeCollider, new Vector2(2 * boardSize.x, 0.1f * boardSize.y));
+
+        levelBoard.leftEdgeCollider.transform.localPosition = new Vector2(-(levelBoard.numColumn + 1) / 2f * tileSize, 0);
+        levelBoard.rightEdgeCollider.transform.localPosition = new Vector2((levelBoard.numColumn + 1) / 2f * tileSize, 0);
+        levelBoard.topEdgeCollider.transform.localPosition = new Vector2(0, (levelBoard.numRow + 1) / 2f * tileSize);
+        levelBoard.bottomEdgeCollider.transform.localPosition = new Vector2(0, -(levelBoard.numRow + 1) / 2f * tileSize);
+
+        EditorUtility.SetDirty(level);
     }
     #endregion
 

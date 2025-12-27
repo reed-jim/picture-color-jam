@@ -482,17 +482,28 @@ public class LevelLoader : MonoBehaviour
 
         LevelBoard levelBoard = GamePersistentVariable.levelBoard;
 
-        float sizeX = tileSize * levelBoard.numColumn;
-        float sizeY = tileSize * levelBoard.numRow;
+        float sizeX = 1.1f * tileSize * levelBoard.numColumn;
+        float sizeY = 1.9f * tileSize * levelBoard.numRow;
 
-        bool isFitByX = levelBoard.numColumn >= levelBoard.numRow;
+        float cameraPitch = camera.transform.eulerAngles.x;
 
-        float finalCameraFOV = 8 * sizeX;
+        float pitchInRadians = Mathf.Deg2Rad * cameraPitch;
 
-        if (!isFitByX)
-        {
-            finalCameraFOV = 8 * sizeY;
-        }
+        float adjustedHeight = sizeY * Mathf.Cos(pitchInRadians);
+        float adjustedWidth = sizeX * Mathf.Cos(pitchInRadians);
+
+        float usableHeightRatio = 1f;
+        float aspectRatio = Screen.width / (usableHeightRatio * Screen.height);
+        float distanceToBoard = 10;
+
+        // Calculate the vertical FOV that will fit the board height at the given distance
+        float verticalFOV = 2f * Mathf.Atan(adjustedHeight / (2f * distanceToBoard)) * Mathf.Rad2Deg;
+
+        // Calculate the horizontal FOV based on the aspect ratio
+        float horizontalFOV = 2f * Mathf.Atan(adjustedWidth / (2f * distanceToBoard)) * Mathf.Rad2Deg;
+
+        // We'll adjust the FOV based on the more restrictive dimension (either height or width)
+        float finalCameraFOV = Mathf.Max(verticalFOV, horizontalFOV);
 
         camera.fieldOfView = finalCameraFOV;
 
