@@ -71,6 +71,8 @@ public class SaferioToggle : MonoBehaviour
         .OnComplete(() =>
         {
             _isInTransition = false;
+
+            onSwitched?.Invoke(_isOn);
         });
     }
 }
