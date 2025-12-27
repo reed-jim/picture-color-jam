@@ -170,10 +170,12 @@ public class BlockManager : Singleton<BlockManager>
                     }
                 }
 
-                if (GamePersistentVariable.IsVibrate)
-                {
-                    HapticFeedback.HeavyFeedback();
-                }
+                // if (GamePersistentVariable.IsVibrate)
+                // {
+                //     HapticFeedback.HeavyFeedback();
+                // }
+
+                HapticFeedback.HeavyFeedback();
 
                 for (int i = 0; i < group.Count; i++)
                 {
@@ -213,8 +215,18 @@ public class BlockManager : Singleton<BlockManager>
         {
             for (int i = 0; i < blocksWithSameType.Count - 1; i++)
             {
+                if (!blocksWithSameType[i].gameObject.activeInHierarchy)
+                {
+                    continue;
+                }
+
                 for (int j = i + 1; j < blocksWithSameType.Count; j++)
                 {
+                    if (!blocksWithSameType[j].gameObject.activeInHierarchy)
+                    {
+                        continue;
+                    }
+
                     BaseBlock firstBlock = blocksWithSameType[i];
                     BaseBlock secondBlock = blocksWithSameType[j];
 

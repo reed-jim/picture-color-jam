@@ -494,7 +494,7 @@ public class BaseBlock : MonoBehaviour
     }
     #endregion 
 
-    #region PRVIEW SNAPPING
+    #region PREVIEW SNAPPING
     private async Task CreateSnapPreviewSpriteAsync()
     {
         AsyncOperationHandle<BlockPreviewSpriteContainer> handle = Addressables.LoadAssetAsync<BlockPreviewSpriteContainer>(GameConstants.SNAP_PREVIEW_SPRITE_CONTAINER);
@@ -796,7 +796,7 @@ public class BaseBlock : MonoBehaviour
     {
         GetSnapPosition();
 
-        blockServiceLocator.spriteRenderer.sortingOrder = (int)(2 * (15 - _snapPosition.y));;
+        blockServiceLocator.spriteRenderer.sortingOrder = (int)(2 * (15 - _snapPosition.y)); ;
         blockServiceLocator.iconMaskSortingGroup.sortingOrder = blockServiceLocator.spriteRenderer.sortingOrder + 1;
 
         _blockRigidBody.bodyType = RigidbodyType2D.Static;
@@ -940,6 +940,12 @@ public class BaseBlock : MonoBehaviour
         }
 
         _snapPosition.y -= 0.1f;
+    }
+
+    public void SetSortingLayer(Vector3 position)
+    {
+        blockServiceLocator.spriteRenderer.sortingOrder = (int)(2 * (15 - position.y)); ;
+        blockServiceLocator.iconMaskSortingGroup.sortingOrder = blockServiceLocator.spriteRenderer.sortingOrder + 1;
     }
     #endregion
 
@@ -1109,7 +1115,7 @@ public class BaseBlock : MonoBehaviour
 
             smallBlock.blockServiceLocator.iconRenderer.sprite = gameFactionSpriteContainer.factionSprites[int.Parse(smallBlock.spriteType) - 1];
 
-            smallBlockIconPosition.x = ((numTileX - 1) / 2f - this.tileIndexes[i].x) * _tileSize + 0.4f;
+            smallBlockIconPosition.x = ((numTileX - 1) / 2f - this.tileIndexes[i].x) * _tileSize;
             smallBlockIconPosition.y = (-(numTileY - 1) / 2f + this.tileIndexes[i].y) * _tileSize;
 
             smallBlock.blockServiceLocator.iconRenderer.transform.localPosition = smallBlockIconPosition;
