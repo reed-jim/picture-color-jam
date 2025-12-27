@@ -114,7 +114,7 @@ public class TileMapper : Singleton<TileMapper>
         foreach (Vector2Int localTileIndex in block.tileIndexes)
         {
             Vector2Int globalTilePosition = leftTopIndex + new Vector2Int(localTileIndex.x - minIndexX, -(localTileIndex.y - minIndexY));
-            Debug.Log("SplitBlock " + globalTilePosition);
+            
             BaseBlock smallBlock = SpawnBlock1x1At(globalTilePosition);
             smallBlocks.Add(smallBlock);
 
@@ -132,7 +132,9 @@ public class TileMapper : Singleton<TileMapper>
 
         Vector2 position = new Vector2();
 
-        position.x = coordinator.x * tileSize;
+        int offset = GamePersistentVariable.levelBoard.numColumn % 2 == 0 ? 1 : 0;
+
+        position.x = (coordinator.x + offset) * tileSize;
         position.y = coordinator.y * tileSize;
 
         block.transform.position = position;
