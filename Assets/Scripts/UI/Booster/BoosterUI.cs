@@ -239,7 +239,14 @@ public class BoosterUI : MonoBehaviour
 
     private void ConfirmBreakObject()
     {
-        ConsumeBooster(boosterIndex: (int)BoosterType.BreakObject);
+        if (GamePersistentVariable.isUseHammerToBreak1x1Tile)
+        {
+            GamePersistentVariable.isUseHammerToBreak1x1Tile = false;
+        }
+        else
+        {
+            ConsumeBooster(boosterIndex: (int)BoosterType.BreakObject);
+        }
 
         DisableBreakObjectMode();
     }

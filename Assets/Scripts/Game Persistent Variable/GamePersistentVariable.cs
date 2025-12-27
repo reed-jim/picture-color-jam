@@ -18,6 +18,7 @@ public static class GamePersistentVariable
 
     #region Level
     public static LevelBoard levelBoard;
+    public static bool isUseHammerToBreak1x1Tile;
     #endregion
 
     #region GAME FLOW

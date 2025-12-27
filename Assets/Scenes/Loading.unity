@@ -4004,6 +4004,7 @@ Transform:
   - {fileID: 465617188}
   - {fileID: 38065987}
   - {fileID: 106417545}
+  - {fileID: 2066533682}
   m_Father: {fileID: 1151450128}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &937746294
@@ -4018,7 +4019,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 806f0696300aeac44a0e17efee222854, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentLanguage: Japanese
+  currentLanguage: English
   detectLanguage: 1
   defaultLanguage: English
   saveLoad: 1
@@ -8908,6 +8909,84 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1151450128}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2066533681
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2066533682}
+  - component: {fileID: 2066533683}
+  m_Layer: 0
+  m_Name: Already 1x1 Tile
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2066533682
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2066533681}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 937746293}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2066533683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2066533681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb15fa0e7301ff849bf4d6dcede7c12b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: LeanLocalization::Lean.Localization.LeanPhrase
+  data: 0
+  entries:
+  - Language: English
+    Text: "The block you\u2019re trying to break is already 1\xD71."
+    Object: {fileID: 0}
+  - Language: French
+    Text: "Le bloc que vous essayez de briser est d\xE9j\xE0 1\xD71."
+    Object: {fileID: 0}
+  - Language: German
+    Text: "Der Block, den Sie durchbrechen m\xF6chten, ist bereits 1\xD71."
+    Object: {fileID: 0}
+  - Language: Italian
+    Text: "Il blocco che stai cercando di rompere \xE8 gi\xE0 1\xD71."
+    Object: {fileID: 0}
+  - Language: Japanese
+    Text: "\u58CA\u305D\u3046\u3068\u3057\u3066\u3044\u308B\u30D6\u30ED\u30C3\u30AF\u306F\u3059\u3067\u306B
+      1\xD71 \u3067\u3059\u3002"
+    Object: {fileID: 0}
+  - Language: Korean
+    Text: "\uB2F9\uC2E0\uC774 \uAE68\uB824\uACE0 \uD558\uB294 \uBE14\uB85D\uC740
+      \uC774\uBBF8 1\xD71\uC785\uB2C8\uB2E4."
+    Object: {fileID: 0}
+  - Language: Portuguese
+    Text: "O bloco que voc\xEA est\xE1 tentando quebrar j\xE1 \xE9 1\xD71."
+    Object: {fileID: 0}
+  - Language: Russian
+    Text: "\u0411\u043B\u043E\u043A, \u043A\u043E\u0442\u043E\u0440\u044B\u0439 \u0432\u044B
+      \u043F\u044B\u0442\u0430\u0435\u0442\u0435\u0441\u044C \u0440\u0430\u0437\u0431\u0438\u0442\u044C,
+      \u0443\u0436\u0435 \u0438\u043C\u0435\u0435\u0442 \u0440\u0430\u0437\u043C\u0435\u0440
+      1\xD71."
+    Object: {fileID: 0}
+  - Language: Spanish
+    Text: "El bloque que intentas romper ya es 1\xD71."
+    Object: {fileID: 0}
 --- !u!1 &2067383305
 GameObject:
   m_ObjectHideFlags: 0

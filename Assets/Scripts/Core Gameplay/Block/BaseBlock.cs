@@ -128,6 +128,8 @@ public class BaseBlock : MonoBehaviour
     }
     #endregion
 
+    public static event Action<string, string> showNotificationEvent;
+
     #region MOVEMENT
     private Vector3 _moveDirection;
     bool _isLockedHorizontal;
@@ -1064,6 +1066,15 @@ public class BaseBlock : MonoBehaviour
     #region BOOSTER
     public void Break()
     {
+        if (NumTileX == 1 && NumTileY == 1)
+        {
+            showNotificationEvent?.Invoke(GameConstants.WARNING, GameConstants.already1x1Tile);
+
+            GamePersistentVariable.isUseHammerToBreak1x1Tile = true;
+
+            return;
+        }
+
         BoosterHammer hammer = ObjectPoolingEverything.GetFromPool<BoosterHammer>(GameConstants.HAMMER);
 
         hammer.HitTarget(transform, onCompletedAction: () =>
@@ -1093,13 +1104,6 @@ public class BaseBlock : MonoBehaviour
         BlockManager.Instance.Blocks.AddRange(smallBlocks);
         BlockManager.Instance.Blocks = BlockManager.Instance.Blocks.Distinct().ToList();
 
-        int numTileX;
-        int numTileY;
-
-        TileMapper.GetNumTile(this, out numTileX, out numTileY);
-
-        float maxY = -(numTileY - 1) / 2 * _tileSize;
-
         Vector2 smallBlockIconPosition;
 
         for (int i = 0; i < smallBlocks.Length; i++)
@@ -1115,8 +1119,8 @@ public class BaseBlock : MonoBehaviour
 
             smallBlock.blockServiceLocator.iconRenderer.sprite = gameFactionSpriteContainer.factionSprites[int.Parse(smallBlock.spriteType) - 1];
 
-            smallBlockIconPosition.x = ((numTileX - 1) / 2f - this.tileIndexes[i].x) * _tileSize;
-            smallBlockIconPosition.y = (-(numTileY - 1) / 2f + this.tileIndexes[i].y) * _tileSize;
+            smallBlockIconPosition.x = ((NumOriginalTileX - 1) / 2f - this.tileIndexes[i].x) * _tileSize;
+            smallBlockIconPosition.y = (-(NumOriginalTileY - 1) / 2f + this.tileIndexes[i].y) * _tileSize;
 
             smallBlock.blockServiceLocator.iconRenderer.transform.localPosition = smallBlockIconPosition;
         }

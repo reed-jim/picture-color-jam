@@ -114,7 +114,7 @@ public class TileMapper : Singleton<TileMapper>
         foreach (Vector2Int localTileIndex in block.tileIndexes)
         {
             Vector2Int globalTilePosition = leftTopIndex + new Vector2Int(localTileIndex.x - minIndexX, -(localTileIndex.y - minIndexY));
-
+            Debug.Log("SplitBlock " + globalTilePosition);
             BaseBlock smallBlock = SpawnBlock1x1At(globalTilePosition);
             smallBlocks.Add(smallBlock);
 
