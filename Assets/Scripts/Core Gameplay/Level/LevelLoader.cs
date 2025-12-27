@@ -144,6 +144,8 @@ public class LevelLoader : MonoBehaviour
 
                 ManageBaseBlocks(level.transform);
 
+                AdjustLevelPosition(level.transform);
+
                 AutoFitLevelCamera();
 
                 // AssignPhysicsMaterialAll(level.transform);
@@ -474,6 +476,11 @@ public class LevelLoader : MonoBehaviour
         bottomLeftCorner.eulerAngles = new Vector3(0, -90, 0);
     }
 
+    private void AdjustLevelPosition(Transform level)
+    {
+        level.transform.position = new Vector3(0, 0 * GameConstants.tileSize, 0);
+    }
+
     private void AutoFitLevelCamera()
     {
         Camera camera = Camera.main;
@@ -482,27 +489,29 @@ public class LevelLoader : MonoBehaviour
 
         LevelBoard levelBoard = GamePersistentVariable.levelBoard;
 
-        float sizeX = 1.1f * tileSize * levelBoard.numColumn;
-        float sizeY = 1.9f * tileSize * levelBoard.numRow;
+        float expectedSizeX = tileSize * (levelBoard.numColumn + 2);
+        float expectedSizeY = 2f * tileSize * levelBoard.numRow;
 
         float cameraPitch = camera.transform.eulerAngles.x;
 
         float pitchInRadians = Mathf.Deg2Rad * cameraPitch;
 
-        float adjustedHeight = sizeY * Mathf.Cos(pitchInRadians);
-        float adjustedWidth = sizeX * Mathf.Cos(pitchInRadians);
+        expectedSizeY *= Mathf.Cos(pitchInRadians);
+        expectedSizeX *= Mathf.Cos(pitchInRadians);
 
-        float usableHeightRatio = 1f;
-        float aspectRatio = Screen.width / (usableHeightRatio * Screen.height);
+        float aspectRatio = Screen.width / (float)Screen.height;
         float distanceToBoard = 10;
 
         // Calculate the vertical FOV that will fit the board height at the given distance
-        float verticalFOV = 2f * Mathf.Atan(adjustedHeight / (2f * distanceToBoard)) * Mathf.Rad2Deg;
+        // visibleHeight = 2 * distance * tan(FOV / 2)
+        float verticalFOV = 2f * Mathf.Atan(expectedSizeY / (2f * distanceToBoard)) * Mathf.Rad2Deg;
 
         // Calculate the horizontal FOV based on the aspect ratio
-        float horizontalFOV = 2f * Mathf.Atan(adjustedWidth / (2f * distanceToBoard)) * Mathf.Rad2Deg;
+        // visibleWidth = aspectRatio * visibleHeight = aspectRatio * 2 * distance * tan(FOV / 2)
+        float horizontalFOV = 2f * Mathf.Atan(expectedSizeX / (aspectRatio * 2f * distanceToBoard)) * Mathf.Rad2Deg;
 
-        // We'll adjust the FOV based on the more restrictive dimension (either height or width)
+        Debug.Log($"AutoFitLevelCamera {expectedSizeX} {expectedSizeY} {horizontalFOV} {verticalFOV}");
+
         float finalCameraFOV = Mathf.Max(verticalFOV, horizontalFOV);
 
         camera.fieldOfView = finalCameraFOV;
