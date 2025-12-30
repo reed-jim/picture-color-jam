@@ -1,4 +1,6 @@
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "BoardSpriteContainer", menuName = "ScriptableObjects/BoardSpriteContainer")]
@@ -8,6 +10,7 @@ public class BoardSpriteContainer : ScriptableObject
     public Sprite[] boardUpperSprites;
 }
 
+#if UNITY_EDITOR
 [CustomEditor(typeof(BoardSpriteContainer))]
 public class BoardEditor : Editor
 {
@@ -74,3 +77,4 @@ public class BoardEditor : Editor
         Debug.Log($"Loaded {board.boardSprites.Length} sprites from {folderPath}");
     }
 }
+#endif

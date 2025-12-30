@@ -9,6 +9,7 @@ public class BlockManager : Singleton<BlockManager>
 {
     [SerializeField] private List<BaseBlock> _blocks;
 
+    [SerializeField] private LevelObserver levelObserver;
     [SerializeField] private GameSetting gameSetting;
 
     public List<BaseBlock> Blocks
@@ -39,6 +40,8 @@ public class BlockManager : Singleton<BlockManager>
     private void ReceiveBaseBlockesData(BaseBlock[] blocks)
     {
         _blocks = blocks.ToList();
+
+        levelObserver.Progress = 0;
 
         // if (_checkingWinCoroutine != null)
         // {
@@ -175,12 +178,14 @@ public class BlockManager : Singleton<BlockManager>
                 //     HapticFeedback.HeavyFeedback();
                 // }
 
-                HapticFeedback.HeavyFeedback();
+                HapticFeedback.MediumFeedback();
 
                 for (int i = 0; i < group.Count; i++)
                 {
                     group[i].HandleOnMerge();
                 }
+
+                levelObserver.Progress = _blocks.Count(item => !item.gameObject.activeInHierarchy) / (float)_blocks.Count;
 
                 mergeBlockEvent?.Invoke();
 

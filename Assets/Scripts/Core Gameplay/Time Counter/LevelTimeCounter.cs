@@ -50,6 +50,7 @@ public class LevelTimeCounter : MonoBehaviour
     private void Awake()
     {
         LevelLoader.startLevelEvent += OnLevelStarted;
+        GameStateWin.winLevelEvent += OnLevelWon;
         BoosterUI.freezeTimeEvent += FreezeTime;
         RevivePopup.reviveEvent += Revive;
         PausePopup.pauseEvent += Pause;
@@ -70,6 +71,7 @@ public class LevelTimeCounter : MonoBehaviour
     private void OnDestroy()
     {
         LevelLoader.startLevelEvent -= OnLevelStarted;
+        GameStateWin.winLevelEvent -= OnLevelWon;
         BoosterUI.freezeTimeEvent -= FreezeTime;
         RevivePopup.reviveEvent -= Revive;
         PausePopup.pauseEvent -= Pause;
@@ -102,6 +104,14 @@ public class LevelTimeCounter : MonoBehaviour
         }
 
         freezeProgressGroup.gameObject.SetActive(false);
+    }
+
+    private void OnLevelWon()
+    {
+        if (_countingCoroutine != null)
+        {
+            StopCoroutine(_countingCoroutine);
+        }
     }
 
     private IEnumerator Counting()

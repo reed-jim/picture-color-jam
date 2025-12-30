@@ -2526,6 +2526,7 @@ MonoBehaviour:
   _blocks:
   - {fileID: 0}
   - {fileID: 0}
+  levelObserver: {fileID: 11400000, guid: d1d258141f78251439ab25819f9f78ba, type: 2}
   gameSetting: {fileID: 11400000, guid: a2c6756a77a053e48bc88637f241a4a1, type: 2}
 --- !u!1001 &664427086
 PrefabInstance:
@@ -2871,6 +2872,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseButton: {fileID: 47400977}
   replayButton: {fileID: 408911788}
+  openRemoveAdsPopupButton: {fileID: 293429120}
   openDebugPopupButton: {fileID: 1040126931}
   localizedLevelText: {fileID: 1485127708}
   currentLevel: {fileID: 11400000, guid: dfc7835bc5f6fb64d9f4b1582f01db6e, type: 2}
@@ -5228,7 +5230,7 @@ RectTransform:
   m_Father: {fileID: 1028907852}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0.34444445, y: 0.49010417}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -6369,7 +6371,7 @@ RectTransform:
   m_Father: {fileID: 1028907852}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0.34444445, y: 0.49010417}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}

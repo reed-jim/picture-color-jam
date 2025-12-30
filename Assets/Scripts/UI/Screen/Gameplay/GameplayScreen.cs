@@ -32,10 +32,10 @@ public class GameplayScreen : MonoBehaviour
         openRemoveAdsPopupButton.onClick.AddListener(OpenRemoveAdsPopupButton);
         openDebugPopupButton.onClick.AddListener(OpenDebugPopupButton);
 
-        if (UserData.IsRemoveAds)
-        {
-            openRemoveAdsPopupButton.gameObject.SetActive(false);
-        }
+        // if (UserData.IsRemoveAds)
+        // {
+        //     openRemoveAdsPopupButton.gameObject.SetActive(false);
+        // }
 
         if (!gameSetting.IsDebug)
         {

@@ -321,8 +321,9 @@ public class BlockMaterialPropertyBlock : MonoBehaviour
 
         _outlineTween = Tween.Custom(startValue, endValue, duration: 0.3f, onValueChange: newVal =>
         {
-            outlinable.FrontParameters.Color = ColorUtil.WhiteWithAlpha(newVal);
-            outlinable.BackParameters.Color = ColorUtil.WhiteWithAlpha(newVal);
+            outlinable.OutlineParameters.Color = ColorUtil.WhiteWithAlpha(newVal);
+            // outlinable.FrontParameters.Color = ColorUtil.WhiteWithAlpha(newVal);
+            // outlinable.BackParameters.Color = ColorUtil.WhiteWithAlpha(newVal);
         })
         .OnComplete(() =>
         {

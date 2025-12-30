@@ -10,8 +10,8 @@ public class LosePopup : BasePopup
 {
     [SerializeField] private Button replayButton;
     [SerializeField] private Button returnHomeButton;
-    // [SerializeField] private Slider levelProgress;
-    // [SerializeField] private TMP_Text progressText;
+    [SerializeField] private Image levelProgressFill;
+    [SerializeField] private TMP_Text progressText;
 
     [Header("SCRIPTABLE OBJECT")]
     [SerializeField] private IntVariable currentLevel;
@@ -44,18 +44,9 @@ public class LosePopup : BasePopup
 
     private void OnLevelLose()
     {
-        // levelProgress.value = 0;
+        levelProgressFill.fillAmount = 0;
 
-        // progressText.text = $"{0}%";
-
-        // if (levelObserver.Progress > 0.25f)
-        // {
-        //     progressText.gameObject.SetActive(true);
-        // }
-        // else
-        // {
-        //     progressText.gameObject.SetActive(false);
-        // }
+        progressText.text = $"{0}%";
 
         changeLivesNumberEvent?.Invoke(-1);
 
@@ -69,12 +60,12 @@ public class LosePopup : BasePopup
 
         Show(onCompletedAction: () =>
         {
-            // Tween.Custom(0, levelObserver.Progress, duration: transitionDuration, onValueChange: newVal =>
-            // {
-            //     levelProgress.value = newVal;
+            Tween.Custom(0, levelObserver.Progress, duration: transitionDuration, onValueChange: newVal =>
+            {
+                levelProgressFill.fillAmount = newVal;
 
-            //     progressText.text = $"{(int)(newVal * 100)}%";
-            // });
+                progressText.text = $"{(int)(newVal * 100)}%";
+            });
         });
 
         SoundManager.Instance.PlaySoundLose();
