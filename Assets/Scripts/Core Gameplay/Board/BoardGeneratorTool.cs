@@ -151,6 +151,11 @@ public class BoardGeneratorTool : EditorWindow
             LinkTwoBlocks();
         }
 
+        if (GUILayout.Button("Setup Board"))
+        {
+            SetupBoard();
+        }
+
         if (GUILayout.Button("Set Board Colliders"))
         {
             SetBoardColliders();
@@ -712,6 +717,44 @@ public class BoardGeneratorTool : EditorWindow
 
         block.BlockServiceLocator.iconRenderer.transform.localPosition = iconLocalPosition;
     }
+
+    #region Board
+    private void SetupBoard()
+    {
+        LevelBoard board = Selection.activeTransform.GetComponentInChildren<LevelBoard>();
+
+        SpriteRenderer ground = board.transform.GetChild(0).GetComponent<SpriteRenderer>();
+
+        int numColumn;
+        int numRow;
+
+        ParseSpriteName(ground.sprite.name, out numRow, out numColumn);
+
+        board.numColumn = numColumn;
+        board.numRow = numRow;
+
+        ground.drawMode = SpriteDrawMode.Simple;
+        ground.transform.localScale = Vector3.one;
+
+        SetBoardColliders();
+
+        void ParseSpriteName(string spriteName, out int numRows, out int numCols)
+        {
+            string[] parts = spriteName.Split('x');
+
+            if (parts.Length == 2)
+            {
+                int.TryParse(parts[0], out numRows);
+                int.TryParse(parts[1], out numCols);
+            }
+            else
+            {
+                numRows = 0;
+                numCols = 0;
+            }
+        }
+    }
+    #endregion
 
     #region Collider
     private void SetBoardColliders()
