@@ -10,6 +10,7 @@ public class GameplayScreen : MonoBehaviour
 {
     [SerializeField] private Button pauseButton;
     [SerializeField] private Button replayButton;
+    [SerializeField] private Button openRemoveAdsPopupButton;
     [SerializeField] private Button openDebugPopupButton;
     [SerializeField] private LeanLocalizedTextMeshProUGUI localizedLevelText;
 
@@ -28,7 +29,13 @@ public class GameplayScreen : MonoBehaviour
 
         pauseButton.onClick.AddListener(Pause);
         replayButton.onClick.AddListener(Replay);
+        openRemoveAdsPopupButton.onClick.AddListener(OpenRemoveAdsPopupButton);
         openDebugPopupButton.onClick.AddListener(OpenDebugPopupButton);
+
+        if (UserData.IsRemoveAds)
+        {
+            openRemoveAdsPopupButton.gameObject.SetActive(false);
+        }
 
         if (!gameSetting.IsDebug)
         {
@@ -57,6 +64,11 @@ public class GameplayScreen : MonoBehaviour
         {
             replayLevelEvent?.Invoke();
         }
+    }
+
+    private void OpenRemoveAdsPopupButton()
+    {
+        switchRouteEvent?.Invoke(ScreenRoute.RemoveAd);
     }
 
     private void OpenDebugPopupButton()
