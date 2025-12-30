@@ -122,7 +122,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7297604686251525716, guid: 627f1b0d75449ab4da35db608f8ee074, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[0].x
-      value: 1.3896152
+      value: 1.3672026
       objectReference: {fileID: 0}
     - target: {fileID: 7297604686251525716, guid: 627f1b0d75449ab4da35db608f8ee074, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[0].y
@@ -130,7 +130,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7297604686251525716, guid: 627f1b0d75449ab4da35db608f8ee074, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[1].x
-      value: 1.3882319
+      value: 1.3683845
       objectReference: {fileID: 0}
     - target: {fileID: 7297604686251525716, guid: 627f1b0d75449ab4da35db608f8ee074, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[1].y
@@ -162,19 +162,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7297604686251525716, guid: 627f1b0d75449ab4da35db608f8ee074, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[5].x
-      value: -1.4080266
+      value: -1.393423
       objectReference: {fileID: 0}
     - target: {fileID: 7297604686251525716, guid: 627f1b0d75449ab4da35db608f8ee074, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[5].y
-      value: 2.1687288
+      value: 2.1669035
       objectReference: {fileID: 0}
     - target: {fileID: 7297604686251525716, guid: 627f1b0d75449ab4da35db608f8ee074, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[6].x
-      value: -1.4085563
+      value: -1.3920783
       objectReference: {fileID: 0}
     - target: {fileID: 7297604686251525716, guid: 627f1b0d75449ab4da35db608f8ee074, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[6].y
-      value: -1.815035
+      value: -1.8186966
       objectReference: {fileID: 0}
     - target: {fileID: 7297604686251525716, guid: 627f1b0d75449ab4da35db608f8ee074, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[7].x

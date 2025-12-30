@@ -47,7 +47,7 @@ Material:
     m_Floats:
     - _ColorMultiplier: 2.3
     - _MaxZ: 0.55
-    - _Saturation: 1.1
+    - _Saturation: 1.3
     - _WarpMultiplier: 0
     m_Colors:
     - _Color: {r: 0.69411767, g: 0.33333334, b: 1, a: 1}
