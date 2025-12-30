@@ -161,6 +161,11 @@ public class BoardGeneratorTool : EditorWindow
             SetBoardColliders();
         }
 
+        if (GUILayout.Button("Assign Board Upper"))
+        {
+            AssignBoardUpper();
+        }
+
         // if (GUILayout.Button("Calculate Difficulty", buttonStyle))
         // {
         //     CalculateDifficulty();
@@ -753,6 +758,26 @@ public class BoardGeneratorTool : EditorWindow
                 numCols = 0;
             }
         }
+    }
+
+    private void AssignBoardUpper()
+    {
+        LevelBoard board = Selection.activeTransform.GetComponentInChildren<LevelBoard>();
+
+        BoardSpriteContainer boardSpriteContainer =
+            AssetDatabase.LoadAssetAtPath<BoardSpriteContainer>
+            (
+                "Assets/Scriptable Objects/Board/Board Sprite Container.asset"
+            );
+
+        SpriteRenderer boardRenderer = board.transform.GetChild(0).GetComponent<SpriteRenderer>();
+        SpriteRenderer boardUpperRenderer = board.transform.GetChild(1).GetComponent<SpriteRenderer>();
+
+        Sprite boardUpper = boardSpriteContainer.boardUpperSprites.First(item => item.name.Contains(boardRenderer.sprite.name));
+
+        boardUpperRenderer.sprite = boardUpper;
+
+        EditorUtility.SetDirty(board);
     }
     #endregion
 

@@ -262,7 +262,7 @@ MonoBehaviour:
     CullMode: 0
     cutoutTextureName: 
     cutoutTextureIndex: 0
-  renderStyle: 2
+  renderStyle: 1
   outlineParameters:
     enabled: 1
     color: {r: 1, g: 1, b: 1, a: 0}
