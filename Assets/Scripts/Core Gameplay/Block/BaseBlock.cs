@@ -572,8 +572,8 @@ public class BaseBlock : MonoBehaviour
         {
             blockServiceLocator.blockMaterialPropertyBlock.ShowOutline(true);
 
-            blockServiceLocator.spriteRenderer.sortingOrder = 997;
-            blockServiceLocator.iconMaskSortingGroup.sortingOrder = blockServiceLocator.spriteRenderer.sortingOrder + 1;
+            // blockServiceLocator.spriteRenderer.sortingOrder = 997;
+            // blockServiceLocator.iconMaskSortingGroup.sortingOrder = blockServiceLocator.spriteRenderer.sortingOrder + 1;
 
             _blockRigidBody.bodyType = RigidbodyType2D.Dynamic;
 
@@ -599,6 +599,11 @@ public class BaseBlock : MonoBehaviour
 
                 useTeleportBoosterEvent?.Invoke();
             }
+        }
+        else
+        {
+            blockServiceLocator.spriteRenderer.sortingOrder = (int)(2 * (15 - transform.position.y));
+            blockServiceLocator.iconMaskSortingGroup.sortingOrder = blockServiceLocator.spriteRenderer.sortingOrder + 1;
         }
 
         _moveDirection = new Vector2(direction.x, direction.y);
@@ -798,7 +803,7 @@ public class BaseBlock : MonoBehaviour
     {
         GetSnapPosition();
 
-        blockServiceLocator.spriteRenderer.sortingOrder = (int)(2 * (15 - _snapPosition.y)); ;
+        blockServiceLocator.spriteRenderer.sortingOrder = (int)(2 * (15 - _snapPosition.y));
         blockServiceLocator.iconMaskSortingGroup.sortingOrder = blockServiceLocator.spriteRenderer.sortingOrder + 1;
 
         _blockRigidBody.bodyType = RigidbodyType2D.Static;
@@ -946,7 +951,7 @@ public class BaseBlock : MonoBehaviour
 
     public void SetSortingLayer(Vector3 position)
     {
-        blockServiceLocator.spriteRenderer.sortingOrder = (int)(2 * (15 - position.y)); ;
+        blockServiceLocator.spriteRenderer.sortingOrder = (int)(2 * (15 - position.y));
         blockServiceLocator.iconMaskSortingGroup.sortingOrder = blockServiceLocator.spriteRenderer.sortingOrder + 1;
     }
     #endregion
