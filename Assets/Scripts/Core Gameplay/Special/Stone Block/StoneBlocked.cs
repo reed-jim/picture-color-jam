@@ -3,8 +3,6 @@ using UnityEngine;
 
 public class StoneBlocked : BaseBlock
 {
-    private bool _isInTransition;
-
     protected override void MoreLogicInAwake()
     {
         base.MoreLogicInAwake();
@@ -17,26 +15,13 @@ public class StoneBlocked : BaseBlock
         return false;
     }
 
-    public override void Move(Vector2 direction)
+    public override bool IsMovable()
     {
-        if (_isInTransition)
-        {
-            return;
-        }
-        else
-        {
-            _isInTransition = true;
-        }
-
-        _tweens.Add(Tween.Scale(transform, 1.03f * transform.localScale, cycles: 2, cycleMode: CycleMode.Yoyo, duration: 0.15f)
-        .OnComplete(() =>
-        {
-            _isInTransition = false;
-        }));
+        return false;
     }
 
     public override void Stop()
     {
-        
+
     }
 }
