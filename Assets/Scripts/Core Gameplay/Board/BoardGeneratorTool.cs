@@ -28,6 +28,11 @@ public class BoardGeneratorTool : EditorWindow
     private BaseBarricade[] barricades;
     private Transform blockContainer;
 
+    #region Freezed
+    private GameObject freezedSprite;
+    private GameObject freezedBlockCanvas;
+    #endregion
+
     #region UTIL
     private float deltaPosition;
     #endregion
@@ -181,6 +186,11 @@ public class BoardGeneratorTool : EditorWindow
         if (GUILayout.Button("Change Position"))
         {
             ChangePositions();
+        }
+
+        if (GUILayout.Button("Paste Properties To Freezed Block"))
+        {
+            PastePropertiesToFreezedBlock();
         }
 
         GUILayout.EndArea();
@@ -802,6 +812,24 @@ public class BoardGeneratorTool : EditorWindow
         levelBoard.bottomEdgeCollider.transform.localPosition = new Vector2(0, -(levelBoard.numRow + 1) / 2f * tileSize);
 
         EditorUtility.SetDirty(level);
+    }
+    #endregion
+
+    #region Freezed Block
+    private void PastePropertiesToFreezedBlock()
+    {
+        FreezeBlock freezeBlock = Selection.transforms[0].GetComponent<FreezeBlock>();
+        BaseBlock block = Selection.transforms[1].GetComponent<BaseBlock>();
+
+        freezeBlock.gameFactionSpriteContainer = block.gameFactionSpriteContainer;
+        freezeBlock.originalTileIndexes = block.originalTileIndexes;
+        freezeBlock.tileIndexes = block.tileIndexes;
+
+        freezeBlock.GetComponent<BlockFaction>().Faction = block.GetComponent<BlockFaction>().Faction;
+        freezeBlock.GetComponent<BlockMaterialPropertyBlock>().icon.sprite =
+            block.GetComponent<BlockMaterialPropertyBlock>().icon.sprite;
+
+        EditorUtility.SetDirty(freezeBlock);
     }
     #endregion
 

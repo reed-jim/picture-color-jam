@@ -108,9 +108,16 @@ public class BlockSelectionInput : MonoBehaviour
 
             if (block != null)
             {
-                _selectedBlock = block;
+                if (block.IsMovable())
+                {
+                    _selectedBlock = block;
 
-                _prevTouchPosition = Input.mousePosition;
+                    _prevTouchPosition = Input.mousePosition;
+                }
+                else
+                {
+                    block.ShakeWhenUnableToMove();
+                }
             }
         }
     }

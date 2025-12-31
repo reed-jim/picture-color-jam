@@ -31,7 +31,7 @@ public class BaseBlock : MonoBehaviour
     [SerializeField] private bool isSecondLayer;
 
     [Header("Scriptable Object")]
-    [SerializeField] private GameFactionSpriteContainer gameFactionSpriteContainer;
+    [SerializeField] public GameFactionSpriteContainer gameFactionSpriteContainer;
 
     #region PRIVATE FIELD
     private Camera _mainCamera;
@@ -39,6 +39,7 @@ public class BaseBlock : MonoBehaviour
     private Vector3 _snapPosition;
     private bool _isSnapping;
     private float _tileSize;
+    private bool _isInTransition;
     #endregion
 
     #region Property
@@ -556,6 +557,11 @@ public class BaseBlock : MonoBehaviour
     #endregion
 
     #region MOVEMENT
+    public virtual bool IsMovable()
+    {
+        return true;
+    }
+
     public virtual void Move(Vector2 direction)
     {
         if (blockProperty.IsDisintegrating)
@@ -622,6 +628,24 @@ public class BaseBlock : MonoBehaviour
         }
 
         _inputDirection = direction;
+    }
+
+    public void ShakeWhenUnableToMove()
+    {
+        if (_isInTransition)
+        {
+            return;
+        }
+        else
+        {
+            _isInTransition = true;
+        }
+
+        _tweens.Add(Tween.Scale(transform, 1.03f * transform.localScale, cycles: 2, cycleMode: CycleMode.Yoyo, duration: 0.15f)
+        .OnComplete(() =>
+        {
+            _isInTransition = false;
+        }));
     }
 
     public virtual void Stop()

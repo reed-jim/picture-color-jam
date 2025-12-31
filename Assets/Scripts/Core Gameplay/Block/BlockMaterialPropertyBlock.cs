@@ -23,7 +23,7 @@ public class BlockMaterialPropertyBlock : MonoBehaviour
     [SerializeField] private float outlineThickness;
 
     [Header("ICON")]
-    [SerializeField] private SpriteRenderer icon;
+    [SerializeField] public SpriteRenderer icon;
     [SerializeField] private bool isUseAndOperatorForMasking;
     [SerializeField] private bool isEnableThresholdX;
     [SerializeField] private bool isEnableThresholdY;

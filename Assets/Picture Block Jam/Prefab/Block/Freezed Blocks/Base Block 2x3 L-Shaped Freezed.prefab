@@ -249,7 +249,7 @@ GameObject:
   - component: {fileID: 3907103837941434952}
   - component: {fileID: 674031813011805171}
   m_Layer: 0
-  m_Name: Freezed
+  m_Name: Ice
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -637,6 +637,7 @@ MonoBehaviour:
   - {x: 1, y: 2}
   spriteType: 
   remainingBlockToMelt: 3
+  ice: {fileID: 674031813011805171}
   canvas: {fileID: 3755643007089707729}
   remainingBlockToMeltText: {fileID: 141772028028778297}
 --- !u!4 &2888597560069435234 stripped
