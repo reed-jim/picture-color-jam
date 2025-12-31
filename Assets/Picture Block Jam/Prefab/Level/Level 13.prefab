@@ -332,6 +332,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4056981909487361394, guid: 7884bbf4707d8a84aa0fffc32aaf69bd, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7313288004385962147}
+    - targetCorrespondingSourceObject: {fileID: 4056981909487361394, guid: 7884bbf4707d8a84aa0fffc32aaf69bd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7205303994190498953}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7884bbf4707d8a84aa0fffc32aaf69bd, type: 3}
 --- !u!4 &2244068397298466911 stripped
@@ -594,6 +597,76 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 1787280743087209032, guid: bf7ac446e533c7647a3990c60338d939, type: 3}
   m_PrefabInstance: {fileID: 5468397812666233797}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &5469689795201606635
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2244068397298466911}
+    m_Modifications:
+    - target: {fileID: 2737984465379859011, guid: 73dd419202788314f9446e9825517d53, type: 3}
+      propertyPath: m_Name
+      value: Base Block 2x3 L-Shaped Stone
+      objectReference: {fileID: 0}
+    - target: {fileID: 2888597560069435234, guid: 73dd419202788314f9446e9825517d53, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2888597560069435234, guid: 73dd419202788314f9446e9825517d53, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.8000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 2888597560069435234, guid: 73dd419202788314f9446e9825517d53, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2888597560069435234, guid: 73dd419202788314f9446e9825517d53, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2888597560069435234, guid: 73dd419202788314f9446e9825517d53, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2888597560069435234, guid: 73dd419202788314f9446e9825517d53, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2888597560069435234, guid: 73dd419202788314f9446e9825517d53, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2888597560069435234, guid: 73dd419202788314f9446e9825517d53, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2888597560069435234, guid: 73dd419202788314f9446e9825517d53, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2888597560069435234, guid: 73dd419202788314f9446e9825517d53, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4007241858193749344, guid: 73dd419202788314f9446e9825517d53, type: 3}
+      propertyPath: m_SortingOrder
+      value: 27
+      objectReference: {fileID: 0}
+    - target: {fileID: 4806668145444007922, guid: 73dd419202788314f9446e9825517d53, type: 3}
+      propertyPath: m_SortingOrder
+      value: 26
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 73dd419202788314f9446e9825517d53, type: 3}
+--- !u!4 &7205303994190498953 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2888597560069435234, guid: 73dd419202788314f9446e9825517d53, type: 3}
+  m_PrefabInstance: {fileID: 5469689795201606635}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6613871682631901774
 PrefabInstance:
