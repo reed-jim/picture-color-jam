@@ -98,7 +98,14 @@ public class LevelIconUIManager : Singleton<LevelIconUIManager>
             Tween.LocalPosition(item.movingIcon.rectTransform, item.icon.rectTransform.localPosition, duration: 0.5f, ease: Ease.InOutSine)
             .OnComplete(() =>
             {
-                TweenUtil.PunchHide(item.container, onCompleted: () =>
+                item.tick.gameObject.SetActive(true);
+                item.tick.color = ColorUtil.WithAlpha(Color.white, 0);
+                item.tick.transform.localScale = 1.5f * Vector3.one;
+
+                Tween.Alpha(item.tick, 1, duration: 0.3f);
+                Tween.Scale(item.tick.transform, 0.5f, duration: 0.3f);
+
+                TweenUtil.PunchHide(item.container, strength: 1.3f, duration: 0.6f, onCompleted: () =>
                 {
                     PlaceElements(uniqueIcons.Length, 0.3f / uniqueIcons.Length);
 

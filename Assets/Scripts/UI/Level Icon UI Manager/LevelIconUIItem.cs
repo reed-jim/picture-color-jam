@@ -7,6 +7,7 @@ public class LevelIconUIItem : MonoBehaviour
     public RectTransform container;
     public Image icon;
     public Image movingIcon;
+    public Image tick;
 
     [SerializeField] private GameFactionSpriteContainer gameFactionSpriteContainer;
 
@@ -48,6 +49,7 @@ public class LevelIconUIItem : MonoBehaviour
         movingIcon.rectTransform.sizeDelta = icon.rectTransform.sizeDelta;
 
         movingIcon.gameObject.SetActive(false);
+        tick.gameObject.SetActive(false);
 
         _faction = faction;
     }
