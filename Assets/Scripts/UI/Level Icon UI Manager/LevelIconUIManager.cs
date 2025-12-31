@@ -47,7 +47,7 @@ public class LevelIconUIManager : Singleton<LevelIconUIManager>
         HideAllItems();
 
         string[] uniqueIcons = blocks
-            .Where(item => item.gameObject.activeSelf)
+            .Where(item => item.gameObject.activeSelf && item.IsValidToMerge())
             .GroupBy(p => p.spriteType)
             .Select(g => g.First().spriteType).ToArray();
 
@@ -79,7 +79,7 @@ public class LevelIconUIManager : Singleton<LevelIconUIManager>
 
         // Find new unique icons
         string[] uniqueIcons = _blocks
-            .Where(item => item.gameObject.activeSelf)
+            .Where(item => item.gameObject.activeSelf && item.IsValidToMerge())
             .GroupBy(p => p.spriteType)
             .Select(g => g.First().spriteType).ToArray();
 

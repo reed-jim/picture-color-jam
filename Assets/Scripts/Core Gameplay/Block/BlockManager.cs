@@ -291,7 +291,7 @@ public class BlockManager : Singleton<BlockManager>
         {
             try
             {
-                if (_blocks[i].gameObject.activeInHierarchy)
+                if (_blocks[i].gameObject.activeInHierarchy && _blocks[i].IsValidToMerge())
                 {
                     remainingBlocks++;
                 }

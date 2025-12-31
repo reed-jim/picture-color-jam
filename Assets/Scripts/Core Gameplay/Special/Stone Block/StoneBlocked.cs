@@ -3,8 +3,6 @@ using UnityEngine;
 
 public class StoneBlocked : BaseBlock
 {
-    [SerializeField] private Canvas canvas;
-
     private bool _isInTransition;
 
     protected override void MoreLogicInAwake()
@@ -40,12 +38,5 @@ public class StoneBlocked : BaseBlock
     public override void Stop()
     {
         
-    }
-
-    public override void SnapImmediately()
-    {
-        base.SnapImmediately();
-
-        canvas.sortingOrder = BlockServiceLocator.spriteRenderer.sortingOrder + 2;
     }
 }
