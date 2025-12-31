@@ -477,7 +477,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 48, y: -488.59998}
-  m_SizeDelta: {x: 560, y: 96}
+  m_SizeDelta: {x: 560, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4624679226532520612
 CanvasRenderer:
@@ -507,7 +507,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Remove ads between levels and banners in the game
+  m_text: Keep optional ads for rewards!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 468cd137d4d22474b9da72bf17d4d308, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: f38eeca4b9bc0ed4197e77398050b958, type: 2}
@@ -534,7 +534,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 38.4
+  m_fontSize: 37.7
   m_fontSizeBase: 42
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -590,7 +590,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  translationName: Remove ads between levels and banners in the game
+  translationName: Keep optional ads for rewards!
   parameter: 
   FallbackText: Remove ads between levels and banners in the game
 --- !u!1 &2456074904608536599
@@ -1274,7 +1274,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 48, y: -200}
-  m_SizeDelta: {x: 560, y: 96}
+  m_SizeDelta: {x: 560, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8615708700225698050
 CanvasRenderer:
@@ -1304,7 +1304,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Remove ads between levels and banners in the game
+  m_text: Remove mandatory ads!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 468cd137d4d22474b9da72bf17d4d308, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: f38eeca4b9bc0ed4197e77398050b958, type: 2}
@@ -1331,7 +1331,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 38.4
+  m_fontSize: 47.55
   m_fontSizeBase: 42
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1387,7 +1387,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  translationName: Remove ads between levels and banners in the game
+  translationName: Remove mandatory ads!
   parameter: 
   FallbackText: Remove ads between levels and banners in the game
 --- !u!1 &6500743235304526877
@@ -1501,7 +1501,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 48, y: -339.3}
-  m_SizeDelta: {x: 560, y: 96}
+  m_SizeDelta: {x: 560, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &80395994882520270
 CanvasRenderer:
@@ -1531,7 +1531,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Remove ads between levels and banners in the game
+  m_text: Remove bottom banner ads!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 468cd137d4d22474b9da72bf17d4d308, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: f38eeca4b9bc0ed4197e77398050b958, type: 2}
@@ -1558,7 +1558,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 38.4
+  m_fontSize: 40.65
   m_fontSizeBase: 42
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1614,7 +1614,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  translationName: Remove ads between levels and banners in the game
+  translationName: Remove bottom banner ads!
   parameter: 
   FallbackText: Remove ads between levels and banners in the game
 --- !u!1001 &8943121730397419534

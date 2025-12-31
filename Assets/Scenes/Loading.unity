@@ -3109,6 +3109,82 @@ MonoBehaviour:
   - Language: Spanish
     Text: Pausa
     Object: {fileID: 0}
+--- !u!1 &744834706
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 744834707}
+  - component: {fileID: 744834708}
+  m_Layer: 0
+  m_Name: Keep optional ads for rewards!
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &744834707
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 744834706}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 937746293}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &744834708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 744834706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb15fa0e7301ff849bf4d6dcede7c12b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: LeanLocalization::Lean.Localization.LeanPhrase
+  data: 0
+  entries:
+  - Language: English
+    Text: Keep optional ads for rewards!
+    Object: {fileID: 0}
+  - Language: French
+    Text: "Conservez les publicit\xE9s facultatives pour les r\xE9compenses\_!"
+    Object: {fileID: 0}
+  - Language: German
+    Text: "Behalten Sie optionale Anzeigen f\xFCr Pr\xE4mien!"
+    Object: {fileID: 0}
+  - Language: Italian
+    Text: Mantieni gli annunci facoltativi per i premi!
+    Object: {fileID: 0}
+  - Language: Japanese
+    Text: "\u5831\u916C\u306E\u305F\u3081\u306B\u30AA\u30D7\u30B7\u30E7\u30F3\u306E\u5E83\u544A\u3092\u4FDD\u5B58\u3057\u3066\u304F\u3060\u3055\u3044!"
+    Object: {fileID: 0}
+  - Language: Korean
+    Text: "\uBCF4\uC0C1\uC744 \uC704\uD574 \uC120\uD0DD\uC801 \uAD11\uACE0\uB97C
+      \uC720\uC9C0\uD558\uC138\uC694!"
+    Object: {fileID: 0}
+  - Language: Portuguese
+    Text: "Mantenha an\xFAncios opcionais para recompensas!"
+    Object: {fileID: 0}
+  - Language: Russian
+    Text: "\u0421\u043E\u0445\u0440\u0430\u043D\u044F\u0439\u0442\u0435 \u043D\u0435\u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u0443\u044E
+      \u0440\u0435\u043A\u043B\u0430\u043C\u0443 \u0438 \u043F\u043E\u043B\u0443\u0447\u0430\u0439\u0442\u0435
+      \u0432\u043E\u0437\u043D\u0430\u0433\u0440\u0430\u0436\u0434\u0435\u043D\u0438\u0435!"
+    Object: {fileID: 0}
+  - Language: Spanish
+    Text: "\xA1Mantenga anuncios opcionales para obtener recompensas!"
+    Object: {fileID: 0}
 --- !u!1001 &746595789
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4005,6 +4081,9 @@ Transform:
   - {fileID: 38065987}
   - {fileID: 106417545}
   - {fileID: 2066533682}
+  - {fileID: 2116249799}
+  - {fileID: 999269493}
+  - {fileID: 744834707}
   m_Father: {fileID: 1151450128}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &937746294
@@ -4275,6 +4354,80 @@ MonoBehaviour:
     Object: {fileID: 0}
   - Language: Spanish
     Text: Consejos
+    Object: {fileID: 0}
+--- !u!1 &999269492
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 999269493}
+  - component: {fileID: 999269494}
+  m_Layer: 0
+  m_Name: Remove bottom banner ads!
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &999269493
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 999269492}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 937746293}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &999269494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 999269492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb15fa0e7301ff849bf4d6dcede7c12b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: LeanLocalization::Lean.Localization.LeanPhrase
+  data: 0
+  entries:
+  - Language: English
+    Text: Remove bottom banner ads!
+    Object: {fileID: 0}
+  - Language: French
+    Text: "Supprimez les banni\xE8res publicitaires du bas\_!"
+    Object: {fileID: 0}
+  - Language: German
+    Text: Entfernen Sie die unteren Werbebanner!
+    Object: {fileID: 0}
+  - Language: Italian
+    Text: Rimuovi i banner pubblicitari inferiori!
+    Object: {fileID: 0}
+  - Language: Japanese
+    Text: "\u4E0B\u90E8\u306E\u30D0\u30CA\u30FC\u5E83\u544A\u3092\u524A\u9664\u3057\u3066\u304F\u3060\u3055\u3044\u3002"
+    Object: {fileID: 0}
+  - Language: Korean
+    Text: "\uD558\uB2E8 \uBC30\uB108 \uAD11\uACE0\uB97C \uC81C\uAC70\uD558\uC138\uC694!"
+    Object: {fileID: 0}
+  - Language: Portuguese
+    Text: Remova os banners inferiores!
+    Object: {fileID: 0}
+  - Language: Russian
+    Text: "\u0423\u0434\u0430\u043B\u0438\u0442\u0435 \u043D\u0438\u0436\u043D\u0438\u0435
+      \u0431\u0430\u043D\u043D\u0435\u0440\u044B!"
+    Object: {fileID: 0}
+  - Language: Spanish
+    Text: "\xA1Elimine los anuncios publicitarios inferiores!"
     Object: {fileID: 0}
 --- !u!1 &1002789686
 GameObject:
@@ -9193,6 +9346,80 @@ MonoBehaviour:
     Object: {fileID: 0}
   - Language: Spanish
     Text: "\xA1Fuera de tiempo!"
+    Object: {fileID: 0}
+--- !u!1 &2116249798
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2116249799}
+  - component: {fileID: 2116249800}
+  m_Layer: 0
+  m_Name: Remove mandatory ads!
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2116249799
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2116249798}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 937746293}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2116249800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2116249798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb15fa0e7301ff849bf4d6dcede7c12b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: LeanLocalization::Lean.Localization.LeanPhrase
+  data: 0
+  entries:
+  - Language: English
+    Text: Remove mandatory ads!
+    Object: {fileID: 0}
+  - Language: French
+    Text: "Supprimez les publicit\xE9s obligatoires\_!"
+    Object: {fileID: 0}
+  - Language: German
+    Text: Entfernen Sie Pflichtanzeigen!
+    Object: {fileID: 0}
+  - Language: Italian
+    Text: Rimuovi gli annunci obbligatori!
+    Object: {fileID: 0}
+  - Language: Japanese
+    Text: "\u5FC5\u9808\u306E\u5E83\u544A\u3092\u524A\u9664\u3057\u3066\u304F\u3060\u3055\u3044\u3002"
+    Object: {fileID: 0}
+  - Language: Korean
+    Text: "\uD544\uC218 \uAD11\uACE0\uB97C \uC81C\uAC70\uD558\uC138\uC694!"
+    Object: {fileID: 0}
+  - Language: Portuguese
+    Text: "Remova an\xFAncios obrigat\xF3rios!"
+    Object: {fileID: 0}
+  - Language: Russian
+    Text: "\u0423\u0431\u0435\u0440\u0438\u0442\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u0443\u044E
+      \u0440\u0435\u043A\u043B\u0430\u043C\u0443!"
+    Object: {fileID: 0}
+  - Language: Spanish
+    Text: "\xA1Elimine los anuncios obligatorios!"
     Object: {fileID: 0}
 --- !u!1 &395928970860806824
 GameObject:
