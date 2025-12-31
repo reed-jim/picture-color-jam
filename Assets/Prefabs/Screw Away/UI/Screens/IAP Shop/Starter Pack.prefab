@@ -424,6 +424,7 @@ MonoBehaviour:
   addHoleQuantityText: {fileID: 3354454989710561649}
   breakObjectQuantityText: {fileID: 1998562250383516605}
   clearHolesQuantityText: {fileID: 8857567082402322329}
+  teleportQuantityText: {fileID: 9144940069495095624}
   priceText: {fileID: 8037861042689887521}
   buyButton: {fileID: 6074139535173948530}
   isContainRemoveAd: 0
@@ -1001,6 +1002,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1630970540357133212, guid: d3c1843643a255e43973d55d1dce4057, type: 3}
   m_PrefabInstance: {fileID: 2012920566557287836}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &9144940069495095624 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7279521368306377940, guid: d3c1843643a255e43973d55d1dce4057, type: 3}
+  m_PrefabInstance: {fileID: 2012920566557287836}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2299765221059523405
 PrefabInstance:
   m_ObjectHideFlags: 0

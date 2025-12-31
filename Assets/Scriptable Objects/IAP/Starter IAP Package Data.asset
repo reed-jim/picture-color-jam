@@ -18,5 +18,6 @@ MonoBehaviour:
   addHoleBoosterQuantity: 5
   breakObjectBoosterQuantity: 2
   clearHolesBoosterQuantity: 1
+  teleportBoosterQuantity: 1
   isRemoveAd: 0
   price: 13.72

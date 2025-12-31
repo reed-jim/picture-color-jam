@@ -177,7 +177,7 @@ public class SaferioIAPManager : MonoBehaviour, IDetailedStoreListener
 
     public void OnInitializeFailed(InitializationFailureReason error)
     {
-        
+
     }
 
     public PurchaseProcessingResult ProcessPurchase(PurchaseEventArgs e)
@@ -230,6 +230,7 @@ public class SaferioIAPManager : MonoBehaviour, IDetailedStoreListener
                         userResourcesObserver.ChangeBoosterQuantity(0, productData.AddHoleBoosterQuantity);
                         userResourcesObserver.ChangeBoosterQuantity(1, productData.BreakObjectBoosterQuantity);
                         userResourcesObserver.ChangeBoosterQuantity(2, productData.ClearHolesBoosterQuantity);
+                        userResourcesObserver.ChangeBoosterQuantity(3, productData.TeleportBoosterQuantity);
 
                         if (productData.IsRemoveAd)
                         {
@@ -239,11 +240,13 @@ public class SaferioIAPManager : MonoBehaviour, IDetailedStoreListener
                             UserData.IsRemoveAds = true;
                         }
 
-                        int[] boosterQuantites = new int[3] {
-                        productData.AddHoleBoosterQuantity,
-                        productData.BreakObjectBoosterQuantity,
-                        productData.ClearHolesBoosterQuantity
-                    };
+                        int[] boosterQuantites = new int[4]
+                        {
+                            productData.AddHoleBoosterQuantity,
+                            productData.BreakObjectBoosterQuantity,
+                            productData.ClearHolesBoosterQuantity,
+                            productData.TeleportBoosterQuantity
+                        };
 
                         showResourcesEarnPopupEvent?.Invoke(productData.CoinQuantity, boosterQuantites, productData.IsRemoveAd);
 

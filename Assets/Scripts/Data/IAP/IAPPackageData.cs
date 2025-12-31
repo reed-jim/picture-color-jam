@@ -9,6 +9,7 @@ public class IAPPackageData : ScriptableObject
     [SerializeField] private int addHoleBoosterQuantity;
     [SerializeField] private int breakObjectBoosterQuantity;
     [SerializeField] private int clearHolesBoosterQuantity;
+    [SerializeField] private int teleportBoosterQuantity;
     [SerializeField] private bool isRemoveAd;
     [SerializeField] private float price;
 
@@ -40,6 +41,11 @@ public class IAPPackageData : ScriptableObject
     public int ClearHolesBoosterQuantity
     {
         get => clearHolesBoosterQuantity;
+    }
+
+    public int TeleportBoosterQuantity
+    {
+        get => teleportBoosterQuantity;
     }
 
     public bool IsRemoveAd

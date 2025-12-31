@@ -10,6 +10,7 @@ public class IAPPackageUI : MonoBehaviour
     [SerializeField] private TMP_Text addHoleQuantityText;
     [SerializeField] private TMP_Text breakObjectQuantityText;
     [SerializeField] private TMP_Text clearHolesQuantityText;
+    [SerializeField] private TMP_Text teleportQuantityText;
     [SerializeField] private TMP_Text priceText;
     [SerializeField] private Button buyButton;
 
@@ -66,6 +67,11 @@ public class IAPPackageUI : MonoBehaviour
         if (clearHolesQuantityText != null)
         {
             clearHolesQuantityText.text = $"{data.ClearHolesBoosterQuantity}";
+        }
+
+        if (teleportQuantityText != null)
+        {
+            teleportQuantityText.text = $"{data.TeleportBoosterQuantity}";
         }
 
         if (Application.internetReachability == NetworkReachability.NotReachable)
