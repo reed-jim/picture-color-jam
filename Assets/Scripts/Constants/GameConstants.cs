@@ -62,6 +62,7 @@ public static class GameConstants
     public static string HAMMER = "Hammer";
     public static string VACUMN = "Vacumn";
     public static string block1x1 = "block1x1";
+    public static string projectile = "projectile";
     #endregion
 
     #region SOUND

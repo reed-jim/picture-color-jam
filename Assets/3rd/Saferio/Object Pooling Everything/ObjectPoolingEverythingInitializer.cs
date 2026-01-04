@@ -31,6 +31,11 @@ public class ObjectPoolingEverythingInitializer : MonoBehaviour
 
     [SerializeField] private GameObject taskItemUIPrefab;
 
+
+    #region TOWER
+    public GameObject projectile;
+    #endregion
+
     private bool _isInitialized;
 
     private void Awake()
@@ -78,6 +83,9 @@ public class ObjectPoolingEverythingInitializer : MonoBehaviour
         RegisterPool<ParticleSystem>(GameConstants.blockMergeFx, blockMergeFx, 16);
         RegisterPool<SpriteRenderer>(GameConstants.BOOSTER_CLOCK_ITEM, clockBoosterItemPrefab, 2);
         RegisterPool<BaseBlock>(GameConstants.block1x1, block1x1Prefab, 30);
+
+
+        RegisterPool<BaseProjectile>(GameConstants.projectile, projectile, 100);
     }
 
     private void RegisterPool<T>(string key, GameObject prefab, int poolSize)
