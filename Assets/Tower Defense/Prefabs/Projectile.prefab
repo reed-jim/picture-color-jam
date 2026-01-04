@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4903531422341184026}
-  - component: {fileID: 7705057407067184911}
+  - component: {fileID: 3278064921921126861}
   - component: {fileID: 6389479284834029803}
   - component: {fileID: 302038915661101669}
   - component: {fileID: 9097006365242131422}
@@ -35,7 +35,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7705057407067184911
+--- !u!114 &3278064921921126861
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -44,12 +44,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 2764698954615587065}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 683501afca6ee7746bae8a90029eb131, type: 3}
+  m_Script: {fileID: 11500000, guid: a93ae2547bf3b9b40b2ed29e2865c5fb, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BaseProjectile
+  m_EditorClassIdentifier: Assembly-CSharp::ExplosiveProjectile
   projectileRigidbody: {fileID: 302038915661101669}
-  force: 15
-  attackDamage: 30
+  force: 0
+  attackDamage: 20
+  launchForce: 20
+  gravityScale: 1
 --- !u!212 &6389479284834029803
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -123,7 +125,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 0
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
