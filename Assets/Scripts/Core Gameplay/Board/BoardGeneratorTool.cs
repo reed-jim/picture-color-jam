@@ -90,8 +90,8 @@ public class BoardGeneratorTool : EditorWindow
 
         // tilePrefab = (GameObject)EditorGUILayout.ObjectField("Tile Prefab", tilePrefab, typeof(GameObject), false);
 
-        numRow = EditorGUILayout.IntField("Number of Rows", numRow);
         numColumn = EditorGUILayout.IntField("Number of Columns", numColumn);
+        numRow = EditorGUILayout.IntField("Number of Rows", numRow);
         // isIncludeSpecialBlocks = EditorGUILayout.Toggle("Is Include Special Blocks", isIncludeSpecialBlocks);
         fillRate = EditorGUILayout.Slider("Fill Rate", fillRate, 0, 1);
         iconIndex = EditorGUILayout.IntField("Icon Index", iconIndex);
@@ -154,6 +154,11 @@ public class BoardGeneratorTool : EditorWindow
         if (GUILayout.Button("Link 2 Blocks"))
         {
             LinkTwoBlocks();
+        }
+
+        if (GUILayout.Button("Link Many Blocks"))
+        {
+            LinkManyBlocks();
         }
 
         if (GUILayout.Button("Setup Board"))
@@ -333,43 +338,19 @@ public class BoardGeneratorTool : EditorWindow
 
         float tileSize = GameConstants.tileSize;
 
-        // Vector2 boardSize = tileSize * new Vector2(numColumn + 2, numRow + 2);
-        Vector2 boardSize = tileSize * new Vector2(numColumn, numRow);
-
-        levelBoard.ground.size = new Vector2(
-            (numColumn - 1) * 2 - 1,
-            (numRow - 1) * 2 - 1
-        );
-
-        if (numColumn <= 6)
-        {
-            levelBoard.ground.size = new Vector2(
-                (numColumn - 1) * 2,
-                levelBoard.ground.size.y
+        // Board Sprite
+        BoardSpriteContainer boardSpriteContainer =
+            AssetDatabase.LoadAssetAtPath<BoardSpriteContainer>
+            (
+                "Assets/Scriptable Objects/Board/Board Sprite Container.asset"
             );
-        }
 
-        if (numRow <= 6)
-        {
-            levelBoard.ground.size = new Vector2(
-                levelBoard.ground.size.x,
-                (numColumn - 1) * 2
-            );
-        }
+        Sprite boardSprite = boardSpriteContainer.boardSprites.First(item => IsBoardSpriteMatch(numRow, numColumn, item));
 
-        SetBoxColliderWorldSize(levelBoard.leftEdgeCollider, new Vector2(0.1f * boardSize.x, boardSize.y));
-        SetBoxColliderWorldSize(levelBoard.rightEdgeCollider, new Vector2(0.1f * boardSize.x, boardSize.y));
-        SetBoxColliderWorldSize(levelBoard.topEdgeCollider, new Vector2(boardSize.x, 0.1f * boardSize.y));
-        SetBoxColliderWorldSize(levelBoard.bottomEdgeCollider, new Vector2(boardSize.x, 0.1f * boardSize.y));
+        levelBoard.ground.sprite = boardSprite;
 
-        levelBoard.leftEdgeCollider.transform.position = new Vector2(-(numColumn + 2) / 2f * tileSize, 0);
-        levelBoard.rightEdgeCollider.transform.position = new Vector2((numColumn + 2) / 2f * tileSize, 0);
-        levelBoard.topEdgeCollider.transform.position = new Vector2(0, (numRow + 2) / 2f * tileSize);
-        levelBoard.bottomEdgeCollider.transform.position = new Vector2(0, -(numRow + 2) / 2f * tileSize);
-
-        Vector3 boardPosition = Vector3.zero;
-
-        levelBoard.transform.position = boardPosition;
+        AssignBoardUpper();
+        SetBoardColliders();
 
         GamePersistentVariable.levelBoard = levelBoard;
     }
@@ -680,6 +661,20 @@ public class BoardGeneratorTool : EditorWindow
         LinkTwoBlocks(blocks[0], blocks[1]);
     }
 
+    private void LinkManyBlocks()
+    {
+        Transform[] transforms = Selection.transforms;
+
+        List<BaseBlock> blocks = new List<BaseBlock>();
+
+        foreach (var transform in transforms)
+        {
+            blocks.Add(transform.GetComponent<BaseBlock>());
+        }
+
+        LinkBlocks(blocks);
+    }
+
     private void LinkTwoBlocks(BaseBlock firstBlock, BaseBlock secondBlock)
     {
         int maxTileX = Mathf.Max(firstBlock.NumTileX, secondBlock.NumTileX);
@@ -697,6 +692,34 @@ public class BoardGeneratorTool : EditorWindow
         else
         {
             firstBlock.tileIndexes = originalTileIndexes.Except(secondBlock.tileIndexes).ToList();
+        }
+
+        EditorUtility.SetDirty(Selection.activeTransform);
+    }
+
+    private void LinkBlocks(List<BaseBlock> blocks)
+    {
+        int maxTileX = blocks.Max(item => item.NumTileX);
+        int maxTileY = blocks.Max(item => item.NumTileY);
+
+        List<Vector2Int> originalTileIndexes = BuildTileIndexes(maxTileX, maxTileY);
+
+        foreach (var block in blocks)
+        {
+            block.originalTileIndexes = originalTileIndexes;
+        }
+
+        BaseBlock blockWithMostTiles = blocks.OrderByDescending(item => item.tileIndexes.Count).FirstOrDefault();
+
+        foreach (var block in blocks)
+        {
+            if (block != blockWithMostTiles)
+            {
+                block.tileIndexes = originalTileIndexes.Except(blockWithMostTiles.tileIndexes).ToList();
+
+                block.BlockServiceLocator.iconRenderer.sprite = blockWithMostTiles.BlockServiceLocator.iconRenderer.sprite;
+                block.BlockServiceLocator.blockFaction.Faction = blockWithMostTiles.BlockServiceLocator.blockFaction.Faction;
+            }
         }
 
         EditorUtility.SetDirty(Selection.activeTransform);
@@ -788,6 +811,32 @@ public class BoardGeneratorTool : EditorWindow
         boardUpperRenderer.sprite = boardUpper;
 
         EditorUtility.SetDirty(board);
+    }
+
+    public bool IsBoardSpriteMatch(int row, int column, Sprite sprite)
+    {
+        // Get the name of the sprite
+        string spriteName = sprite.name; // Assuming it's in the format "mxn"
+
+        // Split the name by the 'x' to separate the row and column
+        string[] parts = spriteName.Split('x');
+
+        if (parts.Length == 2)
+        {
+            // Parse the row and column values
+            int spriteRow, spriteColumn;
+
+            bool rowMatch = int.TryParse(parts[0], out spriteRow);
+            bool colMatch = int.TryParse(parts[1], out spriteColumn);
+
+            // Check if both row and column match
+            if (rowMatch && colMatch)
+            {
+                return spriteRow == row && spriteColumn == column;
+            }
+        }
+
+        return false;
     }
     #endregion
 
