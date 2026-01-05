@@ -141,9 +141,9 @@ public class BoardGeneratorTool : EditorWindow
             SetIcon(iconIndex);
         }
 
-        if (GUILayout.Button("Snap Icon"))
+        if (GUILayout.Button("Snap Icons"))
         {
-            PlaceBlockIcon(Selection.activeTransform.GetComponent<BaseBlock>());
+            PlaceBlockIcons();
         }
 
         if (GUILayout.Button("Set Faction"))
@@ -388,6 +388,11 @@ public class BoardGeneratorTool : EditorWindow
 
             selectedPrefab = blocks[random];
 
+            if (selectedPrefab.name.Contains("T-Shaped"))
+            {
+                continue;
+            }
+
             BaseBlock pairBlock;
 
             for (int i = 0; i < blocks.Length; i++)
@@ -437,6 +442,8 @@ public class BoardGeneratorTool : EditorWindow
 
         while (toGeneratedBlocks.Count > 0 && tryTime < maxTryTime)
         {
+            Debug.Log("SAFERIO remainingTile: " + toGeneratedBlocks.Count + "/" + tryTime);
+
             selectedPrefab = toGeneratedBlocks[0];
 
             int sizeX = selectedPrefab.NumTileX;
@@ -455,43 +462,36 @@ public class BoardGeneratorTool : EditorWindow
             {
                 for (int j = randomStartX; j < numColumn; j++)
                 {
-                    bool isValid = IsValidArea(isTileFull, j, i, sizeX, sizeY);
+                    // bool isValid = IsValidArea(isTileFull, j, i, sizeX, sizeY);
 
-                    if (!isValid)
-                    {
-                        continue;
-                    }
+                    // if (!isValid)
+                    // {
+                    //     continue;
+                    // }
 
-                    if (i - (sizeX - 1) < 0 || i + (sizeX - 1) >= numRow)
-                    {
-                        isValid = false;
+                    // if (i - (sizeX - 1) < 0 || i + (sizeX - 1) >= numRow)
+                    // {
+                    //     isValid = false;
 
-                        continue;
-                    }
+                    //     continue;
+                    // }
 
-                    if (j - (sizeY - 1) < 0 || j + (sizeY - 1) >= numColumn)
-                    {
-                        isValid = false;
+                    // if (j - (sizeY - 1) < 0 || j + (sizeY - 1) >= numColumn)
+                    // {
+                    //     isValid = false;
 
-                        continue;
-                    }
+                    //     continue;
+                    // }
+
+                    bool isValid = true;
 
                     if (isValid)
                     {
-                        int randomIsPicked = Random.Range(0, 10);
+                        coordinator = new Vector2Int(j, i);
 
-                        if (randomIsPicked == 0)
-                        {
-                            coordinator = new Vector2Int(j, i);
+                        isFound = true;
 
-                            isFound = true;
-
-                            break;
-                        }
-                        else
-                        {
-                            fallbackCoordinator = new Vector2Int(j, i);
-                        }
+                        break;
                     }
                 }
 
@@ -539,18 +539,18 @@ public class BoardGeneratorTool : EditorWindow
             block.transform.position = placedPosition;
             block.SnapImmediately();
 
-            for (int i = coordinator.y; i <= coordinator.y + sizeY - 1; i++)
-            {
-                for (int j = coordinator.x; j <= coordinator.x + sizeX - 1; j++)
-                {
-                    int indexInBlockSpace = (j - coordinator.x) + (i - coordinator.y) * numColumn;
+            // for (int i = coordinator.y; i <= coordinator.y + sizeY - 1; i++)
+            // {
+            //     for (int j = coordinator.x; j <= coordinator.x + sizeX - 1; j++)
+            //     {
+            //         int indexInBlockSpace = (j - coordinator.x) + (i - coordinator.y) * numColumn;
 
-                    if (!IsBlockTileEmpty(indexInBlockSpace, block))
-                    {
-                        isTileFull[j + numColumn * i] = true;
-                    }
-                }
-            }
+            //         if (!IsBlockTileEmpty(indexInBlockSpace, block))
+            //         {
+            //             isTileFull[j + numColumn * i] = true;
+            //         }
+            //     }
+            // }
 
             // int randomFaction = Random.Range(0, GameConstants.SCREW_FACTION.Length);
 
@@ -570,8 +570,6 @@ public class BoardGeneratorTool : EditorWindow
 
             // }
             // #endregion
-
-            remainingTile -= numTile;
         }
 
         for (int i = 0; i < generatedBlocks.Count; i += 2)
@@ -754,6 +752,16 @@ public class BoardGeneratorTool : EditorWindow
         Vector2 iconLocalPosition = indexDistanceToCenter * tileSize;
 
         block.BlockServiceLocator.iconRenderer.transform.localPosition = iconLocalPosition;
+    }
+
+    private void PlaceBlockIcons()
+    {
+        Transform[] transforms = Selection.transforms;
+
+        foreach (var transform in transforms)
+        {
+            PlaceBlockIcon(transform.GetComponent<BaseBlock>());
+        }
     }
 
     #region Board

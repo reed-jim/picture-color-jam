@@ -48,6 +48,7 @@ public class GameEnum : MonoBehaviour
         Blue,
         Orange,
         Pink,
+        Teal,
         Disabled,
         All,
         None
