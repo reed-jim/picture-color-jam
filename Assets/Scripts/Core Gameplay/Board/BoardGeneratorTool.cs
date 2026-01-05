@@ -443,7 +443,9 @@ public class BoardGeneratorTool : EditorWindow
 
         while (toGeneratedBlocks.Count > 0 && tryTime < maxTryTime)
         {
-            selectedPrefab = toGeneratedBlocks[0];
+            int randomIndex = Random.Range(0, toGeneratedBlocks.Count);
+
+            selectedPrefab = toGeneratedBlocks[randomIndex];
 
             int sizeX = selectedPrefab.NumTileX;
             int sizeY = selectedPrefab.NumTileY;
@@ -461,17 +463,17 @@ public class BoardGeneratorTool : EditorWindow
 
             tryTime++;
 
-            toGeneratedBlocks.RemoveAt(0);
+            toGeneratedBlocks.RemoveAt(randomIndex);
 
             BaseBlock block = PrefabUtility.InstantiatePrefab(selectedPrefab, container).GetComponent<BaseBlock>();
 
             generatedBlocks.Add(block);
 
-            block.BlockServiceLocator.blockFaction.Faction = toGeneratedFaction[0];
-            block.BlockServiceLocator.iconRenderer.sprite = iconContainer.factionSprites[toGeneratedIconIndex[0]];
+            block.BlockServiceLocator.blockFaction.Faction = toGeneratedFaction[randomIndex];
+            block.BlockServiceLocator.iconRenderer.sprite = iconContainer.factionSprites[toGeneratedIconIndex[randomIndex]];
 
-            toGeneratedFaction.RemoveAt(0);
-            toGeneratedIconIndex.RemoveAt(0);
+            toGeneratedFaction.RemoveAt(randomIndex);
+            toGeneratedIconIndex.RemoveAt(randomIndex);
 
             Vector3 placedPosition = new Vector3();
 
@@ -479,21 +481,9 @@ public class BoardGeneratorTool : EditorWindow
 
             block.transform.position = placedPosition;
             block.SnapImmediately();
-
-            // #region LAYERED BLOCK
-            // try
-            // {
-            //     BaseBlock insideBlock = TransformUtil.GetComponentsFromAllChildren<BaseBlock>(block.transform).ElementAt(1);
-
-            //     insideBlock.BlockProperty.Faction = (GameEnum.GameFaction)RandomIntExceptValue(0, GameConstants.SCREW_FACTION.Length, randomFaction);
-            //     insideBlock.BlockServiceLocator.blockMaterialPropertyBlock.SetFaction();
-            // }
-            // catch (System.Exception e)
-            // {
-
-            // }
-            // #endregion
         }
+
+        generatedBlocks = generatedBlocks.OrderBy(item => item.BlockServiceLocator.iconRenderer.sprite.name).ToList();
 
         for (int i = 0; i < generatedBlocks.Count; i += 2)
         {
@@ -551,10 +541,10 @@ public class BoardGeneratorTool : EditorWindow
         int halfColumn = (numColumn - numColumn % 2) / 2;
         int halfRow = (numRow - numRow % 2) / 2;
 
-        int startX = -halfRow + 1;
-        int endX = halfRow;
-        int startY = -halfColumn + 2;
-        int endY = halfColumn;
+        int startX = -halfColumn + 1;
+        int endX = halfColumn;
+        int startY = -halfRow + 2;
+        int endY = halfRow;
 
         bool isValid;
 
