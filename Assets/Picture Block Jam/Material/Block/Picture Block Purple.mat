@@ -50,7 +50,7 @@ Material:
     - _Saturation: 1.3
     - _WarpMultiplier: 0
     m_Colors:
-    - _Color: {r: 0.69411767, g: 0.33333334, b: 1, a: 1}
+    - _Color: {r: 0.69411767, g: 0.3333333, b: 1, a: 1}
     - _IconOffset: {r: 0, g: 0, b: 0, a: 0}
     - _IconTiling: {r: 1, g: 1, b: 0, a: 0}
     - _Tiling: {r: 1, g: 1, b: 0, a: 0}
