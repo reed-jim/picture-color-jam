@@ -3052,7 +3052,7 @@ MonoBehaviour:
   canvas: {fileID: 1028907851}
   container: {fileID: 246249667}
   items: []
-  maxItem: 8
+  maxItem: 12
 --- !u!1001 &766715608
 PrefabInstance:
   m_ObjectHideFlags: 0
