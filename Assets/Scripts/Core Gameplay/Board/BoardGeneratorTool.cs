@@ -439,6 +439,7 @@ public class BoardGeneratorTool : EditorWindow
         }
 
         List<BaseBlock> generatedBlocks = new List<BaseBlock>();
+        List<Vector2Int> filledTiles = new List<Vector2Int>();
 
         while (toGeneratedBlocks.Count > 0 && tryTime < maxTryTime)
         {
@@ -458,69 +459,11 @@ public class BoardGeneratorTool : EditorWindow
             int randomStartY = Random.Range(0, numRow - 1);
             int randomStartX = Random.Range(0, numColumn - 1);
 
-            for (int i = randomStartY; i < numRow; i++)
-            {
-                for (int j = randomStartX; j < numColumn; j++)
-                {
-                    // bool isValid = IsValidArea(isTileFull, j, i, sizeX, sizeY);
-
-                    // if (!isValid)
-                    // {
-                    //     continue;
-                    // }
-
-                    // if (i - (sizeX - 1) < 0 || i + (sizeX - 1) >= numRow)
-                    // {
-                    //     isValid = false;
-
-                    //     continue;
-                    // }
-
-                    // if (j - (sizeY - 1) < 0 || j + (sizeY - 1) >= numColumn)
-                    // {
-                    //     isValid = false;
-
-                    //     continue;
-                    // }
-
-                    bool isValid = true;
-
-                    if (isValid)
-                    {
-                        coordinator = new Vector2Int(j, i);
-
-                        isFound = true;
-
-                        break;
-                    }
-                }
-
-                if (isFound)
-                {
-                    break;
-                }
-            }
-
-            if (!isFound)
-            {
-                if (fallbackCoordinator.x >= 0)
-                {
-                    coordinator = fallbackCoordinator;
-
-                    isFound = true;
-                }
-            }
+            coordinator = FindEmptySpace(selectedPrefab, filledTiles);
 
             tryTime++;
 
-            if (!isFound)
-            {
-                continue;
-            }
-            else
-            {
-                toGeneratedBlocks.RemoveAt(0);
-            }
+            toGeneratedBlocks.RemoveAt(0);
 
             BaseBlock block = PrefabUtility.InstantiatePrefab(selectedPrefab, container).GetComponent<BaseBlock>();
 
@@ -534,28 +477,10 @@ public class BoardGeneratorTool : EditorWindow
 
             Vector3 placedPosition = new Vector3();
 
-            placedPosition = TileMapper.TileToWorld(coordinator - new Vector2Int(numColumn / 2 + 1, 2));
+            placedPosition = TileMapper.TileToWorld(coordinator);
 
             block.transform.position = placedPosition;
             block.SnapImmediately();
-
-            // for (int i = coordinator.y; i <= coordinator.y + sizeY - 1; i++)
-            // {
-            //     for (int j = coordinator.x; j <= coordinator.x + sizeX - 1; j++)
-            //     {
-            //         int indexInBlockSpace = (j - coordinator.x) + (i - coordinator.y) * numColumn;
-
-            //         if (!IsBlockTileEmpty(indexInBlockSpace, block))
-            //         {
-            //             isTileFull[j + numColumn * i] = true;
-            //         }
-            //     }
-            // }
-
-            // int randomFaction = Random.Range(0, GameConstants.SCREW_FACTION.Length);
-
-            // block.BlockProperty.Faction = (GameEnum.GameFaction)randomFaction;
-            // block.BlockServiceLocator.blockMaterialPropertyBlock.SetFaction();
 
             // #region LAYERED BLOCK
             // try
@@ -621,6 +546,49 @@ public class BoardGeneratorTool : EditorWindow
 
             return false;
         }
+    }
+
+    private Vector2Int FindEmptySpace(BaseBlock block, List<Vector2Int> filledTiles)
+    {
+        int halfColumn = (numColumn - numColumn % 2) / 2;
+        int halfRow = (numRow - numRow % 2) / 2;
+
+        int startX = -halfRow + 1;
+        int endX = halfRow;
+        int startY = -halfColumn + 1;
+        int endY = halfColumn;
+
+        bool isValid;
+
+        for (int i = startX; i < endX; i++)
+        {
+            for (int j = startY; j < endY; j++)
+            {
+                isValid = true;
+
+                foreach (var tileIndex in block.tileIndexes)
+                {
+                    if (filledTiles.Contains(new Vector2Int(i + tileIndex.x, j + tileIndex.y)))
+                    {
+                        isValid = false;
+
+                        break;
+                    }
+                }
+
+                if (isValid)
+                {
+                    foreach (var tileIndex in block.tileIndexes)
+                    {
+                        filledTiles.Add(new Vector2Int(i + tileIndex.x, j + tileIndex.y));
+                    }
+
+                    return new Vector2Int(i, j);
+                }
+            }
+        }
+
+        return new Vector2Int(startX, startY);
     }
 
     private void SetIcon(int index)
