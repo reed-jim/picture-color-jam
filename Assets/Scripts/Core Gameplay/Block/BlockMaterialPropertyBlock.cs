@@ -54,13 +54,16 @@ public class BlockMaterialPropertyBlock : MonoBehaviour
     private void Awake()
     {
         LevelLoader.updateBoundEvent += SetMaskingBound;
+        BoosterUI.enableBreakObjectModeEvent += OnHammerBoosterEnabled;
+        BlockSelectionInput.breakObjectEvent += OnBoosterDisabled;
+        BoosterUI.enableVacumnModeEvent += OnBoosterStateChanged;
+        BlockSelectionInput.vacumnEvent += OnVacumnCompleted;
 
         _tweens = new List<Tween>();
         _outlineTweens = new List<Tween>();
 
         Init();
 
-        // SetDefaultOutline();
         InitOutline();
 
         SetTextureRotation();
@@ -71,6 +74,10 @@ public class BlockMaterialPropertyBlock : MonoBehaviour
     void OnDestroy()
     {
         LevelLoader.updateBoundEvent -= SetMaskingBound;
+        BoosterUI.enableBreakObjectModeEvent -= OnHammerBoosterEnabled;
+        BlockSelectionInput.breakObjectEvent -= OnBoosterDisabled;
+        BoosterUI.enableVacumnModeEvent -= OnBoosterStateChanged;
+        BlockSelectionInput.vacumnEvent -= OnVacumnCompleted;
 
         CommonUtil.StopAllTweens(_tweens);
         CommonUtil.StopAllTweens(_outlineTweens);
@@ -296,7 +303,7 @@ public class BlockMaterialPropertyBlock : MonoBehaviour
 
     }
 
-    public void ShowOutline(bool isShow)
+    public void ShowOutline(bool isShow, Color color)
     {
         if (_outlineTween.isAlive)
         {
@@ -321,7 +328,7 @@ public class BlockMaterialPropertyBlock : MonoBehaviour
 
         _outlineTween = Tween.Custom(startValue, endValue, duration: 0.3f, onValueChange: newVal =>
         {
-            outlinable.OutlineParameters.Color = ColorUtil.WhiteWithAlpha(newVal);
+            outlinable.OutlineParameters.Color = ColorUtil.WithAlpha(color, newVal);
             // outlinable.FrontParameters.Color = ColorUtil.WhiteWithAlpha(newVal);
             // outlinable.BackParameters.Color = ColorUtil.WhiteWithAlpha(newVal);
         })
@@ -334,31 +341,11 @@ public class BlockMaterialPropertyBlock : MonoBehaviour
                 // outlineSprite.gameObject.SetActive(false);
             }
         });
+    }
 
-        // if (isShow)
-        // {
-        //     outlineSprite.gameObject.SetActive(true);
-        //     _outlinePropertyBlock.SetFloat("_OutlineAlpha", 0);
-        //     _outlineRenderer.SetPropertyBlock(_outlinePropertyBlock);
-        // }
-        // else
-        // {
-        //     startValue = 1;
-        //     endValue = 0;
-        // }
-
-        // _outlineTween = Tween.Custom(startValue, endValue, duration: 0.3f, onValueChange: newVal =>
-        // {
-        //     _outlinePropertyBlock.SetFloat("_OutlineAlpha", newVal);
-        //     _outlineRenderer.SetPropertyBlock(_outlinePropertyBlock);
-        // })
-        // .OnComplete(() =>
-        // {
-        //     if (!isShow)
-        //     {
-        //         outlineSprite.gameObject.SetActive(false);
-        //     }
-        // });
+    public void ShowOutline(bool isShow)
+    {
+        ShowOutline(isShow, Color.white);
     }
 
     public void EnableOutline(bool isEnable)
@@ -383,6 +370,41 @@ public class BlockMaterialPropertyBlock : MonoBehaviour
     public void HideOutlineCompletely()
     {
         CommonUtil.StopAllTweens(_outlineTweens);
+    }
+
+    private void OnHammerBoosterEnabled()
+    {
+        if (blockServiceLocator.block.tileIndexes.Count > 1)
+        {
+            ShowOutline(true, Color.green);
+        }
+    }
+
+    private void OnBoosterStateChanged(bool isEnable)
+    {
+        if (isEnable)
+        {
+            OnBoosterEnabled();
+        }
+        else
+        {
+            OnBoosterDisabled();
+        }
+    }
+
+    private void OnBoosterEnabled()
+    {
+        ShowOutline(true, Color.green);
+    }
+
+    private void OnBoosterDisabled()
+    {
+        ShowOutline(false);
+    }
+
+    private void OnVacumnCompleted(string spriteType)
+    {
+        OnBoosterDisabled();
     }
     #endregion
 }
