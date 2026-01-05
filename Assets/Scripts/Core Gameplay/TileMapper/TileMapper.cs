@@ -82,6 +82,20 @@ public class TileMapper : Singleton<TileMapper>
         return new Vector2(xWorld, yWorld);
     }
 
+    // when knowing left top coordinator of a block
+    public static Vector2 LeftTopCoordinatorToBlockPosition(Vector2 leftTopCoordinator, BaseBlock block)
+    {
+        int numTileX = block.NumTileX;
+        int numTileY = block.NumTileY;
+
+        Vector2 position;
+
+        position.x = (leftTopCoordinator.x + (numTileX - 1) / 2f) * GameConstants.tileSize;
+        position.y = (leftTopCoordinator.y - (numTileY - 1) / 2f) * GameConstants.tileSize;
+
+        return position;
+    }
+
     public Vector2 LeftTopToBlockPosition(Vector2 leftTopPosWorld, int numTileX, int numTileY, float tileSize)
     {
         Vector2 blockPos = leftTopPosWorld;

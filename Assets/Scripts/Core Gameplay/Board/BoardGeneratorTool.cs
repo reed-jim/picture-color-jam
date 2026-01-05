@@ -418,7 +418,7 @@ public class BoardGeneratorTool : EditorWindow
                     toGeneratedBlocks.Add(selectedPrefab);
                     toGeneratedBlocks.Add(pairBlock);
 
-                    GameFaction faction = (GameFaction)Random.Range(0, 7);
+                    GameFaction faction = (GameFaction)Random.Range(0, 10);
                     int iconIndex = Random.Range(0, iconContainer.factionSprites.Length);
 
                     toGeneratedFaction.Add(faction);
@@ -443,8 +443,6 @@ public class BoardGeneratorTool : EditorWindow
 
         while (toGeneratedBlocks.Count > 0 && tryTime < maxTryTime)
         {
-            Debug.Log("SAFERIO remainingTile: " + toGeneratedBlocks.Count + "/" + tryTime);
-
             selectedPrefab = toGeneratedBlocks[0];
 
             int sizeX = selectedPrefab.NumTileX;
@@ -477,7 +475,7 @@ public class BoardGeneratorTool : EditorWindow
 
             Vector3 placedPosition = new Vector3();
 
-            placedPosition = TileMapper.TileToWorld(coordinator);
+            placedPosition = TileMapper.LeftTopCoordinatorToBlockPosition(coordinator, selectedPrefab);
 
             block.transform.position = placedPosition;
             block.SnapImmediately();
@@ -555,7 +553,7 @@ public class BoardGeneratorTool : EditorWindow
 
         int startX = -halfRow + 1;
         int endX = halfRow;
-        int startY = -halfColumn + 1;
+        int startY = -halfColumn + 2;
         int endY = halfColumn;
 
         bool isValid;
@@ -568,7 +566,7 @@ public class BoardGeneratorTool : EditorWindow
 
                 foreach (var tileIndex in block.tileIndexes)
                 {
-                    if (filledTiles.Contains(new Vector2Int(i + tileIndex.x, j + tileIndex.y)))
+                    if (filledTiles.Contains(new Vector2Int(i + tileIndex.x, j - tileIndex.y)))
                     {
                         isValid = false;
 
@@ -580,7 +578,7 @@ public class BoardGeneratorTool : EditorWindow
                 {
                     foreach (var tileIndex in block.tileIndexes)
                     {
-                        filledTiles.Add(new Vector2Int(i + tileIndex.x, j + tileIndex.y));
+                        filledTiles.Add(new Vector2Int(i + tileIndex.x, j - tileIndex.y));
                     }
 
                     return new Vector2Int(i, j);
