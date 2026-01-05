@@ -1382,7 +1382,7 @@ MonoBehaviour:
   data: 0
   entries:
   - Language: English
-    Text: You have unlocked the Freeze Timer!
+    Text: You have unlocked the <color=#FEBA00>Freeze Timer!
     Object: {fileID: 0}
   - Language: French
     Text: "Vous avez d\xE9verrouill\xE9 la minuterie de gel!"
@@ -4139,6 +4139,7 @@ Transform:
   - {fileID: 1078639222}
   - {fileID: 663169498}
   - {fileID: 1239581697}
+  - {fileID: 1795180313}
   - {fileID: 382427927}
   - {fileID: 1250276834}
   - {fileID: 1106636763}
@@ -4159,6 +4160,7 @@ Transform:
   - {fileID: 999269493}
   - {fileID: 744834707}
   - {fileID: 873199180}
+  - {fileID: 2012538681}
   m_Father: {fileID: 1151450128}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &937746294
@@ -5688,7 +5690,7 @@ MonoBehaviour:
   data: 0
   entries:
   - Language: English
-    Text: You have unlocked the Hammer!
+    Text: You have unlocked the <color=#FEBA00>Hammer!
     Object: {fileID: 0}
   - Language: French
     Text: "Vous avez d\xE9verrouill\xE9 le marteau!"
@@ -8562,6 +8564,79 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   backgroundMusic: {fileID: 1318877899}
   gameSetting: {fileID: 11400000, guid: a2c6756a77a053e48bc88637f241a4a1, type: 2}
+--- !u!1 &1795180312
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1795180313}
+  - component: {fileID: 1795180314}
+  m_Layer: 0
+  m_Name: You have unlocked the Magnet
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1795180313
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1795180312}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 937746293}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1795180314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1795180312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb15fa0e7301ff849bf4d6dcede7c12b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: 0
+  entries:
+  - Language: English
+    Text: You have unlocked the <color=#FEBA00>Magnet!
+    Object: {fileID: 0}
+  - Language: French
+    Text: "Vous avez d\xE9bloqu\xE9 l'Aimant\_!"
+    Object: {fileID: 0}
+  - Language: German
+    Text: Du hast den Magneten freigeschaltet!
+    Object: {fileID: 0}
+  - Language: Italian
+    Text: Hai sbloccato il Magnete!
+    Object: {fileID: 0}
+  - Language: Japanese
+    Text: "\u30DE\u30B0\u30CD\u30C3\u30C8\u306E\u30ED\u30C3\u30AF\u3092\u89E3\u9664\u3057\u307E\u3057\u305F!"
+    Object: {fileID: 0}
+  - Language: Korean
+    Text: "\uC790\uC11D\uC744 \uC7A0\uAE08 \uD574\uC81C\uD588\uC2B5\uB2C8\uB2E4!"
+    Object: {fileID: 0}
+  - Language: Portuguese
+    Text: "Voc\xEA desbloqueou o \xEDm\xE3!"
+    Object: {fileID: 0}
+  - Language: Russian
+    Text: "\u0412\u044B \u043E\u0442\u043A\u0440\u044B\u043B\u0438 \u041C\u0430\u0433\u043D\u0438\u0442!"
+    Object: {fileID: 0}
+  - Language: Spanish
+    Text: "\xA1Has desbloqueado el Im\xE1n!"
+    Object: {fileID: 0}
 --- !u!1 &1824339635
 GameObject:
   m_ObjectHideFlags: 0
@@ -9166,6 +9241,80 @@ MonoBehaviour:
   userResourcesObserver: {fileID: 11400000, guid: 9f7c1dbaae3ef634e8295c3cc55ef7cf, type: 2}
   gameSetting: {fileID: 11400000, guid: a2c6756a77a053e48bc88637f241a4a1, type: 2}
   tilePrefab: {fileID: 2683738924053683454, guid: 2afd069626cabf34fbc47ab08308b3db, type: 3}
+--- !u!1 &2012538680
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2012538681}
+  - component: {fileID: 2012538682}
+  m_Layer: 0
+  m_Name: Break a block into 1x1 pieces
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2012538681
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2012538680}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 937746293}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2012538682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2012538680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb15fa0e7301ff849bf4d6dcede7c12b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: LeanLocalization::Lean.Localization.LeanPhrase
+  data: 0
+  entries:
+  - Language: English
+    Text: Break a block into 1x1 pieces!
+    Object: {fileID: 0}
+  - Language: French
+    Text: "Cassez un bloc en morceaux 1x1\_!"
+    Object: {fileID: 0}
+  - Language: German
+    Text: "Zerbrich einen Block in 1x1 St\xFCcke!"
+    Object: {fileID: 0}
+  - Language: Italian
+    Text: Rompi un blocco in pezzi 1x1!
+    Object: {fileID: 0}
+  - Language: Japanese
+    Text: "\u30D6\u30ED\u30C3\u30AF\u30921x1\u306E\u30D4\u30FC\u30B9\u306B\u58CA\u3057\u307E\u3057\u3087\u3046\uFF01"
+    Object: {fileID: 0}
+  - Language: Korean
+    Text: "\uBE14\uB85D\uC744 1x1 \uC870\uAC01\uC73C\uB85C \uB098\uB204\uC138\uC694!"
+    Object: {fileID: 0}
+  - Language: Portuguese
+    Text: "Quebre um bloco em peda\xE7os 1x1!"
+    Object: {fileID: 0}
+  - Language: Russian
+    Text: "\u0420\u0430\u0437\u0431\u0435\u0439\u0442\u0435 \u0431\u043B\u043E\u043A
+      \u043D\u0430 \u0447\u0430\u0441\u0442\u0438 1x1!"
+    Object: {fileID: 0}
+  - Language: Spanish
+    Text: "\xA1Rompe un bloque en pedazos de 1x1!"
+    Object: {fileID: 0}
 --- !u!1 &2045067194
 GameObject:
   m_ObjectHideFlags: 0

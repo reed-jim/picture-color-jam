@@ -274,7 +274,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1786755517755554907, guid: edb5ad59c41828e4bad3a3de2419f846, type: 3}
       propertyPath: translationName
-      value: Already 1x1 Tile
+      value: Break a block into 1x1 pieces
       objectReference: {fileID: 0}
     - target: {fileID: 1953803898992045816, guid: edb5ad59c41828e4bad3a3de2419f846, type: 3}
       propertyPath: m_text
@@ -298,11 +298,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2600725477837294480, guid: edb5ad59c41828e4bad3a3de2419f846, type: 3}
       propertyPath: m_text
-      value: "The block you\u2019re trying to break is already 1\xD71."
+      value: Break a block into 1x1 pieces!
       objectReference: {fileID: 0}
     - target: {fileID: 2600725477837294480, guid: edb5ad59c41828e4bad3a3de2419f846, type: 3}
       propertyPath: m_fontSize
-      value: 32
+      value: 44.5
       objectReference: {fileID: 0}
     - target: {fileID: 2708919734349890879, guid: edb5ad59c41828e4bad3a3de2419f846, type: 3}
       propertyPath: m_Pivot.x
