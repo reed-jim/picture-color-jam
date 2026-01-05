@@ -12,6 +12,11 @@ public class TutorialManager : Singleton<TutorialManager>
         canvas.renderMode = renderMode;
     }
 
+    public void ChangeCanvasSortingOrder(int order)
+    {
+        canvas.sortingOrder = order;
+    }
+
     public void ShowOverlay()
     {
         overlay.gameObject.SetActive(true);

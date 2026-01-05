@@ -58,6 +58,7 @@ public class LevelTutorial : MonoBehaviour
         // ripple.gameObject.SetActive(false);
 
         TutorialManager.Instance.ChangeCanvasRenderMode(RenderMode.ScreenSpaceCamera);
+        TutorialManager.Instance.ChangeCanvasSortingOrder(1);
         TutorialManager.Instance.ShowOverlay();
 
         while (_step == 0)
@@ -117,6 +118,7 @@ public class LevelTutorial : MonoBehaviour
         if (_step == 0)
         {
             TutorialManager.Instance.ChangeCanvasRenderMode(RenderMode.ScreenSpaceOverlay);
+            TutorialManager.Instance.ChangeCanvasSortingOrder(0);
             TutorialManager.Instance.HideOverlay();
 
             _step++;
