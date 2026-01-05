@@ -13,17 +13,17 @@ using UnityEngine.UI;
 public class LevelTutorial : MonoBehaviour
 {
     [SerializeField] private Transform tutorialHand;
-    [SerializeField] private SpriteRenderer ripple;
+    // [SerializeField] private SpriteRenderer ripple;
     [SerializeField] private SpriteRenderer tutorialHandRenderer;
-    [SerializeField] private BlockMaterialPropertyBlock blockMaterialPropertyBlock;
 
+    [SerializeField] private Transform[] movePoints;
+
+    [SerializeField] private CanvasGroup tutorialCanvasGroup;
     [SerializeField] private TMP_Text tutorialText;
 
     #region PRIVATE FIELD
     private List<Tween> _tweens;
     private int _step;
-    private Vector2 _screenSizeWorld;
-    private float _initialTutorialHandPosition;
     #endregion
 
     #region EVENT
@@ -38,9 +38,6 @@ public class LevelTutorial : MonoBehaviour
         _tweens = new List<Tween>();
 
         StartCoroutine(TutorialStepOne());
-
-        _screenSizeWorld = CommonUtil.GetScreenSizeWorld(Camera.main);
-        _initialTutorialHandPosition = tutorialHand.position.z;
     }
 
     void OnDestroy()
@@ -55,46 +52,49 @@ public class LevelTutorial : MonoBehaviour
         WaitForSeconds waitForSeconds = new WaitForSeconds(0.3f);
 
         int phase = 0;
+        bool isInTransition = false;
 
-        ripple.color = ColorUtil.WithAlpha(ripple.color, 0);
-        ripple.gameObject.SetActive(false);
+        // ripple.color = ColorUtil.WithAlpha(ripple.color, 0);
+        // ripple.gameObject.SetActive(false);
+
+        TutorialManager.Instance.ChangeCanvasRenderMode(RenderMode.ScreenSpaceCamera);
+        TutorialManager.Instance.ShowOverlay();
 
         while (_step == 0)
         {
+            if (isInTransition)
+            {
+                yield return waitForSeconds;
+
+                continue;
+            }
+
             if (phase == 0)
             {
-                blockMaterialPropertyBlock.ShowOutline(true);
-
-                // Tween.Alpha(ripple, 1, duration: 0.3f);
+                Tween.Position(tutorialHand, movePoints[1].position, duration: 0.6f)
+                .OnComplete(() =>
+                {
+                    phase = 1;
+                    isInTransition = false;
+                });
             }
             else if (phase == 1)
             {
-                blockMaterialPropertyBlock.ShowOutline(false);
-
-                // Tween.Alpha(ripple, 0, duration: 0.3f);
-            }
-            else if (phase == 3)
-            {
-                _tweens.Add(Tween.PositionZ(tutorialHand, tutorialHand.position.z + 12, duration: 0.5f)
+                Tween.Alpha(tutorialHandRenderer, 0, duration: 0.3f)
                 .OnComplete(() =>
                 {
-                    _tweens.Add(Tween.Alpha(tutorialHandRenderer, 0, duration: 0.2f)
+                    tutorialHand.transform.position = movePoints[0].position;
+
+                    Tween.Alpha(tutorialHandRenderer, 1, duration: 0.3f)
                     .OnComplete(() =>
                     {
-                        tutorialHand.position = tutorialHand.position.ChangeZ(_initialTutorialHandPosition);
-
-                        _tweens.Add(Tween.Alpha(tutorialHandRenderer, 1, duration: 0.2f));
-                    }));
-                }
-                ));
+                        phase = 0;
+                        isInTransition = false;
+                    });
+                });
             }
 
-            phase++;
-
-            if (phase >= 4)
-            {
-                phase = 0;
-            }
+            isInTransition = true;
 
             yield return waitForSeconds;
         }
@@ -104,7 +104,7 @@ public class LevelTutorial : MonoBehaviour
 
     private void EndTutorial()
     {
-        _tweens.Add(Tween.Alpha(tutorialText, 0, duration: 0.3f));
+        _tweens.Add(Tween.Alpha(tutorialCanvasGroup, 0, duration: 0.3f));
         _tweens.Add(Tween.Alpha(tutorialHandRenderer, 0, duration: 0.3f).OnComplete(() =>
         {
             gameObject.SetActive(false);
@@ -116,6 +116,9 @@ public class LevelTutorial : MonoBehaviour
     {
         if (_step == 0)
         {
+            TutorialManager.Instance.ChangeCanvasRenderMode(RenderMode.ScreenSpaceOverlay);
+            TutorialManager.Instance.HideOverlay();
+
             _step++;
         }
     }
