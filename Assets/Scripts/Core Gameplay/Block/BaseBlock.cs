@@ -1191,11 +1191,9 @@ public class BaseBlock : MonoBehaviour
         blockServiceLocator.spriteRenderer.sortingOrder = GameConstants.maxSortingLayer - (int)endPosition.y;
         blockServiceLocator.iconMaskSortingGroup.sortingOrder = blockServiceLocator.spriteRenderer.sortingOrder + 1;
 
-        Tween.Position(transform, endPosition, duration: 0.8f)
+        Tween.Position(transform, endPosition, duration: 0.6f, ease: Ease.Linear)
         .OnComplete(() =>
         {
-            gameObject.SetActive(false);
-
             blockProperty.IsDone = true;
 
             blockCompletedEvent?.Invoke();
@@ -1203,7 +1201,7 @@ public class BaseBlock : MonoBehaviour
             if (isHideIconAfterDone)
             {
                 // wait for other blocks to be magneted
-                Tween.Delay(1 / 60f, onComplete: () =>
+                Tween.Delay(0.1f, onComplete: () =>
                 {
                     Vector2 originalCenter = OriginalCenter;
 
@@ -1221,6 +1219,11 @@ public class BaseBlock : MonoBehaviour
                     enableInputEvent?.Invoke(true);
                 });
             }
+
+            Tween.Delay(0.1f, onComplete: () =>
+            {
+                gameObject.SetActive(false);
+            });
         });
 
         // KEY

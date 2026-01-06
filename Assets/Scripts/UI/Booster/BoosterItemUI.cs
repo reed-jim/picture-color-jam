@@ -117,6 +117,7 @@ public class BoosterItemUI : MonoBehaviour
 
         if (isLocked)
         {
+            levelToUnlockText.TranslationName = "Level";
             levelToUnlockText.UpdateTranslationWithParameter(GameConstants.LEVEL_PARAMETER, $"{levelToUnlock}");
 
             boosterBackground.sprite = disabledBoosterBackgroundSprites;
