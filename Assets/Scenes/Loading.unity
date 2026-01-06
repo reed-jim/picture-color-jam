@@ -2376,6 +2376,80 @@ MonoBehaviour:
   - Language: Spanish
     Text: "\xA1Haz clic en cualquier objeto para romperlo!"
     Object: {fileID: 0}
+--- !u!1 &557535120
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 557535121}
+  - component: {fileID: 557535122}
+  m_Layer: 0
+  m_Name: Enter the next level and explore
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &557535121
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 557535120}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 937746293}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &557535122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 557535120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb15fa0e7301ff849bf4d6dcede7c12b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: LeanLocalization::Lean.Localization.LeanPhrase
+  data: 0
+  entries:
+  - Language: English
+    Text: Enter the next level and explore!
+    Object: {fileID: 0}
+  - Language: French
+    Text: Entrez dans le niveau suivant et explorez !
+    Object: {fileID: 0}
+  - Language: German
+    Text: "Betritt das n\xE4chste Level und erkunde es!"
+    Object: {fileID: 0}
+  - Language: Italian
+    Text: Entra nel livello successivo ed esplora!
+    Object: {fileID: 0}
+  - Language: Japanese
+    Text: "\u6B21\u306E\u30EC\u30D9\u30EB\u306B\u9032\u3093\u3067\u63A2\u7D22\u3057\u3088\u3046\uFF01"
+    Object: {fileID: 0}
+  - Language: Korean
+    Text: "\uB2E4\uC74C \uB808\uBCA8\uB85C \uB4E4\uC5B4\uAC00 \uD0D0\uD5D8\uD558\uC138\uC694!"
+    Object: {fileID: 0}
+  - Language: Portuguese
+    Text: "Entre no pr\xF3ximo n\xEDvel e explore!"
+    Object: {fileID: 0}
+  - Language: Russian
+    Text: "\u0412\u043E\u0439\u0434\u0438\u0442\u0435 \u043D\u0430 \u0441\u043B\u0435\u0434\u0443\u044E\u0449\u0438\u0439
+      \u0443\u0440\u043E\u0432\u0435\u043D\u044C \u0438 \u0438\u0441\u0441\u043B\u0435\u0434\u0443\u0439\u0442\u0435!"
+    Object: {fileID: 0}
+  - Language: Spanish
+    Text: Entra al siguiente nivel y explora!
+    Object: {fileID: 0}
 --- !u!1 &560393827
 GameObject:
   m_ObjectHideFlags: 0
@@ -4236,6 +4310,8 @@ Transform:
   - {fileID: 873199180}
   - {fileID: 2012538681}
   - {fileID: 470632993}
+  - {fileID: 2009022385}
+  - {fileID: 557535121}
   m_Father: {fileID: 1151450128}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &937746294
@@ -9316,6 +9392,82 @@ MonoBehaviour:
   userResourcesObserver: {fileID: 11400000, guid: 9f7c1dbaae3ef634e8295c3cc55ef7cf, type: 2}
   gameSetting: {fileID: 11400000, guid: a2c6756a77a053e48bc88637f241a4a1, type: 2}
   tilePrefab: {fileID: 2683738924053683454, guid: 2afd069626cabf34fbc47ab08308b3db, type: 3}
+--- !u!1 &2009022384
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2009022385}
+  - component: {fileID: 2009022386}
+  m_Layer: 0
+  m_Name: Wooden blocks move but never match
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2009022385
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2009022384}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 937746293}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2009022386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2009022384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb15fa0e7301ff849bf4d6dcede7c12b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: LeanLocalization::Lean.Localization.LeanPhrase
+  data: 0
+  entries:
+  - Language: English
+    Text: Wooden blocks move but <color=#FEBA00>never match!
+    Object: {fileID: 0}
+  - Language: French
+    Text: Les blocs en bois bougent mais <color=#FEBA00>ne correspondent jamais !</color>
+    Object: {fileID: 0}
+  - Language: German
+    Text: "Holzbl\xF6cke bewegen sich, aber <color=#FEBA00>passen niemals zusammen!</color>"
+    Object: {fileID: 0}
+  - Language: Italian
+    Text: I blocchi di legno si muovono ma <color=#FEBA00>non combaciano mai!</color>
+    Object: {fileID: 0}
+  - Language: Japanese
+    Text: "\u6728\u306E\u30D6\u30ED\u30C3\u30AF\u306F\u52D5\u304F\u304C\u3001<color=#FEBA00>\u6C7A\u3057\u3066\u4E00\u81F4\u3057\u306A\u3044\uFF01</color>"
+    Object: {fileID: 0}
+  - Language: Korean
+    Text: "\uB098\uBB34 \uBE14\uB85D\uC740 \uC6C0\uC9C1\uC774\uC9C0\uB9CC <color=#FEBA00>\uC808\uB300
+      \uB9DE\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4!</color>"
+    Object: {fileID: 0}
+  - Language: Portuguese
+    Text: Os blocos de madeira se movem, mas <color=#FEBA00>nunca combinam!</color>
+    Object: {fileID: 0}
+  - Language: Russian
+    Text: "\u0414\u0435\u0440\u0435\u0432\u044F\u043D\u043D\u044B\u0435 \u0431\u043B\u043E\u043A\u0438
+      \u0434\u0432\u0438\u0433\u0430\u044E\u0442\u0441\u044F, \u043D\u043E <color=#FEBA00>\u043D\u0438\u043A\u043E\u0433\u0434\u0430
+      \u043D\u0435 \u0441\u043E\u0432\u043F\u0430\u0434\u0430\u044E\u0442!</color>"
+    Object: {fileID: 0}
+  - Language: Spanish
+    Text: "Los bloques de madera se mueven, pero <color=#FEBA00>\xA1nunca coinciden!</color>"
+    Object: {fileID: 0}
 --- !u!1 &2012538680
 GameObject:
   m_ObjectHideFlags: 0

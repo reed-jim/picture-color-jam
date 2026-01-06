@@ -956,6 +956,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Base Block 2x3 L-Shaped Wooden
       objectReference: {fileID: 0}
+    - target: {fileID: 2737984465379859011, guid: 649e51711fd957c43a48973d15bf8eae, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2888597560069435234, guid: 649e51711fd957c43a48973d15bf8eae, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.4
