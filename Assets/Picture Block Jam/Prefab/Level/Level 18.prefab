@@ -518,7 +518,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2489781248037517929, guid: 6ce06c745a6a7914d8a218304cdb730b, type: 3}
       propertyPath: faction
-      value: 1
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 2853719485545313257, guid: 6ce06c745a6a7914d8a218304cdb730b, type: 3}
       propertyPath: m_SortingOrder
@@ -527,7 +527,7 @@ PrefabInstance:
     - target: {fileID: 2853719485545313257, guid: 6ce06c745a6a7914d8a218304cdb730b, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: a34016d7bb6b10d41a383739a02943a1, type: 2}
+      objectReference: {fileID: 2100000, guid: aeaa9f7ca8cc1e64d929ed8474ccf3fc, type: 2}
     - target: {fileID: 4670659062804301400, guid: 6ce06c745a6a7914d8a218304cdb730b, type: 3}
       propertyPath: m_Name
       value: Base Block 1x2
@@ -751,6 +751,14 @@ PrefabInstance:
     - target: {fileID: 2306988293553822891, guid: b56b67aab414dff449e42159fbb46c6c, type: 3}
       propertyPath: m_SortingOrder
       value: 28
+      objectReference: {fileID: 0}
+    - target: {fileID: 2306988293553822891, guid: b56b67aab414dff449e42159fbb46c6c, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 62bb2ed5e53ff0e478e485623e8d1ba1, type: 2}
+    - target: {fileID: 2671507296579687723, guid: b56b67aab414dff449e42159fbb46c6c, type: 3}
+      propertyPath: faction
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5138572858236315930, guid: b56b67aab414dff449e42159fbb46c6c, type: 3}
       propertyPath: m_Name
@@ -1090,10 +1098,10 @@ PrefabInstance:
     - target: {fileID: 168224561486474189, guid: 19014477ccb4ed04c93c913491e63e8a, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: a34016d7bb6b10d41a383739a02943a1, type: 2}
+      objectReference: {fileID: 2100000, guid: aeaa9f7ca8cc1e64d929ed8474ccf3fc, type: 2}
     - target: {fileID: 523173208033600077, guid: 19014477ccb4ed04c93c913491e63e8a, type: 3}
       propertyPath: faction
-      value: 1
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4984917428000399428, guid: 19014477ccb4ed04c93c913491e63e8a, type: 3}
       propertyPath: m_Sprite
@@ -1529,7 +1537,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1990367871104599644, guid: 9a9f03e54b0e52b4c80805de80e93509, type: 3}
       propertyPath: faction
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2200075568185593820, guid: 9a9f03e54b0e52b4c80805de80e93509, type: 3}
       propertyPath: m_SortingOrder
@@ -1538,7 +1546,7 @@ PrefabInstance:
     - target: {fileID: 2200075568185593820, guid: 9a9f03e54b0e52b4c80805de80e93509, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: f1bcb13797be6fb4f84217261cbfafce, type: 2}
+      objectReference: {fileID: 2100000, guid: 62bb2ed5e53ff0e478e485623e8d1ba1, type: 2}
     - target: {fileID: 6010085018695404949, guid: 9a9f03e54b0e52b4c80805de80e93509, type: 3}
       propertyPath: tileIndexes.Array.data[0].x
       value: 1

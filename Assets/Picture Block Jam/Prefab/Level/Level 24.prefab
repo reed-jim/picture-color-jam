@@ -50,10 +50,10 @@ PrefabInstance:
     - target: {fileID: 2306988293553822891, guid: b56b67aab414dff449e42159fbb46c6c, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 5786dbb151e45ee4b99b259db8587f60, type: 2}
+      objectReference: {fileID: 2100000, guid: b79072d642bed6744978430bf70d59ea, type: 2}
     - target: {fileID: 2671507296579687723, guid: b56b67aab414dff449e42159fbb46c6c, type: 3}
       propertyPath: faction
-      value: 2
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5138572858236315930, guid: b56b67aab414dff449e42159fbb46c6c, type: 3}
       propertyPath: m_Name
@@ -950,10 +950,10 @@ PrefabInstance:
     - target: {fileID: 7037637382121261263, guid: 68e4f6936c919ec4e8650cf7b52992bd, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 62bb2ed5e53ff0e478e485623e8d1ba1, type: 2}
+      objectReference: {fileID: 2100000, guid: f1bcb13797be6fb4f84217261cbfafce, type: 2}
     - target: {fileID: 7259167027148128591, guid: 68e4f6936c919ec4e8650cf7b52992bd, type: 3}
       propertyPath: faction
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -975,7 +975,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1990367871104599644, guid: 9a9f03e54b0e52b4c80805de80e93509, type: 3}
       propertyPath: faction
-      value: 2
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2200075568185593820, guid: 9a9f03e54b0e52b4c80805de80e93509, type: 3}
       propertyPath: m_SortingOrder
@@ -984,7 +984,7 @@ PrefabInstance:
     - target: {fileID: 2200075568185593820, guid: 9a9f03e54b0e52b4c80805de80e93509, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 5786dbb151e45ee4b99b259db8587f60, type: 2}
+      objectReference: {fileID: 2100000, guid: b79072d642bed6744978430bf70d59ea, type: 2}
     - target: {fileID: 6010085018695404949, guid: 9a9f03e54b0e52b4c80805de80e93509, type: 3}
       propertyPath: tileIndexes.Array.data[0].x
       value: 1
@@ -1529,7 +1529,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1990367871104599644, guid: 9a9f03e54b0e52b4c80805de80e93509, type: 3}
       propertyPath: faction
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2200075568185593820, guid: 9a9f03e54b0e52b4c80805de80e93509, type: 3}
       propertyPath: m_SortingOrder
@@ -1538,7 +1538,7 @@ PrefabInstance:
     - target: {fileID: 2200075568185593820, guid: 9a9f03e54b0e52b4c80805de80e93509, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 62bb2ed5e53ff0e478e485623e8d1ba1, type: 2}
+      objectReference: {fileID: 2100000, guid: f1bcb13797be6fb4f84217261cbfafce, type: 2}
     - target: {fileID: 6010085018695404949, guid: 9a9f03e54b0e52b4c80805de80e93509, type: 3}
       propertyPath: tileIndexes.Array.data[0].x
       value: 1

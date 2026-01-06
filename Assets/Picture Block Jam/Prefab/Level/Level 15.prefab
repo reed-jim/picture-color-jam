@@ -369,7 +369,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1990367871104599644, guid: 9a9f03e54b0e52b4c80805de80e93509, type: 3}
       propertyPath: faction
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2200075568185593820, guid: 9a9f03e54b0e52b4c80805de80e93509, type: 3}
       propertyPath: m_SortingOrder
@@ -378,7 +378,7 @@ PrefabInstance:
     - target: {fileID: 2200075568185593820, guid: 9a9f03e54b0e52b4c80805de80e93509, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 62bb2ed5e53ff0e478e485623e8d1ba1, type: 2}
+      objectReference: {fileID: 2100000, guid: f1bcb13797be6fb4f84217261cbfafce, type: 2}
     - target: {fileID: 6010085018695404949, guid: 9a9f03e54b0e52b4c80805de80e93509, type: 3}
       propertyPath: tileIndexes.Array.data[0].x
       value: 1
@@ -1420,10 +1420,10 @@ PrefabInstance:
     - target: {fileID: 8884027460580162402, guid: 7a99bead332e1b940940e60e81bcd270, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 62bb2ed5e53ff0e478e485623e8d1ba1, type: 2}
+      objectReference: {fileID: 2100000, guid: f1bcb13797be6fb4f84217261cbfafce, type: 2}
     - target: {fileID: 9105557157445612258, guid: 7a99bead332e1b940940e60e81bcd270, type: 3}
       propertyPath: faction
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
