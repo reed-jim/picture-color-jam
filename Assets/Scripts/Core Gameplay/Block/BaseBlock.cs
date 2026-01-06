@@ -1123,6 +1123,8 @@ public class BaseBlock : MonoBehaviour
 
             GamePersistentVariable.isUseHammerToBreak1x1Tile = true;
 
+            enableInputEvent?.Invoke(true);
+
             return;
         }
 
@@ -1191,7 +1193,7 @@ public class BaseBlock : MonoBehaviour
         blockServiceLocator.spriteRenderer.sortingOrder = GameConstants.maxSortingLayer - (int)endPosition.y;
         blockServiceLocator.iconMaskSortingGroup.sortingOrder = blockServiceLocator.spriteRenderer.sortingOrder + 1;
 
-        Tween.Position(transform, endPosition, duration: 0.6f, ease: Ease.Linear)
+        Tween.Position(transform, endPosition, duration: 0.6f)
         .OnComplete(() =>
         {
             blockProperty.IsDone = true;

@@ -188,14 +188,14 @@ public class BlockSelectionInput : MonoBehaviour
     {
         BaseBlock block = GetBlock(isIncludeCurrentBlock: false);
 
+        _inputMode = InputMode.Disabled;
+
         if (block != null)
         {
             block.Break();
 
             breakObjectEvent?.Invoke();
         }
-
-        _inputMode = InputMode.Disabled;
     }
 
     private void VacumnBlock()
