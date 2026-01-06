@@ -1200,10 +1200,15 @@ public class BaseBlock : MonoBehaviour
 
             blockCompletedEvent?.Invoke();
 
+            Tween.Delay(0.1f, onComplete: () =>
+            {
+                gameObject.SetActive(false);
+            });
+
             if (isHideIconAfterDone)
             {
                 // wait for other blocks to be magneted
-                Tween.Delay(0.1f, onComplete: () =>
+                Tween.Delay(1.1f * 0.1f, onComplete: () =>
                 {
                     Vector2 originalCenter = OriginalCenter;
 
@@ -1221,11 +1226,6 @@ public class BaseBlock : MonoBehaviour
                     enableInputEvent?.Invoke(true);
                 });
             }
-
-            Tween.Delay(0.1f, onComplete: () =>
-            {
-                gameObject.SetActive(false);
-            });
         });
 
         // KEY
