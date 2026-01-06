@@ -475,6 +475,32 @@ MonoBehaviour:
   - Language: English
     Text: Move a block to any free space!
     Object: {fileID: 0}
+  - Language: French
+    Text: "D\xE9placez un bloc vers n\u2019importe quel espace libre !"
+    Object: {fileID: 0}
+  - Language: German
+    Text: Bewege einen Block auf einen beliebigen freien Platz!
+    Object: {fileID: 0}
+  - Language: Italian
+    Text: Sposta un blocco in qualsiasi spazio libero!
+    Object: {fileID: 0}
+  - Language: Japanese
+    Text: "\u30D6\u30ED\u30C3\u30AF\u3092\u7A7A\u3044\u3066\u3044\u308B\u5834\u6240\u306B\u79FB\u52D5\u3057\u3088\u3046\uFF01"
+    Object: {fileID: 0}
+  - Language: Korean
+    Text: "\uBE14\uB85D\uC744 \uBE48 \uACF5\uAC04\uC73C\uB85C \uC774\uB3D9\uD558\uC138\uC694!"
+    Object: {fileID: 0}
+  - Language: Portuguese
+    Text: "Mova um bloco para qualquer espa\xE7o livre!"
+    Object: {fileID: 0}
+  - Language: Russian
+    Text: "\u041F\u0435\u0440\u0435\u043C\u0435\u0441\u0442\u0438\u0442\u0435 \u0431\u043B\u043E\u043A
+      \u0432 \u043B\u044E\u0431\u043E\u0435 \u0441\u0432\u043E\u0431\u043E\u0434\u043D\u043E\u0435
+      \u043C\u0435\u0441\u0442\u043E!"
+    Object: {fileID: 0}
+  - Language: Spanish
+    Text: Mueve un bloque a cualquier espacio libre!
+    Object: {fileID: 0}
 --- !u!1 &138870104
 GameObject:
   m_ObjectHideFlags: 0
