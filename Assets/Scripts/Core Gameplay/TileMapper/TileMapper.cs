@@ -146,8 +146,8 @@ public class TileMapper : Singleton<TileMapper>
 
         Vector2 position = new Vector2();
 
-        int offsetX = GamePersistentVariable.levelBoard.numColumn % 2 == 0 ? 1 : 0;
-        int offsetY = GamePersistentVariable.levelBoard.numRow % 2 == 0 ? 1 : 0;
+        float offsetX = GamePersistentVariable.levelBoard.numColumn % 2 == 0 ? 0.5f : 0;
+        float offsetY = GamePersistentVariable.levelBoard.numRow % 2 == 0 ? 0.5f : 0;
 
         position.x = (coordinator.x + offsetX) * tileSize;
         position.y = (coordinator.y + offsetY) * tileSize;

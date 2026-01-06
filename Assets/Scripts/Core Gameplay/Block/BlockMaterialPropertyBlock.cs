@@ -311,6 +311,11 @@ public class BlockMaterialPropertyBlock : MonoBehaviour
 
     public void ShowOutline(bool isShow, Color color)
     {
+        if (!isShow && !outlinable.enabled)
+        {
+            return;
+        }
+
         if (_outlineTween.isAlive)
         {
             _outlineTween.Stop();
