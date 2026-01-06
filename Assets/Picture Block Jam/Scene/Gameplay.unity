@@ -2690,7 +2690,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4795747372758310491, guid: 7d9b9d6ba328b6a48bab2d8b3a7ab757, type: 3}
       propertyPath: levelToUnlock
-      value: 0
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 4795747372758310491, guid: 7d9b9d6ba328b6a48bab2d8b3a7ab757, type: 3}
       propertyPath: activeIconSprites
@@ -3214,7 +3214,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4795747372758310491, guid: 7d9b9d6ba328b6a48bab2d8b3a7ab757, type: 3}
       propertyPath: levelToUnlock
-      value: 0
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 4795747372758310491, guid: 7d9b9d6ba328b6a48bab2d8b3a7ab757, type: 3}
       propertyPath: activeIconSprites
@@ -7036,7 +7036,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4795747372758310491, guid: 7d9b9d6ba328b6a48bab2d8b3a7ab757, type: 3}
       propertyPath: levelToUnlock
-      value: 0
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4795747372758310491, guid: 7d9b9d6ba328b6a48bab2d8b3a7ab757, type: 3}
       propertyPath: activeIconSprites
@@ -17076,7 +17076,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4795747372758310491, guid: 7d9b9d6ba328b6a48bab2d8b3a7ab757, type: 3}
       propertyPath: levelToUnlock
-      value: 0
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

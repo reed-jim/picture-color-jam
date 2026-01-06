@@ -27,6 +27,7 @@ public class BoosterItemUI : MonoBehaviour
     [SerializeField] private Button addButton;
 
     [SerializeField] private Sprite[] boosterBackgroundSprites;
+    [SerializeField] private Sprite activeBoosterBackgroundSprites;
     [SerializeField] private Sprite disabledBoosterBackgroundSprites;
     [SerializeField] private Sprite disabledIconSprites;
     [SerializeField] private Sprite activeIconSprites;
@@ -125,7 +126,7 @@ public class BoosterItemUI : MonoBehaviour
         {
             LevelDifficulty levelDifficulty = CommonUtil.GetLevelDifficulty(currentLevel.Value);
 
-            // boosterBackground.sprite = boosterBackgroundSprites[(int)levelDifficulty];
+            boosterBackground.sprite = activeBoosterBackgroundSprites;
             icon.sprite = activeIconSprites;
         }
     }

@@ -453,6 +453,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 267b2b8c023d126408b6ab5cf10f05f7, type: 3}
   - {fileID: 21300000, guid: d8bf8b50316a9f947aa7e7937c5a9657, type: 3}
   - {fileID: 21300000, guid: 75ada24f819524a4a99dd893c1d08511, type: 3}
+  activeBoosterBackgroundSprites: {fileID: 21300000, guid: 6ddcc7df8ed85f9439ddfe0a26017e69, type: 3}
   disabledBoosterBackgroundSprites: {fileID: 21300000, guid: 78abbd98cf5b4bf448ec9b23f3050ea6, type: 3}
   disabledIconSprites: {fileID: 21300000, guid: a6ae19b144b92994da1d80718d24d3d0, type: 3}
   activeIconSprites: {fileID: 21300000, guid: a90d6de9100326d47b0b7bdd72d5b150, type: 3}
