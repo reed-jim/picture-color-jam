@@ -34,6 +34,7 @@ public class BlockSelectionInput : MonoBehaviour
     void Awake()
     {
         GameStateMachine.enableInputEvent += EnableInput;
+        BaseBlock.enableInputEvent += EnableInput;
         BoosterUI.enableBreakObjectModeEvent += EnableBreakBlockMode;
         BoosterUI.disableBreakObjectModeEvent += DisableBreakBlockMode;
         BoosterUI.enableVacumnModeEvent += EnableVacumnMode;
@@ -44,6 +45,7 @@ public class BlockSelectionInput : MonoBehaviour
     void OnDestroy()
     {
         GameStateMachine.enableInputEvent -= EnableInput;
+        BaseBlock.enableInputEvent -= EnableInput;
         BoosterUI.enableBreakObjectModeEvent -= EnableBreakBlockMode;
         BoosterUI.disableBreakObjectModeEvent -= DisableBreakBlockMode;
         BoosterUI.enableVacumnModeEvent -= EnableVacumnMode;

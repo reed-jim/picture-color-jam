@@ -42,6 +42,10 @@ public class BaseBlock : MonoBehaviour
     private bool _isInTransition;
     #endregion
 
+    #region Teleport
+    private Vector2 _positionBeforeTeleport;
+    #endregion
+
     #region Property
     [SerializeField] public List<Vector2Int> originalTileIndexes;
     [SerializeField] public List<Vector2Int> tileIndexes;
@@ -130,6 +134,7 @@ public class BaseBlock : MonoBehaviour
     #endregion
 
     public static event Action<string, string> showNotificationEvent;
+    public static event Action<bool> enableInputEvent;
 
     #region MOVEMENT
     private Vector3 _moveDirection;
@@ -210,6 +215,7 @@ public class BaseBlock : MonoBehaviour
         BlockSelectionInput.vacumnEvent += Vacumn;
         BoosterItemUI.useBoosterEvent += UseTeleportBooster;
         useTeleportBoosterEvent += OnTeleportBoosterAlreadyUsed;
+        BoosterUI.disableBreakObjectModeEvent += OnTeleportBoosterAlreadyUsed;
 
         _tweens = new List<Tween>();
 
@@ -222,7 +228,7 @@ public class BaseBlock : MonoBehaviour
         // _blockRigidBody.isKinematic = true;
 
         speedMultiplier = 10f;
-        snappingLerpRatio = 1f / 2;
+        snappingLerpRatio = 1f / 3;
 
         _destinations = new Queue<Vector3>();
 
@@ -327,6 +333,7 @@ public class BaseBlock : MonoBehaviour
         BlockSelectionInput.vacumnEvent -= Vacumn;
         BoosterItemUI.useBoosterEvent -= UseTeleportBooster;
         useTeleportBoosterEvent -= OnTeleportBoosterAlreadyUsed;
+        BoosterUI.disableBreakObjectModeEvent -= OnTeleportBoosterAlreadyUsed;
 
         CommonUtil.StopAllTweens(_tweens);
 
@@ -600,6 +607,8 @@ public class BaseBlock : MonoBehaviour
                 blockProperty.IsTeleportBoosterReady = false;
                 blockProperty.IsUsingTeleportBooster = true;
 
+                _positionBeforeTeleport = transform.position;
+
                 blockServiceLocator.spriteRenderer.sortingOrder += 10;
                 blockServiceLocator.iconMaskSortingGroup.sortingOrder += 10;
 
@@ -608,7 +617,22 @@ public class BaseBlock : MonoBehaviour
         }
         else
         {
-            blockServiceLocator.spriteRenderer.sortingOrder = (int)(2 * (15 - transform.position.y));
+            if (blockProperty.IsUsingTeleportBooster)
+            {
+                blockServiceLocator.spriteRenderer.sortingOrder = 998;
+
+                float penetrationDepth = GetColliderPenetrationDepth();
+
+                if (penetrationDepth < 0.2f)
+                {
+                    BlockManager.Instance.CheckMergeBlocks();
+                }
+            }
+            else
+            {
+                blockServiceLocator.spriteRenderer.sortingOrder = (int)(2 * (15 - transform.position.y));
+            }
+
             blockServiceLocator.iconMaskSortingGroup.sortingOrder = blockServiceLocator.spriteRenderer.sortingOrder + 1;
         }
 
@@ -844,9 +868,7 @@ public class BaseBlock : MonoBehaviour
 
             blockProperty.IsUsingTeleportBooster = false;
 
-            // _blockRigidBody.MovePosition(transform.position);
-
-            StartCoroutine(ResolveBlockOverlapping(transform));
+            ResolveBlockOverlapping(transform);
         }
 
         return;
@@ -1229,7 +1251,7 @@ public class BaseBlock : MonoBehaviour
         }
     }
 
-    IEnumerator ResolveBlockOverlapping(Transform block)
+    private void ResolveBlockOverlapping(Transform block)
     {
         WaitForSeconds waitForSeconds = new WaitForSeconds(1f / 60);
         float step = 0.2f;
@@ -1242,34 +1264,89 @@ public class BaseBlock : MonoBehaviour
         int maxCount = 32;
         int count = 0;
 
-        while (count < maxCount)
+        // Auto move out of other blocks
+        // while (count < maxCount)
+        // {
+        //     Collider2D col = blockServiceLocator.blockCollider2D;
+
+        //     Collider2D[] hits = Physics2D.OverlapBoxAll(col.bounds.center, col.bounds.size, 0, LayerMask.GetMask("Default"));
+
+        //     if (hits.Length == 0)
+        //     {
+        //         yield break;
+        //     }
+        //     else
+        //     {
+
+        //     }
+
+        //     foreach (var h in hits)
+        //     {
+        //         if (h == col) continue;
+
+        //         var dist = col.Distance(h);     // gives direction + distance out of overlap
+        //         col.transform.position += 0.1f * (Vector3)dist.normal * dist.distance;
+        //     }
+
+        //     count++;
+
+        //     yield return waitForSeconds;
+        // }
+
+        float penetrationDepth = GetColliderPenetrationDepth();
+
+        if (penetrationDepth > 0.2f)
         {
-            Collider2D col = blockServiceLocator.blockCollider2D;
+            enableInputEvent?.Invoke(false);
 
-            Collider2D[] hits = Physics2D.OverlapBoxAll(col.bounds.center, col.bounds.size, 0, LayerMask.GetMask("Default"));
+            blockServiceLocator.spriteRenderer.sortingOrder = 998;
+            blockServiceLocator.iconMaskSortingGroup.sortingOrder = blockServiceLocator.spriteRenderer.sortingOrder + 1;
 
-            if (hits.Length == 0)
+            Tween.Position(transform, _positionBeforeTeleport, duration: 0.3f)
+            .OnComplete(() =>
             {
-                yield break;
-            }
+                Snap();
+
+                enableInputEvent?.Invoke(true);
+            });
+        }
+        else
+        {
+            Snap();
+        }
+
+        blockProperty.isResolveBlockOverlapping = false;
+    }
+
+    private float GetColliderPenetrationDepth()
+    {
+        Collider2D col = blockServiceLocator.blockCollider2D;
+
+        Collider2D[] hits = Physics2D.OverlapBoxAll(col.bounds.center, col.bounds.size, 0, LayerMask.GetMask("Default"));
+
+        if (hits.Length == 0)
+        {
+            return 0;
+        }
+        else
+        {
+            float penetrationDepth = 0;
 
             foreach (var h in hits)
             {
-                if (h == col) continue;
+                if (h != col)
+                {
+                    ColliderDistance2D dist = h.Distance(col);
 
-                var dist = col.Distance(h);     // gives direction + distance out of overlap
-                col.transform.position += 0.1f * (Vector3)dist.normal * dist.distance;
+                    if (-dist.distance > penetrationDepth)
+                    {
+                        penetrationDepth = -dist.distance;
+                    }
+                }
             }
 
-            count++;
-
-            yield return waitForSeconds;
+            return penetrationDepth;
         }
-
-        GetSnapPosition();
-
-        blockProperty.isResolveBlockOverlapping = false;
-        _isSnapping = false;
     }
     #endregion
 

@@ -2007,6 +2007,80 @@ MonoBehaviour:
   - Language: Spanish
     Text: "\xBFEst\xE1s seguro de que quieres volver a jugar el nivel?"
     Object: {fileID: 0}
+--- !u!1 &470632992
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 470632993}
+  - component: {fileID: 470632994}
+  m_Layer: 0
+  m_Name: You have unlocked the Teleport
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &470632993
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 470632992}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 937746293}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &470632994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 470632992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb15fa0e7301ff849bf4d6dcede7c12b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: LeanLocalization::Lean.Localization.LeanPhrase
+  data: 0
+  entries:
+  - Language: English
+    Text: You have unlocked the <color=#FEBA00>Teleport!
+    Object: {fileID: 0}
+  - Language: French
+    Text: "Vous avez d\xE9bloqu\xE9 le <color=#FEBA00>T\xE9l\xE9port!</color>"
+    Object: {fileID: 0}
+  - Language: German
+    Text: Du hast den <color=#FEBA00>Teleport!</color> freigeschaltet
+    Object: {fileID: 0}
+  - Language: Italian
+    Text: Hai sbloccato il <color=#FEBA00>Teletrasporto!</color>
+    Object: {fileID: 0}
+  - Language: Japanese
+    Text: "<color=#FEBA00>\u30C6\u30EC\u30DD\u30FC\u30C8!</color> \u304C\u30A2\u30F3\u30ED\u30C3\u30AF\u3055\u308C\u307E\u3057\u305F"
+    Object: {fileID: 0}
+  - Language: Korean
+    Text: "<color=#FEBA00>\uD154\uB808\uD3EC\uD2B8!</color>\uAC00 \uC7A0\uAE08 \uD574\uC81C\uB418\uC5C8\uC2B5\uB2C8\uB2E4"
+    Object: {fileID: 0}
+  - Language: Portuguese
+    Text: "Voc\xEA desbloqueou o <color=#FEBA00>Teleporte!</color>"
+    Object: {fileID: 0}
+  - Language: Russian
+    Text: "\u0412\u044B \u0440\u0430\u0437\u0431\u043B\u043E\u043A\u0438\u0440\u043E\u0432\u0430\u043B\u0438
+      <color=#FEBA00>\u0422\u0435\u043B\u0435\u043F\u043E\u0440\u0442!</color>"
+    Object: {fileID: 0}
+  - Language: Spanish
+    Text: Has desbloqueado el <color=#FEBA00>Teletransporte!</color>
+    Object: {fileID: 0}
 --- !u!1 &486986444
 GameObject:
   m_ObjectHideFlags: 0
@@ -4161,6 +4235,7 @@ Transform:
   - {fileID: 744834707}
   - {fileID: 873199180}
   - {fileID: 2012538681}
+  - {fileID: 470632993}
   m_Father: {fileID: 1151450128}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &937746294

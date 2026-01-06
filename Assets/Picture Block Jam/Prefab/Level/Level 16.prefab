@@ -635,11 +635,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1786755517755554907, guid: edb5ad59c41828e4bad3a3de2419f846, type: 3}
       propertyPath: translationName
-      value: Already 1x1 Tile
+      value: Move a block to any free space
       objectReference: {fileID: 0}
     - target: {fileID: 1953803898992045816, guid: edb5ad59c41828e4bad3a3de2419f846, type: 3}
       propertyPath: m_text
-      value: You have unlocked the Hammer!
+      value: You have unlocked the <color=#FEBA00>Teleport!
       objectReference: {fileID: 0}
     - target: {fileID: 2053890951247215826, guid: edb5ad59c41828e4bad3a3de2419f846, type: 3}
       propertyPath: m_SizeDelta.x
@@ -659,11 +659,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2600725477837294480, guid: edb5ad59c41828e4bad3a3de2419f846, type: 3}
       propertyPath: m_text
-      value: "The block you\u2019re trying to break is already 1\xD71."
+      value: Move a block to any free space!
       objectReference: {fileID: 0}
     - target: {fileID: 2600725477837294480, guid: edb5ad59c41828e4bad3a3de2419f846, type: 3}
       propertyPath: m_fontSize
-      value: 32
+      value: 41.65
       objectReference: {fileID: 0}
     - target: {fileID: 2708919734349890879, guid: edb5ad59c41828e4bad3a3de2419f846, type: 3}
       propertyPath: m_Pivot.x
@@ -747,7 +747,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3516381547901516776, guid: edb5ad59c41828e4bad3a3de2419f846, type: 3}
       propertyPath: translationName
-      value: You have unlocked the Hammer
+      value: You have unlocked the Teleport
       objectReference: {fileID: 0}
     - target: {fileID: 4969964030143539778, guid: edb5ad59c41828e4bad3a3de2419f846, type: 3}
       propertyPath: m_Sprite
