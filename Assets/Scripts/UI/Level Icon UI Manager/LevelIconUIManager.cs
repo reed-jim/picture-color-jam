@@ -10,6 +10,7 @@ public class LevelIconUIManager : Singleton<LevelIconUIManager>
     [SerializeField] private LevelIconUIItem itemPrefab;
     [SerializeField] private Canvas canvas;
     [SerializeField] private RectTransform container;
+    [SerializeField] private CanvasGroup canvasGroup;
 
     [SerializeField] private LevelIconUIItem[] items;
 
@@ -98,22 +99,37 @@ public class LevelIconUIManager : Singleton<LevelIconUIManager>
             Tween.LocalPosition(item.movingIcon.rectTransform, item.icon.rectTransform.localPosition, duration: 0.5f, ease: Ease.InOutSine)
             .OnComplete(() =>
             {
+                TweenUtil.ScaleUpDown(item.container, 1.3f, onCompleted: () =>
+                {
+
+                });
+
                 item.tick.gameObject.SetActive(true);
                 item.tick.color = ColorUtil.WithAlpha(Color.white, 0);
-                item.tick.transform.localScale = 1.5f * Vector3.one;
+                item.tick.transform.localScale = 2f * Vector3.one;
 
-                Tween.Alpha(item.tick, 1, duration: 0.3f);
-                Tween.Scale(item.tick.transform, 0.5f, duration: 0.3f);
-
-                TweenUtil.PunchHide(item.container, strength: 1.3f, duration: 0.6f, onCompleted: () =>
+                Tween.Alpha(item.tick, 1, duration: 0.3f, startDelay: 0.15f);
+                Tween.Scale(item.tick.transform, 0.5f, duration: 0.3f, startDelay: 0.15f)
+                .OnComplete(() =>
                 {
-                    PlaceElements(uniqueIcons.Length, 0.3f / uniqueIcons.Length);
+                    Tween.EulerAngles(item.container, item.container.eulerAngles, new Vector3(0, 1 * 360, 0), duration: 0.3f)
+                    .OnUpdate(target: item.tick.transform, (target, tween) =>
+                    {
+                        target.eulerAngles = Vector3.zero;
+                    })
+                    .OnComplete(() =>
+                    {
+                        TweenUtil.PunchHide(item.container, strength: 1.2f, duration: 0.4f, onCompleted: () =>
+                        {
+                            PlaceElements(uniqueIcons.Length, 0.3f / uniqueIcons.Length);
 
-                    GamePersistentVariable.hidingIconQueue.Dequeue();
+                            GamePersistentVariable.hidingIconQueue.Dequeue();
 
-                    BlockManager.Instance.CheckWin();
+                            BlockManager.Instance.CheckWin();
 
-                    GamePersistentVariable.isPlayingHideIconAnimation = false;
+                            GamePersistentVariable.isPlayingHideIconAnimation = false;
+                        });
+                    });
                 });
             });
         });
