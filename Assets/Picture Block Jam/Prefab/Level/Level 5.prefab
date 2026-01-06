@@ -98,7 +98,7 @@ PrefabInstance:
     - target: {fileID: 3909725371347471291, guid: db8d087b2129ada4eac9952eb61083d8, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 1bd05329771dc624cb7fc9748e1566cb, type: 3}
+      objectReference: {fileID: 21300000, guid: d478cdbb06a5ce14eb86902b9a06ab60, type: 3}
     - target: {fileID: 4384921979947270779, guid: db8d087b2129ada4eac9952eb61083d8, type: 3}
       propertyPath: originalTileIndexes.Array.data[1].x
       value: 1
@@ -922,7 +922,7 @@ PrefabInstance:
     - target: {fileID: 6480787302926533717, guid: 9a9f03e54b0e52b4c80805de80e93509, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 1bd05329771dc624cb7fc9748e1566cb, type: 3}
+      objectReference: {fileID: 21300000, guid: d478cdbb06a5ce14eb86902b9a06ab60, type: 3}
     - target: {fileID: 7755232753190245710, guid: 9a9f03e54b0e52b4c80805de80e93509, type: 3}
       propertyPath: m_SortingOrder
       value: 14

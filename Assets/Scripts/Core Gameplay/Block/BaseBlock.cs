@@ -213,7 +213,7 @@ public class BaseBlock : MonoBehaviour
     private void Awake()
     {
         BlockSelectionInput.vacumnEvent += Vacumn;
-        BoosterItemUI.useBoosterEvent += UseTeleportBooster;
+        BoosterUI.enableTeleportModeEvent += UseTeleportBooster;
         useTeleportBoosterEvent += OnTeleportBoosterAlreadyUsed;
         BoosterUI.disableBreakObjectModeEvent += OnTeleportBoosterAlreadyUsed;
 
@@ -331,7 +331,7 @@ public class BaseBlock : MonoBehaviour
     private void OnDestroy()
     {
         BlockSelectionInput.vacumnEvent -= Vacumn;
-        BoosterItemUI.useBoosterEvent -= UseTeleportBooster;
+        BoosterUI.enableTeleportModeEvent -= UseTeleportBooster;
         useTeleportBoosterEvent -= OnTeleportBoosterAlreadyUsed;
         BoosterUI.disableBreakObjectModeEvent -= OnTeleportBoosterAlreadyUsed;
 
@@ -1245,12 +1245,9 @@ public class BaseBlock : MonoBehaviour
         }
     }
 
-    private void UseTeleportBooster(BoosterType booster)
+    private void UseTeleportBooster()
     {
-        if (booster == BoosterType.Teleport)
-        {
-            blockProperty.IsTeleportBoosterReady = true;
-        }
+        blockProperty.IsTeleportBoosterReady = true;
     }
 
     private void OnTeleportBoosterAlreadyUsed()

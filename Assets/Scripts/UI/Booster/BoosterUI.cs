@@ -38,6 +38,7 @@ public class BoosterUI : MonoBehaviour
     public static event Action enableBreakObjectModeEvent;
     public static event Action disableBreakObjectModeEvent;
     public static event Action<bool> enableVacumnModeEvent;
+    public static event Action enableTeleportModeEvent;
     public static event Action clearAllScrewPortsEvent;
     public static event Action<BoosterType> showBuyBoosterPopupEvent;
     public static event Action<int> updateBoosterQuantityEvent;
@@ -319,6 +320,8 @@ public class BoosterUI : MonoBehaviour
         _tweens.Add(Tween.LocalPositionY(breakModeContainer, _initialBoosterContainerPosition.y + 0.0f * breakModeContainer.sizeDelta.y, duration: transitionTime)
         .OnComplete(() =>
         {
+            enableTeleportModeEvent?.Invoke();
+            
             _isInTransition = false;
         }));
     }

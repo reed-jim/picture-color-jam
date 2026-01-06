@@ -55,12 +55,12 @@ public class BlockMaterialPropertyBlock : MonoBehaviour
     {
         LevelLoader.updateBoundEvent += SetMaskingBound;
         BoosterUI.enableBreakObjectModeEvent += OnHammerBoosterEnabled;
-        BlockSelectionInput.breakObjectEvent += OnBoosterDisabled;
         BoosterUI.enableVacumnModeEvent += OnBoosterStateChanged;
-        BlockSelectionInput.vacumnEvent += OnVacumnCompleted;
-        BoosterItemUI.useBoosterEvent += OnTeleportBoosterEnabled;
-        BaseBlock.useTeleportBoosterEvent += OnBoosterDisabled;
+        BoosterUI.enableTeleportModeEvent += OnTeleportBoosterEnabled;
         BoosterUI.disableBreakObjectModeEvent += OnBoosterDisabled;
+        BlockSelectionInput.breakObjectEvent += OnBoosterDisabled;
+        BlockSelectionInput.vacumnEvent += OnVacumnCompleted;
+        BaseBlock.useTeleportBoosterEvent += OnBoosterDisabled;
 
         _tweens = new List<Tween>();
         _outlineTweens = new List<Tween>();
@@ -78,12 +78,12 @@ public class BlockMaterialPropertyBlock : MonoBehaviour
     {
         LevelLoader.updateBoundEvent -= SetMaskingBound;
         BoosterUI.enableBreakObjectModeEvent -= OnHammerBoosterEnabled;
-        BlockSelectionInput.breakObjectEvent -= OnBoosterDisabled;
         BoosterUI.enableVacumnModeEvent -= OnBoosterStateChanged;
-        BlockSelectionInput.vacumnEvent -= OnVacumnCompleted;
-        BoosterItemUI.useBoosterEvent -= OnTeleportBoosterEnabled;
-        BaseBlock.useTeleportBoosterEvent -= OnBoosterDisabled;
+        BoosterUI.enableTeleportModeEvent -= OnTeleportBoosterEnabled;
         BoosterUI.disableBreakObjectModeEvent -= OnBoosterDisabled;
+        BlockSelectionInput.breakObjectEvent -= OnBoosterDisabled;
+        BlockSelectionInput.vacumnEvent -= OnVacumnCompleted;
+        BaseBlock.useTeleportBoosterEvent -= OnBoosterDisabled;
 
         CommonUtil.StopAllTweens(_tweens);
         CommonUtil.StopAllTweens(_outlineTweens);
@@ -391,9 +391,9 @@ public class BlockMaterialPropertyBlock : MonoBehaviour
         }
     }
 
-    private void OnTeleportBoosterEnabled(BoosterType boosterType)
+    private void OnTeleportBoosterEnabled()
     {
-        if (boosterType == BoosterType.Teleport && blockServiceLocator.block.IsValidToMerge())
+        if (blockServiceLocator.block.IsValidToMerge())
         {
             ShowOutline(true, Color.green);
         }
