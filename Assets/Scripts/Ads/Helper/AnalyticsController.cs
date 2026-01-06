@@ -678,6 +678,7 @@ public enum ActionWatchVideo
     Vacumn,
     UnlockScrewBox,
     AddTime,
+    Teleport,
     MultiplyCoinWinLevel
 }
 

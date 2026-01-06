@@ -91,7 +91,7 @@ public class BuyBoosterPopup : BasePopup
 
         if (userResourcesObserver.UserResources.CoinQuantity >= boosterDataObserver.BoosterCosts[boosterIndex])
         {
-            if (_boosterType == BoosterType.BreakObject || _boosterType == BoosterType.Vacumn)
+            if (_boosterType == BoosterType.BreakObject || _boosterType == BoosterType.Vacumn || _boosterType == BoosterType.Teleport)
             {
                 userResourcesObserver.ChangeBoosterQuantity(boosterIndex, 1);
 
@@ -138,6 +138,7 @@ public class BuyBoosterPopup : BasePopup
             case BoosterType.FreezeTime: actionWatchVideo = ActionWatchVideo.FreezeTime; break;
             case BoosterType.BreakObject: actionWatchVideo = ActionWatchVideo.BreakObject; break;
             case BoosterType.Vacumn: actionWatchVideo = ActionWatchVideo.Vacumn; break;
+            case BoosterType.Teleport: actionWatchVideo = ActionWatchVideo.Teleport; break;
             default: actionWatchVideo = ActionWatchVideo.FreezeTime; break;
         }
 
@@ -147,6 +148,8 @@ public class BuyBoosterPopup : BasePopup
     private void OnRewaredAdCompleted()
     {
         userResourcesObserver.ChangeBoosterQuantity((int)_boosterType, 1);
+
+        updateBoosterQuantityEvent?.Invoke((int)_boosterType);
 
         Hide(onCompletedAction: () =>
         {
