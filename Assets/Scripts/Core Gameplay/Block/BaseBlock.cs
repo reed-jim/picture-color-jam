@@ -1128,9 +1128,11 @@ public class BaseBlock : MonoBehaviour
 
         BoosterHammer hammer = ObjectPoolingEverything.GetFromPool<BoosterHammer>(GameConstants.HAMMER);
 
+        enableInputEvent?.Invoke(false);
+
         hammer.HitTarget(transform, onCompletedAction: () =>
         {
-            Tween.ShakeScale(transform, 1.5f * Vector3.one, duration: 0.3f).OnComplete(() =>
+            Tween.ShakeScale(transform, 1.2f * Vector3.one, duration: 0.3f).OnComplete(() =>
             {
                 gameObject.SetActive(false);
 
@@ -1139,6 +1141,7 @@ public class BaseBlock : MonoBehaviour
                 blockProperty.IsDone = true;
 
                 blockCompletedEvent?.Invoke();
+                enableInputEvent?.Invoke(true);
             });
         });
 
@@ -1214,6 +1217,8 @@ public class BaseBlock : MonoBehaviour
                     }
 
                     LevelIconUIManager.Instance.HideIcon(Vector3.zero, spriteType);
+
+                    enableInputEvent?.Invoke(true);
                 });
             }
         });

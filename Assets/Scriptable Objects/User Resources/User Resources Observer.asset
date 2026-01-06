@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: User Resources Observer
   m_EditorClassIdentifier: 
   userResources:
-    coinQuantity: 140
-    boosterQuantities: 01000000620000005f0000005f000000
+    coinQuantity: 240
+    boosterQuantities: 02000000020000000200000002000000
     lives: 5

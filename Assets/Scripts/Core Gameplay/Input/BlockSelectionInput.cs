@@ -193,9 +193,9 @@ public class BlockSelectionInput : MonoBehaviour
             block.Break();
 
             breakObjectEvent?.Invoke();
-
-            _inputMode = InputMode.Select;
         }
+
+        _inputMode = InputMode.Disabled;
     }
 
     private void VacumnBlock()
@@ -222,7 +222,7 @@ public class BlockSelectionInput : MonoBehaviour
             vacumnEvent?.Invoke(block.spriteType);
         });
 
-        _inputMode = InputMode.Select;
+        _inputMode = InputMode.Disabled;
     }
 
     private void EnableInput(bool isEnable)

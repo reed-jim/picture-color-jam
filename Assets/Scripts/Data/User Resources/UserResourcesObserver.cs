@@ -29,7 +29,7 @@ public class UserResourcesObserver : ScriptableObject
         
         for (int i = 0; i < defaultUserResources.BoosterQuantities.Length; i++)
         {
-            defaultUserResources.BoosterQuantities[i] = 99;
+            defaultUserResources.BoosterQuantities[i] = 2;
         }
 
         userResources = DataUtility.Load(GameConstants.USER_RESOURCES, defaultUserResources);
