@@ -512,7 +512,9 @@ public class LevelLoader : MonoBehaviour
 
         Debug.Log($"AutoFitLevelCamera {expectedSizeX} {expectedSizeY} {horizontalFOV} {verticalFOV}");
 
-        float finalCameraFOV = Mathf.Max(verticalFOV, horizontalFOV);
+        float moreZoom = 0.97f;
+
+        float finalCameraFOV = moreZoom * Mathf.Max(verticalFOV, horizontalFOV);
 
         camera.fieldOfView = finalCameraFOV;
 
