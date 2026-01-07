@@ -418,8 +418,20 @@ public class BoardGeneratorTool : EditorWindow
                     toGeneratedBlocks.Add(selectedPrefab);
                     toGeneratedBlocks.Add(pairBlock);
 
+                    List<Sprite> filtered;
+
+                    if (selectedPrefab.NumOriginalTileX >= selectedPrefab.NumOriginalTileY)
+                    {
+                        filtered = iconContainer.factionSprites.Where(s => ((float)s.texture.height / s.texture.width) < 1.5f).ToList();
+                    }
+                    else
+                    {
+                        filtered = iconContainer.factionSprites.Where(s => ((float)s.texture.height / s.texture.width) > 1.5f).ToList();
+                    }
+
                     GameFaction faction = (GameFaction)Random.Range(0, 10);
-                    int iconIndex = Random.Range(0, iconContainer.factionSprites.Length);
+                    int iconIndex = Random.Range(0, filtered.Count);
+                    iconIndex = iconContainer.factionSprites.ToList().IndexOf(filtered[iconIndex]);
 
                     toGeneratedFaction.Add(faction);
                     toGeneratedFaction.Add(faction);
