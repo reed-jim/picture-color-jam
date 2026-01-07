@@ -173,12 +173,10 @@ public class BlockManager : Singleton<BlockManager>
                     }
                 }
 
-                // if (GamePersistentVariable.IsVibrate)
-                // {
-                //     HapticFeedback.HeavyFeedback();
-                // }
-
-                HapticFeedback.MediumFeedback();
+                if (GamePersistentVariable.IsVibrate)
+                {
+                    HapticFeedback.MediumFeedback();
+                }
 
                 for (int i = 0; i < group.Count; i++)
                 {
