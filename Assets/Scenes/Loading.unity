@@ -391,6 +391,89 @@ MonoBehaviour:
   - Language: English
     Text: Completes a specific picture!
     Object: {fileID: 0}
+--- !u!1 &42131344
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 42131345}
+  - component: {fileID: 42131346}
+  m_Layer: 0
+  m_Name: Stone Blockes can't move and don't match
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &42131345
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 42131344}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 937746293}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &42131346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 42131344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb15fa0e7301ff849bf4d6dcede7c12b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: LeanLocalization::Lean.Localization.LeanPhrase
+  data: 0
+  entries:
+  - Language: English
+    Text: Stone Blocks <color=#FEBA00>can't move <color=#FFF>and <color=#FEBA00>don't
+      match!
+    Object: {fileID: 0}
+  - Language: French
+    Text: Les blocs de pierre <color=#FEBA00>ne peuvent pas bouger</color> <color=#FFF>et</color>
+      <color=#FEBA00>ne correspondent pas !</color>
+    Object: {fileID: 0}
+  - Language: German
+    Text: "Steinbl\xF6cke <color=#FEBA00>k\xF6nnen sich nicht bewegen</color> <color=#FFF>und</color>
+      <color=#FEBA00>passen nicht zusammen!</color>"
+    Object: {fileID: 0}
+  - Language: Italian
+    Text: I blocchi di pietra <color=#FEBA00>non possono muoversi</color> <color=#FFF>e</color>
+      <color=#FEBA00>non combaciano!</color>
+    Object: {fileID: 0}
+  - Language: Japanese
+    Text: "\u77F3\u306E\u30D6\u30ED\u30C3\u30AF\u306F<color=#FEBA00>\u52D5\u304B\u305B\u305A</color>
+      <color=#FFF>\u3001</color> <color=#FEBA00>\u4E00\u81F4\u3057\u307E\u305B\u3093\uFF01</color>"
+    Object: {fileID: 0}
+  - Language: Korean
+    Text: "\uB3CC \uBE14\uB85D\uC740 <color=#FEBA00>\uC6C0\uC9C1\uC77C \uC218 \uC5C6\uACE0</color>
+      <color=#FFF>\uADF8\uB9AC\uACE0</color> <color=#FEBA00>\uB9DE\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4!</color>"
+    Object: {fileID: 0}
+  - Language: Portuguese
+    Text: "Blocos de pedra <color=#FEBA00>n\xE3o podem se mover</color> <color=#FFF>e</color>
+      <color=#FEBA00>n\xE3o combinam!</color>"
+    Object: {fileID: 0}
+  - Language: Russian
+    Text: "\u041A\u0430\u043C\u0435\u043D\u043D\u044B\u0435 \u0431\u043B\u043E\u043A\u0438
+      <color=#FEBA00>\u043D\u0435 \u0434\u0432\u0438\u0433\u0430\u044E\u0442\u0441\u044F</color>
+      <color=#FFF>\u0438</color> <color=#FEBA00>\u043D\u0435 \u0441\u043E\u0432\u043F\u0430\u0434\u0430\u044E\u0442!</color>"
+    Object: {fileID: 0}
+  - Language: Spanish
+    Text: Los bloques de piedra <color=#FEBA00>no se pueden mover</color> <color=#FFF>y</color>
+      <color=#FEBA00>no coinciden!</color>
+    Object: {fileID: 0}
 --- !u!1 &66585036
 GameObject:
   m_ObjectHideFlags: 0
@@ -1361,6 +1444,79 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c526e242a058da74dbb538e159d1e9a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &296266081
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 296266082}
+  - component: {fileID: 296266083}
+  m_Layer: 0
+  m_Name: Wooden Block
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &296266082
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 296266081}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 937746293}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &296266083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 296266081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb15fa0e7301ff849bf4d6dcede7c12b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: LeanLocalization::Lean.Localization.LeanPhrase
+  data: 0
+  entries:
+  - Language: English
+    Text: Wooden Block
+    Object: {fileID: 0}
+  - Language: French
+    Text: Bloc en bois
+    Object: {fileID: 0}
+  - Language: German
+    Text: Holzblock
+    Object: {fileID: 0}
+  - Language: Italian
+    Text: Blocco di legno
+    Object: {fileID: 0}
+  - Language: Japanese
+    Text: "\u6728\u306E\u30D6\u30ED\u30C3\u30AF"
+    Object: {fileID: 0}
+  - Language: Korean
+    Text: "\uB098\uBB34 \uBE14\uB85D"
+    Object: {fileID: 0}
+  - Language: Portuguese
+    Text: Bloco de madeira
+    Object: {fileID: 0}
+  - Language: Russian
+    Text: "\u0414\u0435\u0440\u0435\u0432\u044F\u043D\u043D\u044B\u0439 \u0431\u043B\u043E\u043A"
+    Object: {fileID: 0}
+  - Language: Spanish
+    Text: Bloque de madera
+    Object: {fileID: 0}
 --- !u!1 &301152063
 GameObject:
   m_ObjectHideFlags: 0
@@ -1614,6 +1770,79 @@ MonoBehaviour:
     Object: {fileID: 0}
   - Language: Spanish
     Text: Tutorial
+    Object: {fileID: 0}
+--- !u!1 &365412808
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 365412809}
+  - component: {fileID: 365412810}
+  m_Layer: 0
+  m_Name: Stone Block
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &365412809
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 365412808}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 937746293}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &365412810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 365412808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb15fa0e7301ff849bf4d6dcede7c12b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: LeanLocalization::Lean.Localization.LeanPhrase
+  data: 0
+  entries:
+  - Language: English
+    Text: Stone Block
+    Object: {fileID: 0}
+  - Language: French
+    Text: Bloc de pierre
+    Object: {fileID: 0}
+  - Language: German
+    Text: Steinblock
+    Object: {fileID: 0}
+  - Language: Italian
+    Text: Blocco di pietra
+    Object: {fileID: 0}
+  - Language: Japanese
+    Text: "\u77F3\u30D6\u30ED\u30C3\u30AF"
+    Object: {fileID: 0}
+  - Language: Korean
+    Text: "\uB3CC \uBE14\uB85D"
+    Object: {fileID: 0}
+  - Language: Portuguese
+    Text: Bloco de pedra
+    Object: {fileID: 0}
+  - Language: Russian
+    Text: "\u041A\u0430\u043C\u0435\u043D\u043D\u044B\u0439 \u0431\u043B\u043E\u043A"
+    Object: {fileID: 0}
+  - Language: Spanish
+    Text: Bloque de piedra
     Object: {fileID: 0}
 --- !u!1001 &371384566
 PrefabInstance:
@@ -4338,6 +4567,9 @@ Transform:
   - {fileID: 470632993}
   - {fileID: 2009022385}
   - {fileID: 557535121}
+  - {fileID: 42131345}
+  - {fileID: 365412809}
+  - {fileID: 296266082}
   m_Father: {fileID: 1151450128}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &937746294

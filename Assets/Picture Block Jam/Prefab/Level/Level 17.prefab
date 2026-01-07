@@ -1349,7 +1349,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1726085374325870231, guid: 326b2ea4333413f4590a57494fdc0dc3, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5046239759121628541, guid: 326b2ea4333413f4590a57494fdc0dc3, type: 3}
+      propertyPath: translationName
+      value: Wooden Block
+      objectReference: {fileID: 0}
+    - target: {fileID: 6158162421156643530, guid: 326b2ea4333413f4590a57494fdc0dc3, type: 3}
+      propertyPath: m_text
+      value: Wooden Block
+      objectReference: {fileID: 0}
+    - target: {fileID: 6158162421156643530, guid: 326b2ea4333413f4590a57494fdc0dc3, type: 3}
+      propertyPath: m_fontSize
+      value: 127.8
       objectReference: {fileID: 0}
     - target: {fileID: 7177376765734033391, guid: 326b2ea4333413f4590a57494fdc0dc3, type: 3}
       propertyPath: m_Pivot.x
