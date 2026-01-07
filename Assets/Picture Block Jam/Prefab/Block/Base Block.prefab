@@ -123,7 +123,7 @@ MonoBehaviour:
   layerMaskCheckTile:
     serializedVersion: 2
     m_Bits: 256
-  isSecondLayer: 0
+  sortingLayerModifier: 0
   gameFactionSpriteContainer: {fileID: 11400000, guid: 350a6fe689bfc5e47ad7fe34e3946221, type: 2}
   originalTileIndexes:
   - {x: 0, y: 0}

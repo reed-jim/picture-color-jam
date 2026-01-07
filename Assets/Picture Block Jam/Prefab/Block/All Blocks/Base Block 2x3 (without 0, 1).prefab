@@ -65,6 +65,10 @@ PrefabInstance:
       value: Base Block 2x3 (without 0, 1)
       objectReference: {fileID: 0}
     - target: {fileID: 3635475471284537696, guid: 627f1b0d75449ab4da35db608f8ee074, type: 3}
+      propertyPath: sortingLayerModifier
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3635475471284537696, guid: 627f1b0d75449ab4da35db608f8ee074, type: 3}
       propertyPath: tileIndexes.Array.size
       value: 5
       objectReference: {fileID: 0}
