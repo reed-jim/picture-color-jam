@@ -19,6 +19,7 @@ public class NotificationPopup : BasePopup
         LevelTimeCounter.showNotificationEvent += ShowNotification;
         SaferioIAPManager.showNotificationEvent += ShowNotification;
         BaseBlock.showNotificationEvent += ShowNotification;
+        BlockSelectionInput.showNotificationEvent += ShowNotification;
 
         okButton.onClick.AddListener(Hide);
     }
@@ -34,6 +35,7 @@ public class NotificationPopup : BasePopup
         LevelTimeCounter.showNotificationEvent -= ShowNotification;
         SaferioIAPManager.showNotificationEvent -= ShowNotification;
         BaseBlock.showNotificationEvent -= ShowNotification;
+        BlockSelectionInput.showNotificationEvent -= ShowNotification;
     }
 
     private void ShowNotification(string titleTranslation, string descriptionTranslation)

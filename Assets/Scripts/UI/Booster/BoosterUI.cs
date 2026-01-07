@@ -321,7 +321,7 @@ public class BoosterUI : MonoBehaviour
         .OnComplete(() =>
         {
             enableTeleportModeEvent?.Invoke();
-            
+
             _isInTransition = false;
         }));
     }
@@ -353,7 +353,14 @@ public class BoosterUI : MonoBehaviour
 
     private void ConfirmVacumnBooster(string spriteType)
     {
-        ConsumeBooster(boosterIndex: (int)BoosterType.Vacumn);
+        if (GamePersistentVariable.isUseBoosterOnInvalidBlock)
+        {
+            GamePersistentVariable.isUseBoosterOnInvalidBlock = false;
+        }
+        else
+        {
+            ConsumeBooster(boosterIndex: (int)BoosterType.Vacumn);
+        }
 
         DisableVacumnMode();
     }

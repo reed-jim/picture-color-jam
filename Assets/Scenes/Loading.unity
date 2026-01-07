@@ -4570,6 +4570,7 @@ Transform:
   - {fileID: 42131345}
   - {fileID: 365412809}
   - {fileID: 296266082}
+  - {fileID: 1934437912}
   m_Father: {fileID: 1151450128}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &937746294
@@ -9522,6 +9523,81 @@ MonoBehaviour:
     Object: {fileID: 0}
   - Language: Spanish
     Text: Completa {task_requirement_value} niveles
+    Object: {fileID: 0}
+--- !u!1 &1934437911
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1934437912}
+  - component: {fileID: 1934437913}
+  m_Layer: 0
+  m_Name: "Boosters can\u2019t be used on this block"
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1934437912
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1934437911}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 937746293}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1934437913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1934437911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb15fa0e7301ff849bf4d6dcede7c12b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: LeanLocalization::Lean.Localization.LeanPhrase
+  data: 0
+  entries:
+  - Language: English
+    Text: "Boosters can\u2019t be used on this block."
+    Object: {fileID: 0}
+  - Language: French
+    Text: "Les boosters ne peuvent pas \xEAtre utilis\xE9s sur ce bloc."
+    Object: {fileID: 0}
+  - Language: German
+    Text: "Booster k\xF6nnen auf diesem Block nicht verwendet werden."
+    Object: {fileID: 0}
+  - Language: Italian
+    Text: I booster non possono essere usati su questo blocco.
+    Object: {fileID: 0}
+  - Language: Japanese
+    Text: "\u3053\u306E\u30D6\u30ED\u30C3\u30AF\u306B\u306F\u30D6\u30FC\u30B9\u30BF\u30FC\u3092\u4F7F\u7528\u3067\u304D\u307E\u305B\u3093\u3002"
+    Object: {fileID: 0}
+  - Language: Korean
+    Text: "\uC774 \uBE14\uB85D\uC5D0\uB294 \uBD80\uC2A4\uD130\uB97C \uC0AC\uC6A9\uD560
+      \uC218 \uC5C6\uC2B5\uB2C8\uB2E4."
+    Object: {fileID: 0}
+  - Language: Portuguese
+    Text: "Os boosters n\xE3o podem ser usados neste bloco."
+    Object: {fileID: 0}
+  - Language: Spanish
+    Text: No se pueden usar potenciadores en este bloque.
+    Object: {fileID: 0}
+  - Language: Russian
+    Text: "\u041D\u0430 \u044D\u0442\u043E\u043C \u0431\u043B\u043E\u043A\u0435 \u043D\u0435\u043B\u044C\u0437\u044F
+      \u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u044C \u0431\u0443\u0441\u0442\u0435\u0440\u044B."
     Object: {fileID: 0}
 --- !u!1 &1945757107
 GameObject:

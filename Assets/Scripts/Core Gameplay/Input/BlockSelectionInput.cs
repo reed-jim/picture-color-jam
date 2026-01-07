@@ -29,6 +29,7 @@ public class BlockSelectionInput : MonoBehaviour
     public static event Action breakObjectEvent;
     public static event Action<string> vacumnEvent;
     public static event Action startVacumnEvent;
+    public static event Action<string, string> showNotificationEvent;
     #endregion
 
     void Awake()
@@ -188,6 +189,18 @@ public class BlockSelectionInput : MonoBehaviour
     {
         BaseBlock block = GetBlock(isIncludeCurrentBlock: false);
 
+        if (block == null)
+        {
+            return;
+        }
+
+        if (!block.IsValidToMerge())
+        {
+            showNotificationEvent?.Invoke(GameConstants.WARNING, GameConstants.cannotUseBooster);
+
+            return;
+        }
+
         _inputMode = InputMode.Disabled;
 
         if (block != null)
@@ -204,6 +217,13 @@ public class BlockSelectionInput : MonoBehaviour
 
         if (block == null)
         {
+            return;
+        }
+
+        if (!block.IsValidToMerge())
+        {
+            showNotificationEvent?.Invoke(GameConstants.WARNING, GameConstants.cannotUseBooster);
+
             return;
         }
 
