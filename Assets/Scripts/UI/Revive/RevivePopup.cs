@@ -26,6 +26,7 @@ public class RevivePopup : BasePopup
     public static event Action<ScreenRoute> openIAPShopPopupEvent;
     public static event Action<ScreenRoute> showNoInternetPopup;
     public static event Action<string, string> showNotificationEvent;
+    public static event Action<float> updateCoinTextEvent;
 
     protected override void MoreActionInAwake()
     {
@@ -98,17 +99,23 @@ public class RevivePopup : BasePopup
             userResourcesObserver.UserResources.CoinQuantity -= boosterDataObserver.BoosterCosts.Last();
 
             userResourcesObserver.Save();
+
+            updateCoinTextEvent?.Invoke(userResourcesObserver.UserResources.CoinQuantity);
         }
         else
         {
-            Hide(onCompletedAction: () =>
-            {
-                // showNotificationEvent?.Invoke("Warning", "Not enough coin");
+            // Hide(onCompletedAction: () =>
+            // {
+            //     // showNotificationEvent?.Invoke("Warning", "Not enough coin");
 
-                openIAPShopPopupEvent?.Invoke(ScreenRoute.Revive);
+            //     openIAPShopPopupEvent?.Invoke(ScreenRoute.Revive);
 
-                reviveByDiamondButton.interactable = true;
-            });
+            //     reviveByDiamondButton.interactable = true;
+            // });
+
+            openIAPShopPopupEvent?.Invoke(ScreenRoute.Revive);
+
+            reviveByDiamondButton.interactable = true;
         }
     }
 
