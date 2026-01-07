@@ -630,7 +630,7 @@ public class BaseBlock : MonoBehaviour
             }
             else
             {
-                blockServiceLocator.spriteRenderer.sortingOrder = (int)(2 * (15 - transform.position.y));
+                SetSortingLayer();
             }
 
             blockServiceLocator.iconMaskSortingGroup.sortingOrder = blockServiceLocator.spriteRenderer.sortingOrder + 1;
@@ -851,8 +851,7 @@ public class BaseBlock : MonoBehaviour
     {
         GetSnapPosition();
 
-        blockServiceLocator.spriteRenderer.sortingOrder = (int)(2 * (15 - _snapPosition.y));
-        blockServiceLocator.iconMaskSortingGroup.sortingOrder = blockServiceLocator.spriteRenderer.sortingOrder + 1;
+        SetSortingLayer();
 
         _blockRigidBody.bodyType = RigidbodyType2D.Static;
 
@@ -931,8 +930,7 @@ public class BaseBlock : MonoBehaviour
         transform.position = _snapPosition;
 
         // x2 help tell layers apart better
-        blockServiceLocator.spriteRenderer.sortingOrder = (int)(2 * (15 - _snapPosition.y));
-        blockServiceLocator.iconMaskSortingGroup.sortingOrder = blockServiceLocator.spriteRenderer.sortingOrder + 1;
+        SetSortingLayer();
     }
 
     private void GetSnapPosition()
@@ -995,8 +993,18 @@ public class BaseBlock : MonoBehaviour
         _snapPosition.y -= 0.1f;
     }
 
+    public void SetSortingLayer()
+    {
+        float positionY = transform.position.y + (NumTileY - 1) / 2f * GameConstants.tileSize;
+
+        blockServiceLocator.spriteRenderer.sortingOrder = (int)(2 * (15 - positionY));
+        blockServiceLocator.iconMaskSortingGroup.sortingOrder = blockServiceLocator.spriteRenderer.sortingOrder + 1;
+    }
+
     public void SetSortingLayer(Vector3 position)
     {
+        position.y += (NumTileY - 1) / 2f * GameConstants.tileSize;
+
         blockServiceLocator.spriteRenderer.sortingOrder = (int)(2 * (15 - position.y));
         blockServiceLocator.iconMaskSortingGroup.sortingOrder = blockServiceLocator.spriteRenderer.sortingOrder + 1;
     }
