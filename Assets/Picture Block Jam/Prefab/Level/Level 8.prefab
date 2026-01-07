@@ -95,7 +95,7 @@ PrefabInstance:
     - target: {fileID: 3909725371347471291, guid: db8d087b2129ada4eac9952eb61083d8, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 1bd05329771dc624cb7fc9748e1566cb, type: 3}
+      objectReference: {fileID: 21300000, guid: a8a7f773fea14aa40bac7daef7137c6f, type: 3}
     - target: {fileID: 4384921979947270779, guid: db8d087b2129ada4eac9952eb61083d8, type: 3}
       propertyPath: originalTileIndexes.Array.data[1].x
       value: 1
@@ -278,7 +278,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1953803898992045816, guid: edb5ad59c41828e4bad3a3de2419f846, type: 3}
       propertyPath: m_text
-      value: You have unlocked the Hammer!
+      value: You have unlocked the <color=#FEBA00>Hammer!
       objectReference: {fileID: 0}
     - target: {fileID: 2053890951247215826, guid: edb5ad59c41828e4bad3a3de2419f846, type: 3}
       propertyPath: m_SizeDelta.x
@@ -396,6 +396,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Booster Tutorial - Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 5906303244143975495, guid: edb5ad59c41828e4bad3a3de2419f846, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5966821542411784646, guid: edb5ad59c41828e4bad3a3de2419f846, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -484,7 +488,7 @@ PrefabInstance:
     - target: {fileID: 6480787302926533717, guid: 9a9f03e54b0e52b4c80805de80e93509, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 5bd1a223ef347c44b80070de932cdb69, type: 3}
+      objectReference: {fileID: 21300000, guid: 8b9c477faf4c80f49bb1c088656fca74, type: 3}
     - target: {fileID: 7714240509196397452, guid: 9a9f03e54b0e52b4c80805de80e93509, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.66
@@ -622,7 +626,7 @@ PrefabInstance:
     - target: {fileID: 7456919766708066082, guid: b56b67aab414dff449e42159fbb46c6c, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 5bd1a223ef347c44b80070de932cdb69, type: 3}
+      objectReference: {fileID: 21300000, guid: 8b9c477faf4c80f49bb1c088656fca74, type: 3}
     - target: {fileID: 7918507683526336226, guid: b56b67aab414dff449e42159fbb46c6c, type: 3}
       propertyPath: originalTileIndexes.Array.data[1].x
       value: 1
@@ -932,7 +936,7 @@ PrefabInstance:
     - target: {fileID: 7456919766708066082, guid: b56b67aab414dff449e42159fbb46c6c, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 2c4ecab02b069c043b62cd4d8be89066, type: 3}
+      objectReference: {fileID: 21300000, guid: 77bc8162c7d7d604b8ea154e08c60601, type: 3}
     - target: {fileID: 7918507683526336226, guid: b56b67aab414dff449e42159fbb46c6c, type: 3}
       propertyPath: originalTileIndexes.Array.data[1].x
       value: 1
@@ -1260,7 +1264,7 @@ PrefabInstance:
     - target: {fileID: 6480787302926533717, guid: 9a9f03e54b0e52b4c80805de80e93509, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 2c4ecab02b069c043b62cd4d8be89066, type: 3}
+      objectReference: {fileID: 21300000, guid: 77bc8162c7d7d604b8ea154e08c60601, type: 3}
     - target: {fileID: 7714240509196397452, guid: 9a9f03e54b0e52b4c80805de80e93509, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.7
@@ -1370,7 +1374,7 @@ PrefabInstance:
     - target: {fileID: 6480787302926533717, guid: 9a9f03e54b0e52b4c80805de80e93509, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 1bd05329771dc624cb7fc9748e1566cb, type: 3}
+      objectReference: {fileID: 21300000, guid: a8a7f773fea14aa40bac7daef7137c6f, type: 3}
     - target: {fileID: 7714240509196397452, guid: 9a9f03e54b0e52b4c80805de80e93509, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.62

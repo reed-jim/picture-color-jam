@@ -428,7 +428,7 @@ PrefabInstance:
     - target: {fileID: 6480787302926533717, guid: 9a9f03e54b0e52b4c80805de80e93509, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 257a32035445edd4d8370dd6804a6fc5, type: 3}
+      objectReference: {fileID: 21300000, guid: e93c85fd5f1ed054689d983c24cc43b1, type: 3}
     - target: {fileID: 7714240509196397452, guid: 9a9f03e54b0e52b4c80805de80e93509, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.7
@@ -550,7 +550,7 @@ PrefabInstance:
     - target: {fileID: 2797554834467881798, guid: 68e4f6936c919ec4e8650cf7b52992bd, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 43a07556266552c49abc85764893b713, type: 3}
+      objectReference: {fileID: 21300000, guid: 950040fe995d97c4494b870eb0e37915, type: 3}
     - target: {fileID: 3191526565751179910, guid: 68e4f6936c919ec4e8650cf7b52992bd, type: 3}
       propertyPath: originalTileIndexes.Array.data[1].x
       value: 1
@@ -1242,7 +1242,7 @@ PrefabInstance:
     - target: {fileID: 7456919766708066082, guid: b56b67aab414dff449e42159fbb46c6c, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 257a32035445edd4d8370dd6804a6fc5, type: 3}
+      objectReference: {fileID: 21300000, guid: e93c85fd5f1ed054689d983c24cc43b1, type: 3}
     - target: {fileID: 7918507683526336226, guid: b56b67aab414dff449e42159fbb46c6c, type: 3}
       propertyPath: originalTileIndexes.Array.data[1].x
       value: 1
@@ -1474,7 +1474,7 @@ PrefabInstance:
     - target: {fileID: 6480787302926533717, guid: 9a9f03e54b0e52b4c80805de80e93509, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 43a07556266552c49abc85764893b713, type: 3}
+      objectReference: {fileID: 21300000, guid: 950040fe995d97c4494b870eb0e37915, type: 3}
     - target: {fileID: 7714240509196397452, guid: 9a9f03e54b0e52b4c80805de80e93509, type: 3}
       propertyPath: m_LocalPosition.y
       value: -1.4

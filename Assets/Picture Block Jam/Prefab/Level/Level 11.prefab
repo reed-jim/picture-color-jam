@@ -348,7 +348,7 @@ PrefabInstance:
     - target: {fileID: 2797554834467881798, guid: 68e4f6936c919ec4e8650cf7b52992bd, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 30d62dd467906ab4c86be1170b1d4356, type: 3}
+      objectReference: {fileID: 21300000, guid: 257a32035445edd4d8370dd6804a6fc5, type: 3}
     - target: {fileID: 3191526565751179910, guid: 68e4f6936c919ec4e8650cf7b52992bd, type: 3}
       propertyPath: originalTileIndexes.Array.data[1].x
       value: 1
@@ -720,7 +720,7 @@ PrefabInstance:
     - target: {fileID: 6480787302926533717, guid: 9a9f03e54b0e52b4c80805de80e93509, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 30d62dd467906ab4c86be1170b1d4356, type: 3}
+      objectReference: {fileID: 21300000, guid: 257a32035445edd4d8370dd6804a6fc5, type: 3}
     - target: {fileID: 7714240509196397452, guid: 9a9f03e54b0e52b4c80805de80e93509, type: 3}
       propertyPath: m_LocalPosition.y
       value: -1.4
