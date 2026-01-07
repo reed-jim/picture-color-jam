@@ -75,14 +75,14 @@ public class LosePopup : BasePopup
 
     private void Replay()
     {
-        if (GamePersistentVariable.livesData.CurrentLives <= 0)
-        {
-            GamePersistentVariable.isPendingReplay = true;
+        // if (GamePersistentVariable.livesData.CurrentLives <= 0)
+        // {
+        //     GamePersistentVariable.isPendingReplay = true;
 
-            SwitchRoute(ScreenRoute.LivesShop);
+        //     SwitchRoute(ScreenRoute.LivesShop);
 
-            return;
-        }
+        //     return;
+        // }
 
         replayLevelEvent?.Invoke();
 
