@@ -4211,6 +4211,81 @@ MonoBehaviour:
   - Language: Spanish
     Text: Vuelva a llenar sus vidas
     Object: {fileID: 0}
+--- !u!1 &857557235
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 857557236}
+  - component: {fileID: 857557237}
+  m_Layer: 0
+  m_Name: Match blocks to break the ice
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &857557236
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 857557235}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 937746293}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &857557237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 857557235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb15fa0e7301ff849bf4d6dcede7c12b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: LeanLocalization::Lean.Localization.LeanPhrase
+  data: 0
+  entries:
+  - Language: English
+    Text: Match blocks to <color=#FEBA00>break the ice!
+    Object: {fileID: 0}
+  - Language: French
+    Text: Associez les blocs pour <color=#FEBA00>briser la glace !
+    Object: {fileID: 0}
+  - Language: German
+    Text: "Kombiniere Bl\xF6cke, um <color=#FEBA00>das Eis zu brechen!"
+    Object: {fileID: 0}
+  - Language: Italian
+    Text: Abbina i blocchi per <color=#FEBA00>rompere il ghiaccio!
+    Object: {fileID: 0}
+  - Language: Japanese
+    Text: "\u30D6\u30ED\u30C3\u30AF\u3092\u30DE\u30C3\u30C1\u3055\u305B\u3066<color=#FEBA00>\u6C37\u3092\u58CA\u305D\u3046\uFF01"
+    Object: {fileID: 0}
+  - Language: Korean
+    Text: "\uBE14\uB85D\uC744 \uB9DE\uCDB0 <color=#FEBA00>\uC5BC\uC74C\uC744 \uAE68\uC138\uC694!"
+    Object: {fileID: 0}
+  - Language: Portuguese
+    Text: Combine os blocos para <color=#FEBA00>quebrar o gelo!
+    Object: {fileID: 0}
+  - Language: Russian
+    Text: "\u0421\u043E\u0432\u043C\u0435\u0449\u0430\u0439\u0442\u0435 \u0431\u043B\u043E\u043A\u0438,
+      \u0447\u0442\u043E\u0431\u044B <color=#FEBA00>\u0440\u0430\u0437\u0431\u0438\u0442\u044C
+      \u043B\u0451\u0434!"
+    Object: {fileID: 0}
+  - Language: Spanish
+    Text: Combina los bloques para <color=#FEBA00>romper el hielo!
+    Object: {fileID: 0}
 --- !u!1 &865935713
 GameObject:
   m_ObjectHideFlags: 0
@@ -4571,6 +4646,8 @@ Transform:
   - {fileID: 365412809}
   - {fileID: 296266082}
   - {fileID: 1934437912}
+  - {fileID: 857557236}
+  - {fileID: 1383214593}
   m_Father: {fileID: 1151450128}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &937746294
@@ -7331,6 +7408,80 @@ MonoBehaviour:
     Object: {fileID: 0}
   - Language: Spanish
     Text: Haga clic en el tornillo para regresar a la caja.
+    Object: {fileID: 0}
+--- !u!1 &1383214592
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1383214593}
+  - component: {fileID: 1383214594}
+  m_Layer: 0
+  m_Name: Frozen Block
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1383214593
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1383214592}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 937746293}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1383214594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1383214592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb15fa0e7301ff849bf4d6dcede7c12b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: LeanLocalization::Lean.Localization.LeanPhrase
+  data: 0
+  entries:
+  - Language: English
+    Text: Frozen Block
+    Object: {fileID: 0}
+  - Language: French
+    Text: "Bloc gel\xE9"
+    Object: {fileID: 0}
+  - Language: German
+    Text: Gefrorener Block
+    Object: {fileID: 0}
+  - Language: Italian
+    Text: Blocco congelato
+    Object: {fileID: 0}
+  - Language: Japanese
+    Text: "\u6C37\u306E\u30D6\u30ED\u30C3\u30AF"
+    Object: {fileID: 0}
+  - Language: Korean
+    Text: "\uC5BC\uC5B4\uBD99\uC740 \uBE14\uB85D"
+    Object: {fileID: 0}
+  - Language: Portuguese
+    Text: Bloco congelado
+    Object: {fileID: 0}
+  - Language: Russian
+    Text: "\u0417\u0430\u043C\u043E\u0440\u043E\u0436\u0435\u043D\u043D\u044B\u0439
+      \u0431\u043B\u043E\u043A"
+    Object: {fileID: 0}
+  - Language: Spanish
+    Text: Bloque congelado
     Object: {fileID: 0}
 --- !u!1 &1404329791
 GameObject:

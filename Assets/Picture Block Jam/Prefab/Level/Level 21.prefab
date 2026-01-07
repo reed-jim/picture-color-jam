@@ -553,7 +553,7 @@ PrefabInstance:
     - target: {fileID: 215035841279178898, guid: 326b2ea4333413f4590a57494fdc0dc3, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 27dba20827b3a2e4792e31e6f61aefdf, type: 3}
+      objectReference: {fileID: 21300000, guid: ed27645b82f4fee41a4a5b4337caa2e2, type: 3}
     - target: {fileID: 1726085374325870231, guid: 326b2ea4333413f4590a57494fdc0dc3, type: 3}
       propertyPath: m_Name
       value: Special Element Tutorial - Canvas
@@ -566,47 +566,54 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2863887830430500901, guid: 326b2ea4333413f4590a57494fdc0dc3, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 720
+      objectReference: {fileID: 0}
+    - target: {fileID: 2863887830430500901, guid: 326b2ea4333413f4590a57494fdc0dc3, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 160
+      objectReference: {fileID: 0}
     - target: {fileID: 5046239759121628541, guid: 326b2ea4333413f4590a57494fdc0dc3, type: 3}
       propertyPath: translationName
-      value: Stone Block
+      value: Frozen Block
       objectReference: {fileID: 0}
     - target: {fileID: 6158162421156643530, guid: 326b2ea4333413f4590a57494fdc0dc3, type: 3}
       propertyPath: m_text
-      value: Stone Block
+      value: Frozen Block
       objectReference: {fileID: 0}
     - target: {fileID: 6158162421156643530, guid: 326b2ea4333413f4590a57494fdc0dc3, type: 3}
       propertyPath: m_fontSize
-      value: 143.7
+      value: 143.15
       objectReference: {fileID: 0}
     - target: {fileID: 6522282022603992578, guid: 326b2ea4333413f4590a57494fdc0dc3, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 376
+      value: 392
       objectReference: {fileID: 0}
     - target: {fileID: 6522282022603992578, guid: 326b2ea4333413f4590a57494fdc0dc3, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 348
+      value: 320
       objectReference: {fileID: 0}
     - target: {fileID: 6522282022603992578, guid: 326b2ea4333413f4590a57494fdc0dc3, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 12.9
+      value: 34.8
       objectReference: {fileID: 0}
     - target: {fileID: 6522282022603992578, guid: 326b2ea4333413f4590a57494fdc0dc3, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 146.4
+      value: 152.3
       objectReference: {fileID: 0}
     - target: {fileID: 6709906366417419304, guid: 326b2ea4333413f4590a57494fdc0dc3, type: 3}
       propertyPath: m_text
-      value: Stone Blocks <color=#FEBA00>can't move <color=#FFF>and <color=#FEBA00>don't
-        match!
+      value: Match blocks to <color=#FEBA00>break the ice!
       objectReference: {fileID: 0}
     - target: {fileID: 6709906366417419304, guid: 326b2ea4333413f4590a57494fdc0dc3, type: 3}
       propertyPath: m_fontSize
-      value: 50.3
+      value: 64
       objectReference: {fileID: 0}
     - target: {fileID: 6985737179920993831, guid: 326b2ea4333413f4590a57494fdc0dc3, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: d3e38675958a4024d89265185e06c3af, type: 3}
+      objectReference: {fileID: 21300000, guid: 1193027425c26fe48b618cc29b83e8a6, type: 3}
     - target: {fileID: 7177376765734033391, guid: 326b2ea4333413f4590a57494fdc0dc3, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -689,7 +696,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7383872311750999419, guid: 326b2ea4333413f4590a57494fdc0dc3, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -8
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7383872311750999419, guid: 326b2ea4333413f4590a57494fdc0dc3, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -697,7 +704,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8561233363106064696, guid: 326b2ea4333413f4590a57494fdc0dc3, type: 3}
       propertyPath: translationName
-      value: Stone Blockes can't move and don't match
+      value: Match blocks to break the ice
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
