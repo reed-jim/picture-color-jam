@@ -52,6 +52,9 @@ MonoBehaviour:
   attackDamage: 20
   launchForce: 20
   gravityScale: 1
+  hitLayerMask:
+    serializedVersion: 2
+    m_Bits: 4096
 --- !u!212 &6389479284834029803
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -144,7 +147,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2764698954615587065}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}

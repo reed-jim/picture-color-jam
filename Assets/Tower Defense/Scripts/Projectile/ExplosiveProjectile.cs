@@ -1,9 +1,11 @@
+using System.Collections;
 using UnityEngine;
 
 public class ExplosiveProjectile : BaseProjectile
 {
     public float launchForce = 10f;
     public float gravityScale = 1f;
+    [SerializeField] private LayerMask hitLayerMask;
 
     private Rigidbody2D rb;
 
@@ -28,6 +30,33 @@ public class ExplosiveProjectile : BaseProjectile
         {
 
         }
+
+        StartCoroutine(Explode());
+    }
+
+    private IEnumerator Explode()
+    {
+        yield return new WaitForSeconds(1.3f);
+
+        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, 3, hitLayerMask);
+
+        foreach (var hit in hits)
+        {
+            BaseEnemy enemy = hit.GetComponent<BaseEnemy>();
+
+            if (enemy != null)
+            {
+                enemy.Hit(this);
+            }
+        }
+
+        ParticleSystem fx = ObjectPoolingEverything.GetFromPool<ParticleSystem>(GameConstants.blockMergeFx);
+
+        fx.transform.position = transform.position;
+
+        fx.Play();
+
+        gameObject.SetActive(false);
     }
 
     Vector2 CalculateParabolaVelocity(Vector2 direction, float height)
@@ -35,7 +64,7 @@ public class ExplosiveProjectile : BaseProjectile
         float gravity = Physics2D.gravity.y * gravityScale;
 
         float timeUp = Mathf.Sqrt(-2 * height / gravity);
-        float timeDown = Mathf.Sqrt(2 * (direction.y - height) / gravity);
+        float timeDown = Mathf.Sqrt(Mathf.Abs(2 * (direction.y - height) / gravity));
         float totalTime = timeUp + timeDown;
 
         Vector2 velocity;

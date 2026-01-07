@@ -29,22 +29,27 @@ public class BaseEnemy : MonoBehaviour
 
         if (projectile != null)
         {
-            currentHealth -= projectile.attackDamage;
-
-            lazyHealthBar.ChangeValue(currentHealth / health);
-
-            if (currentHealth <= 0)
-            {
-                ParticleSystem fx = ObjectPoolingEverything.GetFromPool<ParticleSystem>(GameConstants.blockMergeFx);
-
-                fx.transform.position = transform.position;
-
-                fx.Play();
-
-                gameObject.SetActive(false);
-            }
-
-            projectile.gameObject.SetActive(false);
+            Hit(projectile);
         }
+    }
+
+    public void Hit(BaseProjectile projectile)
+    {
+        currentHealth -= projectile.attackDamage;
+
+        lazyHealthBar.ChangeValue(currentHealth / health);
+
+        if (currentHealth <= 0)
+        {
+            ParticleSystem fx = ObjectPoolingEverything.GetFromPool<ParticleSystem>(GameConstants.blockMergeFx);
+
+            fx.transform.position = transform.position;
+
+            fx.Play();
+
+            gameObject.SetActive(false);
+        }
+
+        projectile.gameObject.SetActive(false);
     }
 }
