@@ -73,7 +73,7 @@ public class IAPShopPopup : BasePopup
     {
         base.Hide(onCompletedAction: () =>
         {
-            switchRouteEvent?.Invoke(_prevRoute);
+            // switchRouteEvent?.Invoke(_prevRoute);
         });
 
         pauseEvent?.Invoke(false);

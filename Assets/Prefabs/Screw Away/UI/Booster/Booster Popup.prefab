@@ -136,7 +136,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 208}
+  m_AnchoredPosition: {x: 0, y: 207}
   m_SizeDelta: {x: 540, y: 168}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &639185997992078244
@@ -584,7 +584,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -24}
   m_SizeDelta: {x: 720, y: 96}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4180263048783872573
@@ -1021,8 +1021,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 220}
-  m_SizeDelta: {x: 164, y: 188}
+  m_AnchoredPosition: {x: 0, y: 212}
+  m_SizeDelta: {x: 312, y: 364}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8259077974377306648
 CanvasRenderer:
@@ -1052,7 +1052,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a90d6de9100326d47b0b7bdd72d5b150, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 404e0f5dd07525d458f859f1b4b4b9e2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1101,7 +1101,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 408}
+  m_AnchoredPosition: {x: 0, y: 407}
   m_SizeDelta: {x: 540, y: 168}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &6243492832094999909
@@ -1429,10 +1429,10 @@ MonoBehaviour:
   title: {fileID: 2495682434215931646}
   boosterDescription: {fileID: 1267407493455897027}
   boosterSprites:
-  - {fileID: 21300000, guid: a90d6de9100326d47b0b7bdd72d5b150, type: 3}
-  - {fileID: 21300000, guid: 57459222956fbb349ba87d0fc847bc11, type: 3}
-  - {fileID: 21300000, guid: a0a6c55469da0234096162733e5b8992, type: 3}
-  - {fileID: 21300000, guid: f2c50a80c8a9c4a45aecf26fc700253f, type: 3}
+  - {fileID: 21300000, guid: 404e0f5dd07525d458f859f1b4b4b9e2, type: 3}
+  - {fileID: 21300000, guid: c0e5968d1847b6f419b00fd967a28d6c, type: 3}
+  - {fileID: 21300000, guid: 7f8d49750d732ff43b4ecf84b86c7574, type: 3}
+  - {fileID: 21300000, guid: a2f3ec6cdee708941b7dd6a44fab1da3, type: 3}
   leanTranslationTitle:
   - Booster
   - Booster

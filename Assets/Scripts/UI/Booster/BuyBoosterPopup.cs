@@ -118,14 +118,18 @@ public class BuyBoosterPopup : BasePopup
         }
         else
         {
-            Hide(onCompletedAction: () =>
-            {
-                // showNotificationEvent?.Invoke("Warning", "Not enough coin");
+            // Hide(onCompletedAction: () =>
+            // {
+            //     // showNotificationEvent?.Invoke("Warning", "Not enough coin");
 
-                buyWithDiamondButton.interactable = true;
+            //     buyWithDiamondButton.interactable = true;
 
-                openIAPShopPopupEvent?.Invoke(ScreenRoute.Booster);
-            });
+            //     openIAPShopPopupEvent?.Invoke(ScreenRoute.Booster);
+            // });
+
+            buyWithDiamondButton.interactable = true;
+
+            openIAPShopPopupEvent?.Invoke(ScreenRoute.Booster);
         }
     }
 

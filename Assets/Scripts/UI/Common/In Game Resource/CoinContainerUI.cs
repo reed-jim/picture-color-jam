@@ -29,6 +29,7 @@ public class CoinContainerUI : MonoBehaviour
     #region EVENT
     public static event Action<Vector3, int> collectCoinEvent;
     public static event Action goToIAPShopEvent;
+    public static event Action<ScreenRoute> switchRouteEvent;
     #endregion
 
     private void Awake()
@@ -98,7 +99,8 @@ public class CoinContainerUI : MonoBehaviour
 
     private void ShowIAPShop()
     {
-        goToIAPShopEvent?.Invoke();
+        // goToIAPShopEvent?.Invoke();
+        switchRouteEvent?.Invoke(ScreenRoute.IAPShopPopup);
     }
 
     private void CollectCoin(int value)

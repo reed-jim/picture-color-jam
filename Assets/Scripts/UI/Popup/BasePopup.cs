@@ -49,6 +49,7 @@ public class BasePopup : MonoBehaviour
         PausePopup.switchRouteEvent += OnRouteSwitched;
         UserLivesUI.switchRouteEvent += OnRouteSwitched;
         LevelLoader.switchRouteEvent += OnRouteSwitched;
+        CoinContainerUI.switchRouteEvent += OnRouteSwitched;
 
         if (closeButton != null)
         {
@@ -97,6 +98,7 @@ public class BasePopup : MonoBehaviour
         PausePopup.switchRouteEvent -= OnRouteSwitched;
         UserLivesUI.switchRouteEvent -= OnRouteSwitched;
         LevelLoader.switchRouteEvent -= OnRouteSwitched;
+        CoinContainerUI.switchRouteEvent -= OnRouteSwitched;
 
         UnregisterMoreEvent();
 
@@ -133,7 +135,7 @@ public class BasePopup : MonoBehaviour
         }
         else
         {
-            Hide();
+            // Hide();
         }
     }
 
@@ -183,6 +185,7 @@ public class BasePopup : MonoBehaviour
     private void ActualShowAfterAd(Action onCompletedAction = null)
     {
         gameObject.SetActive(true);
+        transform.SetAsLastSibling();
 
         _transitionAnimation.Show(OnTransitionCompleted);
 

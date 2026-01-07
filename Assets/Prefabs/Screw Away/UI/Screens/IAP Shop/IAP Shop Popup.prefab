@@ -65,7 +65,7 @@ MonoBehaviour:
   popupCanvasGroup: {fileID: 9001182195133509965}
   scrollContent: {fileID: 2835910437418537574}
   firstPackRT: {fileID: 8931469946100983287}
-  firstCoinPackRT: {fileID: 8477894673165529511}
+  firstCoinPackRT: {fileID: 7941015470938954002}
   scrollToCoinPackDuration: 0.6
 --- !u!222 &6414708317197448670
 CanvasRenderer:
@@ -1334,6 +1334,41 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &7391738849727356666
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6609093199462263773}
+  m_Layer: 5
+  m_Name: Placeholder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &6609093199462263773
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7391738849727356666}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2835910437418537574}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 480}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &7740698769252833924
 GameObject:
   m_ObjectHideFlags: 0
@@ -1412,6 +1447,7 @@ RectTransform:
   - {fileID: 2156976045379197375}
   - {fileID: 5066878930306038073}
   - {fileID: 7941015470938954002}
+  - {fileID: 6609093199462263773}
   m_Father: {fileID: 2598091700377941533}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
