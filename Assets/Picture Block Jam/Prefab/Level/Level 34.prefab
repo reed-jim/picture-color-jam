@@ -112,7 +112,7 @@ PrefabInstance:
     - target: {fileID: 6981193384240248928, guid: 6ce06c745a6a7914d8a218304cdb730b, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 67d2def52666c1d46836a25ad4e22a89, type: 3}
+      objectReference: {fileID: 21300000, guid: eabb9a333a6275e47ad1b70845759401, type: 3}
     - target: {fileID: 7672536901852770720, guid: 6ce06c745a6a7914d8a218304cdb730b, type: 3}
       propertyPath: tileIndexes.Array.data[0].x
       value: 1
@@ -458,6 +458,10 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 27
       objectReference: {fileID: 0}
+    - target: {fileID: 7456919766708066082, guid: b56b67aab414dff449e42159fbb46c6c, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8ae327796f822d443bb43e79377cd218, type: 3}
     - target: {fileID: 7918507683526336226, guid: b56b67aab414dff449e42159fbb46c6c, type: 3}
       propertyPath: originalTileIndexes.Array.data[1].x
       value: 1
@@ -1225,7 +1229,7 @@ PrefabInstance:
     - target: {fileID: 417967884667167867, guid: 17b20ff341365e447bdb568651f25a66, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 67d2def52666c1d46836a25ad4e22a89, type: 3}
+      objectReference: {fileID: 21300000, guid: eabb9a333a6275e47ad1b70845759401, type: 3}
     - target: {fileID: 1104673146934095291, guid: 17b20ff341365e447bdb568651f25a66, type: 3}
       propertyPath: originalTileIndexes.Array.data[1].x
       value: 1
@@ -1575,7 +1579,7 @@ PrefabInstance:
     - target: {fileID: 6480787302926533717, guid: 9a9f03e54b0e52b4c80805de80e93509, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 5bd1a223ef347c44b80070de932cdb69, type: 3}
+      objectReference: {fileID: 21300000, guid: 8ae327796f822d443bb43e79377cd218, type: 3}
     - target: {fileID: 7714240509196397452, guid: 9a9f03e54b0e52b4c80805de80e93509, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.7
