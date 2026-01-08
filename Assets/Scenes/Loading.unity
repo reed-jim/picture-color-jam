@@ -1567,29 +1567,31 @@ MonoBehaviour:
     Text: You have unlocked the <color=#FEBA00>Freeze Timer!
     Object: {fileID: 0}
   - Language: French
-    Text: "Vous avez d\xE9verrouill\xE9 la minuterie de gel!"
+    Text: "Vous avez d\xE9bloqu\xE9 le <color=#FEBA00>Minuteur de gel !"
     Object: {fileID: 0}
   - Language: German
-    Text: Sie haben den Gefrier -Timer freigeschaltet!
+    Text: Du hast den <color=#FEBA00>Freeze-Timer freigeschaltet!
     Object: {fileID: 0}
   - Language: Italian
-    Text: Hai sbloccato il timer di congelamento!
+    Text: Hai sbloccato il <color=#FEBA00>Timer di congelamento!
     Object: {fileID: 0}
   - Language: Japanese
-    Text: "\u30D5\u30EA\u30FC\u30BA\u30BF\u30A4\u30DE\u30FC\u306E\u30ED\u30C3\u30AF\u3092\u89E3\u9664\u3057\u307E\u3057\u305F\uFF01"
+    Text: "<color=#FEBA00>\u30D5\u30EA\u30FC\u30BA\u30BF\u30A4\u30DE\u30FC\uFF01</color>
+      \u3092\u30A2\u30F3\u30ED\u30C3\u30AF\u3057\u307E\u3057\u305F"
     Object: {fileID: 0}
   - Language: Korean
-    Text: "\uB3D9\uACB0 \uD0C0\uC774\uBA38\uB97C \uC7A0\uAE08 \uD574\uC81C\uD588\uC2B5\uB2C8\uB2E4!"
+    Text: "<color=#FEBA00>\uD504\uB9AC\uC988 \uD0C0\uC774\uBA38!</color>\uAC00 \uC7A0\uAE08
+      \uD574\uC81C\uB418\uC5C8\uC2B5\uB2C8\uB2E4"
     Object: {fileID: 0}
   - Language: Portuguese
-    Text: "Voc\xEA desbloqueou o cron\xF4metro de congelamento!"
+    Text: "Voc\xEA desbloqueou o <color=#FEBA00>Temporizador de congelamento!"
     Object: {fileID: 0}
   - Language: Russian
     Text: "\u0412\u044B \u0440\u0430\u0437\u0431\u043B\u043E\u043A\u0438\u0440\u043E\u0432\u0430\u043B\u0438
-      \u0442\u0430\u0439\u043C\u0435\u0440 \u0437\u0430\u043C\u043E\u0440\u0430\u0436\u0438\u0432\u0430\u043D\u0438\u044F!"
+      <color=#FEBA00>\u0422\u0430\u0439\u043C\u0435\u0440 \u0437\u0430\u043C\u043E\u0440\u043E\u0437\u043A\u0438!"
     Object: {fileID: 0}
   - Language: Spanish
-    Text: "\xA1Has desbloqueado el temporizador de congelaci\xF3n!"
+    Text: "Has desbloqueado el <color=#FEBA00>Temporizador de congelaci\xF3n!"
     Object: {fileID: 0}
 --- !u!1 &333757261
 GameObject:
@@ -6180,29 +6182,29 @@ MonoBehaviour:
     Text: You have unlocked the <color=#FEBA00>Hammer!
     Object: {fileID: 0}
   - Language: French
-    Text: "Vous avez d\xE9verrouill\xE9 le marteau!"
+    Text: "Vous avez d\xE9bloqu\xE9 le <color=#FEBA00>Marteau !"
     Object: {fileID: 0}
   - Language: German
-    Text: Sie haben den Hammer freigeschaltet!
+    Text: Du hast den <color=#FEBA00>Hammer freigeschaltet!
     Object: {fileID: 0}
   - Language: Italian
-    Text: Hai sbloccato il martello!
+    Text: Hai sbloccato il <color=#FEBA00>Martello!
     Object: {fileID: 0}
   - Language: Japanese
-    Text: "\u30CF\u30F3\u30DE\u30FC\u306E\u30ED\u30C3\u30AF\u3092\u89E3\u9664\u3057\u307E\u3057\u305F\uFF01"
+    Text: "<color=#FEBA00>\u30CF\u30F3\u30DE\u30FC\uFF01</color> \u3092\u30A2\u30F3\u30ED\u30C3\u30AF\u3057\u307E\u3057\u305F"
     Object: {fileID: 0}
   - Language: Korean
-    Text: "\uB2F9\uC2E0\uC740 \uB9DD\uCE58\uB97C \uC7A0\uAE08 \uD574\uC81C\uD588\uC2B5\uB2C8\uB2E4!"
+    Text: "<color=#FEBA00>\uD574\uBA38!</color>\uAC00 \uC7A0\uAE08 \uD574\uC81C\uB418\uC5C8\uC2B5\uB2C8\uB2E4"
     Object: {fileID: 0}
   - Language: Portuguese
-    Text: "Voc\xEA desbloqueou o martelo!"
+    Text: "Voc\xEA desbloqueou o <color=#FEBA00>Martelo!"
     Object: {fileID: 0}
   - Language: Russian
     Text: "\u0412\u044B \u0440\u0430\u0437\u0431\u043B\u043E\u043A\u0438\u0440\u043E\u0432\u0430\u043B\u0438
-      \u043C\u043E\u043B\u043E\u0442\u043E\u043A!"
+      <color=#FEBA00>\u041C\u043E\u043B\u043E\u0442!"
     Object: {fileID: 0}
   - Language: Spanish
-    Text: "\xA1Has desbloqueado el martillo!"
+    Text: Has desbloqueado el <color=#FEBA00>Martillo!
     Object: {fileID: 0}
 --- !u!1 &1250276833
 GameObject:
@@ -9175,28 +9177,29 @@ MonoBehaviour:
     Text: You have unlocked the <color=#FEBA00>Magnet!
     Object: {fileID: 0}
   - Language: French
-    Text: "Vous avez d\xE9bloqu\xE9 l'Aimant\_!"
+    Text: "Vous avez d\xE9bloqu\xE9 l\u2019<color=#FEBA00>Aimant !"
     Object: {fileID: 0}
   - Language: German
-    Text: Du hast den Magneten freigeschaltet!
+    Text: Du hast den <color=#FEBA00>Magnet! freigeschaltet
     Object: {fileID: 0}
   - Language: Italian
-    Text: Hai sbloccato il Magnete!
+    Text: Hai sbloccato il <color=#FEBA00>Magnete!
     Object: {fileID: 0}
   - Language: Japanese
-    Text: "\u30DE\u30B0\u30CD\u30C3\u30C8\u306E\u30ED\u30C3\u30AF\u3092\u89E3\u9664\u3057\u307E\u3057\u305F!"
+    Text: "<color=#FEBA00>\u30DE\u30B0\u30CD\u30C3\u30C8\uFF01</color> \u3092\u30A2\u30F3\u30ED\u30C3\u30AF\u3057\u307E\u3057\u305F"
     Object: {fileID: 0}
   - Language: Korean
-    Text: "\uC790\uC11D\uC744 \uC7A0\uAE08 \uD574\uC81C\uD588\uC2B5\uB2C8\uB2E4!"
+    Text: "<color=#FEBA00>\uB9C8\uADF8\uB137!</color>\uC774 \uC7A0\uAE08 \uD574\uC81C\uB418\uC5C8\uC2B5\uB2C8\uB2E4"
     Object: {fileID: 0}
   - Language: Portuguese
-    Text: "Voc\xEA desbloqueou o \xEDm\xE3!"
+    Text: "Voc\xEA desbloqueou o <color=#FEBA00>\xCDm\xE3!"
     Object: {fileID: 0}
   - Language: Russian
-    Text: "\u0412\u044B \u043E\u0442\u043A\u0440\u044B\u043B\u0438 \u041C\u0430\u0433\u043D\u0438\u0442!"
+    Text: "\u0412\u044B \u0440\u0430\u0437\u0431\u043B\u043E\u043A\u0438\u0440\u043E\u0432\u0430\u043B\u0438
+      <color=#FEBA00>\u041C\u0430\u0433\u043D\u0438\u0442!"
     Object: {fileID: 0}
   - Language: Spanish
-    Text: "\xA1Has desbloqueado el Im\xE1n!"
+    Text: "Has desbloqueado el <color=#FEBA00>Im\xE1n!"
     Object: {fileID: 0}
 --- !u!1 &1824339635
 GameObject:
