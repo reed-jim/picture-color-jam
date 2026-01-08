@@ -1,0 +1,48 @@
+
+Icon_frezze.png
+size: 1148,820
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+frezze_10
+  rotate: true
+  xy: 982, 9
+  size: 103, 82
+  orig: 103, 82
+  offset: 0, 0
+  index: -1
+frezze_5
+  rotate: true
+  xy: 577, 13
+  size: 265, 305
+  orig: 265, 305
+  offset: 0, 0
+  index: -1
+frezze_6
+  rotate: false
+  xy: 886, 16
+  size: 92, 96
+  orig: 92, 96
+  offset: 0, 0
+  index: -1
+frezze_7
+  rotate: false
+  xy: 4, 4
+  size: 569, 812
+  orig: 569, 812
+  offset: 0, 0
+  index: -1
+frezze_8
+  rotate: false
+  xy: 886, 116
+  size: 174, 162
+  orig: 174, 162
+  offset: 0, 0
+  index: -1
+frezze_9
+  rotate: false
+  xy: 577, 282
+  size: 567, 534
+  orig: 567, 534
+  offset: 0, 0
+  index: -1

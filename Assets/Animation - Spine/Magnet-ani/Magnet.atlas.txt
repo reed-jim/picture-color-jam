@@ -1,0 +1,48 @@
+
+Magnet.png
+size: 1500,920
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+magnet_1
+  rotate: true
+  xy: 454, 430
+  size: 484, 472
+  orig: 484, 472
+  offset: 0, 0
+  index: -1
+magnet_2
+  rotate: false
+  xy: 563, 4
+  size: 520, 422
+  orig: 520, 422
+  offset: 0, 0
+  index: -1
+magnet_3
+  rotate: true
+  xy: 1087, 14
+  size: 457, 407
+  orig: 457, 407
+  offset: 0, 0
+  index: -1
+magnet_4
+  rotate: true
+  xy: 4, 362
+  size: 552, 446
+  orig: 552, 446
+  offset: 0, 0
+  index: -1
+magnet_5
+  rotate: false
+  xy: 930, 475
+  size: 507, 439
+  orig: 507, 439
+  offset: 0, 0
+  index: -1
+magnet_6
+  rotate: true
+  xy: 4, 20
+  size: 338, 555
+  orig: 338, 555
+  offset: 0, 0
+  index: -1
