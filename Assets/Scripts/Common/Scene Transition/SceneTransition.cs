@@ -228,13 +228,22 @@ public class SceneTransition : MonoBehaviour
             // double inter
             blackBackgroundToPassPolicy.gameObject.SetActive(true);
 
-            AdmobAdsMax.Instance.ShowDoubleInterstitialAds(
-                onDoubleInterClosed: () =>
-                {
-                    blackBackgroundToPassPolicy.gameObject.SetActive(false);
-                },
-                isShowBreakAds: true
-            );
+            DoubleInterAdsConfig doubleInterAdsConfig = GamePersistentVariable.doubleInterAdsConfig;
+
+            if (doubleInterAdsConfig.IsValidDoubleInter() && currentLevel.Value >= doubleInterAdsConfig.minLevel)
+            {
+                AdmobAdsMax.Instance.ShowDoubleInterstitialAds(
+                    onDoubleInterClosed: () =>
+                    {
+                        blackBackgroundToPassPolicy.gameObject.SetActive(false);
+                    },
+                    isShowBreakAds: true
+                );
+            }
+            else
+            {
+                blackBackgroundToPassPolicy.gameObject.SetActive(false);
+            }
 
             _tweens.Add(Tween.Custom(1, 0, duration: 0.3f, onValueChange: newVal =>
             {
