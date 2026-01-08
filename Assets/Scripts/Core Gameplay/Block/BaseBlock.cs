@@ -1199,6 +1199,11 @@ public class BaseBlock : MonoBehaviour
 
     public void Vacumn(bool isHideIconAfterDone = false)
     {
+        if (!IsValidToMerge())
+        {
+            return;
+        }
+
         Vector2 endPosition = TileMapper.Instance.GetBlockVacumnPosition(this);
 
         _blockRigidBody.simulated = false;

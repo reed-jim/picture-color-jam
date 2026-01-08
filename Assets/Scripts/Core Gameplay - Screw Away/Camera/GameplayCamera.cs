@@ -4,7 +4,7 @@ using UnityEngine;
 public class GameplayCamera : MonoBehaviour
 {
     [SerializeField] private Camera gameplayCamera;
-    [SerializeField] private Transform background;
+    // [SerializeField] private Transform background;
 
     private float _initialOrthographicSize;
     private float _targetOrthographicSize;
@@ -13,27 +13,27 @@ public class GameplayCamera : MonoBehaviour
 
     private void Awake()
     {
-        LevelLoader.startLevelEvent += OnLevelStart;
-        PinchGesture.pinchGestureEvent += Zoom;
-        BasicObjectPart.shakeCameraEvent += Shake;
-        MultiPhaseLevelManager.zoomCameraEvent += Zoom;
-        MultiPhaseLevelManager.resetCameraEvent += Reset;
+        // LevelLoader.startLevelEvent += OnLevelStart;
+        // PinchGesture.pinchGestureEvent += Zoom;
+        // BasicObjectPart.shakeCameraEvent += Shake;
+        // MultiPhaseLevelManager.zoomCameraEvent += Zoom;
+        // MultiPhaseLevelManager.resetCameraEvent += Reset;
         LevelLoader.setLevelCameraOrthographicSize += SetFieldOfView;
 
-        _initialOrthographicSize = gameplayCamera.orthographicSize;
-        _targetOrthographicSize = gameplayCamera.orthographicSize;
+        // _initialOrthographicSize = gameplayCamera.orthographicSize;
+        // _targetOrthographicSize = gameplayCamera.orthographicSize;
 
-        _initialBackgroundScale = background.localScale;
-        _targetBackgroundScale = background.localScale;
+        // _initialBackgroundScale = background.localScale;
+        // _targetBackgroundScale = background.localScale;
     }
 
     private void OnDestroy()
     {
-        LevelLoader.startLevelEvent -= OnLevelStart;
-        PinchGesture.pinchGestureEvent -= Zoom;
-        BasicObjectPart.shakeCameraEvent -= Shake;
-        MultiPhaseLevelManager.zoomCameraEvent -= Zoom;
-        MultiPhaseLevelManager.resetCameraEvent -= Reset;
+        // LevelLoader.startLevelEvent -= OnLevelStart;
+        // PinchGesture.pinchGestureEvent -= Zoom;
+        // BasicObjectPart.shakeCameraEvent -= Shake;
+        // MultiPhaseLevelManager.zoomCameraEvent -= Zoom;
+        // MultiPhaseLevelManager.resetCameraEvent -= Reset;
         LevelLoader.setLevelCameraOrthographicSize -= SetFieldOfView;
     }
 
@@ -71,6 +71,6 @@ public class GameplayCamera : MonoBehaviour
         gameplayCamera.fieldOfView = fieldOfView;
 
         GamePersistentVariable.screenSizeWorld =
-            CommonUtil.GetScreenWorldSizePerspective(gameplayCamera, gameplayCamera.transform.position.y);
+            CommonUtil.GetScreenWorldSizePerspective(gameplayCamera, Mathf.Abs(gameplayCamera.transform.position.z));
     }
 }

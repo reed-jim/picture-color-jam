@@ -519,5 +519,6 @@ public class LevelLoader : MonoBehaviour
         camera.fieldOfView = finalCameraFOV;
 
         updateCameraEvent?.Invoke();
+        setLevelCameraOrthographicSize(finalCameraFOV);
     }
 }
