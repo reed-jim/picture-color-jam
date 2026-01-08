@@ -131,6 +131,17 @@ public class LevelTimeCounter : MonoBehaviour
                 remainingSecond--;
             }
 
+            if (remainingSecond <= 10)
+            {
+                timeText.color = Color.red;
+
+                TweenUtil.ScaleUpDown(timeText.transform, strength: 1.2f);
+            }
+            else
+            {
+                timeText.color = Color.white;
+            }
+
             _remainingSecond = remainingSecond;
 
             yield return waitForSeconds;
