@@ -99,6 +99,8 @@ public class LevelIconUIManager : Singleton<LevelIconUIManager>
             Tween.LocalPosition(item.movingIcon.rectTransform, item.icon.rectTransform.localPosition, duration: 0.5f, ease: Ease.InOutSine)
             .OnComplete(() =>
             {
+                SoundManager.Instance.PlaySoundPictureComplete();
+
                 TweenUtil.ScaleUpDown(item.container, 1.3f, onCompleted: () =>
                 {
 

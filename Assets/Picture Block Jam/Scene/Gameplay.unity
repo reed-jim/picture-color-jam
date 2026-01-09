@@ -4491,7 +4491,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 35.33068, y: 6.5173}
+  m_AnchoredPosition: {x: 35.33068, y: 4}
   m_SizeDelta: {x: 154.0594, y: 64}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1409688369
@@ -6381,6 +6381,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1987694916}
+  - component: {fileID: 1987694919}
   - component: {fileID: 1987694915}
   - component: {fileID: 1987694914}
   - component: {fileID: 1987694917}
@@ -6478,7 +6479,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.UniversalAdditionalCameraData
-  m_RenderShadows: 1
+  m_RenderShadows: 0
   m_RequiresDepthTextureOption: 2
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 0
@@ -6489,8 +6490,8 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
-  m_Antialiasing: 0
+  m_RenderPostProcessing: 1
+  m_Antialiasing: 3
   m_AntialiasingQuality: 2
   m_StopNaN: 0
   m_Dithering: 0
@@ -6530,11 +6531,24 @@ MonoBehaviour:
   primaryRendererScale: 0.75
   primarySizeReference: 800
   blurShift: 1
-  dilateShift: 2
+  dilateShift: 0.5
   dilateIterations: 2
-  dilateQuality: 0
-  blurIterations: 0
+  dilateQuality: 2
+  blurIterations: 4
   blurType: 1
+--- !u!114 &1987694919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1987694913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b14647cb80be7df4898318d278fc92aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameplayCamera
+  gameplayCamera: {fileID: 1987694915}
 --- !u!1 &2009875064
 GameObject:
   m_ObjectHideFlags: 0

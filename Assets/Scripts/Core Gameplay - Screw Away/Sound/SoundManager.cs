@@ -216,6 +216,11 @@ public class SoundManager : MonoBehaviour
         PlaySound(GameConstants.timeTickSound);
     }
 
+    public void PlaySoundPictureComplete()
+    {
+        PlaySound(GameConstants.pictureCompleteSound);
+    }
+
     private void PlaySound(string key)
     {
         if (!_isEnableGameSound)

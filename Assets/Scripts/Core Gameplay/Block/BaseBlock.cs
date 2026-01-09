@@ -1215,12 +1215,20 @@ public class BaseBlock : MonoBehaviour
         blockServiceLocator.spriteRenderer.sortingOrder = GameConstants.maxSortingLayer - (int)endPosition.y;
         blockServiceLocator.iconMaskSortingGroup.sortingOrder = blockServiceLocator.spriteRenderer.sortingOrder + 1;
 
+        ParticleSystem magnetFx = ObjectPoolingEverything.GetFromPool<ParticleSystem>(GameConstants.magnetFx);
+
+        magnetFx.transform.SetParent(transform);
+        magnetFx.transform.localPosition = Vector3.zero;
+        magnetFx.Play();
+
         Tween.Position(transform, endPosition, duration: 0.6f)
         .OnComplete(() =>
         {
             blockProperty.IsDone = true;
 
             blockCompletedEvent?.Invoke();
+
+            magnetFx.Stop();
 
             Tween.Delay(0.1f, onComplete: () =>
             {

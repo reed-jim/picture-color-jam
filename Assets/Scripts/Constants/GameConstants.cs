@@ -20,6 +20,7 @@ public static class GameConstants
     public static string DESTROY_OBJECT_PART_FX = "Destroy Object Part Fx";
     public static string blockMergeFx = "blockMergeFx";
     public static string blockBreakFx = "blockBreakFx";
+    public static string magnetFx = "magnetFx";
     #endregion
 
     #region COMMON TEXT
@@ -83,6 +84,7 @@ public static class GameConstants
     public static string hammerSound = "hammerSound";
     public static string magnetSound = "magnetSound";
     public static string timeTickSound = "timeTickSound";
+    public static string pictureCompleteSound = "pictureCompleteSound";
     #endregion
 
     #region ANIMATION
