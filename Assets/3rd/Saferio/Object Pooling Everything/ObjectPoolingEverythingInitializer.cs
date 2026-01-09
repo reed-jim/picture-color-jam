@@ -30,6 +30,7 @@ public class ObjectPoolingEverythingInitializer : MonoBehaviour
     [SerializeField] private GameObject freezedSoundPrefab;
     [SerializeField] private GameObject hammerSoundPrefab;
     [SerializeField] private GameObject magnetSoundPrefab;
+    [SerializeField] private GameObject timeTickSoundPrefab;
     [SerializeField] private GameObject destroyObjectPartFxPrefab;
     [SerializeField] private GameObject clockBoosterItemPrefab;
     [SerializeField] private GameObject blockMergeFx;
@@ -84,6 +85,7 @@ public class ObjectPoolingEverythingInitializer : MonoBehaviour
         RegisterPool<AudioSource>(GameConstants.freezedSound, freezedSoundPrefab, 3);
         RegisterPool<AudioSource>(GameConstants.hammerSound, hammerSoundPrefab, 3);
         RegisterPool<AudioSource>(GameConstants.magnetSound, magnetSoundPrefab, 3);
+        RegisterPool<AudioSource>(GameConstants.timeTickSound, timeTickSoundPrefab, 3);
         RegisterPool<TaskItemUI>(GameConstants.TASK_ITEM_UI, taskItemUIPrefab, 5);
         RegisterPool<ParticleSystem>(GameConstants.DESTROY_OBJECT_PART_FX, destroyObjectPartFxPrefab, 5);
         RegisterPool<ParticleSystem>(GameConstants.blockMergeFx, blockMergeFx, 16);

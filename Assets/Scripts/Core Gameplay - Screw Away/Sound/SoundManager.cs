@@ -211,6 +211,11 @@ public class SoundManager : MonoBehaviour
         PlaySound(GameConstants.magnetSound);
     }
 
+    public void PlaySoundTimeTick()
+    {
+        PlaySound(GameConstants.timeTickSound);
+    }
+
     private void PlaySound(string key)
     {
         if (!_isEnableGameSound)

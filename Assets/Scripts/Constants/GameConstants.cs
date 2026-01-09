@@ -82,6 +82,7 @@ public static class GameConstants
     public static string freezedSound = "freezedSound";
     public static string hammerSound = "hammerSound";
     public static string magnetSound = "magnetSound";
+    public static string timeTickSound = "timeTickSound";
     #endregion
 
     #region ANIMATION
