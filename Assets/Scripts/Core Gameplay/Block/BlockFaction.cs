@@ -21,6 +21,11 @@ public class BlockFaction : MonoBehaviour
         }
     }
 
+    public Color Color
+    {
+        get => blockRenderer.material.GetColor("_Color");
+    }
+
     private void OnValidate()
     {
         UpdateFaction();

@@ -231,7 +231,9 @@ public class LevelTimeCounter : MonoBehaviour
 
             freezedBackground.color = ColorUtil.WithAlpha(freezedBackground.color, 0);
 
-            _tweens.Add(Tween.Alpha(freezedBackground, 0.4f, duration: 0.3f));
+            _tweens.Add(Tween.Alpha(freezedBackground, 0.2f, duration: 0.3f));
+
+            SoundManager.Instance.PlaySoundFreezed();
         }
         else
         {

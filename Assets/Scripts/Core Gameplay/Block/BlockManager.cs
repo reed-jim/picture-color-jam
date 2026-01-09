@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using CandyCoded.HapticFeedback;
+using PrimeTween;
 using UnityEngine;
 
 public class BlockManager : Singleton<BlockManager>
@@ -196,7 +197,22 @@ public class BlockManager : Singleton<BlockManager>
 
                 Vector3 iconWorldPosition = AveragePosition(worldTileCoordinators);
 
-                LevelIconUIManager.Instance.HideIcon(iconWorldPosition, group[0].spriteType);
+                // Block Break Fx
+                ParticleSystem blockBreakFx = ObjectPoolingEverything.GetFromPool<ParticleSystem>(GameConstants.blockBreakFx);
+
+                blockBreakFx.gameObject.SetActive(true);
+                blockBreakFx.transform.position = iconWorldPosition;
+                var main = blockBreakFx.transform.GetChild(2).GetComponent<ParticleSystem>().main;
+                main.startColor = group[0].BlockServiceLocator.blockFaction.Color;
+                blockBreakFx.Play();
+
+                // Sound
+                SoundManager.Instance.PlaySoundClearBlock();
+
+                Tween.Delay(0.15f).OnComplete(() =>
+                {
+                    LevelIconUIManager.Instance.HideIcon(iconWorldPosition, group[0].spriteType);
+                });
             }
         }
 

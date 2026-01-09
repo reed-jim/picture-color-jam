@@ -43,6 +43,8 @@ public class BoosterVacumn : MonoBehaviour
             trackEntry = magnetSpine.AnimationState.SetAnimation(0, magnetAnimation, true);
             trackEntry.Complete += OnAnimationComplete;
 
+            SoundManager.Instance.PlaySoundMagnet();
+
             onCompletedAction?.Invoke(transform.position);
 
             // Tween.Delay(1).OnComplete(() =>

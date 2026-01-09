@@ -19,6 +19,7 @@ public static class GameConstants
     public static string VEHICLE_MOVE_OUT_SOUND = "Vehicle Move Out Sound";
     public static string DESTROY_OBJECT_PART_FX = "Destroy Object Part Fx";
     public static string blockMergeFx = "blockMergeFx";
+    public static string blockBreakFx = "blockBreakFx";
     #endregion
 
     #region COMMON TEXT
@@ -76,6 +77,11 @@ public static class GameConstants
     public static string CLOSE_POPUP_SOUND = "Close Popup Sound";
     public static string UNLOCK_ADS_SCREW_BOX_SOUND = "Unlock Ads Screw Box Sound";
     public static string CLEAR_SCREW_PORTS_SOUND = "Clear Screw Ports Sound";
+    public static string placeBlockSound = "placeBlockSound";
+    public static string clearBlockSound = "clearBlockSound";
+    public static string freezedSound = "freezedSound";
+    public static string hammerSound = "hammerSound";
+    public static string magnetSound = "magnetSound";
     #endregion
 
     #region ANIMATION

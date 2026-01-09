@@ -3909,9 +3909,15 @@ MonoBehaviour:
   closePopupSoundPrefab: {fileID: 7606835583939712495, guid: 3bb1b26f373872649ad66276977066b0, type: 3}
   unlockAdsScrewBoxSoundPrefab: {fileID: 7606835583939712495, guid: 63f6778fb6b280a499f4ce3c4efab9e6, type: 3}
   clearScrewPortsSoundPrefab: {fileID: 7606835583939712495, guid: 3734458f6d3896141824ba0b0e6dbdbd, type: 3}
+  placeBlockSoundPrefab: {fileID: 7606835583939712495, guid: 680aae35747958342968ea0b50bc1e0e, type: 3}
+  clearBlockSoundPrefab: {fileID: 7606835583939712495, guid: 05b86b731c22ccd40a461454f903199b, type: 3}
+  freezedSoundPrefab: {fileID: 7606835583939712495, guid: 0d708f0fbe4a8ca49ad96d02edb8ece8, type: 3}
+  hammerSoundPrefab: {fileID: 7606835583939712495, guid: 6ddfa17fe998de74b908086b932ca224, type: 3}
+  magnetSoundPrefab: {fileID: 7606835583939712495, guid: fc10f6bbe2cd0384e95b83304f0d48ea, type: 3}
   destroyObjectPartFxPrefab: {fileID: 7243412146976613399, guid: 7f6a5f6ed46040745825be46b3f25418, type: 3}
   clockBoosterItemPrefab: {fileID: 6152802032738210302, guid: d9d9025bf5c091846ba6f2f3f4e92d18, type: 3}
   blockMergeFx: {fileID: 8771972552311404799, guid: b5b43e1799b88e448a004a6c190102d7, type: 3}
+  blockBreakFx: {fileID: 8915500580573861359, guid: 9d11447644b0e0842a7edb034fe1ac72, type: 3}
   taskItemUIPrefab: {fileID: 413993787269842527, guid: cfbf48fdb9ee8ba438323f24aaa9fe07, type: 3}
 --- !u!1 &799918446
 GameObject:

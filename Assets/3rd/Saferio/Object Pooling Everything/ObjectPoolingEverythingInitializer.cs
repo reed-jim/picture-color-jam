@@ -25,9 +25,15 @@ public class ObjectPoolingEverythingInitializer : MonoBehaviour
     [SerializeField] private GameObject closePopupSoundPrefab;
     [SerializeField] private GameObject unlockAdsScrewBoxSoundPrefab;
     [SerializeField] private GameObject clearScrewPortsSoundPrefab;
+    [SerializeField] private GameObject placeBlockSoundPrefab;
+    [SerializeField] private GameObject clearBlockSoundPrefab;
+    [SerializeField] private GameObject freezedSoundPrefab;
+    [SerializeField] private GameObject hammerSoundPrefab;
+    [SerializeField] private GameObject magnetSoundPrefab;
     [SerializeField] private GameObject destroyObjectPartFxPrefab;
     [SerializeField] private GameObject clockBoosterItemPrefab;
     [SerializeField] private GameObject blockMergeFx;
+    [SerializeField] private GameObject blockBreakFx;
 
     [SerializeField] private GameObject taskItemUIPrefab;
 
@@ -73,9 +79,15 @@ public class ObjectPoolingEverythingInitializer : MonoBehaviour
         RegisterPool<AudioSource>(GameConstants.CLOSE_POPUP_SOUND, closePopupSoundPrefab, 2);
         RegisterPool<AudioSource>(GameConstants.UNLOCK_ADS_SCREW_BOX_SOUND, unlockAdsScrewBoxSoundPrefab, 3);
         RegisterPool<AudioSource>(GameConstants.CLEAR_SCREW_PORTS_SOUND, clearScrewPortsSoundPrefab, 3);
+        RegisterPool<AudioSource>(GameConstants.placeBlockSound, placeBlockSoundPrefab, 3);
+        RegisterPool<AudioSource>(GameConstants.clearBlockSound, clearBlockSoundPrefab, 3);
+        RegisterPool<AudioSource>(GameConstants.freezedSound, freezedSoundPrefab, 3);
+        RegisterPool<AudioSource>(GameConstants.hammerSound, hammerSoundPrefab, 3);
+        RegisterPool<AudioSource>(GameConstants.magnetSound, magnetSoundPrefab, 3);
         RegisterPool<TaskItemUI>(GameConstants.TASK_ITEM_UI, taskItemUIPrefab, 5);
         RegisterPool<ParticleSystem>(GameConstants.DESTROY_OBJECT_PART_FX, destroyObjectPartFxPrefab, 5);
         RegisterPool<ParticleSystem>(GameConstants.blockMergeFx, blockMergeFx, 16);
+        RegisterPool<ParticleSystem>(GameConstants.blockBreakFx, blockBreakFx, 5);
         RegisterPool<SpriteRenderer>(GameConstants.BOOSTER_CLOCK_ITEM, clockBoosterItemPrefab, 2);
         RegisterPool<BaseBlock>(GameConstants.block1x1, block1x1Prefab, 30);
     }

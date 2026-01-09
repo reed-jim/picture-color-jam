@@ -40,7 +40,7 @@ public class BoosterHammer : MonoBehaviour
 
                     PlayHitFx(factionColor);
 
-                    SoundManager.Instance.PlaySoundBreakObject();
+                    SoundManager.Instance.PlaySoundHammer();
 
                     Tween.ShakeCamera(Camera.main, 5f, duration: 0.3f).OnComplete(() =>
                     {

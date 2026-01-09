@@ -865,6 +865,8 @@ public class BaseBlock : MonoBehaviour
             ResolveBlockOverlapping(transform);
         }
 
+        SoundManager.Instance.PlaySoundPlaceBlock();
+
         return;
 
         float tileDistance = GamePersistentVariable.tileDistance;

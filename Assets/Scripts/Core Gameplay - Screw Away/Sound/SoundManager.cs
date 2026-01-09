@@ -186,6 +186,43 @@ public class SoundManager : MonoBehaviour
         breakObjectSound.Play();
     }
 
+    public void PlaySoundPlaceBlock()
+    {
+        PlaySound(GameConstants.placeBlockSound);
+    }
+
+    public void PlaySoundClearBlock()
+    {
+        PlaySound(GameConstants.clearBlockSound);
+    }
+
+    public void PlaySoundFreezed()
+    {
+        PlaySound(GameConstants.freezedSound);
+    }
+
+    public void PlaySoundHammer()
+    {
+        PlaySound(GameConstants.hammerSound);
+    }
+
+    public void PlaySoundMagnet()
+    {
+        PlaySound(GameConstants.magnetSound);
+    }
+
+    private void PlaySound(string key)
+    {
+        if (!_isEnableGameSound)
+        {
+            return;
+        }
+
+        AudioSource sound = ObjectPoolingEverything.GetFromPool<AudioSource>(key);
+
+        sound.Play();
+    }
+
     private void FadeOutBackgroundMusic()
     {
         Tween.Custom(1, 0, duration: 0.3f, onValueChange: newVal =>
