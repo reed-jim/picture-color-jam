@@ -209,10 +209,7 @@ public class BlockManager : Singleton<BlockManager>
                 // Sound
                 SoundManager.Instance.PlaySoundClearBlock();
 
-                Tween.Delay(0.15f).OnComplete(() =>
-                {
-                    LevelIconUIManager.Instance.HideIcon(iconWorldPosition, group[0].spriteType);
-                });
+                LevelIconUIManager.Instance.HideIcon(iconWorldPosition, group[0].spriteType);
             }
         }
 

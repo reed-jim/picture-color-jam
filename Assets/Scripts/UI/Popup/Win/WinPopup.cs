@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Threading.Tasks;
 using Lean.Localization;
 using PrimeTween;
@@ -65,7 +66,7 @@ public class WinPopup : BasePopup
 
         // REMOTE CONFIG IS COLLECT COIN
         _isCollectCoinRemoteConfig = RemoteConfigController.GetBoolConfig(FirebaseConfig.IS_COLLECT_COIN_WIN_LEVEL, true);
-        _multiplierCoinWinLevel = RemoteConfigController.GetIntConfig(FirebaseConfig.MULTIPLIER_COIN_WIN_LEVEL, 5);
+        _multiplierCoinWinLevel = RemoteConfigController.GetIntConfig(FirebaseConfig.MULTIPLIER_COIN_WIN_LEVEL, 2);
 
         coinContainer.gameObject.SetActive(_isCollectCoinRemoteConfig);
         x5CoinButton.gameObject.SetActive(_isCollectCoinRemoteConfig);
@@ -88,6 +89,8 @@ public class WinPopup : BasePopup
         //
 
         Show();
+
+        StartCoroutine(LoopScaleUpDownAdsButton());
 
         SoundManager.Instance.PlaySoundWin();
 
@@ -213,6 +216,40 @@ public class WinPopup : BasePopup
     private void ShowAdsNotLoadedPopup()
     {
         InvokeShowAdNotLoadedPopupEvent();
+    }
+    #endregion
+
+    #region Button Flow
+    private IEnumerator LoopScaleUpDownAdsButton()
+    {
+        float cycleDuration = 1.2f;
+
+        WaitForSeconds waitForSeconds = new WaitForSeconds(cycleDuration);
+
+        Tween scaleTween = new Tween();
+
+        continueButton.gameObject.SetActive(false);
+
+        Tween.Delay(3).OnComplete(() =>
+        {
+            TweenUtil.PunchShow(continueButton.transform, Vector3.one);
+        });
+
+        while (x5CoinButton.gameObject.activeInHierarchy)
+        {
+            if (scaleTween.isAlive)
+            {
+                scaleTween.Stop();
+            }
+
+            scaleTween = Tween.Scale(x5CoinButton.transform, 1.1f, duration: cycleDuration / 2f)
+            .OnComplete(() =>
+            {
+                Tween.Scale(x5CoinButton.transform, 1f, duration: cycleDuration / 2f);
+            });
+
+            yield return waitForSeconds;
+        }
     }
     #endregion
 
