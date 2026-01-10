@@ -189,5 +189,6 @@ public static class GameConstants
 
     #region TOWER
     public static string tower = "tower";
+    public static string towerUIItem = "towerUIItem";
     #endregion
 }

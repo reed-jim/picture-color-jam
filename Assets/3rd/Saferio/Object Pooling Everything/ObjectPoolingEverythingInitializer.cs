@@ -35,6 +35,7 @@ public class ObjectPoolingEverythingInitializer : MonoBehaviour
     #region TOWER
     public GameObject projectile;
     public GameObject tower;
+    public GameObject towerUIItem;
     #endregion
 
     private bool _isInitialized;
@@ -88,6 +89,7 @@ public class ObjectPoolingEverythingInitializer : MonoBehaviour
 
         RegisterPool<BaseProjectile>(GameConstants.projectile, projectile, 100);
         RegisterPool<BaseTower>(GameConstants.tower, tower, 20);
+        RegisterPool<TowerUIItem>(GameConstants.towerUIItem, towerUIItem, 20);
     }
 
     private void RegisterPool<T>(string key, GameObject prefab, int poolSize)

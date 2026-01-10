@@ -3,6 +3,13 @@ using UnityEngine;
 
 public class GameEnum : MonoBehaviour
 {
+    public enum TowerType
+    {
+        Arrow,
+        Explosive,
+        Spear
+    }
+
     public enum ScreenRoute
     {
         Waiting,

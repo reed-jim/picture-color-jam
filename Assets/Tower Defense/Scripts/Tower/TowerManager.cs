@@ -1,12 +1,16 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using static GameEnum;
 
 public class TowerManager : Singleton<TowerManager>
 {
     [SerializeField] private CanvasGroup placeTowerCanvasGroup;
     [SerializeField] private CanvasGroup cancelCanvasGroup;
     [SerializeField] private Image cancelArea;
+
+    public List<TowerUIItem> towerPool;
 
     public Camera mainCamera;
 
@@ -76,5 +80,26 @@ public class TowerManager : Singleton<TowerManager>
         cancelCanvasGroup.gameObject.SetActive(false);
 
         GamePersistentVariable.isPlacingTower = false;
+    }
+
+    public void AddTowerToPool(TowerType towerType)
+    {
+        TowerUIItem towerUIItem = ObjectPoolingEverything.GetFromPool<TowerUIItem>(GameConstants.towerUIItem);
+
+        towerUIItem.transform.SetParent(placeTowerCanvasGroup.transform);
+        towerUIItem.towerType = towerType;
+
+        towerPool.Add(towerUIItem);
+    }
+
+    public void BuffTower(TowerType towerType, float buffRatio)
+    {
+        foreach (var item in towerPool)
+        {
+            if (item.towerType == towerType)
+            {
+
+            }
+        }
     }
 }

@@ -1,10 +1,13 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using static GameEnum;
 
 public class TowerUIItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] private Button selectButton;
+
+    public TowerType towerType;
 
     public void OnPointerEnter(PointerEventData eventData)
     {
