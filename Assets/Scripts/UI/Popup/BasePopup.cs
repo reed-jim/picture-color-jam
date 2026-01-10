@@ -49,6 +49,7 @@ public class BasePopup : MonoBehaviour
         PausePopup.switchRouteEvent += OnRouteSwitched;
         UserLivesUI.switchRouteEvent += OnRouteSwitched;
         LevelLoader.switchRouteEvent += OnRouteSwitched;
+        TowerManager.switchRouteEvent += OnRouteSwitched;
 
         if (closeButton != null)
         {
@@ -97,6 +98,7 @@ public class BasePopup : MonoBehaviour
         PausePopup.switchRouteEvent -= OnRouteSwitched;
         UserLivesUI.switchRouteEvent -= OnRouteSwitched;
         LevelLoader.switchRouteEvent -= OnRouteSwitched;
+        TowerManager.switchRouteEvent -= OnRouteSwitched;
 
         UnregisterMoreEvent();
 

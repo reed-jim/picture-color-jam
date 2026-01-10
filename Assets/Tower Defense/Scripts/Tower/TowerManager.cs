@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using PrimeTween;
 using UnityEngine;
 using UnityEngine.UI;
 using static GameEnum;
@@ -14,12 +16,19 @@ public class TowerManager : Singleton<TowerManager>
 
     public Camera mainCamera;
 
+    public static Action<ScreenRoute> switchRouteEvent;
+
     protected override void MoreActionOnAwake()
     {
         base.MoreActionOnAwake();
 
         placeTowerCanvasGroup.gameObject.SetActive(true);
         cancelCanvasGroup.gameObject.SetActive(false);
+
+        Tween.Delay(3).OnComplete(() =>
+        {
+            switchRouteEvent?.Invoke(ScreenRoute.TowerSelection);
+        });
     }
 
     public void PlaceTower()

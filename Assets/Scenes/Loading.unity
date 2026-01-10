@@ -3510,6 +3510,7 @@ MonoBehaviour:
   taskItemUIPrefab: {fileID: 413993787269842527, guid: cfbf48fdb9ee8ba438323f24aaa9fe07, type: 3}
   projectile: {fileID: 2764698954615587065, guid: be3b8299b0d42b345bb1ffe7c50ab8e3, type: 3}
   tower: {fileID: 5434978929448508002, guid: 731b306cff8ffe84babecb982d792ac0, type: 3}
+  towerUIItem: {fileID: 4186707232104964077, guid: 641b9230980a2774cb89d56f295e5f51, type: 3}
 --- !u!1 &799918446
 GameObject:
   m_ObjectHideFlags: 0

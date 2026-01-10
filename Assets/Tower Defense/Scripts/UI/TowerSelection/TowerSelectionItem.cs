@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,6 +14,8 @@ public class TowerSelectionItem : MonoBehaviour
     public bool isBuff;
     public float buffRatio;
 
+    public static Action selectTowerEvent;
+
     void Awake()
     {
         selectButton.onClick.AddListener(Select);
@@ -21,5 +24,7 @@ public class TowerSelectionItem : MonoBehaviour
     public void Select()
     {
         TowerManager.Instance.AddTowerToPool(towerType);
+
+        selectTowerEvent?.Invoke();
     }
 }
