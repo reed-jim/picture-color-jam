@@ -27,7 +27,7 @@ public class TowerManager : Singleton<TowerManager>
 
         Tween.Delay(3).OnComplete(() =>
         {
-            switchRouteEvent?.Invoke(ScreenRoute.TowerSelection);
+            ShowTowerSelectionPopup();
         });
     }
 
@@ -110,5 +110,10 @@ public class TowerManager : Singleton<TowerManager>
 
             }
         }
+    }
+
+    public void ShowTowerSelectionPopup()
+    {
+        switchRouteEvent?.Invoke(ScreenRoute.TowerSelection);
     }
 }

@@ -48,6 +48,8 @@ public class BaseEnemy : MonoBehaviour
             fx.Play();
 
             gameObject.SetActive(false);
+
+            CharacterUI.Instance.UpdateEXP(1);
         }
 
         projectile.gameObject.SetActive(false);
