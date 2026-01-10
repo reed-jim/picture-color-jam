@@ -186,4 +186,8 @@ public static class GameConstants
     #region SHADER
     public static string ADDITION_POSITION_X = "_AdditionPositionX";
     #endregion
+
+    #region TOWER
+    public static string tower = "tower";
+    #endregion
 }

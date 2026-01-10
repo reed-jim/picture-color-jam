@@ -58,4 +58,8 @@ public static class GamePersistentVariable
     public static int bannerCooldown = 30;
     public static DoubleInterAdsConfig doubleInterAdsConfig;
     #endregion
+
+    #region TOWER
+    public static bool isPlacingTower;
+    #endregion
 }

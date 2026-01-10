@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class BaseTower : MonoBehaviour
 {
+    public bool isActive;
     public float attackRadius;
     public LayerMask targetLayer;
 
@@ -17,15 +18,18 @@ public class BaseTower : MonoBehaviour
 
         while (true)
         {
-            Transform target = FindNearestTarget();
-
-            if (target != null)
+            if (isActive)
             {
-                BaseProjectile projectile = ObjectPoolingEverything.GetFromPool<BaseProjectile>(GameConstants.projectile);
+                Transform target = FindNearestTarget();
 
-                projectile.transform.position = transform.position;
+                if (target != null)
+                {
+                    BaseProjectile projectile = ObjectPoolingEverything.GetFromPool<BaseProjectile>(GameConstants.projectile);
 
-                projectile.ShootAt(target.position);
+                    projectile.transform.position = transform.position;
+
+                    projectile.ShootAt(target.position);
+                }
             }
 
             yield return waitForSeconds;

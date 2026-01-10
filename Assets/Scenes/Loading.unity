@@ -3509,6 +3509,7 @@ MonoBehaviour:
   blockMergeFx: {fileID: 8771972552311404799, guid: b5b43e1799b88e448a004a6c190102d7, type: 3}
   taskItemUIPrefab: {fileID: 413993787269842527, guid: cfbf48fdb9ee8ba438323f24aaa9fe07, type: 3}
   projectile: {fileID: 2764698954615587065, guid: be3b8299b0d42b345bb1ffe7c50ab8e3, type: 3}
+  tower: {fileID: 5434978929448508002, guid: 731b306cff8ffe84babecb982d792ac0, type: 3}
 --- !u!1 &799918446
 GameObject:
   m_ObjectHideFlags: 0
