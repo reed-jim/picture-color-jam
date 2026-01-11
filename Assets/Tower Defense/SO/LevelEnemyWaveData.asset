@@ -12,4 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1e484d5223128740879d33a844e6108, type: 3}
   m_Name: LevelEnemyWaveData
   m_EditorClassIdentifier: Assembly-CSharp::LevelEnemyWaveData
-  enemyWaves: []
+  enemyWaves:
+  - numEnemy: 0
+    enemies:
+    - enemyType: 0
+      number: 8
+  - numEnemy: 0
+    enemies:
+    - enemyType: 0
+      number: 6

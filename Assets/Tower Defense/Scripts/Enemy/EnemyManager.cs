@@ -17,7 +17,8 @@ public class EnemyManager : MonoBehaviour
 
     void Start()
     {
-        currentLevelEnemyWaveData = levelEnemyWaveData;
+        currentLevelEnemyWaveData = new LevelEnemyWaveData();
+        currentLevelEnemyWaveData.enemyWaves = levelEnemyWaveData.enemyWaves;
         timeToNextWave = 10;
 
         StartCoroutine(SpawnEnemy());
@@ -46,7 +47,22 @@ public class EnemyManager : MonoBehaviour
         while (currentLevelEnemyWaveData.enemyWaves.Count > 0)
         {
             EnemyWave currentEnemyWave = currentLevelEnemyWaveData.enemyWaves.First();
-            EnemyType currentEnemyType = currentEnemyWave.enemies.First();
+            EnemyType currentEnemyType = EnemyType.Melee;
+
+            for (int i = 0; i < currentEnemyWave.enemies.Count; i++)
+            {
+                if (currentEnemyWave.enemies[i].number > 0)
+                {
+                    currentEnemyType = currentEnemyWave.enemies[i].enemyType;
+
+                    EnemyTypeAndNumberPair enemyTypeAndNumberPair = currentEnemyWave.enemies[i];
+                    enemyTypeAndNumberPair.number--;
+
+                    currentEnemyWave.enemies[i] = enemyTypeAndNumberPair;
+
+                    break;
+                }
+            }
 
             BaseEnemy enemy = ObjectPoolingEverything.GetFromPool<BaseEnemy>(currentEnemyType.ToString());
             enemy.Reset();

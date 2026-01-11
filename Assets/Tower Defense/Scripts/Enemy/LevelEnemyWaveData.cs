@@ -18,5 +18,12 @@ public class LevelEnemyWaveData : ScriptableObject
 public class EnemyWave
 {
     public int numEnemy;
-    public List<EnemyType> enemies;
+    public List<EnemyTypeAndNumberPair> enemies;
+}
+
+[Serializable]
+public struct EnemyTypeAndNumberPair
+{
+    public EnemyType enemyType;
+    public int number;
 }
