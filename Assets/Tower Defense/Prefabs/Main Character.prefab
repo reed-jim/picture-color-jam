@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3892377441835592056}
   - component: {fileID: 8569052907421245739}
   - component: {fileID: 2054746229420455812}
-  - component: {fileID: 8917289172108661040}
+  - component: {fileID: 9046553076708840018}
   m_Layer: 13
   m_Name: Spear
   m_TagString: Untagged
@@ -29,8 +29,8 @@ Transform:
   m_GameObject: {fileID: 2013141292108452762}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 6, y: 6, z: 6}
+  m_LocalPosition: {x: 0.734, y: 0, z: -1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 5095923917602805960}
@@ -97,7 +97,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: 9aeac1c0750d43d498b7e62859763888, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3ab19a16445e60e48a422a51fcd05636, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -134,7 +134,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &8917289172108661040
+--- !u!61 &9046553076708840018
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -168,17 +168,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.014890045, y: -0.02531603}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.32, y: 0.32}
+    pivot: {x: 0.52734476, y: 0.52790135}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 1.84, y: 1.84}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.4, y: 0.03}
+  m_Size: {x: 0.9086975, y: 0.9091097}
   m_EdgeRadius: 0
 --- !u!1 &6525662387493993281
 GameObject:
@@ -260,7 +260,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MainCharacter
   weapon: {fileID: 5095923917602805960}
-  weaponCollider: {fileID: 8917289172108661040}
+  weaponCollider: {fileID: 9046553076708840018}
   speedMultiply: 0.0015
 --- !u!212 &561188729297085665
 SpriteRenderer:
@@ -311,7 +311,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: f6e717c33bee8ff45a862a510eb92d77, type: 2}
+  m_Sprite: {fileID: 21300000, guid: 7eef237ce007c764394025ec2e08ba24, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -358,8 +358,8 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.64, y: 0.64}
+    pivot: {x: 0.5, y: 0.505187}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 7.01, y: 19.58}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

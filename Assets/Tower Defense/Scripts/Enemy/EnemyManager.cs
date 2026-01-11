@@ -71,9 +71,7 @@ public class EnemyManager : MonoBehaviour
             spawnPosition.x = Random.Range(-0.5f * GamePersistentVariable.screenSizeWorld.x, 0.5f * GamePersistentVariable.screenSizeWorld.x);
             enemy.transform.position = spawnPosition;
 
-            currentEnemyWave.enemies.RemoveAt(0);
-
-            if (currentEnemyWave.enemies.Count == 0)
+            if (currentEnemyWave.enemies.Sum(item => item.number) == 0)
             {
                 currentLevelEnemyWaveData.enemyWaves.RemoveAt(0);
 
