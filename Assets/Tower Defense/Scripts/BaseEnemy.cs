@@ -18,8 +18,6 @@ public class BaseEnemy : MonoBehaviour
         agent.updateRotation = false;
         agent.updateUpAxis = false;
 
-        agent.destination = destination.position;
-
         currentHealth = health;
     }
 
@@ -28,6 +26,11 @@ public class BaseEnemy : MonoBehaviour
         currentHealth = health;
 
         lazyHealthBar.ChangeValue(currentHealth / health);
+    }
+
+    public void MoveToBase()
+    {
+        GetComponent<NavMeshAgent>().destination = destination.position;
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -66,7 +69,10 @@ public class BaseEnemy : MonoBehaviour
             CharacterUI.Instance.UpdateEXP(1);
         }
 
-        projectile.gameObject.SetActive(false);
+        if (projectile is not ExplosiveProjectile)
+        {
+            projectile.gameObject.SetActive(false);
+        }
     }
 
     public void Hit(WeaponCollider weaponCollider)

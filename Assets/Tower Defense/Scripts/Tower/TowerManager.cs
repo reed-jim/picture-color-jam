@@ -40,7 +40,7 @@ public class TowerManager : Singleton<TowerManager>
         placeTowerCanvasGroup.gameObject.SetActive(false);
         cancelCanvasGroup.gameObject.SetActive(true);
 
-        BaseTower tower = ObjectPoolingEverything.GetFromPool<BaseTower>(GameConstants.tower);
+        BaseTower tower = ObjectPoolingEverything.GetFromPool<BaseTower>(towerUIItem.towerType.ToString());
         tower.isActive = false;
 
         GamePersistentVariable.screenSizeWorld = CommonUtil.GetScreenSizeWorld(mainCamera);
@@ -94,6 +94,7 @@ public class TowerManager : Singleton<TowerManager>
 
         towerUIItem.transform.SetParent(placeTowerCanvasGroup.transform);
         towerUIItem.towerType = towerType;
+        towerUIItem.UpdateItem();
 
         towerPool.Add(towerUIItem);
     }

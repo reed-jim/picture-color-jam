@@ -21,3 +21,11 @@ MonoBehaviour:
     enemies:
     - enemyType: 0
       number: 6
+  - numEnemy: 0
+    enemies:
+    - enemyType: 0
+      number: 6
+  - numEnemy: 0
+    enemies:
+    - enemyType: 0
+      number: 10

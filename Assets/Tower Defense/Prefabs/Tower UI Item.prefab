@@ -60,6 +60,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TowerUIItem
   selectButton: {fileID: 8764658993808964044}
+  icon: {fileID: 3369503527445426253}
+  upgradeContainer: {fileID: 11400000, guid: 953ad98aaac31d44f86f9b7313e38d52, type: 2}
   towerType: 0
 --- !u!114 &3369503527445426253
 MonoBehaviour:

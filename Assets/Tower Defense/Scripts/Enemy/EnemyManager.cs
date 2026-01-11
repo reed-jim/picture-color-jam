@@ -27,7 +27,7 @@ public class EnemyManager : MonoBehaviour
     private IEnumerator SpawnEnemy()
     {
         WaitForSeconds waitForOneSecond = new WaitForSeconds(1);
-        WaitForSeconds waitForSeconds = new WaitForSeconds(2);
+        WaitForSeconds waitForSeconds = new WaitForSeconds(1);
 
         Vector3 spawnPosition = new Vector3(0, 20, -1);
 
@@ -70,6 +70,8 @@ public class EnemyManager : MonoBehaviour
 
             spawnPosition.x = Random.Range(-0.5f * GamePersistentVariable.screenSizeWorld.x, 0.5f * GamePersistentVariable.screenSizeWorld.x);
             enemy.transform.position = spawnPosition;
+
+            enemy.MoveToBase();
 
             if (currentEnemyWave.enemies.Sum(item => item.number) == 0)
             {

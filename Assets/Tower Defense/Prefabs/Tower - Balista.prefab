@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1746308286767479437}
   - component: {fileID: 6816314308020197075}
   m_Layer: 0
-  m_Name: Tower
+  m_Name: Tower - Balista
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

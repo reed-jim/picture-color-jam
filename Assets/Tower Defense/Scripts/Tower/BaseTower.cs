@@ -1,10 +1,17 @@
 using System.Collections;
 using UnityEngine;
 
+public enum ProjectileType
+{
+    Normal,
+    Explosive
+}
+
 public class BaseTower : MonoBehaviour
 {
     public bool isActive;
     public float attackRadius;
+    public ProjectileType projectileType;
     public LayerMask targetLayer;
 
     void Start()
@@ -24,7 +31,7 @@ public class BaseTower : MonoBehaviour
 
                 if (target != null)
                 {
-                    BaseProjectile projectile = ObjectPoolingEverything.GetFromPool<BaseProjectile>(GameConstants.projectile);
+                    BaseProjectile projectile = ObjectPoolingEverything.GetFromPool<BaseProjectile>(projectileType.ToString());
 
                     projectile.transform.position = transform.position;
 

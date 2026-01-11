@@ -6,7 +6,7 @@ public class GameEnum : MonoBehaviour
     public enum TowerType
     {
         Arrow,
-        Explosive,
+        Cannon,
         Spear
     }
 

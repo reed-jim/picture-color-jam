@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -6,6 +7,9 @@ using static GameEnum;
 public class TowerUIItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] private Button selectButton;
+    public Image icon;
+
+    public UpgradeContainer upgradeContainer;
 
     public TowerType towerType;
 
@@ -30,5 +34,11 @@ public class TowerUIItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     private void SelectTower()
     {
         TowerManager.Instance.PlaceTower(this);
+    }
+
+    public void UpdateItem()
+    {
+        icon.sprite = upgradeContainer.towerTypeAndIconPairs.First(item => item.towerType == towerType).icon;
+        icon.SetNativeSize();
     }
 }

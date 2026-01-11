@@ -1,4 +1,5 @@
 using UnityEngine;
+using static GameEnum;
 
 public class ObjectPoolingEverythingInitializer : MonoBehaviour
 {
@@ -33,8 +34,11 @@ public class ObjectPoolingEverythingInitializer : MonoBehaviour
 
 
     #region TOWER
-    public GameObject projectile;
-    public GameObject tower;
+    public GameObject normalProjectile;
+    public GameObject explosiveProjectile;
+    public GameObject towerBalista;
+    public GameObject towerCannon;
+    public GameObject towerMelee;
     public GameObject towerUIItem;
     public GameObject enemy;
     #endregion
@@ -87,8 +91,11 @@ public class ObjectPoolingEverythingInitializer : MonoBehaviour
         RegisterPool<SpriteRenderer>(GameConstants.BOOSTER_CLOCK_ITEM, clockBoosterItemPrefab, 2);
         RegisterPool<BaseBlock>(GameConstants.block1x1, block1x1Prefab, 30);
 
-        RegisterPool<BaseProjectile>(GameConstants.projectile, projectile, 100);
-        RegisterPool<BaseTower>(GameConstants.tower, tower, 20);
+        RegisterPool<BaseProjectile>(ProjectileType.Normal.ToString(), normalProjectile, 100);
+        RegisterPool<BaseProjectile>(ProjectileType.Explosive.ToString(), explosiveProjectile, 10);
+        RegisterPool<BaseTower>(TowerType.Arrow.ToString(), towerBalista, 20);
+        RegisterPool<BaseTower>(TowerType.Cannon.ToString(), towerCannon, 20);
+        RegisterPool<BaseTower>(TowerType.Spear.ToString(), towerMelee, 20);
         RegisterPool<TowerUIItem>(GameConstants.towerUIItem, towerUIItem, 20);
         RegisterPool<BaseEnemy>(EnemyType.Melee.ToString(), enemy, 10);
     }

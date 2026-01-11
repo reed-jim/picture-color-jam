@@ -62,6 +62,7 @@ MonoBehaviour:
   - {fileID: 4946175837364609186}
   - {fileID: 2905928382874631421}
   - {fileID: 8180814880605911992}
+  upgradeContainer: {fileID: 11400000, guid: 953ad98aaac31d44f86f9b7313e38d52, type: 2}
 --- !u!114 &2878686236699059345
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -280,6 +281,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -627,6 +629,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -804,6 +807,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7437379569524851594}
     m_Modifications:
+    - target: {fileID: 1406394850029873156, guid: 89b6cf7743a66e34da7cbc8b8c5a3c97, type: 3}
+      propertyPath: towerType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4398595073212327080, guid: 89b6cf7743a66e34da7cbc8b8c5a3c97, type: 3}
       propertyPath: m_Name
       value: Tower Selection Item (1)
@@ -1030,6 +1037,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7437379569524851594}
     m_Modifications:
+    - target: {fileID: 1406394850029873156, guid: 89b6cf7743a66e34da7cbc8b8c5a3c97, type: 3}
+      propertyPath: towerType
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4398595073212327080, guid: 89b6cf7743a66e34da7cbc8b8c5a3c97, type: 3}
       propertyPath: m_Name
       value: Tower Selection Item (2)
