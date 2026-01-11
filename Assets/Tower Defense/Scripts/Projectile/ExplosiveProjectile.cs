@@ -36,7 +36,7 @@ public class ExplosiveProjectile : BaseProjectile
 
     private IEnumerator Explode()
     {
-        yield return new WaitForSeconds(1.3f);
+        yield return new WaitForSeconds(0.8f);
 
         Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, 3, hitLayerMask);
 

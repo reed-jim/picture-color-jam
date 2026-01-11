@@ -35,11 +35,18 @@ public class JoystickController : MonoBehaviour
 
     private void Awake()
     {
+        TowerManager.enableJoystickEvent += EnableInput;
+
         _screenSize = new Vector2(Screen.currentResolution.width, Screen.currentResolution.height);
 
         _touchPoints = new List<Vector2>();
 
         BuildUI();
+    }
+
+    void OnDestroy()
+    {
+        TowerManager.enableJoystickEvent -= EnableInput;
     }
 
     private void OnEnable()
@@ -191,5 +198,10 @@ public class JoystickController : MonoBehaviour
         // {
         //     _fadeOutJoystickTween = Tween.Alpha(_joystickImage, 0, duration: 0.2f);
         // }
+    }
+
+    private void EnableInput(bool isEnable)
+    {
+        _isEnableInput = isEnable;
     }
 }

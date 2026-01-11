@@ -17,6 +17,7 @@ public class TowerManager : Singleton<TowerManager>
     public Camera mainCamera;
 
     public static Action<ScreenRoute> switchRouteEvent;
+    public static Action<bool> enableJoystickEvent;
 
     protected override void MoreActionOnAwake()
     {
@@ -46,6 +47,8 @@ public class TowerManager : Singleton<TowerManager>
         GamePersistentVariable.screenSizeWorld = CommonUtil.GetScreenSizeWorld(mainCamera);
 
         bool isCancel = false;
+
+        enableJoystickEvent?.Invoke(false);
 
         while (Input.GetMouseButton(0))
         {
@@ -86,6 +89,8 @@ public class TowerManager : Singleton<TowerManager>
         cancelCanvasGroup.gameObject.SetActive(false);
 
         GamePersistentVariable.isPlacingTower = false;
+
+        enableJoystickEvent?.Invoke(true);
     }
 
     public void AddTowerToPool(TowerType towerType)

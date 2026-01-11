@@ -49,7 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BaseProjectile
   projectileRigidbody: {fileID: 302038915661101669}
   force: 10
-  attackDamage: 20
+  attackDamage: 40
 --- !u!212 &6389479284834029803
 SpriteRenderer:
   serializedVersion: 2
