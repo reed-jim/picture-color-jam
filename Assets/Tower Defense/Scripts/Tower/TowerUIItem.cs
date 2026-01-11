@@ -29,6 +29,6 @@ public class TowerUIItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     private void SelectTower()
     {
-        TowerManager.Instance.PlaceTower();
+        TowerManager.Instance.PlaceTower(this);
     }
 }

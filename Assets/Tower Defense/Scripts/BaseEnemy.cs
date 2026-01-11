@@ -23,6 +23,13 @@ public class BaseEnemy : MonoBehaviour
         currentHealth = health;
     }
 
+    public void Reset()
+    {
+        currentHealth = health;
+
+        lazyHealthBar.ChangeValue(currentHealth / health);
+    }
+
     void OnCollisionEnter2D(Collision2D collision)
     {
         BaseProjectile projectile = collision.transform.GetComponent<BaseProjectile>();

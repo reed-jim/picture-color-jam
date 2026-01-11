@@ -13,6 +13,7 @@ public class EnemyManager : MonoBehaviour
 
     public TMP_Text timeToNextWaveText;
     public int timeToNextWave;
+    public int currentWave;
 
     void Start()
     {
@@ -39,13 +40,16 @@ public class EnemyManager : MonoBehaviour
             yield return waitForOneSecond;
         }
 
+        currentWave = 1;
+        timeToNextWaveText.text = $"Wave {currentWave}";
+
         while (currentLevelEnemyWaveData.enemyWaves.Count > 0)
         {
             EnemyWave currentEnemyWave = currentLevelEnemyWaveData.enemyWaves.First();
             EnemyType currentEnemyType = currentEnemyWave.enemies.First();
 
             BaseEnemy enemy = ObjectPoolingEverything.GetFromPool<BaseEnemy>(currentEnemyType.ToString());
-
+            enemy.Reset();
             enemy.destination = homeBase;
 
             spawnPosition.x = Random.Range(-0.5f * GamePersistentVariable.screenSizeWorld.x, 0.5f * GamePersistentVariable.screenSizeWorld.x);
@@ -56,6 +60,9 @@ public class EnemyManager : MonoBehaviour
             if (currentEnemyWave.enemies.Count == 0)
             {
                 currentLevelEnemyWaveData.enemyWaves.RemoveAt(0);
+
+                currentWave++;
+                timeToNextWaveText.text = $"Wave {currentWave}";
             }
 
             yield return waitForSeconds;

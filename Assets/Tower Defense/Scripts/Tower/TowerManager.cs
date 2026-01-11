@@ -26,14 +26,14 @@ public class TowerManager : Singleton<TowerManager>
         cancelCanvasGroup.gameObject.SetActive(false);
     }
 
-    public void PlaceTower()
+    public void PlaceTower(TowerUIItem towerUIItem)
     {
-        StartCoroutine(PlacingTower());
+        StartCoroutine(PlacingTower(towerUIItem));
 
         GamePersistentVariable.isPlacingTower = true;
     }
 
-    public IEnumerator PlacingTower()
+    public IEnumerator PlacingTower(TowerUIItem towerUIItem)
     {
         WaitForSeconds waitForSeconds = new WaitForSeconds(1f / 60);
 
@@ -78,6 +78,8 @@ public class TowerManager : Singleton<TowerManager>
         else
         {
             tower.isActive = true;
+
+            ObjectPoolingEverything.ReturnToPool(GameConstants.towerUIItem, towerUIItem.gameObject);
         }
 
         placeTowerCanvasGroup.gameObject.SetActive(true);

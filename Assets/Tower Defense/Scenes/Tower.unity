@@ -188,6 +188,7 @@ MonoBehaviour:
   homeBase: {fileID: 1391953435}
   timeToNextWaveText: {fileID: 1373064740}
   timeToNextWave: 0
+  currentWave: 0
 --- !u!4 &145658914
 Transform:
   m_ObjectHideFlags: 0
@@ -2565,7 +2566,7 @@ MonoBehaviour:
   m_text: 90%
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 468cd137d4d22474b9da72bf17d4d308, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: f38eeca4b9bc0ed4197e77398050b958, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 4105b637313075d4d820b39f945eb6a9, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2589,7 +2590,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 57.95
+  m_fontSize: 72
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2658,7 +2659,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: -120}
-  m_SizeDelta: {x: 120, y: 120}
+  m_SizeDelta: {x: 360, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1391953431
 GameObject:
