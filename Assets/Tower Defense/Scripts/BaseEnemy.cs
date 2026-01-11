@@ -38,6 +38,13 @@ public class BaseEnemy : MonoBehaviour
         {
             Hit(projectile);
         }
+
+        WeaponCollider weaponCollider = collision.transform.GetComponent<WeaponCollider>();
+
+        if (weaponCollider != null)
+        {
+            Hit(weaponCollider);
+        }
     }
 
     public void Hit(BaseProjectile projectile)
@@ -60,5 +67,25 @@ public class BaseEnemy : MonoBehaviour
         }
 
         projectile.gameObject.SetActive(false);
+    }
+
+    public void Hit(WeaponCollider weaponCollider)
+    {
+        currentHealth -= weaponCollider.attackDamage;
+
+        lazyHealthBar.ChangeValue(currentHealth / health);
+
+        if (currentHealth <= 0)
+        {
+            ParticleSystem fx = ObjectPoolingEverything.GetFromPool<ParticleSystem>(GameConstants.blockMergeFx);
+
+            fx.transform.position = transform.position;
+
+            fx.Play();
+
+            gameObject.SetActive(false);
+
+            CharacterUI.Instance.UpdateEXP(1);
+        }
     }
 }

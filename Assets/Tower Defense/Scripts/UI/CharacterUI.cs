@@ -22,7 +22,8 @@ public class CharacterUI : Singleton<CharacterUI>
 
         characterData = DataUtility.Load("characterData", defaultCharacterData);
 
-        StartCoroutine(GrantFreeLevel());
+        UpdateEXP(0);
+        // StartCoroutine(GrantFreeLevel());
     }
 
     private IEnumerator GrantFreeLevel()
