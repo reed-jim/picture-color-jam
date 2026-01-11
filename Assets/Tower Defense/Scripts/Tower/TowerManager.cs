@@ -24,11 +24,6 @@ public class TowerManager : Singleton<TowerManager>
 
         placeTowerCanvasGroup.gameObject.SetActive(true);
         cancelCanvasGroup.gameObject.SetActive(false);
-
-        Tween.Delay(3).OnComplete(() =>
-        {
-            ShowTowerSelectionPopup();
-        });
     }
 
     public void PlaceTower()

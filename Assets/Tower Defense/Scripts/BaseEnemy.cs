@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class BaseEnemy : MonoBehaviour
 {
-    [SerializeField] private Transform destination;
+    public Transform destination;
 
     public LazyHealthBar lazyHealthBar;
 

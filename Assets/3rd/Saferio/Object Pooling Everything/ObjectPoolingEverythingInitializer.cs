@@ -36,6 +36,7 @@ public class ObjectPoolingEverythingInitializer : MonoBehaviour
     public GameObject projectile;
     public GameObject tower;
     public GameObject towerUIItem;
+    public GameObject enemy;
     #endregion
 
     private bool _isInitialized;
@@ -86,10 +87,10 @@ public class ObjectPoolingEverythingInitializer : MonoBehaviour
         RegisterPool<SpriteRenderer>(GameConstants.BOOSTER_CLOCK_ITEM, clockBoosterItemPrefab, 2);
         RegisterPool<BaseBlock>(GameConstants.block1x1, block1x1Prefab, 30);
 
-
         RegisterPool<BaseProjectile>(GameConstants.projectile, projectile, 100);
         RegisterPool<BaseTower>(GameConstants.tower, tower, 20);
         RegisterPool<TowerUIItem>(GameConstants.towerUIItem, towerUIItem, 20);
+        RegisterPool<BaseEnemy>(EnemyType.Melee.ToString(), enemy, 10);
     }
 
     private void RegisterPool<T>(string key, GameObject prefab, int poolSize)

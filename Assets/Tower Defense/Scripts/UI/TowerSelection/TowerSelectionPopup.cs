@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class TowerSelectionPopup : BasePopup
@@ -16,5 +17,20 @@ public class TowerSelectionPopup : BasePopup
         base.MoreActionOnDestroy();
 
         TowerSelectionItem.selectTowerEvent -= Hide;
+    }
+
+    protected override void Show(Action onCompletedAction = null)
+    {
+        base.Show(onCompletedAction: () =>
+        {
+            Time.timeScale = 0;
+        });
+    }
+
+    protected override void Hide()
+    {
+        Time.timeScale = 1;
+
+        base.Hide();
     }
 }

@@ -1,3 +1,4 @@
+using System.Collections;
 using PrimeTween;
 using TMPro;
 using UnityEngine;
@@ -17,11 +18,20 @@ public class CharacterUI : Singleton<CharacterUI>
         CharacterData defaultCharacterData = new CharacterData();
 
         defaultCharacterData.level = 1;
-        defaultCharacterData.requiredEXP = 1;
+        defaultCharacterData.requiredEXP = 10 + defaultCharacterData.level;
 
         characterData = DataUtility.Load("characterData", defaultCharacterData);
 
+        StartCoroutine(GrantFreeLevel());
+    }
+
+    private IEnumerator GrantFreeLevel()
+    {
+        yield return new WaitUntil(() => GamePersistentVariable.isLoadingComplete);
+
         UpdateEXP(0);
+
+        TowerManager.Instance.ShowTowerSelectionPopup();
     }
 
     public void UpdateEXP(float expAdded)
@@ -33,7 +43,7 @@ public class CharacterUI : Singleton<CharacterUI>
         Tween.Custom(expProgressBar.fillAmount, ratio, duration: 0.3f, onValueChange: newVal =>
         {
             expProgressBar.fillAmount = newVal;
-            expText.text = $"{newVal * 100}%";
+            expText.text = $"{(int)(newVal * 100)}%";
 
             if (newVal >= 1)
             {
