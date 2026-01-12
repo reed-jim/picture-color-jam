@@ -13,6 +13,7 @@ public class TowerManager : Singleton<TowerManager>
     [SerializeField] private Image cancelArea;
 
     public List<TowerUIItem> towerPool;
+    public List<BaseTower> towers;
 
     public Camera mainCamera;
 
@@ -82,6 +83,8 @@ public class TowerManager : Singleton<TowerManager>
         {
             tower.isActive = true;
 
+            towers.Add(tower);
+
             ObjectPoolingEverything.ReturnToPool(GameConstants.towerUIItem, towerUIItem.gameObject);
         }
 
@@ -106,12 +109,9 @@ public class TowerManager : Singleton<TowerManager>
 
     public void BuffTower(TowerType towerType, float buffRatio)
     {
-        foreach (var item in towerPool)
+        foreach (var item in towers)
         {
-            if (item.towerType == towerType)
-            {
-
-            }
+            item.TryApplyUpgrade(towerType, buffRatio);
         }
     }
 

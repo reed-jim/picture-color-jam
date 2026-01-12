@@ -43,6 +43,7 @@ public class ObjectPoolingEverythingInitializer : MonoBehaviour
     public GameObject enemy;
     public GameObject damageText;
     public GameObject hitFx;
+    public GameObject buffFx;
     #endregion
 
     private bool _isInitialized;
@@ -102,6 +103,7 @@ public class ObjectPoolingEverythingInitializer : MonoBehaviour
         RegisterPool<BaseEnemy>(EnemyType.Melee.ToString(), enemy, 10);
         RegisterPool<DamageText>(GameConstants.damageText, damageText, 30);
         RegisterPool<ParticleSystem>(GameConstants.hitFx, hitFx, 30);
+        RegisterPool<ParticleSystem>(GameConstants.buffFx, buffFx, 12);
     }
 
     private void RegisterPool<T>(string key, GameObject prefab, int poolSize)

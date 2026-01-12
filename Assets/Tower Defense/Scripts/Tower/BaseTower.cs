@@ -1,5 +1,7 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using static GameEnum;
 
 public enum ProjectileType
 {
@@ -9,7 +11,10 @@ public enum ProjectileType
 
 public class BaseTower : MonoBehaviour
 {
+    public TowerType towerType;
     public bool isActive;
+    public float baseDamage;
+    public float damage;
     public float attackRadius;
     public ProjectileType projectileType;
     public LayerMask targetLayer;
@@ -62,4 +67,24 @@ public class BaseTower : MonoBehaviour
 
         return nearest;
     }
+
+    public void TryApplyUpgrade(TowerType towerType, float buffRatio)
+    {
+        if (towerType == this.towerType)
+        {
+            damage *= buffRatio;
+
+            VFXManager.Instance.PlayBuffFX(transform.position);
+        }
+    }
+}
+
+public class GlobalTowerUpgrade
+{
+    public List<TowerUpgrade> towerUpgrades;
+}
+
+public struct TowerUpgrade
+{
+    public float damageRatio;
 }
