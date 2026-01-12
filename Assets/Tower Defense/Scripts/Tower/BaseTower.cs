@@ -13,9 +13,7 @@ public class BaseTower : MonoBehaviour
 {
     public TowerType towerType;
     public bool isActive;
-    public float baseDamage;
-    public float damage;
-    public float attackRadius;
+    public TowerProperty towerProperty;
     public ProjectileType projectileType;
     public LayerMask targetLayer;
 
@@ -50,7 +48,7 @@ public class BaseTower : MonoBehaviour
 
     public Transform FindNearestTarget()
     {
-        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, attackRadius, targetLayer);
+        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, towerProperty.attackRadius, targetLayer);
 
         Transform nearest = null;
         float minDistance = Mathf.Infinity;
@@ -72,11 +70,22 @@ public class BaseTower : MonoBehaviour
     {
         if (towerType == this.towerType)
         {
-            damage *= buffRatio;
+            towerProperty.damage *= buffRatio;
 
             VFXManager.Instance.PlayBuffFX(transform.position);
         }
     }
+}
+
+public class TowerProperty
+{
+    public Sprite icon;
+    public float baseDamage;
+    public float damage;
+    public float baseAttackRadius;
+    public float attackRadius;
+    public float baseRateOfFire;
+    public float rateOfFire;
 }
 
 public class GlobalTowerUpgrade

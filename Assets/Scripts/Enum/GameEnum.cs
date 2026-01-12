@@ -44,7 +44,8 @@ public class GameEnum : MonoBehaviour
         ReviewIAP,
         LevelComingSoon,
         Language,
-        TowerSelection
+        TowerSelection,
+        TowerDetail
     }
 
     public enum GameFaction
