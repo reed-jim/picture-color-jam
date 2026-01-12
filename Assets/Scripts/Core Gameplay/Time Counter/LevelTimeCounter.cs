@@ -131,17 +131,20 @@ public class LevelTimeCounter : MonoBehaviour
                 remainingSecond--;
             }
 
-            if (remainingSecond < 10)
+            if (!_isPaused)
             {
-                timeText.color = Color.red;
+                if (remainingSecond < 10)
+                {
+                    timeText.color = Color.red;
 
-                TweenUtil.ScaleUpDown(timeText.transform, strength: 1.2f);
+                    TweenUtil.ScaleUpDown(timeText.transform, strength: 1.2f);
 
-                SoundManager.Instance.PlaySoundTimeTick();
-            }
-            else
-            {
-                timeText.color = Color.white;
+                    SoundManager.Instance.PlaySoundTimeTick();
+                }
+                else
+                {
+                    timeText.color = Color.white;
+                }
             }
 
             _remainingSecond = remainingSecond;

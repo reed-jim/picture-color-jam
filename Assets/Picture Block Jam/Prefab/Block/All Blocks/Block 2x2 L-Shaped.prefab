@@ -81,6 +81,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3635475471284537696, guid: 627f1b0d75449ab4da35db608f8ee074, type: 3}
+      propertyPath: isAddMoreSortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3635475471284537696, guid: 627f1b0d75449ab4da35db608f8ee074, type: 3}
       propertyPath: tileIndexes.Array.data[0].x
       value: 0
       objectReference: {fileID: 0}
