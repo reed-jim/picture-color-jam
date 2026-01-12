@@ -56,17 +56,11 @@ public class BaseEnemy : MonoBehaviour
 
         lazyHealthBar.ChangeValue(currentHealth / health);
 
+        ShowDamageText(projectile.attackDamage);
+
         if (currentHealth <= 0)
         {
-            ParticleSystem fx = ObjectPoolingEverything.GetFromPool<ParticleSystem>(GameConstants.blockMergeFx);
-
-            fx.transform.position = transform.position;
-
-            fx.Play();
-
-            gameObject.SetActive(false);
-
-            CharacterUI.Instance.UpdateEXP(1);
+            Die();
         }
 
         if (projectile is not ExplosiveProjectile)
@@ -81,17 +75,31 @@ public class BaseEnemy : MonoBehaviour
 
         lazyHealthBar.ChangeValue(currentHealth / health);
 
+        ShowDamageText(weaponCollider.attackDamage);
+
         if (currentHealth <= 0)
         {
-            ParticleSystem fx = ObjectPoolingEverything.GetFromPool<ParticleSystem>(GameConstants.blockMergeFx);
-
-            fx.transform.position = transform.position;
-
-            fx.Play();
-
-            gameObject.SetActive(false);
-
-            CharacterUI.Instance.UpdateEXP(1);
+            Die();
         }
+    }
+
+    public void Die()
+    {
+        ParticleSystem fx = ObjectPoolingEverything.GetFromPool<ParticleSystem>(GameConstants.blockMergeFx);
+
+        fx.transform.position = transform.position;
+
+        fx.Play();
+
+        gameObject.SetActive(false);
+
+        CharacterUI.Instance.UpdateEXP(1);
+    }
+
+    public void ShowDamageText(float damage)
+    {
+        DamageText damageText = ObjectPoolingEverything.GetFromPool<DamageText>(GameConstants.damageText);
+
+        damageText.ShowText(damage, transform.position + new Vector3(0, 1, 0));
     }
 }

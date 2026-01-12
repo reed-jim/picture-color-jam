@@ -41,6 +41,7 @@ public class ObjectPoolingEverythingInitializer : MonoBehaviour
     public GameObject towerMelee;
     public GameObject towerUIItem;
     public GameObject enemy;
+    public GameObject damageText;
     #endregion
 
     private bool _isInitialized;
@@ -98,6 +99,7 @@ public class ObjectPoolingEverythingInitializer : MonoBehaviour
         RegisterPool<BaseTower>(TowerType.Spear.ToString(), towerMelee, 20);
         RegisterPool<TowerUIItem>(GameConstants.towerUIItem, towerUIItem, 20);
         RegisterPool<BaseEnemy>(EnemyType.Melee.ToString(), enemy, 10);
+        RegisterPool<DamageText>(GameConstants.damageText, damageText, 30);
     }
 
     private void RegisterPool<T>(string key, GameObject prefab, int poolSize)

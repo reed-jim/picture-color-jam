@@ -191,5 +191,6 @@ public static class GameConstants
     public static string tower = "tower";
     public static string towerUIItem = "towerUIItem";
     public static string basicEnemy = "basicEnemy";
+    public static string damageText = "damageText";
     #endregion
 }
