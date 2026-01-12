@@ -96,10 +96,10 @@ public class BlockSelectionInput : MonoBehaviour
             return;
         }
 
-        // if (IsClickedOnUI())
-        // {
-        //     return;
-        // }
+        if (IsClickedOnUI())
+        {
+            return;
+        }
 
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 

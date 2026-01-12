@@ -50,6 +50,8 @@ public class BoosterTutorial : MonoBehaviour
             StartCoroutine(PlayTutorialHandAnimation());
         });
 
+        SoundManager.Instance.PlaySoundClick();
+
         claimButton.interactable = false;
     }
 
