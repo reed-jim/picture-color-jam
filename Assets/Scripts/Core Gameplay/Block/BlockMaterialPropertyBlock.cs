@@ -385,7 +385,7 @@ public class BlockMaterialPropertyBlock : MonoBehaviour
     {
         ShowOutline(true, Color.red);
 
-        Tween.Delay(0.8f).OnComplete(() =>
+        Tween.Delay(0.6f).OnComplete(() =>
         {
             ShowOutline(false, Color.red, onCompleteAction: () =>
             {
