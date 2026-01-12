@@ -660,11 +660,16 @@ public class BaseBlock : MonoBehaviour
             _isInTransition = true;
         }
 
-        _tweens.Add(Tween.Scale(transform, 1.03f * transform.localScale, cycles: 2, cycleMode: CycleMode.Yoyo, duration: 0.15f)
-        .OnComplete(() =>
+        blockServiceLocator.blockMaterialPropertyBlock.ShowInvalidOutline(onCompleteAction: () =>
         {
             _isInTransition = false;
-        }));
+        });
+
+        // _tweens.Add(Tween.Scale(transform, 1.03f * transform.localScale, cycles: 2, cycleMode: CycleMode.Yoyo, duration: 0.15f)
+        // .OnComplete(() =>
+        // {
+        //     _isInTransition = false;
+        // }));
     }
 
     public virtual void Stop()

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using EPOOutline;
@@ -309,7 +310,7 @@ public class BlockMaterialPropertyBlock : MonoBehaviour
 
     }
 
-    public void ShowOutline(bool isShow, Color color)
+    public void ShowOutline(bool isShow, Color color, Action onCompleteAction = null)
     {
         if (!isShow && !outlinable.enabled)
         {
@@ -350,6 +351,8 @@ public class BlockMaterialPropertyBlock : MonoBehaviour
                 outlinable.enabled = false;
 
                 // outlineSprite.gameObject.SetActive(false);
+
+                onCompleteAction?.Invoke();
             }
         });
     }
@@ -376,6 +379,19 @@ public class BlockMaterialPropertyBlock : MonoBehaviour
                 // outlineSprite.gameObject.SetActive(false);
             })
         );
+    }
+
+    public void ShowInvalidOutline(Action onCompleteAction)
+    {
+        ShowOutline(true, Color.red);
+
+        Tween.Delay(0.8f).OnComplete(() =>
+        {
+            ShowOutline(false, Color.red, onCompleteAction: () =>
+            {
+                onCompleteAction?.Invoke();
+            });
+        });
     }
 
     public void HideOutlineCompletely()
