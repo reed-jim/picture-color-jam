@@ -56,6 +56,7 @@ public class BaseEnemy : MonoBehaviour
 
         lazyHealthBar.ChangeValue(currentHealth / health);
 
+        PlayHitFx();
         ShowDamageText(projectile.attackDamage);
 
         if (currentHealth <= 0)
@@ -75,6 +76,7 @@ public class BaseEnemy : MonoBehaviour
 
         lazyHealthBar.ChangeValue(currentHealth / health);
 
+        PlayHitFx();
         ShowDamageText(weaponCollider.attackDamage);
 
         if (currentHealth <= 0)
@@ -94,6 +96,15 @@ public class BaseEnemy : MonoBehaviour
         gameObject.SetActive(false);
 
         CharacterUI.Instance.UpdateEXP(1);
+    }
+
+    public void PlayHitFx()
+    {
+        ParticleSystem fx = ObjectPoolingEverything.GetFromPool<ParticleSystem>(GameConstants.hitFx);
+
+        fx.transform.position = transform.position;
+
+        fx.Play();
     }
 
     public void ShowDamageText(float damage)
