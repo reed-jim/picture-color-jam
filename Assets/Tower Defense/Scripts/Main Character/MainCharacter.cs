@@ -8,6 +8,8 @@ public class MainCharacter : MonoBehaviour
     public Collider2D weaponCollider;
 
     public float speedMultiply;
+    public float attackRadius;
+    public LayerMask checkAttackLayerMask;
 
     void Awake()
     {
@@ -35,12 +37,17 @@ public class MainCharacter : MonoBehaviour
 
         while (true)
         {
-            weaponCollider.enabled = true;
+            Collider2D collider2D = Physics2D.OverlapCircle(transform.position, attackRadius, checkAttackLayerMask);
 
-            Tween.EulerAngles(weapon, weapon.eulerAngles, weapon.eulerAngles - new Vector3(0, 0, 360), duration: 0.15f).OnComplete(() =>
+            if (collider2D.GetComponent<BaseEnemy>() != null)
             {
-                weaponCollider.enabled = false;
-            });
+                weaponCollider.enabled = true;
+
+                Tween.EulerAngles(weapon, weapon.eulerAngles, weapon.eulerAngles - new Vector3(0, 0, 360), duration: 0.15f).OnComplete(() =>
+                {
+                    weaponCollider.enabled = false;
+                });
+            }
 
             yield return waitForSeconds;
         }
