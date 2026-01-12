@@ -18,6 +18,7 @@ public class TowerManager : Singleton<TowerManager>
     public Camera mainCamera;
 
     public static Action<ScreenRoute> switchRouteEvent;
+    public static Action<TowerProperty> showTowerDetailPopup;
     public static Action<bool> enableJoystickEvent;
 
     protected override void MoreActionOnAwake()
@@ -26,6 +27,11 @@ public class TowerManager : Singleton<TowerManager>
 
         placeTowerCanvasGroup.gameObject.SetActive(true);
         cancelCanvasGroup.gameObject.SetActive(false);
+    }
+
+    void Update()
+    {
+        SelectTower();
     }
 
     public void PlaceTower(TowerUIItem towerUIItem)
@@ -118,5 +124,21 @@ public class TowerManager : Singleton<TowerManager>
     public void ShowTowerSelectionPopup()
     {
         switchRouteEvent?.Invoke(ScreenRoute.TowerSelection);
+    }
+
+    public static void SelectTower()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            Vector2 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            RaycastHit2D hit = Physics2D.Raycast(mouseWorldPos, Vector2.zero);
+
+            BaseTower tower = hit.collider.GetComponent<BaseTower>();
+
+            if (tower != null)
+            {
+                showTowerDetailPopup?.Invoke(tower.towerProperty);
+            }
+        }
     }
 }
