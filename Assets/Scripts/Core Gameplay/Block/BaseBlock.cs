@@ -29,6 +29,7 @@ public class BaseBlock : MonoBehaviour
     [SerializeField] private float snappingLerpRatio = 0.2f;
     [SerializeField] private LayerMask layerMaskCheckTile;
     [SerializeField] private bool isAddMoreSortingLayer;
+    [SerializeField] private bool isKeepBalancedSortingLayer;
 
     [Header("Scriptable Object")]
     [SerializeField] public GameFactionSpriteContainer gameFactionSpriteContainer;
@@ -1004,19 +1005,27 @@ public class BaseBlock : MonoBehaviour
             positionY = transform.position.y - (NumTileY - 1) / 2f * GameConstants.tileSize;
         }
 
+        if (isKeepBalancedSortingLayer)
+        {
+            positionY = transform.position.y;
+        }
+
         blockServiceLocator.spriteRenderer.sortingOrder = (int)(2 * (15 - positionY));
         blockServiceLocator.iconMaskSortingGroup.sortingOrder = blockServiceLocator.spriteRenderer.sortingOrder + 1;
     }
 
     public void SetSortingLayer(Vector3 position)
     {
-        if (isAddMoreSortingLayer)
+        if (!isKeepBalancedSortingLayer)
         {
-            position.y -= (NumTileY - 1) / 2f * GameConstants.tileSize;
-        }
-        else
-        {
-            position.y += (NumTileY - 1) / 2f * GameConstants.tileSize;
+            if (isAddMoreSortingLayer)
+            {
+                position.y -= (NumTileY - 1) / 2f * GameConstants.tileSize;
+            }
+            else
+            {
+                position.y += (NumTileY - 1) / 2f * GameConstants.tileSize;
+            }
         }
 
         blockServiceLocator.spriteRenderer.sortingOrder = (int)(2 * (15 - position.y));
