@@ -12,6 +12,7 @@ public class EnemyManager : MonoBehaviour
     private LevelEnemyWaveData currentLevelEnemyWaveData;
 
     public TMP_Text timeToNextWaveText;
+    public TMP_Text enemyLeftOfWaveText;
     public int timeToNextWave;
     public int currentWave;
 
@@ -73,13 +74,17 @@ public class EnemyManager : MonoBehaviour
 
             enemy.MoveToBase();
 
-            if (currentEnemyWave.enemies.Sum(item => item.number) == 0)
+            int enemyLeft = currentEnemyWave.enemies.Sum(item => item.number);
+
+            if (enemyLeft == 0)
             {
                 currentLevelEnemyWaveData.enemyWaves.RemoveAt(0);
 
                 currentWave++;
                 timeToNextWaveText.text = $"Wave {currentWave}";
             }
+
+            enemyLeftOfWaveText.text = $"{enemyLeft}";
 
             yield return waitForSeconds;
         }
