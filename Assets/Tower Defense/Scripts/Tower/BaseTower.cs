@@ -11,6 +11,8 @@ public enum ProjectileType
 
 public class BaseTower : MonoBehaviour
 {
+    public Collider2D towerCollider;
+
     public TowerType towerType;
     public bool isActive;
     public TowerProperty towerProperty;

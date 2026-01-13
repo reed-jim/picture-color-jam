@@ -12,6 +12,8 @@ public class TowerManager : Singleton<TowerManager>
     [SerializeField] private CanvasGroup cancelCanvasGroup;
     [SerializeField] private Image cancelArea;
 
+    public SpriteRenderer placeTowerPreview;
+
     public List<TowerUIItem> towerPool;
     public List<BaseTower> towers;
 
@@ -27,6 +29,13 @@ public class TowerManager : Singleton<TowerManager>
 
         placeTowerCanvasGroup.gameObject.SetActive(true);
         cancelCanvasGroup.gameObject.SetActive(false);
+    }
+
+    void Start()
+    {
+        switchRouteEvent?.Invoke(ScreenRoute.Tutorial);
+
+        placeTowerPreview.gameObject.SetActive(false);
     }
 
     void Update()
@@ -47,6 +56,7 @@ public class TowerManager : Singleton<TowerManager>
 
         placeTowerCanvasGroup.gameObject.SetActive(false);
         cancelCanvasGroup.gameObject.SetActive(true);
+        placeTowerPreview.gameObject.SetActive(true);
 
         BaseTower tower = ObjectPoolingEverything.GetFromPool<BaseTower>(towerUIItem.towerType.ToString());
         tower.isActive = false;
@@ -78,6 +88,15 @@ public class TowerManager : Singleton<TowerManager>
                 cancelArea.color = Color.white;
             }
 
+            float penetrationDepth = GetColliderPenetrationDepth(tower.towerCollider);
+
+            placeTowerPreview.color = Color.Lerp(Color.green, Color.red, penetrationDepth);
+
+            if (penetrationDepth > 0.2f)
+            {
+                isCancel = true;
+            }
+
             yield return waitForSeconds;
         }
 
@@ -96,6 +115,7 @@ public class TowerManager : Singleton<TowerManager>
 
         placeTowerCanvasGroup.gameObject.SetActive(true);
         cancelCanvasGroup.gameObject.SetActive(false);
+        placeTowerPreview.gameObject.SetActive(false);
 
         GamePersistentVariable.isPlacingTower = false;
 
@@ -141,4 +161,35 @@ public class TowerManager : Singleton<TowerManager>
             }
         }
     }
+
+    #region Util
+    private float GetColliderPenetrationDepth(Collider2D collider2D)
+    {
+        Collider2D[] hits = Physics2D.OverlapBoxAll(collider2D.bounds.center, collider2D.bounds.size, 0, LayerMask.GetMask("Default"));
+
+        if (hits.Length == 0)
+        {
+            return 0;
+        }
+        else
+        {
+            float penetrationDepth = 0;
+
+            foreach (var h in hits)
+            {
+                if (h != collider2D)
+                {
+                    ColliderDistance2D dist = h.Distance(collider2D);
+
+                    if (-dist.distance > penetrationDepth)
+                    {
+                        penetrationDepth = -dist.distance;
+                    }
+                }
+            }
+
+            return penetrationDepth;
+        }
+    }
+    #endregion
 }

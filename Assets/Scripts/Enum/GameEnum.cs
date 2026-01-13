@@ -45,7 +45,8 @@ public class GameEnum : MonoBehaviour
         LevelComingSoon,
         Language,
         TowerSelection,
-        TowerDetail
+        TowerDetail,
+        Tutorial
     }
 
     public enum GameFaction
