@@ -13,19 +13,19 @@ MonoBehaviour:
   m_Name: LevelEnemyWaveData
   m_EditorClassIdentifier: Assembly-CSharp::LevelEnemyWaveData
   enemyWaves:
-  - numEnemy: 0
+  - totalSeconds: 10
     enemies:
     - enemyType: 0
       number: 8
-  - numEnemy: 0
+  - totalSeconds: 8
     enemies:
     - enemyType: 0
       number: 6
-  - numEnemy: 0
+  - totalSeconds: 8
     enemies:
     - enemyType: 0
       number: 6
-  - numEnemy: 0
+  - totalSeconds: 6
     enemies:
     - enemyType: 0
       number: 10

@@ -17,7 +17,7 @@ public class LevelEnemyWaveData : ScriptableObject
 [Serializable]
 public class EnemyWave
 {
-    public int numEnemy;
+    public int totalSeconds;
     public List<EnemyTypeAndNumberPair> enemies;
 }
 

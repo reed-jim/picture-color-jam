@@ -11,7 +11,8 @@ public class EnemyManager : MonoBehaviour
 
     private LevelEnemyWaveData currentLevelEnemyWaveData;
 
-    public TMP_Text timeToNextWaveText;
+    public TMP_Text waveText;
+    public TMP_Text timeLeftForWaveText;
     public TMP_Text enemyLeftOfWaveText;
     public int timeToNextWave;
     public int currentWave;
@@ -30,63 +31,88 @@ public class EnemyManager : MonoBehaviour
         WaitForSeconds waitForOneSecond = new WaitForSeconds(1);
         WaitForSeconds waitForSeconds = new WaitForSeconds(1);
 
-        Vector3 spawnPosition = new Vector3(0, 20, -1);
+        bool isNewWave = true;
+        int numEnemyToSpawn = 1;
 
         yield return new WaitUntil(() => GamePersistentVariable.isLoadingComplete);
 
-        while (timeToNextWave > 0)
-        {
-            timeToNextWave--;
-            timeToNextWaveText.text = $"{timeToNextWave}";
-
-            yield return waitForOneSecond;
-        }
-
         currentWave = 1;
-        timeToNextWaveText.text = $"Wave {currentWave}";
 
         while (currentLevelEnemyWaveData.enemyWaves.Count > 0)
         {
             EnemyWave currentEnemyWave = currentLevelEnemyWaveData.enemyWaves.First();
-            EnemyType currentEnemyType = EnemyType.Melee;
 
-            for (int i = 0; i < currentEnemyWave.enemies.Count; i++)
+            if (isNewWave)
             {
-                if (currentEnemyWave.enemies[i].number > 0)
-                {
-                    currentEnemyType = currentEnemyWave.enemies[i].enemyType;
+                timeToNextWave = currentEnemyWave.totalSeconds;
+                waveText.text = $"Wave {currentWave}";
 
-                    EnemyTypeAndNumberPair enemyTypeAndNumberPair = currentEnemyWave.enemies[i];
-                    enemyTypeAndNumberPair.number--;
-
-                    currentEnemyWave.enemies[i] = enemyTypeAndNumberPair;
-
-                    break;
-                }
+                isNewWave = false;
             }
 
-            BaseEnemy enemy = ObjectPoolingEverything.GetFromPool<BaseEnemy>(currentEnemyType.ToString());
-            enemy.Reset();
-            enemy.destination = homeBase;
+            timeLeftForWaveText.text = ConvertSecondsToMinutesSeconds(timeToNextWave);
 
-            spawnPosition.x = Random.Range(-0.5f * GamePersistentVariable.screenSizeWorld.x, 0.5f * GamePersistentVariable.screenSizeWorld.x);
-            enemy.transform.position = spawnPosition;
-
-            enemy.MoveToBase();
-
+            timeToNextWave--;
             int enemyLeft = currentEnemyWave.enemies.Sum(item => item.number);
+            numEnemyToSpawn = (int)Random.Range(1, 0.5f * enemyLeft);
+            int numSpawnedEnemy = numEnemyToSpawn;
+
+            while (numSpawnedEnemy > 0)
+            {
+                SpawnSingleEnemy(currentEnemyWave);
+
+                numSpawnedEnemy--;
+            }
+
+            enemyLeft = currentEnemyWave.enemies.Sum(item => item.number);
+
+            enemyLeftOfWaveText.text = $"{enemyLeft}";
 
             if (enemyLeft == 0)
             {
                 currentLevelEnemyWaveData.enemyWaves.RemoveAt(0);
 
                 currentWave++;
-                timeToNextWaveText.text = $"Wave {currentWave}";
+                isNewWave = true;
             }
-
-            enemyLeftOfWaveText.text = $"{enemyLeft}";
 
             yield return waitForSeconds;
         }
+    }
+
+    private void SpawnSingleEnemy(EnemyWave enemyWave)
+    {
+        for (int i = 0; i < enemyWave.enemies.Count; i++)
+        {
+            if (enemyWave.enemies[i].number > 0)
+            {
+                EnemyType enemyType = enemyWave.enemies[i].enemyType;
+
+                BaseEnemy enemy = ObjectPoolingEverything.GetFromPool<BaseEnemy>(enemyType.ToString());
+                enemy.Reset();
+                enemy.destination = homeBase;
+
+                Vector3 spawnPosition = new Vector3(0, 20, -1);
+                spawnPosition.x = Random.Range(-0.5f * GamePersistentVariable.screenSizeWorld.x, 0.5f * GamePersistentVariable.screenSizeWorld.x);
+                enemy.transform.position = spawnPosition;
+
+                enemy.MoveToBase();
+
+                EnemyTypeAndNumberPair enemyTypeAndNumberPair = enemyWave.enemies[i];
+                enemyTypeAndNumberPair.number--;
+
+                enemyWave.enemies[i] = enemyTypeAndNumberPair;
+
+                break;
+            }
+        }
+    }
+
+    string ConvertSecondsToMinutesSeconds(float seconds)
+    {
+        int minutes = Mathf.FloorToInt(seconds / 60);
+        int remainingSeconds = Mathf.FloorToInt(seconds % 60);
+
+        return string.Format("{0:D2}:{1:D2}", minutes, remainingSeconds);
     }
 }
