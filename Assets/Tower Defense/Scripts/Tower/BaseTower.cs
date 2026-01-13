@@ -44,7 +44,7 @@ public class BaseTower : MonoBehaviour
                 }
             }
 
-            yield return waitForSeconds;
+            yield return new WaitForSeconds(1f / towerProperty.rateOfFire);
         }
     }
 
