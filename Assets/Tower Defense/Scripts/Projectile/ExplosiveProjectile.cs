@@ -15,7 +15,7 @@ public class ExplosiveProjectile : BaseProjectile
         rb.gravityScale = gravityScale;
     }
 
-    public override void ShootAt(Vector2 targetPosition)
+    public override void ShootAt(Vector2 targetPosition, float attackDamage)
     {
         try
         {
@@ -30,6 +30,8 @@ public class ExplosiveProjectile : BaseProjectile
         {
 
         }
+
+        this.attackDamage = attackDamage;
 
         StartCoroutine(Explode());
     }

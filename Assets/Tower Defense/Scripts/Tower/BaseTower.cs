@@ -40,7 +40,7 @@ public class BaseTower : MonoBehaviour
 
                     projectile.transform.position = transform.position;
 
-                    projectile.ShootAt(target.position);
+                    projectile.ShootAt(target.position, towerProperty.damage);
                 }
             }
 
