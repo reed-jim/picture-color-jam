@@ -1,0 +1,13 @@
+
+ADS.png
+size: 112,112
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+gameplay_19
+  rotate: false
+  xy: 4, 4
+  size: 104, 104
+  orig: 104, 104
+  offset: 0, 0
+  index: -1
