@@ -31,6 +31,7 @@ public class JoystickController : MonoBehaviour
 
     #region ACTION
     public static event Action<Vector2> controlPlayerEvent;
+    public static event Action stopControlPlayerEvent;
     #endregion
 
     private void Awake()
@@ -180,6 +181,8 @@ public class JoystickController : MonoBehaviour
         FadeOutJoystick();
 
         _touchPoints.Clear();
+
+        stopControlPlayerEvent?.Invoke();
     }
 
     private void FadeOutJoystick()

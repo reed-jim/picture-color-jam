@@ -1,24 +1,33 @@
 using System.Collections;
 using PrimeTween;
+using Saferio.Util.SaferioTween;
+using Spine.Unity;
 using UnityEngine;
 
 public class MainCharacter : MonoBehaviour
 {
     public Transform weapon;
     public Collider2D weaponCollider;
+    public SkeletonAnimation skeletonAnimation;
+    [SpineAnimation] public string idleAnimation;
+    [SpineAnimation] public string moveAnimation;
 
     public float speedMultiply;
     public float attackRadius;
     public LayerMask checkAttackLayerMask;
 
+    private string currentAnimation;
+
     void Awake()
     {
         JoystickController.controlPlayerEvent += Move;
+        JoystickController.stopControlPlayerEvent += Stop;
     }
 
     void OnDestroy()
     {
         JoystickController.controlPlayerEvent -= Move;
+        JoystickController.stopControlPlayerEvent -= Stop;
     }
 
     void Start()
@@ -29,11 +38,38 @@ public class MainCharacter : MonoBehaviour
     public void Move(Vector2 normalizedDirection)
     {
         transform.position += speedMultiply * (Vector3)normalizedDirection;
+
+        if (normalizedDirection.x > 0)
+        {
+            transform.localScale = transform.localScale.ChangeX(1);
+        }
+        else
+        {
+            transform.localScale = transform.localScale.ChangeX(-1);
+        }
+
+        PlayAnimation(moveAnimation);
+    }
+
+    public void Stop()
+    {
+        PlayAnimation(idleAnimation);
+    }
+
+    void PlayAnimation(string animationName)
+    {
+        if (currentAnimation == animationName)
+            return;
+
+        skeletonAnimation.AnimationState.SetAnimation(0, animationName, true);
+        currentAnimation = animationName;
     }
 
     private IEnumerator AttackPeriodically()
     {
         WaitForSeconds waitForSeconds = new WaitForSeconds(1);
+
+        weaponCollider.enabled = false;
 
         while (true)
         {
@@ -45,7 +81,7 @@ public class MainCharacter : MonoBehaviour
                 {
                     weaponCollider.enabled = true;
 
-                    Tween.EulerAngles(weapon, weapon.eulerAngles, weapon.eulerAngles - new Vector3(0, 0, 180), duration: 0.15f).OnComplete(() =>
+                    Tween.EulerAngles(weapon, new Vector3(0, 0, 0), new Vector3(0, 0, 360), duration: 0.15f).OnComplete(() =>
                     {
                         weaponCollider.enabled = false;
                     });

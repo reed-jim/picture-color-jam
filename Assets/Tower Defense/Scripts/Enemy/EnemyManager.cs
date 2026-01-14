@@ -37,6 +37,7 @@ public class EnemyManager : MonoBehaviour
         yield return new WaitUntil(() => GamePersistentVariable.isLoadingComplete && GamePersistentVariable.isGameStarted);
 
         currentWave = 1;
+        int totalWave = currentLevelEnemyWaveData.enemyWaves.Count;
 
         while (currentLevelEnemyWaveData.enemyWaves.Count > 0)
         {
@@ -45,7 +46,7 @@ public class EnemyManager : MonoBehaviour
             if (isNewWave)
             {
                 timeToNextWave = currentEnemyWave.totalSeconds;
-                waveText.text = $"Wave {currentWave}";
+                waveText.text = $"Wave: {currentWave}/{totalWave}";
 
                 isNewWave = false;
             }

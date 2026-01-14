@@ -40,7 +40,5 @@ public class TowerUIItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     {
         icon.sprite = upgradeContainer.towerTypeAndIconPairs.First(item => item.towerType == towerType).icon;
         icon.SetNativeSize();
-
-        icon.rectTransform.sizeDelta *= 2;
     }
 }
