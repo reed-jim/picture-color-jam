@@ -25,8 +25,6 @@ public class CharacterManager : Singleton<CharacterManager>
         }
 
         mainCharacter = Instantiate(characterPool[selectedMainCharacterIndex]);
-
-        mainCharacter.transform.position = Vector3.zero;
     }
 
     public bool Next()

@@ -549,9 +549,19 @@ namespace Saferio.Util.SaferioTween
             return new Vector3(currentValue.x, currentValue.y, value);
         }
 
+        public static Vector3 AddX(this Vector3 currentValue, float value)
+        {
+            return new Vector3(currentValue.x + value, currentValue.y, currentValue.z);
+        }
+
         public static Vector3 AddY(this Vector3 currentValue, float value)
         {
             return new Vector3(currentValue.x, currentValue.y + value, currentValue.z);
+        }
+
+        public static Vector3 AddZ(this Vector3 currentValue, float value)
+        {
+            return new Vector3(currentValue.x, currentValue.y, currentValue.z + value);
         }
     }
 

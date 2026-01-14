@@ -3,6 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Video;
+using static GameEnum;
 
 public class CharacterSelectionPopup : BasePopup
 {
@@ -28,7 +29,10 @@ public class CharacterSelectionPopup : BasePopup
     {
         CharacterManager.Instance.SelectMainCharacter();
 
-        Hide();
+        Hide(onCompletedAction: () =>
+        {
+            SwitchRoute(ScreenRoute.Tutorial);
+        });
     }
 
     private void Next()

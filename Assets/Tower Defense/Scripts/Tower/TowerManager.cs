@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using PrimeTween;
+using Saferio.Util.SaferioTween;
 using UnityEngine;
 using UnityEngine.UI;
 using static GameEnum;
@@ -33,8 +34,6 @@ public class TowerManager : Singleton<TowerManager>
 
     void Start()
     {
-        switchRouteEvent?.Invoke(ScreenRoute.Tutorial);
-
         placeTowerPreview.gameObject.SetActive(false);
     }
 
@@ -90,6 +89,7 @@ public class TowerManager : Singleton<TowerManager>
 
             float penetrationDepth = GetColliderPenetrationDepth(tower.towerCollider);
 
+            placeTowerPreview.transform.position = tower.transform.position.AddZ(0.5f);
             placeTowerPreview.color = Color.Lerp(Color.green, Color.red, penetrationDepth);
 
             if (penetrationDepth > 0.2f)
@@ -102,7 +102,7 @@ public class TowerManager : Singleton<TowerManager>
 
         if (isCancel)
         {
-            ObjectPoolingEverything.ReturnToPool(GameConstants.tower, tower.gameObject);
+            ObjectPoolingEverything.ReturnToPool(towerUIItem.towerType.ToString(), tower.gameObject);
         }
         else
         {
