@@ -6,7 +6,7 @@ using PrimeTween;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class JoystickController : MonoBehaviour
+public class JoystickController : Singleton<JoystickController>
 {
     [Header("UI")]
     [SerializeField] private RectTransform joystickContainer;
@@ -213,5 +213,10 @@ public class JoystickController : MonoBehaviour
     private void EnableInput(bool isEnable)
     {
         _isEnableInput = isEnable;
+    }
+
+    public void Hide()
+    {
+        joystickCanvasGroup.alpha = 0;
     }
 }

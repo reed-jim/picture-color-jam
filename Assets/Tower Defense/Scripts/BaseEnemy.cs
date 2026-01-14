@@ -25,7 +25,7 @@ public class BaseEnemy : MonoBehaviour
     {
         currentHealth = health;
 
-        lazyHealthBar.ChangeValue(currentHealth / health);
+        lazyHealthBar.Reset();
     }
 
     public void MoveToBase()

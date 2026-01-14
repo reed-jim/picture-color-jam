@@ -393,7 +393,7 @@ MonoBehaviour:
   skeletonAnimation: {fileID: 2503250650588355778}
   idleAnimation: Idle
   moveAnimation: Move
-  speedMultiply: 0.0008
+  speedMultiply: 0.0004
   attackRadius: 2
   checkAttackLayerMask:
     serializedVersion: 2

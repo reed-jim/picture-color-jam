@@ -90,7 +90,7 @@ public class TowerManager : Singleton<TowerManager>
             float penetrationDepth = GetColliderPenetrationDepth(tower.towerCollider);
 
             placeTowerPreview.transform.position = tower.transform.position.AddZ(0.5f);
-            placeTowerPreview.color = Color.Lerp(Color.green, Color.red, penetrationDepth);
+            placeTowerPreview.color = ColorUtil.WithAlpha(Color.Lerp(Color.green, Color.red, penetrationDepth), 0.6f);
 
             if (penetrationDepth > 0.2f)
             {

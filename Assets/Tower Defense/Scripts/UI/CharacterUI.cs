@@ -52,6 +52,7 @@ public class CharacterUI : Singleton<CharacterUI>
                 characterData.currentEXP = 0;
                 characterData.requiredEXP = 10 + characterData.level;
 
+                JoystickController.Instance.Hide();
                 TowerManager.Instance.ShowTowerSelectionPopup();
             }
         });

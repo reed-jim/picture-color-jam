@@ -20,6 +20,13 @@ public class LazyHealthBar : MonoBehaviour
         container.gameObject.SetActive(false);
     }
 
+    public void Reset()
+    {
+        ChangeValue(1);
+        
+        container.gameObject.SetActive(false);
+    }
+
     public void ChangeValue(float value)
     {
         if (!container.gameObject.activeInHierarchy)

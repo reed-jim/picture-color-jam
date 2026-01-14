@@ -105,7 +105,7 @@ public class ObjectPoolingEverythingInitializer : MonoBehaviour
         RegisterPool<BaseTower>(TowerType.Cannon.ToString(), towerCannon, 20);
         RegisterPool<BaseTower>(TowerType.Spear.ToString(), towerMelee, 20);
         RegisterPool<TowerUIItem>(GameConstants.towerUIItem, towerUIItem, 20);
-        RegisterPool<BaseEnemy>(EnemyType.Melee.ToString(), enemy, 10);
+        RegisterPool<BaseEnemy>(EnemyType.Melee.ToString(), enemy, 60);
         RegisterPool<DamageText>(GameConstants.damageText, damageText, 30);
         RegisterPool<ParticleSystem>(GameConstants.hitFx, hitFx, 30);
         RegisterPool<ParticleSystem>(GameConstants.buffFx, buffFx, 12);
