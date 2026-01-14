@@ -13,4 +13,12 @@ public class TutorialPopup : BasePopup
 
         okButton.onClick.AddListener(Hide);
     }
+
+    protected override void Hide()
+    {
+        base.Hide(onCompletedAction: () =>
+        {
+            GamePersistentVariable.isGameStarted = true;
+        });
+    }
 }

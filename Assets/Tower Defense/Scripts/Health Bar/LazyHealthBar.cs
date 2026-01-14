@@ -16,10 +16,17 @@ public class LazyHealthBar : MonoBehaviour
     void Start()
     {
         prevValue = 1;
+
+        container.gameObject.SetActive(false);
     }
 
     public void ChangeValue(float value)
     {
+        if (!container.gameObject.activeInHierarchy)
+        {
+            container.gameObject.SetActive(true);
+        }
+
         if (healthBarTween.isAlive)
         {
             healthBarTween.Stop();

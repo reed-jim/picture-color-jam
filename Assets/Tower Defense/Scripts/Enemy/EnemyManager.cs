@@ -34,7 +34,7 @@ public class EnemyManager : MonoBehaviour
         bool isNewWave = true;
         int numEnemyToSpawn = 1;
 
-        yield return new WaitUntil(() => GamePersistentVariable.isLoadingComplete);
+        yield return new WaitUntil(() => GamePersistentVariable.isLoadingComplete && GamePersistentVariable.isGameStarted);
 
         currentWave = 1;
 
