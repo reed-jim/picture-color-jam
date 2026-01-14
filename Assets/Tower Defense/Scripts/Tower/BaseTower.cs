@@ -27,6 +27,10 @@ public class BaseTower : MonoBehaviour
 
     void Start()
     {
+        towerProperty.damage = towerProperty.baseDamage;
+        towerProperty.attackRadius = towerProperty.baseAttackRadius;
+        towerProperty.rateOfFire = towerProperty.baseRateOfFire;
+
         StartCoroutine(AutoShooting());
     }
 
@@ -39,8 +43,6 @@ public class BaseTower : MonoBehaviour
             if (isActive)
             {
                 Transform target = FindNearestTarget();
-
-                Debug.Log("SAERIO " + target);
 
                 if (target != null)
                 {

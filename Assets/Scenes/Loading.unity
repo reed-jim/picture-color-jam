@@ -3516,7 +3516,7 @@ MonoBehaviour:
   explosiveProjectile: {fileID: 2764698954615587065, guid: aafed7e042e2a944d8736efa32eebf9c, type: 3}
   towerBalista: {fileID: 5434978929448508002, guid: a94b5fcc00f2ea141940f6ea223eda9c, type: 3}
   towerCannon: {fileID: 5434978929448508002, guid: 731b306cff8ffe84babecb982d792ac0, type: 3}
-  towerMelee: {fileID: 5434978929448508002, guid: 731b306cff8ffe84babecb982d792ac0, type: 3}
+  towerMelee: {fileID: 5731005604631344723, guid: 22f2cec8cb07c7244ba05b3275bb9846, type: 3}
   towerUIItem: {fileID: 4186707232104964077, guid: 641b9230980a2774cb89d56f295e5f51, type: 3}
   enemy: {fileID: 5881449097057878862, guid: 8b87e1c571e54a04181ba842cd7ef6b6, type: 3}
   damageText: {fileID: 7349725410979463786, guid: 39ae7f863dca2dd4da78e4c7b5d6fa8a, type: 3}

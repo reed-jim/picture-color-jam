@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
@@ -20,7 +21,29 @@ public class EnemyManager : Singleton<EnemyManager>
     void Start()
     {
         currentLevelEnemyWaveData = new LevelEnemyWaveData();
-        currentLevelEnemyWaveData.enemyWaves = levelEnemyWaveData.enemyWaves;
+        // currentLevelEnemyWaveData.enemyWaves = levelEnemyWaveData.enemyWaves;
+
+        currentLevelEnemyWaveData.enemyWaves = new List<EnemyWave>();
+
+        for (int i = 0; i < 8; i++)
+        {
+            EnemyWave enemyWave = new EnemyWave();
+
+            enemyWave.totalSeconds = 10;
+            List<EnemyTypeAndNumberPair> list = new List<EnemyTypeAndNumberPair>
+            {
+                new EnemyTypeAndNumberPair()
+                {
+                    enemyType = EnemyType.Melee,
+                    number = 10
+                }
+            };
+
+            enemyWave.enemies = list;
+
+            currentLevelEnemyWaveData.enemyWaves.Add(enemyWave);
+        }
+
         timeToNextWave = 10;
 
         StartCoroutine(SpawnEnemy());
@@ -41,7 +64,7 @@ public class EnemyManager : Singleton<EnemyManager>
 
         while (currentLevelEnemyWaveData.enemyWaves.Count > 0)
         {
-            EnemyWave currentEnemyWave = currentLevelEnemyWaveData.enemyWaves.First();
+            EnemyWave currentEnemyWave = currentLevelEnemyWaveData.enemyWaves[currentWave];
 
             if (isNewWave)
             {
@@ -73,7 +96,7 @@ public class EnemyManager : Singleton<EnemyManager>
 
             if (enemyLeft == 0)
             {
-                currentLevelEnemyWaveData.enemyWaves.RemoveAt(0);
+                // currentLevelEnemyWaveData.enemyWaves.RemoveAt(0);
 
                 currentWave++;
                 isNewWave = true;
@@ -87,9 +110,11 @@ public class EnemyManager : Singleton<EnemyManager>
     {
         for (int i = 0; i < enemyWave.enemies.Count; i++)
         {
-            if (enemyWave.enemies[i].number > 0)
+            int index = i;
+
+            if (enemyWave.enemies[index].number > 0)
             {
-                EnemyType enemyType = enemyWave.enemies[i].enemyType;
+                EnemyType enemyType = enemyWave.enemies[index].enemyType;
 
                 BaseEnemy enemy = ObjectPoolingEverything.GetFromPool<BaseEnemy>(enemyType.ToString());
                 enemy.Reset();
@@ -101,10 +126,10 @@ public class EnemyManager : Singleton<EnemyManager>
 
                 enemy.MoveToBase();
 
-                EnemyTypeAndNumberPair enemyTypeAndNumberPair = enemyWave.enemies[i];
+                EnemyTypeAndNumberPair enemyTypeAndNumberPair = enemyWave.enemies[index];
                 enemyTypeAndNumberPair.number--;
 
-                enemyWave.enemies[i] = enemyTypeAndNumberPair;
+                enemyWave.enemies[index] = enemyTypeAndNumberPair;
 
                 break;
             }
