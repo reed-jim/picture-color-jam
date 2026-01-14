@@ -1,0 +1,19 @@
+E-3.png
+size:128,128
+filter:Linear,Linear
+pma:true
+Layer 83
+bounds:2,19,55,49
+offsets:1,1,57,51
+Layer 84
+bounds:59,38,64,30
+offsets:1,1,66,32
+Layer 85
+bounds:2,2,15,18
+offsets:1,1,17,20
+rotate:90
+Layer 86
+bounds:22,2,15,15
+offsets:1,1,17,17
+shadow
+bounds:59,16,58,20

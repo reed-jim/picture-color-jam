@@ -1,0 +1,27 @@
+Heroes9.png
+size:256,256
+filter:Linear,Linear
+pma:true
+Layer 21
+bounds:2,66,74,55
+Layer 21 - Copy
+bounds:191,23,63,38
+Layer 22
+bounds:104,69,99,93
+Layer 23
+bounds:205,116,46,46
+Layer 25
+bounds:2,9,55,67
+rotate:90
+c1
+bounds:78,30,69,37
+c2
+bounds:2,123,100,39
+c3
+bounds:205,63,51,45
+offsets:1,0,53,45
+rotate:90
+shadow
+bounds:71,2,59,26
+v2
+bounds:149,28,40,39

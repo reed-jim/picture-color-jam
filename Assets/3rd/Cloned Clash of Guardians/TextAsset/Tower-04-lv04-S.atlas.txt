@@ -1,0 +1,16 @@
+Tower-04-lv04-S.png
+size:256,128
+filter:Linear,Linear
+pma:true
+Chong 01
+bounds:170,42,38,83
+offsets:1,1,40,85
+Chong 02
+bounds:210,42,38,83
+offsets:1,1,40,85
+Chong 03
+bounds:170,2,38,83
+offsets:1,1,40,85
+rotate:90
+De
+bounds:2,26,166,99

@@ -1,0 +1,31 @@
+Tower-05-lv01-S.png
+size:256,256
+filter:Linear,Linear
+pma:true
+Body
+bounds:2,23,65,73
+offsets:1,1,67,75
+Boom
+bounds:69,55,35,41
+offsets:1,1,37,43
+De
+bounds:129,87,94,69
+offsets:1,1,96,71
+rotate:90
+Fire 01
+bounds:31,5,16,14
+offsets:1,1,18,16
+rotate:90
+Fire 02
+bounds:106,87,11,9
+offsets:1,1,13,11
+Fire 03
+bounds:106,10,75,63
+offsets:1,1,77,65
+rotate:90
+Mieng phao
+bounds:2,2,27,19
+offsets:1,1,30,21
+buc
+bounds:2,98,125,83
+offsets:1,1,127,85

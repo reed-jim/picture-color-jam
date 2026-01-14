@@ -1,0 +1,9 @@
+TutorialHand.png
+size:512,256
+filter:Linear,Linear
+pma:true
+infinity
+bounds:2,10,256,128
+tutorial_hand
+bounds:260,2,100,136
+offsets:0,1,100,138

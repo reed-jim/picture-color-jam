@@ -1,0 +1,44 @@
+Boss-4.png
+size:256,256
+filter:Linear,Linear
+pma:true
+scale:0.9
+Hip
+bounds:200,117,58,40
+offsets:0,0,59,40
+rotate:90
+Layer 104
+bounds:2,6,76,66
+rotate:90
+Layer 105
+bounds:197,76,41,39
+offsets:0,0,41,40
+Layer 109
+bounds:2,92,68,71
+offsets:1,0,69,71
+Layer 110
+bounds:109,168,89,85
+Layer 111
+bounds:70,56,34,37
+offsets:1,2,35,41
+rotate:90
+Layer 111 copy
+bounds:72,124,27,39
+offsets:1,1,30,41
+Layer 112
+bounds:200,177,52,76
+offsets:1,0,53,76
+Layer 113
+bounds:109,14,67,68
+offsets:1,0,68,68
+Layer 114
+bounds:178,6,59,68
+Layer 115
+bounds:2,165,105,88
+offsets:0,0,106,88
+Layer 116
+bounds:109,84,82,86
+rotate:90
+shadow
+bounds:70,2,52,18
+rotate:90

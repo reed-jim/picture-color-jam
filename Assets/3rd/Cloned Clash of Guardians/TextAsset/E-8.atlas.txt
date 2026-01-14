@@ -1,0 +1,25 @@
+E-8.png
+size:128,128
+filter:Linear,Linear
+pma:true
+L1
+bounds:2,79,35,16
+L2
+bounds:2,57,55,19
+L3
+bounds:39,78,32,17
+Layer 103
+bounds:103,68,23,27
+offsets:3,4,27,32
+Layer 104
+bounds:2,14,52,41
+offsets:1,1,54,43
+Layer 105
+bounds:56,2,44,42
+offsets:1,1,46,44
+Layer 108
+bounds:73,75,20,28
+offsets:1,1,22,30
+rotate:90
+shadow
+bounds:59,46,58,20

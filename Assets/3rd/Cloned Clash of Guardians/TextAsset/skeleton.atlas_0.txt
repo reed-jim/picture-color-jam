@@ -1,0 +1,7 @@
+skeleton.png
+size:128,128
+filter:Linear,Linear
+pma:true
+scale:0.9
+Tower-Curse-1
+bounds:2,2,77,88

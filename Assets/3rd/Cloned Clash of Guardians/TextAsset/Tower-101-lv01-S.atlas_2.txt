@@ -1,0 +1,19 @@
+Tower-101-lv01-S.png
+size:256,128
+filter:Linear,Linear
+pma:true
+Eye
+bounds:169,2,42,44
+rotate:90
+Group 5
+bounds:169,46,58,44
+offsets:1,1,60,46
+rotate:90
+Platform-1
+bounds:2,20,84,84
+offsets:1,1,86,86
+Stick
+bounds:88,43,79,61
+shadow
+bounds:88,20,42,21
+offsets:1,1,44,23

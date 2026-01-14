@@ -3,13 +3,15 @@
   <Project Path="Dreamteck.Splines.Editor.csproj" />
   <Project Path="Dreamteck.Splines.csproj" />
   <Project Path="UniRx.csproj" />
+  <Project Path="spine-unity-examples.csproj" />
   <Project Path="LeanLocalization.csproj" />
   <Project Path="EPO.csproj" />
   <Project Path="LeanCommon.csproj" />
   <Project Path="spine-unity-editor.csproj" />
-  <Project Path="spine-unity.csproj" />
+  <Project Path="spine-csharp.csproj" />
   <Project Path="Google.Play.Games.Editor.csproj" />
   <Project Path="Assembly-CSharp-Editor.csproj" />
+  <Project Path="spine-unity.csproj" />
   <Project Path="AppsFlyer.csproj" />
   <Project Path="Google.Play.Games.csproj" />
   <Project Path="PrimeTween.Demo.csproj" />
@@ -26,6 +28,7 @@
   <Project Path="AppsFlyer.Editor.csproj" />
   <Project Path="CFXRDemo.csproj" />
   <Project Path="LeanLocalizationEditor.csproj" />
+  <Project Path="spine-unity-examples-editor.csproj" />
   <Project Path="Dreamteck.Utilities.Editor.csproj" />
   <Project Path="EPOURP.csproj" />
   <Project Path="FirebaseMessagingActivityGenerator.csproj" />

@@ -1,0 +1,17 @@
+Heroes-02.png
+size:256,128
+filter:Linear,Linear
+pma:true
+Layer 28
+bounds:2,8,97,70
+Layer 29
+bounds:101,22,60,56
+Layer 33
+bounds:118,2,15,18
+offsets:1,1,17,20
+Layer 33 copy
+bounds:101,2,15,18
+offsets:1,1,17,20
+shadow
+bounds:163,19,59,26
+rotate:90

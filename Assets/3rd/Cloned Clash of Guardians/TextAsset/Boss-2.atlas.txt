@@ -1,0 +1,32 @@
+Boss-2.png
+size:256,256
+filter:Linear,Linear
+pma:true
+Layer 104
+bounds:138,121,100,106
+offsets:1,1,102,108
+rotate:90
+Layer 11
+bounds:138,58,102,61
+offsets:1,1,104,63
+Layer 110
+bounds:2,115,134,106
+offsets:1,1,136,108
+Layer 111
+bounds:47,5,43,45
+offsets:1,1,45,47
+rotate:90
+Layer 111 copy
+bounds:2,3,43,45
+offsets:1,1,45,47
+Layer 112
+bounds:2,50,63,96
+offsets:1,1,66,98
+rotate:90
+Layer 113
+bounds:122,2,54,96
+offsets:1,1,56,98
+rotate:90
+shadow
+bounds:100,55,58,20
+rotate:90

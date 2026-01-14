@@ -27,11 +27,11 @@
  * THE SPINE RUNTIMES, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *****************************************************************************/
 
+using Spine;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
-using Spine;
 
 namespace Spine.Unity {
 	[System.Serializable]
@@ -52,7 +52,17 @@ namespace Spine.Unity {
 
 		public bool RequiresBlendModeMaterials { get { return requiresBlendModeMaterials; } set { requiresBlendModeMaterials = value; } }
 
-	#if UNITY_EDITOR
+		public BlendMode BlendModeForMaterial (Material material) {
+			foreach (var pair in multiplyMaterials)
+				if (pair.material == material) return BlendMode.Multiply;
+			foreach (var pair in additiveMaterials)
+				if (pair.material == material) return BlendMode.Additive;
+			foreach (var pair in screenMaterials)
+				if (pair.material == material) return BlendMode.Screen;
+			return BlendMode.Normal;
+		}
+
+#if UNITY_EDITOR
 		public void TransferSettingsFrom (BlendModeMaterialsAsset modifierAsset) {
 			applyAdditiveMaterial = modifierAsset.applyAdditiveMaterial;
 		}
@@ -66,8 +76,8 @@ namespace Spine.Unity {
 			var slotsItems = skeletonData.Slots.Items;
 			for (int slotIndex = 0, slotCount = skeletonData.Slots.Count; slotIndex < slotCount; slotIndex++) {
 				var slot = slotsItems[slotIndex];
-				if (slot.blendMode == BlendMode.Normal) continue;
-				if (!applyAdditiveMaterial && slot.blendMode == BlendMode.Additive) continue;
+				if (slot.BlendMode == BlendMode.Normal) continue;
+				if (!applyAdditiveMaterial && slot.BlendMode == BlendMode.Additive) continue;
 
 				skinEntries.Clear();
 				foreach (var skin in skeletonData.Skins)
@@ -82,7 +92,7 @@ namespace Spine.Unity {
 			}
 			return false;
 		}
-	#endif
+#endif
 		public void ApplyMaterials (SkeletonData skeletonData) {
 			if (skeletonData == null) throw new ArgumentNullException("skeletonData");
 			if (!requiresBlendModeMaterials)
@@ -92,20 +102,20 @@ namespace Spine.Unity {
 			var slotsItems = skeletonData.Slots.Items;
 			for (int slotIndex = 0, slotCount = skeletonData.Slots.Count; slotIndex < slotCount; slotIndex++) {
 				var slot = slotsItems[slotIndex];
-				if (slot.blendMode == BlendMode.Normal) continue;
-				if (!applyAdditiveMaterial && slot.blendMode == BlendMode.Additive) continue;
+				if (slot.BlendMode == BlendMode.Normal) continue;
+				if (!applyAdditiveMaterial && slot.BlendMode == BlendMode.Additive) continue;
 
 				List<ReplacementMaterial> replacementMaterials = null;
-				switch (slot.blendMode) {
-					case BlendMode.Multiply:
-						replacementMaterials = multiplyMaterials;
-						break;
-					case BlendMode.Screen:
-						replacementMaterials = screenMaterials;
-						break;
-					case BlendMode.Additive:
-						replacementMaterials = additiveMaterials;
-						break;
+				switch (slot.BlendMode) {
+				case BlendMode.Multiply:
+					replacementMaterials = multiplyMaterials;
+					break;
+				case BlendMode.Screen:
+					replacementMaterials = screenMaterials;
+					break;
+				case BlendMode.Additive:
+					replacementMaterials = additiveMaterials;
+					break;
 				}
 				if (replacementMaterials == null)
 					continue;

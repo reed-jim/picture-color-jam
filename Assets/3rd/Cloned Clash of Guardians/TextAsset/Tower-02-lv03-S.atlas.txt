@@ -1,0 +1,22 @@
+Tower-02-lv03-S.png
+size:256,128
+filter:Linear,Linear
+pma:true
+Day 01
+bounds:2,2,56,8
+Day 02
+bounds:60,3,55,7
+De
+bounds:34,42,84,79
+rotate:90
+Mui ten
+bounds:2,12,13,73
+offsets:1,1,15,75
+rotate:90
+No 01
+bounds:2,27,99,30
+rotate:90
+No 02
+bounds:77,13,27,64
+offsets:1,1,29,66
+rotate:90

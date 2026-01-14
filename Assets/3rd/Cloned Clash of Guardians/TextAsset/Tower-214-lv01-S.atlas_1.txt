@@ -1,0 +1,7 @@
+Tower-214-lv01-S.png
+size:128,256
+filter:Linear,Linear
+pma:true
+Platform-1
+bounds:2,2,85,167
+offsets:1,1,87,169

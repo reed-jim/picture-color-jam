@@ -1,0 +1,26 @@
+Tower-203-lv01-S.png
+size:256,128
+filter:Linear,Linear
+pma:true
+Body
+bounds:130,43,50,81
+offsets:1,0,51,81
+Foot
+bounds:2,13,46,27
+offsets:1,1,48,29
+Hand L
+bounds:104,6,24,34
+offsets:1,1,26,36
+Hand R
+bounds:50,7,27,33
+offsets:1,1,29,35
+Layer 43
+bounds:2,42,126,82
+offsets:1,1,128,84
+Mouth 01
+bounds:130,19,17,22
+offsets:1,1,19,24
+Mouth 02
+bounds:79,2,38,23
+offsets:1,1,40,25
+rotate:90

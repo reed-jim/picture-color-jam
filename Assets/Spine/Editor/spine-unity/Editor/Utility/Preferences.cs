@@ -43,29 +43,25 @@
 #define NEW_PREFERENCES_SETTINGS_PROVIDER
 #endif
 
-using UnityEngine;
-using UnityEditor;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
-using System.Text;
 using System.Linq;
 using System.Reflection;
-using System.Globalization;
+using System.Text;
+using UnityEditor;
+using UnityEngine;
 
 namespace Spine.Unity.Editor {
 	public partial class SpineEditorUtilities {
 
-	#if NEW_PREFERENCES_SETTINGS_PROVIDER
-		static class SpineSettingsProviderRegistration
-		{
+#if NEW_PREFERENCES_SETTINGS_PROVIDER
+		static class SpineSettingsProviderRegistration {
 			[SettingsProvider]
-			public static SettingsProvider CreateSpineSettingsProvider()
-			{
-				var provider = new SettingsProvider("Spine", SettingsScope.User)
-				{
+			public static SettingsProvider CreateSpineSettingsProvider () {
+				var provider = new SettingsProvider("Spine", SettingsScope.User) {
 					label = "Spine",
-					guiHandler = (searchContext) =>
-					{
+					guiHandler = (searchContext) => {
 						var settings = SpinePreferences.GetOrCreateSettings();
 						var serializedSettings = new SerializedObject(settings);
 						SpinePreferences.HandlePreferencesGUI(serializedSettings);
@@ -79,27 +75,27 @@ namespace Spine.Unity.Editor {
 				return provider;
 			}
 		}
-	#else
+#else
 		// Preferences entry point
 		[PreferenceItem("Spine")]
 		static void PreferencesGUI () {
 			Preferences.HandlePreferencesGUI();
 		}
-	#endif
+#endif
 
-	#if NEW_PREFERENCES_SETTINGS_PROVIDER
+#if NEW_PREFERENCES_SETTINGS_PROVIDER
 		public static SpinePreferences Preferences {
 			get {
 				return SpinePreferences.GetOrCreateSettings();
 			}
 		}
-	#endif
+#endif
 
-	#if NEW_PREFERENCES_SETTINGS_PROVIDER
+#if NEW_PREFERENCES_SETTINGS_PROVIDER
 		public static class OldPreferences {
-	#else
+#else
 		public static class Preferences {
-	#endif
+#endif
 			const string DEFAULT_SCALE_KEY = "SPINE_DEFAULT_SCALE";
 			public static float defaultScale = SpinePreferences.DEFAULT_DEFAULT_SCALE;
 
@@ -108,6 +104,10 @@ namespace Spine.Unity.Editor {
 
 			const string DEFAULT_SHADER_KEY = "SPINE_DEFAULT_SHADER";
 			public static string defaultShader = SpinePreferences.DEFAULT_DEFAULT_SHADER;
+			public static string DefaultShader {
+				get { return !string.IsNullOrEmpty(defaultShader) ? defaultShader : SpinePreferences.DEFAULT_DEFAULT_SHADER; }
+				set { defaultShader = value; }
+			}
 
 			const string DEFAULT_ZSPACING_KEY = "SPINE_DEFAULT_ZSPACING";
 			public static float defaultZSpacing = SpinePreferences.DEFAULT_DEFAULT_ZSPACING;
@@ -201,7 +201,7 @@ namespace Spine.Unity.Editor {
 			}
 
 #if NEW_PREFERENCES_SETTINGS_PROVIDER
-			public static void CopyOldToNewPreferences(ref SpinePreferences newPreferences) {
+			public static void CopyOldToNewPreferences (ref SpinePreferences newPreferences) {
 				newPreferences.defaultMix = EditorPrefs.GetFloat(DEFAULT_MIX_KEY, SpinePreferences.DEFAULT_DEFAULT_MIX);
 				newPreferences.defaultScale = EditorPrefs.GetFloat(DEFAULT_SCALE_KEY, SpinePreferences.DEFAULT_DEFAULT_SCALE);
 				newPreferences.defaultZSpacing = EditorPrefs.GetFloat(DEFAULT_ZSPACING_KEY, SpinePreferences.DEFAULT_DEFAULT_ZSPACING);
@@ -218,7 +218,7 @@ namespace Spine.Unity.Editor {
 				newPreferences.handleScale = EditorPrefs.GetFloat(SCENE_ICONS_SCALE_KEY, SpinePreferences.DEFAULT_SCENE_ICONS_SCALE);
 			}
 
-			public static void SaveToEditorPrefs(SpinePreferences preferences) {
+			public static void SaveToEditorPrefs (SpinePreferences preferences) {
 				EditorPrefs.SetFloat(DEFAULT_MIX_KEY, preferences.defaultMix);
 				EditorPrefs.SetFloat(DEFAULT_SCALE_KEY, preferences.defaultScale);
 				EditorPrefs.SetFloat(DEFAULT_ZSPACING_KEY, preferences.defaultZSpacing);
@@ -423,12 +423,12 @@ namespace Spine.Unity.Editor {
 			property.stringValue = material ? AssetDatabase.GetAssetPath(material) : "";
 		}
 
-	#if NEW_PREFERENCES_SETTINGS_PROVIDER
+#if NEW_PREFERENCES_SETTINGS_PROVIDER
 		public static void PresetAssetPropertyField (SerializedProperty property, GUIContent label) {
 			var texturePreset = (EditorGUILayout.ObjectField(label, AssetDatabase.LoadAssetAtPath<UnityEditor.Presets.Preset>(property.stringValue), typeof(UnityEditor.Presets.Preset), false) as UnityEditor.Presets.Preset);
 			bool isTexturePreset = texturePreset != null && texturePreset.GetTargetTypeName() == "TextureImporter";
 			property.stringValue = isTexturePreset ? AssetDatabase.GetAssetPath(texturePreset) : "";
 		}
-	#endif
+#endif
 	}
 }

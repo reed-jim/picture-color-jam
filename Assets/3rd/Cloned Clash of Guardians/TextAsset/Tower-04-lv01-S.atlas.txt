@@ -1,0 +1,12 @@
+Tower-04-lv01-S.png
+size:256,128
+filter:Linear,Linear
+pma:true
+Chong 01
+bounds:165,14,36,85
+Chong 02
+bounds:165,14,36,85
+Chong 03
+bounds:165,14,36,85
+De
+bounds:2,2,161,97

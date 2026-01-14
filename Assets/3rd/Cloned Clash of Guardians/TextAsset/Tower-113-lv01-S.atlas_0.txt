@@ -1,0 +1,32 @@
+Tower-113-lv01-S.png
+size:256,128
+filter:Linear,Linear
+pma:true
+Gear
+bounds:195,55,20,22
+offsets:1,1,22,24
+rotate:90
+Gear copy
+bounds:152,77,45,48
+offsets:1,1,47,50
+Gear copy 2
+bounds:2,2,34,36
+offsets:1,1,36,38
+Glow
+bounds:89,62,61,63
+offsets:1,1,63,65
+Orb
+bounds:139,6,54,54
+offsets:1,1,56,56
+Orb-Face-1
+bounds:38,18,48,20
+offsets:1,1,50,22
+Orb-Face-2
+bounds:88,18,48,20
+offsets:1,1,50,22
+Orb-Face-3
+bounds:89,40,48,20
+offsets:1,1,50,22
+Platform
+bounds:2,40,85,85
+offsets:1,1,87,86

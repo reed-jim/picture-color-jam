@@ -1,0 +1,31 @@
+Tower-104-lv01-S.png
+size:256,256
+filter:Linear,Linear
+pma:true
+Body
+bounds:2,2,83,90
+offsets:1,1,85,92
+rotate:90
+Branch-L
+bounds:118,64,21,21
+offsets:1,1,23,23
+Branch-R
+bounds:172,128,38,43
+offsets:1,1,40,45
+Eye L
+bounds:126,35,22,13
+offsets:1,1,24,15
+rotate:90
+Eye R
+bounds:94,64,22,21
+offsets:1,1,24,23
+Face
+bounds:94,35,30,22
+offsets:4,1,35,24
+Platform-1
+bounds:2,87,168,84
+offsets:1,1,170,86
+Shadow
+bounds:172,59,67,31
+offsets:1,1,69,33
+rotate:90

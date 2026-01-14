@@ -241,7 +241,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -1.44, z: -1}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5095923917602805960}
@@ -261,7 +261,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MainCharacter
   weapon: {fileID: 5095923917602805960}
   weaponCollider: {fileID: 9046553076708840018}
-  speedMultiply: 0.0015
+  speedMultiply: 0.0012
+  attackRadius: 0
+  checkAttackLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!212 &561188729297085665
 SpriteRenderer:
   serializedVersion: 2

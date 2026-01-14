@@ -1,0 +1,39 @@
+{
+  "interval_back_up": 300,
+  
+  "version_should_update_android": 52,
+  "version_force_update_android": 37,
+  "link_store_android": "https://play.google.com/store/apps/details?id=com.zone.idle.cat",
+  
+  "version_should_update_ios": 0,
+  "version_force_update_ios": 0,  
+  "link_store_ios": "",
+  
+  "status_astrology": 0,
+  "status_league_boss": 0,
+  
+  "time_begin_event_treasure_hunt": 0,
+  "time_begin_event_lucky_machine": 0,
+  "time_begin_event_legion_war": 0,
+  "time_begin_event_adventure": 1727568000000,
+  "time_begin_event_fishing": 0,
+  "time_begin_event_login": 0,
+
+  "theme_event_login": 1,
+
+  "time_begin_sale_remove_ad": 1727568000000,
+  "time_end_sale_remove_ad": 1728172800000,
+  
+  "version_event": 0,
+  "time_begin_package_theme": 0,
+  "time_end_package_theme": 0,
+  "theme_tag": "",
+  
+  "package_heroes": [5,7,8,9,15],
+  "battle_pass_heroes": [
+    {
+      "id": 2,
+      "timeBegin": 0
+    }
+  ]
+}

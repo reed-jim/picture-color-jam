@@ -60,7 +60,7 @@ Shader "Spine/Sprite/Unlit"
 			Lighting Off
 
 			CGPROGRAM
-				#pragma shader_feature _ _ALPHABLEND_ON _ALPHAPREMULTIPLY_ON _ADDITIVEBLEND _ADDITIVEBLEND_SOFT _MULTIPLYBLEND _MULTIPLYBLEND_X2
+				#pragma shader_feature _ _ALPHABLEND_ON _ALPHAPREMULTIPLY_ON _ALPHAPREMULTIPLY_VERTEX_ONLY _ADDITIVEBLEND _ADDITIVEBLEND_SOFT _MULTIPLYBLEND _MULTIPLYBLEND_X2
 				#pragma shader_feature _ALPHA_CLIP
 				#pragma shader_feature _TEXTURE_BLEND
 				#pragma shader_feature _COLOR_ADJUST
@@ -69,7 +69,6 @@ Shader "Spine/Sprite/Unlit"
 				#pragma fragmentoption ARB_precision_hint_fastest
 				#pragma multi_compile_fog
 				#pragma multi_compile _ PIXELSNAP_ON
-				#pragma multi_compile _ ETC1_EXTERNAL_ALPHA
 
 				#pragma vertex vert
 				#pragma fragment frag
@@ -93,7 +92,6 @@ Shader "Spine/Sprite/Unlit"
 				#pragma fragmentoption ARB_precision_hint_fastest
 				#pragma multi_compile_shadowcaster
 				#pragma multi_compile _ PIXELSNAP_ON
-				#pragma multi_compile _ ETC1_EXTERNAL_ALPHA
 
 				#pragma vertex vert
 				#pragma fragment frag

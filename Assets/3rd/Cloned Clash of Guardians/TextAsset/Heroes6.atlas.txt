@@ -1,0 +1,35 @@
+Heroes6.png
+size:256,128
+filter:Linear,Linear
+pma:true
+Layer 21
+bounds:2,30,66,76
+offsets:1,1,68,78
+Layer 22
+bounds:70,38,63,68
+offsets:1,1,65,70
+Layer 23
+bounds:213,63,43,35
+offsets:1,1,45,37
+rotate:90
+Layer 25
+bounds:135,38,34,50
+offsets:1,1,36,52
+rotate:90
+Layer 26
+bounds:173,3,33,33
+offsets:1,1,35,35
+c1
+bounds:70,6,52,30
+offsets:1,1,54,32
+c2
+bounds:135,74,76,32
+offsets:1,1,79,34
+c3
+bounds:124,2,47,34
+offsets:1,1,49,36
+shadow
+bounds:2,2,59,26
+v2
+bounds:208,32,28,29
+offsets:1,1,30,31

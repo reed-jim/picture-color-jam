@@ -1,0 +1,41 @@
+Tower-201-lv01-S.png
+size:512,128
+filter:Linear,Linear
+pma:true
+scale:0.9
+Be
+bounds:2,44,77,164
+offsets:1,0,79,165
+rotate:90
+Body
+bounds:2,5,37,47
+rotate:90
+Can gat 01
+bounds:51,2,29,40
+offsets:0,1,31,41
+Can gat 02
+bounds:82,3,39,29
+rotate:90
+Fx01
+bounds:168,17,91,104
+Fx02
+bounds:395,60,61,79
+offsets:4,10,66,90
+rotate:90
+Fx03
+bounds:332,40,61,81
+offsets:4,9,65,90
+Hand L 01
+bounds:113,9,19,33
+offsets:0,0,19,34
+Hand R 01
+bounds:134,9,17,33
+offsets:0,0,17,34
+Head
+bounds:395,7,51,63
+rotate:90
+Sung to
+bounds:261,17,69,104
+fx-gun
+bounds:460,11,48,47
+offsets:2,2,51,50

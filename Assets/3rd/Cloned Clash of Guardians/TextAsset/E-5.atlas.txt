@@ -1,0 +1,16 @@
+E-5.png
+size:128,64
+filter:Linear,Linear
+pma:true
+Group 1 copy
+bounds:2,2,52,43
+offsets:1,1,54,45
+Layer 84
+bounds:56,9,25,14
+offsets:1,1,27,16
+Layer 85
+bounds:116,23,22,8
+offsets:1,1,24,10
+rotate:90
+shadow
+bounds:56,25,58,20

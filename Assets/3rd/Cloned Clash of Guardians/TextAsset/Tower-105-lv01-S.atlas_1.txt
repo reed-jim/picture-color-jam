@@ -1,0 +1,17 @@
+Tower-105-lv01-S.png
+size:256,256
+filter:Linear,Linear
+pma:true
+Grass
+bounds:84,48,80,30
+offsets:0,1,80,31
+rotate:90
+Platform-1
+bounds:2,130,124,124
+offsets:2,2,128,128
+Sword
+bounds:2,2,80,126
+offsets:1,1,82,128
+shadow
+bounds:84,10,46,36
+offsets:1,1,48,38

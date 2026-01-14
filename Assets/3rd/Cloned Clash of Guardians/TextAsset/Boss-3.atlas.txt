@@ -1,0 +1,43 @@
+Boss-3.png
+size:256,256
+filter:Linear,Linear
+pma:true
+Layer 104
+bounds:78,35,82,71
+offsets:1,1,84,73
+Layer 105
+bounds:144,118,14,22
+offsets:1,1,16,24
+rotate:90
+Layer 109
+bounds:93,152,64,49
+offsets:1,1,66,51
+Layer 110
+bounds:2,33,74,73
+offsets:1,1,76,75
+Layer 111 copy
+bounds:78,2,26,31
+offsets:1,1,28,33
+Layer 111
+bounds:78,2,26,31
+offsets:1,1,28,33
+Layer 112
+bounds:93,109,41,49
+offsets:1,1,43,51
+rotate:90
+Layer 113
+bounds:162,61,44,55
+offsets:1,1,46,57
+Layer 114
+bounds:159,134,45,50
+offsets:1,1,47,52
+rotate:90
+Layer 115
+bounds:162,17,42,38
+offsets:1,1,44,40
+rotate:90
+Layer 116
+bounds:2,108,89,93
+offsets:1,1,91,95
+shadow
+bounds:159,181,58,20

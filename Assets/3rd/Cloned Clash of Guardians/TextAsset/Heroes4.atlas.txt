@@ -1,0 +1,26 @@
+Heroes4.png
+size:128,128
+filter:Linear,Linear
+pma:true
+Layer 35
+bounds:2,2,65,90
+offsets:1,1,67,92
+rotate:90
+Layer 36
+bounds:58,97,26,39
+offsets:1,1,28,41
+rotate:90
+Layer 37 copy
+bounds:31,101,22,25
+offsets:1,1,24,27
+rotate:90
+Layer 37
+bounds:31,101,22,25
+offsets:1,1,24,27
+rotate:90
+Layer 38
+bounds:2,105,18,27
+offsets:1,1,20,29
+rotate:90
+shadow
+bounds:2,69,59,26

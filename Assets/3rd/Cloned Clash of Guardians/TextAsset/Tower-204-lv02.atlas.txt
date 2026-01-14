@@ -1,0 +1,6 @@
+Tower-204-lv02.png
+size:128,128
+filter:Linear,Linear
+pma:true
+Tower-204-lv1
+bounds:2,2,85,107

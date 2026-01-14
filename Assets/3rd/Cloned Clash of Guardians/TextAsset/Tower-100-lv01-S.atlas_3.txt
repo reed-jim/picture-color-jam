@@ -1,0 +1,24 @@
+Tower-100-lv01-S.png
+size:256,128
+filter:Linear,Linear
+pma:true
+Body1-01
+bounds:109,4,52,42
+offsets:1,1,54,44
+Body1-02
+bounds:61,9,46,26
+offsets:1,1,48,28
+Body2
+bounds:88,48,73,61
+offsets:1,1,75,63
+rotate:90
+Layer 1
+bounds:2,2,57,33
+offsets:1,0,58,33
+Platform-1
+bounds:2,37,84,84
+offsets:1,1,86,86
+shadow
+bounds:151,50,71,50
+offsets:1,1,73,52
+rotate:90

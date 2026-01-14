@@ -1,0 +1,22 @@
+Tower-01-lv01-S.png
+size:256,128
+filter:Linear,Linear
+pma:true
+Layer 28
+bounds:2,42,84,69
+rotate:90
+Layer 33
+bounds:115,85,41,33
+rotate:90
+Layer 33 copy
+bounds:88,2,41,33
+rotate:90
+Layer 33 copy 2
+bounds:2,7,33,41
+rotate:90
+Layer 33 copy 3
+bounds:45,7,33,41
+rotate:90
+buc
+bounds:73,45,81,40
+rotate:90

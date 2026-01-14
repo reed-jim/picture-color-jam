@@ -35,11 +35,11 @@ using UnityEngine;
 
 namespace Spine.Unity {
 
-	#if NEW_PREFAB_SYSTEM
+#if NEW_PREFAB_SYSTEM
 	[ExecuteAlways]
-	#else
+#else
 	[ExecuteInEditMode]
-	#endif
+#endif
 	[AddComponentMenu("Spine/SkeletonAnimation")]
 	[HelpURL("http://esotericsoftware.com/spine-unity#SkeletonAnimation-Component")]
 	public class SkeletonAnimation : SkeletonRenderer, ISkeletonAnimation, IAnimationStateComponent {
@@ -113,7 +113,7 @@ namespace Spine.Unity {
 				Initialize(false);
 				if (_animationName == value) {
 					TrackEntry entry = state.GetCurrent(0);
-					if (entry != null && entry.loop == loop)
+					if (entry != null && entry.Loop == loop)
 						return;
 				}
 				_animationName = value;
@@ -166,6 +166,10 @@ namespace Spine.Unity {
 		public override void Initialize (bool overwrite, bool quiet = false) {
 			if (valid && !overwrite)
 				return;
+#if UNITY_EDITOR
+			if (BuildUtilities.IsInSkeletonAssetBuildPreProcessing)
+				return;
+#endif
 			base.Initialize(overwrite, quiet);
 
 			if (!valid)
@@ -177,21 +181,21 @@ namespace Spine.Unity {
 				var animationObject = skeletonDataAsset.GetSkeletonData(false).FindAnimation(_animationName);
 				if (animationObject != null) {
 					state.SetAnimation(0, animationObject, loop);
-					#if UNITY_EDITOR
+#if UNITY_EDITOR
 					if (!Application.isPlaying)
 						Update(0f);
-					#endif
+#endif
 				}
 			}
 		}
 
 		void Update () {
-			#if UNITY_EDITOR
+#if UNITY_EDITOR
 			if (!Application.isPlaying) {
 				Update(0f);
 				return;
 			}
-			#endif
+#endif
 
 			Update(Time.deltaTime);
 		}
@@ -206,8 +210,10 @@ namespace Spine.Unity {
 				return;
 			UpdateAnimationStatus(deltaTime);
 
-			if (updateMode == UpdateMode.OnlyAnimationStatus)
+			if (updateMode == UpdateMode.OnlyAnimationStatus) {
+				state.ApplyEventTimelinesOnly(skeleton, issueEvents: false);
 				return;
+			}
 			ApplyAnimation();
 		}
 
@@ -224,7 +230,7 @@ namespace Spine.Unity {
 			if (updateMode != UpdateMode.OnlyEventTimelines)
 				state.Apply(skeleton);
 			else
-				state.ApplyEventTimelinesOnly(skeleton);
+				state.ApplyEventTimelinesOnly(skeleton, issueEvents: true);
 
 			if (_UpdateLocal != null)
 				_UpdateLocal(this);
@@ -245,6 +251,18 @@ namespace Spine.Unity {
 			// instantiation can happen from Update() after this component, leading to a missing Update() call.
 			if (!wasUpdatedAfterInit) Update(0);
 			base.LateUpdate();
+		}
+
+		public override void OnBecameVisible () {
+			UpdateMode previousUpdateMode = updateMode;
+			updateMode = UpdateMode.FullUpdate;
+
+			// OnBecameVisible is called after LateUpdate()
+			if (previousUpdateMode != UpdateMode.FullUpdate &&
+				previousUpdateMode != UpdateMode.EverythingExceptMesh)
+				Update(0);
+			if (previousUpdateMode != UpdateMode.FullUpdate)
+				LateUpdate();
 		}
 	}
 
