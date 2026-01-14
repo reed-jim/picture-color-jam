@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using static GameEnum;
 
 public class CharacterManager : Singleton<CharacterManager>
 {
@@ -7,6 +9,13 @@ public class CharacterManager : Singleton<CharacterManager>
     public MainCharacter[] characterPool;
 
     public int selectedMainCharacterIndex;
+
+    public static Action<ScreenRoute> switchRouteEvent;
+
+    void Start()
+    {
+        switchRouteEvent?.Invoke(ScreenRoute.CharacterSelection);
+    }
 
     public void SelectMainCharacter()
     {

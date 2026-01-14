@@ -50,6 +50,7 @@ public class BasePopup : MonoBehaviour
         UserLivesUI.switchRouteEvent += OnRouteSwitched;
         LevelLoader.switchRouteEvent += OnRouteSwitched;
         TowerManager.switchRouteEvent += OnRouteSwitched;
+        CharacterManager.switchRouteEvent += OnRouteSwitched;
 
         if (closeButton != null)
         {
@@ -99,6 +100,7 @@ public class BasePopup : MonoBehaviour
         UserLivesUI.switchRouteEvent -= OnRouteSwitched;
         LevelLoader.switchRouteEvent -= OnRouteSwitched;
         TowerManager.switchRouteEvent -= OnRouteSwitched;
+        CharacterManager.switchRouteEvent -= OnRouteSwitched;
 
         UnregisterMoreEvent();
 

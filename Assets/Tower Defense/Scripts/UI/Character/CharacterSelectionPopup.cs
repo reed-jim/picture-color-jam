@@ -1,6 +1,8 @@
+using PrimeTween;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Video;
 
 public class CharacterSelectionPopup : BasePopup
 {
@@ -8,6 +10,8 @@ public class CharacterSelectionPopup : BasePopup
     [SerializeField] private Button nextButton;
     [SerializeField] private Button prevButton;
     [SerializeField] private TMP_Text nameText;
+    public VideoPlayer videoPlayer;
+    public Image staticIcon;
 
     public MainCharacterDataContainer mainCharacterDataContainer;
 
@@ -59,7 +63,26 @@ public class CharacterSelectionPopup : BasePopup
     {
         int index = CharacterManager.Instance.selectedMainCharacterIndex;
 
-        nameText.text = $"{mainCharacterDataContainer.items[index].characterName}";
+        MainCharacterData mainCharacterData = mainCharacterDataContainer.items[index];
+
+        nameText.text = $"{mainCharacterData.characterName}";
+
+        videoPlayer.url = mainCharacterData.videoUrl;
+        videoPlayer.Prepare();
+        videoPlayer.prepareCompleted += OnVideoPrepareCompleted;
+
+        staticIcon.gameObject.SetActive(true);
+        staticIcon.color = Color.white;
+
+        void OnVideoPrepareCompleted(VideoPlayer videoPlayer)
+        {
+            videoPlayer.prepareCompleted -= OnVideoPrepareCompleted;
+
+            Tween.Alpha(staticIcon, 0, duration: 0.3f).OnComplete(() =>
+            {
+                staticIcon.gameObject.SetActive(false);
+            });
+        }
     }
 
     private void ShowNoMoreCharacterLeft()

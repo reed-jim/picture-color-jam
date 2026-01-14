@@ -5,4 +5,5 @@ public class MainCharacterData : ScriptableObject
 {
     public Sprite icon;
     public string characterName;
+    public string videoUrl;
 }
