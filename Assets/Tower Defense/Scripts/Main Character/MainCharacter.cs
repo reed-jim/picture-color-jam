@@ -81,7 +81,7 @@ public class MainCharacter : MonoBehaviour
                 {
                     weaponCollider.enabled = true;
 
-                    Tween.EulerAngles(weapon, new Vector3(0, 0, 0), new Vector3(0, 0, 360), duration: 0.15f).OnComplete(() =>
+                    Tween.EulerAngles(weapon, new Vector3(0, 0, 0), new Vector3(0, 0, -360), duration: 0.15f).OnComplete(() =>
                     {
                         weaponCollider.enabled = false;
                     });

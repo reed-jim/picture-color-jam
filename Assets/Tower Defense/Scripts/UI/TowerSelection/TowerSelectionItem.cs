@@ -45,7 +45,7 @@ public class TowerSelectionItem : MonoBehaviour
 
         if (upgradeOption.isBuff)
         {
-            description.text = $"{upgradeOption.towerType} <color=#fff>{upgradeOption.buffRatio * 100}%</color> more powerful";
+            description.text = $"{upgradeOption.towerType} <color=#005A00>{upgradeOption.buffRatio * 100}%</color> more powerful";
         }
         else
         {
