@@ -194,6 +194,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4096
   attackAnimation: Attack
+  fireSound: bladeTowerSound
   rotateSpeed: {x: 0, y: 0, z: 2}
   bladeCollider: {fileID: 4608015287864220711}
 --- !u!61 &967896811844001179

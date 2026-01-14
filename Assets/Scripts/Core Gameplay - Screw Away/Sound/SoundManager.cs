@@ -186,6 +186,23 @@ public class SoundManager : MonoBehaviour
         breakObjectSound.Play();
     }
 
+    public void PlaySoundHit()
+    {
+        PlaySound(GameConstants.hitSound);
+    }
+
+    public void PlaySound(string key)
+    {
+        if (!_isEnableGameSound)
+        {
+            return;
+        }
+
+        AudioSource sound = ObjectPoolingEverything.GetFromPool<AudioSource>(key);
+
+        sound.Play();
+    }
+
     private void FadeOutBackgroundMusic()
     {
         Tween.Custom(1, 0, duration: 0.3f, onValueChange: newVal =>

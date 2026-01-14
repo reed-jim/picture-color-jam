@@ -192,6 +192,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4096
   attackAnimation: Attack
+  fireSound: balistaSound
 --- !u!61 &8860436721395512872
 BoxCollider2D:
   m_ObjectHideFlags: 0

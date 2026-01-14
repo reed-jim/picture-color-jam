@@ -195,5 +195,9 @@ public static class GameConstants
     public static string damageText = "damageText";
     public static string hitFx = "hitFx";
     public static string buffFx = "buffFx";
+    public static string hitSound = "hitSound";
+    public static string balistaSound = "balistaSound";
+    public static string cannonSound = "cannonSound";
+    public static string bladeTowerSound = "bladeTowerSound";
     #endregion
 }

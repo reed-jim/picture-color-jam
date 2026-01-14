@@ -24,6 +24,8 @@ public class AutoSpear : BaseTower
 
                     trackEntry = skeletonAnimation.AnimationState.SetAnimation(0, attackAnimation, false);
 
+                    SoundManager.Instance.PlaySound(fireSound);
+
                     trackEntry.Complete += OnAttackAnimationComplete;
                 }
             }

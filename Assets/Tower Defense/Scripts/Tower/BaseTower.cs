@@ -23,6 +23,7 @@ public class BaseTower : MonoBehaviour
     public LayerMask targetLayer;
 
     [SpineAnimation] public string attackAnimation;
+    public string fireSound;
 
     void Start()
     {
@@ -46,6 +47,8 @@ public class BaseTower : MonoBehaviour
                     projectile.transform.position = transform.position;
 
                     projectile.ShootAt(target.position, towerProperty.damage);
+
+                    SoundManager.Instance.PlaySound(fireSound);
 
                     skeletonAnimation.AnimationState.SetAnimation(0, attackAnimation, false);
                 }

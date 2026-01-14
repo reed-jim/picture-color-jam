@@ -3518,6 +3518,10 @@ MonoBehaviour:
   damageText: {fileID: 7349725410979463786, guid: 39ae7f863dca2dd4da78e4c7b5d6fa8a, type: 3}
   hitFx: {fileID: 5880797563127281583, guid: 265d3a5ba69981a4698ceabcedf368b0, type: 3}
   buffFx: {fileID: 4021103657954561961, guid: 5c755f9bc5253ea418e919994537dcc7, type: 3}
+  hitSound: {fileID: 7606835583939712495, guid: 309406595c4ef2c47ade89c3ac402062, type: 3}
+  balistaSound: {fileID: 7606835583939712495, guid: a241cf8f00aa94143b18a9e072132e6a, type: 3}
+  cannonSound: {fileID: 7606835583939712495, guid: e6c287bb3d42d3f43a3e4244538e416a, type: 3}
+  bladeTowerSound: {fileID: 7606835583939712495, guid: 9cae6f9b94cd18c40a2bf0327c21dfb4, type: 3}
 --- !u!1 &799918446
 GameObject:
   m_ObjectHideFlags: 0

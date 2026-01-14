@@ -105,6 +105,8 @@ public class BaseEnemy : MonoBehaviour
         fx.transform.position = transform.position;
 
         fx.Play();
+
+        SoundManager.Instance.PlaySoundHit();
     }
 
     public void ShowDamageText(float damage)
