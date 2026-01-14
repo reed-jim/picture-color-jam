@@ -3,7 +3,7 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 
-public class EnemyManager : MonoBehaviour
+public class EnemyManager : Singleton<EnemyManager>
 {
     public LevelEnemyWaveData levelEnemyWaveData;
 
@@ -13,7 +13,7 @@ public class EnemyManager : MonoBehaviour
 
     public TMP_Text waveText;
     public TMP_Text timeLeftForWaveText;
-    public TMP_Text enemyLeftOfWaveText;
+    public TMP_Text totalEnemyText;
     public int timeToNextWave;
     public int currentWave;
 
@@ -62,12 +62,14 @@ public class EnemyManager : MonoBehaviour
             {
                 SpawnSingleEnemy(currentEnemyWave);
 
+                GamePersistentVariable.totalEnemy++;
+
                 numSpawnedEnemy--;
             }
 
             enemyLeft = currentEnemyWave.enemies.Sum(item => item.number);
 
-            enemyLeftOfWaveText.text = $"{enemyLeft}";
+            UpdateTotalEnemyCount();
 
             if (enemyLeft == 0)
             {
@@ -107,6 +109,11 @@ public class EnemyManager : MonoBehaviour
                 break;
             }
         }
+    }
+
+    public void UpdateTotalEnemyCount()
+    {
+        totalEnemyText.text = $"{GamePersistentVariable.totalEnemy}";
     }
 
     string ConvertSecondsToMinutesSeconds(float seconds)

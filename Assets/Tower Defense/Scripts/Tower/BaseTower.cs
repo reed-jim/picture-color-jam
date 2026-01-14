@@ -40,6 +40,8 @@ public class BaseTower : MonoBehaviour
             {
                 Transform target = FindNearestTarget();
 
+                Debug.Log("SAERIO " + target);
+
                 if (target != null)
                 {
                     BaseProjectile projectile = ObjectPoolingEverything.GetFromPool<BaseProjectile>(projectileType.ToString());

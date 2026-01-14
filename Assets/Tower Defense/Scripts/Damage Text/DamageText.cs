@@ -24,7 +24,8 @@ public class DamageText : MonoBehaviour
 
         TweenUtil.PunchShow(text.transform, Vector3.one, onCompleted: () =>
         {
-            Tween.Delay(0.6f).OnComplete(() =>
+            Tween.PositionY(text.transform, text.transform.position.y + 0.5f, duration: 0.3f)
+            .OnComplete(() =>
             {
                 TweenUtil.PunchHide(text.transform, 1, onCompleted: () =>
                 {

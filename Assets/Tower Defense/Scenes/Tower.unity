@@ -392,7 +392,7 @@ MonoBehaviour:
   homeBase: {fileID: 1391953435}
   waveText: {fileID: 793541657}
   timeLeftForWaveText: {fileID: 1373064740}
-  enemyLeftOfWaveText: {fileID: 1340868592}
+  totalEnemyText: {fileID: 1340868592}
   timeToNextWave: 0
   currentWave: 0
 --- !u!4 &145658914

@@ -35,8 +35,10 @@ public class JoystickController : Singleton<JoystickController>
     public static event Action stopControlPlayerEvent;
     #endregion
 
-    private void Awake()
+    protected override void MoreActionOnAwake()
     {
+        base.MoreActionOnAwake();
+
         TowerManager.enableJoystickEvent += EnableInput;
 
         _screenSize = new Vector2(Screen.currentResolution.width, Screen.currentResolution.height);

@@ -96,6 +96,10 @@ public class BaseEnemy : MonoBehaviour
         gameObject.SetActive(false);
 
         CharacterUI.Instance.UpdateEXP(1);
+
+        GamePersistentVariable.totalEnemy--;
+
+        EnemyManager.Instance.UpdateTotalEnemyCount();
     }
 
     public void PlayHitFx()

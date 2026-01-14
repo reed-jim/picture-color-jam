@@ -67,7 +67,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: a05aaf7cd6f70c54db4ea46cbbe231bb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -188,7 +188,7 @@ MonoBehaviour:
     baseAttackRadius: 0
     attackRadius: 8
     baseRateOfFire: 0
-    rateOfFire: 3
+    rateOfFire: 0.2
   projectileType: 0
   targetLayer:
     serializedVersion: 2
