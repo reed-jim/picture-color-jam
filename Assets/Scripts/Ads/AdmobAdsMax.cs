@@ -98,7 +98,7 @@ public class AdmobAdsMax : MonoBehaviour
 
         SceneManager.sceneLoaded += OnSceneLoaded;
 
-        Init();
+        // Init();
 
         countdownAds = 60;
     }

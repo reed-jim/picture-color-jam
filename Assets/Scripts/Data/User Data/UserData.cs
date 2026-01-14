@@ -90,6 +90,7 @@ public static class UserData
     {
         get
         {
+            return true;
             return DataUtility.Load(GameConstants.IS_REMOVE_ADS, false);
         }
         set
