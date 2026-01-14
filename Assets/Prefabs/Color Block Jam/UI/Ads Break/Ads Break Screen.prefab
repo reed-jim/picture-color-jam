@@ -143,8 +143,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Relax for a while before the next challenge!
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 468cd137d4d22474b9da72bf17d4d308, type: 2}
-  m_sharedMaterial: {fileID: 5888327073166192097, guid: 468cd137d4d22474b9da72bf17d4d308, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ca13b0283e6623b4b9e5f2237199af41, type: 2}
+  m_sharedMaterial: {fileID: -2612089925509739453, guid: ca13b0283e6623b4b9e5f2237199af41, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -168,7 +168,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 69.3
+  m_fontSize: 85.4
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -179,6 +179,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0

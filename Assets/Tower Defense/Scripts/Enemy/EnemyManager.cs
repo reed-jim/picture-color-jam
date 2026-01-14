@@ -54,7 +54,7 @@ public class EnemyManager : MonoBehaviour
 
             timeToNextWave--;
             int enemyLeft = currentEnemyWave.enemies.Sum(item => item.number);
-            numEnemyToSpawn = (int)Random.Range(1, 0.5f * enemyLeft);
+            numEnemyToSpawn = (int)Mathf.Max(Random.Range(1, 0.5f * enemyLeft), 1);
             int numSpawnedEnemy = numEnemyToSpawn;
 
             while (numSpawnedEnemy > 0)

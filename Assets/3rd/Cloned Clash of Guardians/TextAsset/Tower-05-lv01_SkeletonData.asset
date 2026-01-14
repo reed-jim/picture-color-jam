@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Tower-05-lv01_SkeletonData
   m_EditorClassIdentifier: spine-unity::Spine.Unity.SkeletonDataAsset
   atlasAssets:
-  - {fileID: 11400000, guid: db6857456452de442a225fdbfe936948, type: 2}
+  - {fileID: 11400000, guid: acf05c8b909fa46419bdb0033c3006e0, type: 2}
   scale: 0.01
   skeletonJSON: {fileID: 4900000, guid: 9bc8abbd976bdfa4cb0c3531fb8052b3, type: 3}
   isUpgradingBlendModeMaterials: 0
