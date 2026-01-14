@@ -28,11 +28,11 @@ public class TowerSelectionItem : MonoBehaviour
     {
         if (isBuff)
         {
-            TowerManager.Instance.AddTowerToPool(towerType);
+            TowerManager.Instance.BuffTower(towerType, buffRatio);
         }
         else
         {
-            TowerManager.Instance.BuffTower(towerType, buffRatio);
+            TowerManager.Instance.AddTowerToPool(towerType);
         }
 
         selectTowerEvent?.Invoke();
