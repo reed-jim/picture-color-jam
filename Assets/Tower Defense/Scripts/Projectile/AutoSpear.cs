@@ -1,22 +1,41 @@
 using System.Collections;
+using Spine;
 using UnityEngine;
 
-public class AutoSpear : MonoBehaviour
+public class AutoSpear : BaseTower
 {
     public Vector3 rotateSpeed;
 
-    void Update()
-    {
-        transform.eulerAngles += rotateSpeed;
-    }
+    public Collider2D bladeCollider;
 
-    private IEnumerator AttackPeriodically()
+    protected override IEnumerator AutoShooting()
     {
-        WaitForSeconds waitForSeconds = new WaitForSeconds(1);
+        TrackEntry trackEntry;
 
         while (true)
         {
-            yield return waitForSeconds;
+            if (isActive)
+            {
+                Transform target = FindNearestTarget();
+
+                if (target != null)
+                {
+                    bladeCollider.enabled = true;
+
+                    trackEntry = skeletonAnimation.AnimationState.SetAnimation(0, attackAnimation, false);
+
+                    trackEntry.Complete += OnAttackAnimationComplete;
+                }
+            }
+
+            yield return new WaitForSeconds(1f / towerProperty.rateOfFire);
+        }
+
+        void OnAttackAnimationComplete(TrackEntry trackEntry)
+        {
+            trackEntry.Complete -= OnAttackAnimationComplete;
+
+            bladeCollider.enabled = false;
         }
     }
 }

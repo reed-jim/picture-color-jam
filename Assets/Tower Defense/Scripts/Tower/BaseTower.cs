@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Spine.Unity;
 using UnityEngine;
 using static GameEnum;
 
@@ -12,6 +13,7 @@ public enum ProjectileType
 
 public class BaseTower : MonoBehaviour
 {
+    public SkeletonAnimation skeletonAnimation;
     public Collider2D towerCollider;
 
     public TowerType towerType;
@@ -20,12 +22,14 @@ public class BaseTower : MonoBehaviour
     public ProjectileType projectileType;
     public LayerMask targetLayer;
 
+    [SpineAnimation] public string attackAnimation;
+
     void Start()
     {
         StartCoroutine(AutoShooting());
     }
 
-    private IEnumerator AutoShooting()
+    protected virtual IEnumerator AutoShooting()
     {
         WaitForSeconds waitForSeconds = new WaitForSeconds(1);
 
@@ -42,6 +46,8 @@ public class BaseTower : MonoBehaviour
                     projectile.transform.position = transform.position;
 
                     projectile.ShootAt(target.position, towerProperty.damage);
+
+                    skeletonAnimation.AnimationState.SetAnimation(0, attackAnimation, false);
                 }
             }
 
