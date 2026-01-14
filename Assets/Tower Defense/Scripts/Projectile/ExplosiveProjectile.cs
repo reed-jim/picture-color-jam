@@ -40,7 +40,7 @@ public class ExplosiveProjectile : BaseProjectile
     {
         yield return new WaitForSeconds(0.8f);
 
-        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, 3, hitLayerMask);
+        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, 1, hitLayerMask);
 
         foreach (var hit in hits)
         {

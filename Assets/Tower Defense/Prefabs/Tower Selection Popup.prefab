@@ -213,8 +213,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -60}
-  m_SizeDelta: {x: 590, y: 89}
+  m_AnchoredPosition: {x: 0, y: -160}
+  m_SizeDelta: {x: 885, y: 133.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4039497362749472916
 CanvasRenderer:
@@ -286,10 +286,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 5992837769668117773}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -34}
-  m_SizeDelta: {x: 440, y: 44}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 16}
+  m_SizeDelta: {x: 440, y: 72}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6778539611711192657
 CanvasRenderer:
@@ -346,7 +346,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 37.85
+  m_fontSize: 62
   m_fontSizeBase: 80
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -889,7 +889,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3035734438514828411, guid: 89b6cf7743a66e34da7cbc8b8c5a3c97, type: 3}
       propertyPath: m_fontSize
-      value: 36.65
+      value: 54.95
       objectReference: {fileID: 0}
     - target: {fileID: 3035734438514828411, guid: 89b6cf7743a66e34da7cbc8b8c5a3c97, type: 3}
       propertyPath: m_fontAsset
@@ -1018,7 +1018,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3035734438514828411, guid: 89b6cf7743a66e34da7cbc8b8c5a3c97, type: 3}
       propertyPath: m_fontSize
-      value: 36.65
+      value: 54.95
       objectReference: {fileID: 0}
     - target: {fileID: 3035734438514828411, guid: 89b6cf7743a66e34da7cbc8b8c5a3c97, type: 3}
       propertyPath: m_fontAsset
@@ -1151,7 +1151,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3035734438514828411, guid: 89b6cf7743a66e34da7cbc8b8c5a3c97, type: 3}
       propertyPath: m_fontSize
-      value: 36.65
+      value: 54.95
       objectReference: {fileID: 0}
     - target: {fileID: 3035734438514828411, guid: 89b6cf7743a66e34da7cbc8b8c5a3c97, type: 3}
       propertyPath: m_fontAsset

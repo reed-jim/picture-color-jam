@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3683617037984071249}
   - component: {fileID: 2742951823817773591}
   - component: {fileID: 7152023323678609950}
+  - component: {fileID: 2737546249800742884}
   - component: {fileID: 4682797765073910371}
   m_Layer: 5
   m_Name: Joystick
@@ -52,6 +53,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   joystickContainer: {fileID: 3683617037984071249}
+  joystickCanvasGroup: {fileID: 2737546249800742884}
   joystick: {fileID: 8165957251971844272}
   newInputThreshold: 0
 --- !u!222 &7152023323678609950
@@ -62,6 +64,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1894363483050496306}
   m_CullTransparentMesh: 1
+--- !u!225 &2737546249800742884
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1894363483050496306}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!114 &4682797765073910371
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -178,7 +178,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.9086975, y: 0.9091097}
+  m_Size: {x: 0.6, y: 0.1}
   m_EdgeRadius: 0
 --- !u!1 &6222600433719245390
 GameObject:
@@ -247,7 +247,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 480aa4f728923894d872edd4280eff8d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -393,8 +393,8 @@ MonoBehaviour:
   skeletonAnimation: {fileID: 2503250650588355778}
   idleAnimation: Idle
   moveAnimation: Move
-  speedMultiply: 0.0012
-  attackRadius: 4
+  speedMultiply: 0.0008
+  attackRadius: 2
   checkAttackLayerMask:
     serializedVersion: 2
     m_Bits: 4096

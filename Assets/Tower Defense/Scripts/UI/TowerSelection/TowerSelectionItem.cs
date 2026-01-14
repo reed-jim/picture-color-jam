@@ -42,6 +42,7 @@ public class TowerSelectionItem : MonoBehaviour
     {
         icon.sprite = upgradeContainer.towerTypeAndIconPairs.First(item => item.towerType == upgradeOption.towerType).icon;
         icon.SetNativeSize();
+        icon.rectTransform.sizeDelta *= 1.5f;
 
         if (upgradeOption.isBuff)
         {
@@ -49,9 +50,11 @@ public class TowerSelectionItem : MonoBehaviour
         }
         else
         {
-            description.text = $"{upgradeOption.towerType}";
+            description.text = $"Add 1 {upgradeOption.towerType}";
         }
 
         towerType = upgradeOption.towerType;
+        isBuff = upgradeOption.isBuff;
+        buffRatio = upgradeOption.buffRatio;
     }
 }

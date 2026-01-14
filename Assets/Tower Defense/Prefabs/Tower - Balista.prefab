@@ -184,7 +184,7 @@ MonoBehaviour:
     baseDamage: 40
     damage: 0
     baseAttackRadius: 8
-    attackRadius: 0
+    attackRadius: 4
     baseRateOfFire: 2
     rateOfFire: 0
   projectileType: 0

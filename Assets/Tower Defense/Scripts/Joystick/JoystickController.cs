@@ -10,6 +10,7 @@ public class JoystickController : MonoBehaviour
 {
     [Header("UI")]
     [SerializeField] private RectTransform joystickContainer;
+    [SerializeField] private CanvasGroup joystickCanvasGroup;
     [SerializeField] private RectTransform joystick;
 
     [Header("CUSTOMIZE")]
@@ -43,6 +44,8 @@ public class JoystickController : MonoBehaviour
         _touchPoints = new List<Vector2>();
 
         BuildUI();
+
+        joystickCanvasGroup.alpha = 0;
     }
 
     void OnDestroy()
@@ -153,6 +156,8 @@ public class JoystickController : MonoBehaviour
         Vector2 absoluteDifference = MathUtil.GetAbsoluteVector(difference);
         Vector2 normalizedDifference = difference;
 
+        joystickCanvasGroup.alpha = 1;
+
         if (Mathf.Abs(difference.x) >= radius || Mathf.Abs(difference.y) >= radius)
         {
             float angle = Mathf.Atan2(absoluteDifference.y, absoluteDifference.x);
@@ -178,6 +183,8 @@ public class JoystickController : MonoBehaviour
 
     private void OnUserNotTouch()
     {
+        joystickCanvasGroup.alpha = 0;
+
         FadeOutJoystick();
 
         _touchPoints.Clear();

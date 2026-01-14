@@ -18,7 +18,7 @@ public class CharacterUI : Singleton<CharacterUI>
         CharacterData defaultCharacterData = new CharacterData();
 
         defaultCharacterData.level = 1;
-        defaultCharacterData.requiredEXP = 5 + defaultCharacterData.level;
+        defaultCharacterData.requiredEXP = 10 + defaultCharacterData.level;
 
         characterData = DataUtility.Load("characterData", defaultCharacterData);
 
@@ -50,7 +50,7 @@ public class CharacterUI : Singleton<CharacterUI>
             {
                 characterData.level++;
                 characterData.currentEXP = 0;
-                characterData.requiredEXP = 5 + characterData.level;
+                characterData.requiredEXP = 10 + characterData.level;
 
                 TowerManager.Instance.ShowTowerSelectionPopup();
             }
