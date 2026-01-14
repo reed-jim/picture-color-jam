@@ -3516,7 +3516,7 @@ MonoBehaviour:
   towerUIItem: {fileID: 4186707232104964077, guid: 641b9230980a2774cb89d56f295e5f51, type: 3}
   enemy: {fileID: 5881449097057878862, guid: 8b87e1c571e54a04181ba842cd7ef6b6, type: 3}
   damageText: {fileID: 7349725410979463786, guid: 39ae7f863dca2dd4da78e4c7b5d6fa8a, type: 3}
-  hitFx: {fileID: 2581740498016524648, guid: 0493a6d43bef8b84e89825def6d8385f, type: 3}
+  hitFx: {fileID: 1596968038650794416, guid: cb034de192fc63c489a02fd4c843bfde, type: 3}
   buffFx: {fileID: 4021103657954561961, guid: 5c755f9bc5253ea418e919994537dcc7, type: 3}
   hitSound: {fileID: 7606835583939712495, guid: 309406595c4ef2c47ade89c3ac402062, type: 3}
   balistaSound: {fileID: 7606835583939712495, guid: a241cf8f00aa94143b18a9e072132e6a, type: 3}
