@@ -153,11 +153,14 @@ public class TowerManager : Singleton<TowerManager>
             Vector2 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             RaycastHit2D hit = Physics2D.Raycast(mouseWorldPos, Vector2.zero);
 
-            BaseTower tower = hit.collider.GetComponent<BaseTower>();
-
-            if (tower != null)
+            if (hit.collider != null)
             {
-                showTowerDetailPopup?.Invoke(tower.towerProperty);
+                BaseTower tower = hit.collider.GetComponent<BaseTower>();
+
+                if (tower != null)
+                {
+                    showTowerDetailPopup?.Invoke(tower.towerProperty);
+                }
             }
         }
     }

@@ -3517,6 +3517,7 @@ MonoBehaviour:
   enemy: {fileID: 5881449097057878862, guid: 8b87e1c571e54a04181ba842cd7ef6b6, type: 3}
   damageText: {fileID: 7349725410979463786, guid: 39ae7f863dca2dd4da78e4c7b5d6fa8a, type: 3}
   hitFx: {fileID: 5880797563127281583, guid: 265d3a5ba69981a4698ceabcedf368b0, type: 3}
+  buffFx: {fileID: 4021103657954561961, guid: 5c755f9bc5253ea418e919994537dcc7, type: 3}
 --- !u!1 &799918446
 GameObject:
   m_ObjectHideFlags: 0
@@ -10008,8 +10009,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 0%
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 468cd137d4d22474b9da72bf17d4d308, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: f38eeca4b9bc0ed4197e77398050b958, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

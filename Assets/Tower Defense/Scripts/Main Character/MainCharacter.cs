@@ -39,14 +39,17 @@ public class MainCharacter : MonoBehaviour
         {
             Collider2D collider2D = Physics2D.OverlapCircle(transform.position, attackRadius, checkAttackLayerMask);
 
-            if (collider2D.GetComponent<BaseEnemy>() != null)
+            if (collider2D != null)
             {
-                weaponCollider.enabled = true;
-
-                Tween.EulerAngles(weapon, weapon.eulerAngles, weapon.eulerAngles - new Vector3(0, 0, 360), duration: 0.15f).OnComplete(() =>
+                if (collider2D.GetComponent<BaseEnemy>() != null)
                 {
-                    weaponCollider.enabled = false;
-                });
+                    weaponCollider.enabled = true;
+
+                    Tween.EulerAngles(weapon, weapon.eulerAngles, weapon.eulerAngles - new Vector3(0, 0, 360), duration: 0.15f).OnComplete(() =>
+                    {
+                        weaponCollider.enabled = false;
+                    });
+                }
             }
 
             yield return waitForSeconds;
