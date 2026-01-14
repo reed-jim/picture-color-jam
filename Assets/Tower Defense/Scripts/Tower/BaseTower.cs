@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -79,6 +80,7 @@ public class BaseTower : MonoBehaviour
     }
 }
 
+[Serializable]
 public class TowerProperty
 {
     public Sprite icon;
