@@ -162,6 +162,7 @@ public static class GameConstants
     public static string NO_INTERNET = "No internet";
     public static string PLEASE_CHECK_YOUR_INTERNET_CONNECTION = "Please check your internet connection";
     public static string already1x1Tile = "Already 1x1 Tile";
+    public static string noMoreCharacterLeft = "No more character left";
     #endregion
 
     #region SWIPE

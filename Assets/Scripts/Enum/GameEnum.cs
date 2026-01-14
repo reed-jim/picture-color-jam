@@ -46,7 +46,8 @@ public class GameEnum : MonoBehaviour
         Language,
         TowerSelection,
         TowerDetail,
-        Tutorial
+        Tutorial,
+        CharacterSelection
     }
 
     public enum GameFaction

@@ -60,6 +60,7 @@ public static class GamePersistentVariable
     #endregion
 
     #region TOWER
+    public static int selectedMainCharacterIndex;
     public static bool isPlacingTower;
     public static int totalEnemy;
     #endregion
