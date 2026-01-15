@@ -224,7 +224,7 @@ public class BaseBlock : MonoBehaviour
         // _blockRigidBody.isKinematic = true;
 
         speedMultiplier = 10f;
-        snappingLerpRatio = 1f / 3;
+        snappingLerpRatio = 1f / 2;
 
         _destinations = new Queue<Vector3>();
 
@@ -305,6 +305,7 @@ public class BaseBlock : MonoBehaviour
     void Start()
     {
         SnapImmediately();
+        PlaceBlockIcon();
     }
 
     protected virtual void MoreLogicInAwake()
@@ -362,10 +363,10 @@ public class BaseBlock : MonoBehaviour
 
                 _isSnapping = false;
             }
-            else
-            {
-                transform.position = _snapPosition;
-            }
+            // else
+            // {
+            //     transform.position = _snapPosition;
+            // }
         }
 
         // if (blockProperty.IsMoving)
@@ -1030,6 +1031,39 @@ public class BaseBlock : MonoBehaviour
 
         blockServiceLocator.spriteRenderer.sortingOrder = (int)(2 * (15 - position.y));
         blockServiceLocator.iconMaskSortingGroup.sortingOrder = blockServiceLocator.spriteRenderer.sortingOrder + 1;
+    }
+    #endregion
+
+    #region Icon
+    private void PlaceBlockIcon()
+    {
+        float tileSize = GameConstants.tileSize;
+
+        float sizeX = NumTileX * tileSize;
+        float sizeY = NumTileY * tileSize;
+
+        Vector2 iconCenterIndex;
+
+        iconCenterIndex.x = (originalTileIndexes.Max(item => item.x) + originalTileIndexes.Min(item => item.x)) / 2f;
+        iconCenterIndex.y = (originalTileIndexes.Max(item => item.y) + originalTileIndexes.Min(item => item.y)) / 2f;
+
+        Vector2 blockCenterIndex;
+
+        if (tileIndexes.Count > 1)
+        {
+            blockCenterIndex.x = (tileIndexes.Max(item => item.x) + tileIndexes.Min(item => item.x)) / 2f;
+            blockCenterIndex.y = (tileIndexes.Max(item => item.y) + tileIndexes.Min(item => item.y)) / 2f;
+        }
+        else
+        {
+            blockCenterIndex = tileIndexes[0];
+        }
+
+        Vector2 indexDistanceToCenter = new Vector2(iconCenterIndex.x - blockCenterIndex.x, blockCenterIndex.y - iconCenterIndex.y);
+
+        Vector2 iconLocalPosition = indexDistanceToCenter * tileSize;
+
+        BlockServiceLocator.iconRenderer.transform.localPosition = iconLocalPosition;
     }
     #endregion
 
