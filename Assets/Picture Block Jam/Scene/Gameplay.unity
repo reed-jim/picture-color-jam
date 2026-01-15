@@ -2845,7 +2845,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &703473666
 Transform:
   m_ObjectHideFlags: 0
@@ -2873,8 +2873,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78f5daaaa9747464292c8f555bd784af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mainCamera: {fileID: 0}
-  postProcessingVolumn: {fileID: 0}
+  _mainCamera: {fileID: 1987694915}
 --- !u!1 &704761676
 GameObject:
   m_ObjectHideFlags: 0
@@ -5303,6 +5302,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: -84.900024
       objectReference: {fileID: 0}
+    - target: {fileID: 5611920150841437189, guid: e29177f00edc30349a45e63a0c49ca2a, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.26875
+      objectReference: {fileID: 0}
+    - target: {fileID: 5611920150841437189, guid: e29177f00edc30349a45e63a0c49ca2a, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.3179054
+      objectReference: {fileID: 0}
     - target: {fileID: 6716162677166579754, guid: e29177f00edc30349a45e63a0c49ca2a, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -6619,15 +6626,15 @@ MonoBehaviour:
   renderingStrategy: 0
   renderingMode: 0
   outlineLayerMask: 1
-  primaryBufferSizeMode: 0
+  primaryBufferSizeMode: 3
   primaryRendererScale: 0.75
   primarySizeReference: 800
-  blurShift: 1
-  dilateShift: 0.5
-  dilateIterations: 2
-  dilateQuality: 2
-  blurIterations: 4
-  blurType: 1
+  blurShift: 2
+  dilateShift: 1
+  dilateIterations: 1
+  dilateQuality: 0
+  blurIterations: 2
+  blurType: 2
 --- !u!114 &1987694919
 MonoBehaviour:
   m_ObjectHideFlags: 0
