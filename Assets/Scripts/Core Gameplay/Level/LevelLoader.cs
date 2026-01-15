@@ -115,8 +115,7 @@ public class LevelLoader : MonoBehaviour
 
         setLevelNumberEvent?.Invoke();
 
-        Debug.Log("SAFERIO check later");
-        // nextLevel = RemoteConfigLevelManager.GetReplacedLevelIndex(nextLevel);
+        nextLevel = RemoteConfigLevelManager.GetReplacedLevelIndex(nextLevel);
 
         GamePersistentVariable.levelPrefab = nextLevel;
 

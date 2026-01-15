@@ -20,10 +20,6 @@ public class AdmobAdsMax : MonoBehaviour
     private InterstitialAd _interstitialAdmob;
     #endregion
 
-
-
-
-
     public static AdmobAdsMax Instance;
 
     [Header("SCRIPTABLE OBJECT")]
@@ -35,10 +31,10 @@ public class AdmobAdsMax : MonoBehaviour
     private const string MaxSdkKey =
         "eQt0q3679KmUyKeNcSzqC01eB-lILmfTnJoufGxpSn__n1NVhHLeMgxZOaICke451El4ZBfuZum9Qw4WxzpW52";
 
-    private const string InterstitialAdUnitId = "a5e4e9d0db1c4e7e";
-    private const string RewardedAdUnitId = "6bbcff85917a54f8";
-    private const string BanerAdUnitId = "5d5712ea055362d5";
-    private const string mrecAdUnitId = "209582a0078495be";
+    private const string InterstitialAdUnitId = "47a13c7cb9aa1035"; // check here
+    private const string RewardedAdUnitId = "f687cf203d369661"; // check here
+    private const string BanerAdUnitId = "3520ebabcd1a0c35"; // check here
+    private const string mrecAdUnitId = "ff853223d82729d9"; // check here
 #elif UNITY_IOS
     private const string MaxSdkKey =
 "M4GLwqezVT2WDo75OWFGOV873pVg6-3S3Kpz8Rxe_-9CnHI9oXPB2TI5LpnRnqvr8hpH8kw7i4KTMcc891KCad";
@@ -99,8 +95,6 @@ public class AdmobAdsMax : MonoBehaviour
         SceneManager.sceneLoaded += OnSceneLoaded;
 
         Init();
-
-        countdownAds = 60;
     }
 
     void OnDestroy()
@@ -177,12 +171,12 @@ public class AdmobAdsMax : MonoBehaviour
 #if TESTER
     private const string BANNER_ADMOB_ID = "ca-app-pub-3940256099942544/8388050270";
 #else
-    private const string BANNER_ADMOB_ID = "ca-app-pub-8467610367562059/4454771786";
+    private const string BANNER_ADMOB_ID = "ca-app-pub-8467610367562059/2463242652"; // check here
 #endif
 #if TESTER
     private const string BANNER_COLLAPSE_ADMOB_ID = "ca-app-pub-3940256099942544/9214589741";
 #else
-    private const string BANNER_COLLAPSE_ADMOB_ID = "ca-app-pub-8467610367562059/4454771786";
+    private const string BANNER_COLLAPSE_ADMOB_ID = "ca-app-pub-8467610367562059/2463242652"; // check here
 #endif
 #elif UNITY_IOS
 #if TESTER
@@ -641,7 +635,7 @@ public class AdmobAdsMax : MonoBehaviour
 
     #region Admob Inter
 #if UNITY_ANDROID
-    private string _adUnitId = "ca-app-pub-8467610367562059/8763699809";
+    private string _adUnitId = "ca-app-pub-8467610367562059/1169168827"; // check here
 #elif UNITY_IPHONE
   private string _adUnitId = "ca-app-pub-3940256099942544/4411468910";
 #else
