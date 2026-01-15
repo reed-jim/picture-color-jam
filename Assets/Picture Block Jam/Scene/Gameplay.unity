@@ -2874,6 +2874,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _mainCamera: {fileID: 1987694915}
+  outliner: {fileID: 1987694918}
 --- !u!1 &704761676
 GameObject:
   m_ObjectHideFlags: 0
