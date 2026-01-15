@@ -152,17 +152,6 @@ public class SceneTransition : MonoBehaviour
     {
         BlackScreenTransition(blackScreenStartDelay, onCompletedAction: null);
 
-        // if (GamePersistentVariable.remoteConfigIsShowMREC && !UserData.IsRemoveAds && !_isFirstTimeOpenApp && AdmobAdsMax.Instance.IsValidShowMREC())
-        // {
-        //     LoadingLevelInProgress();
-        // }
-        // else
-        // {
-        //     loadLevelInProgressContainer.gameObject.SetActive(false);
-
-        //     _isFirstTimeOpenApp = false;
-        // }
-
         blackBackgroundToPassPolicy.gameObject.SetActive(false);
 
         if (_isFirstTimeOpenApp)
@@ -172,16 +161,12 @@ public class SceneTransition : MonoBehaviour
             return;
         }
 
-        LoadingLevelInProgress();
+        if (!GamePersistentVariable.isLoadingComplete)
+        {
+            return;
+        }
 
-        // if (GamePersistentVariable.doubleInterAdsConfig.isEnable && currentLevel.Value >= GamePersistentVariable.doubleInterAdsConfig.minLevel)
-        // {
-        //     LoadingLevelInProgress();
-        // }
-        // else
-        // {
-        //     loadLevelInProgressContainer.gameObject.SetActive(false);
-        // }
+        LoadingLevelInProgress();
     }
 
     private void BlackScreenTransition(float delay, Action onCompletedAction)
