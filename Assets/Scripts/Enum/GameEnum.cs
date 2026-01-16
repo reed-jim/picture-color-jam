@@ -47,7 +47,8 @@ public class GameEnum : MonoBehaviour
         TowerSelection,
         TowerDetail,
         Tutorial,
-        CharacterSelection
+        CharacterSelection,
+        EquipmentDetail
     }
 
     public enum GameFaction

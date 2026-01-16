@@ -24,7 +24,7 @@ public class EquipmentData
     public Sprite icon;
     public Rarity rarity;
     public bool isOwned;
-    public float attack;
-    public float speed;
+    public float damage;
+    public float attackSpeed;
     public float attackRadius;
 }
