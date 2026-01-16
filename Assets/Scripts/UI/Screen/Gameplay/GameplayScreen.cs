@@ -98,5 +98,8 @@ public class GameplayScreen : MonoBehaviour
     private void OnAdsRemoved()
     {
         openRemoveAdsPopupButton.gameObject.SetActive(false);
+
+        AdmobAdsMax.Instance.HideBanner();
+        AdmobAdsMax.Instance.DestroyBanner();
     }
 }

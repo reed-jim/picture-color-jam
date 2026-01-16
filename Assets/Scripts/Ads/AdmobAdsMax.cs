@@ -730,15 +730,15 @@ public class AdmobAdsMax : MonoBehaviour
         };
         interstitialAd.OnAdImpressionRecorded += () =>
         {
-            
+
         };
         interstitialAd.OnAdClicked += () =>
         {
-            
+
         };
         interstitialAd.OnAdFullScreenContentOpened += () =>
         {
-            
+
         };
         interstitialAd.OnAdFullScreenContentClosed += () =>
         {
@@ -1503,9 +1503,14 @@ public class AdmobAdsMax : MonoBehaviour
             {
                 if (!_isBannerLoaded)
                 {
-                    ShowBannerMax();
+                    string sceneName = SceneManager.GetActiveScene().name;
 
-                    _isBannerLoaded = true;
+                    if (sceneName != GameConstants.userConsentScene && sceneName != GameConstants.LOADING_SCENE)
+                    {
+                        ShowBannerMax();
+
+                        _isBannerLoaded = true;
+                    }
                 }
 
                 // Manually Refresh
