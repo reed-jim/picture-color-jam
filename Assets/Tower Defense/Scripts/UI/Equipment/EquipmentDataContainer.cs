@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public enum EquipmentType
@@ -27,6 +28,7 @@ public class EquipmentDataContainer : ScriptableObject
     public Sprite[] rarityBackgrounds;
 }
 
+[Serializable]
 public class EquipmentData
 {
     public string id;
