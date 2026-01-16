@@ -26,6 +26,7 @@ public class GameStateMachine : MonoBehaviour
     private void Awake()
     {
         LevelLoader.startLevelEvent += EnterPlayingState;
+        EnemyManager.winLevelEvent += EnterWinState;
         BlockManager.winLevelEvent += EnterWinState;
         LevelTimeCounter.loseLevelEvent += EnterLoseState;
         TimingBomb.loseLevelEvent += EnterLoseState;
@@ -37,6 +38,7 @@ public class GameStateMachine : MonoBehaviour
     void OnDestroy()
     {
         LevelLoader.startLevelEvent -= EnterPlayingState;
+        EnemyManager.winLevelEvent -= EnterWinState;
         BlockManager.winLevelEvent -= EnterWinState;
         LevelTimeCounter.loseLevelEvent -= EnterLoseState;
         TimingBomb.loseLevelEvent -= EnterLoseState;

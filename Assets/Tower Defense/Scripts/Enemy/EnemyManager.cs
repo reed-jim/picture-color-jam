@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,8 @@ public class EnemyManager : Singleton<EnemyManager>
     public TMP_Text totalEnemyText;
     public int timeToNextWave;
     public int currentWave;
+
+    public static event Action winLevelEvent;
 
     void Start()
     {
@@ -62,7 +65,7 @@ public class EnemyManager : Singleton<EnemyManager>
         currentWave = 1;
         int totalWave = currentLevelEnemyWaveData.enemyWaves.Count;
 
-        while (currentLevelEnemyWaveData.enemyWaves.Count > 0)
+        while (currentWave < currentLevelEnemyWaveData.enemyWaves.Count)
         {
             EnemyWave currentEnemyWave = currentLevelEnemyWaveData.enemyWaves[currentWave];
 
@@ -78,7 +81,7 @@ public class EnemyManager : Singleton<EnemyManager>
 
             timeToNextWave--;
             int enemyLeft = currentEnemyWave.enemies.Sum(item => item.number);
-            numEnemyToSpawn = (int)Mathf.Max(Random.Range(1, 0.5f * enemyLeft), 1);
+            numEnemyToSpawn = (int)Mathf.Max(UnityEngine.Random.Range(1, 0.5f * enemyLeft), 1);
             int numSpawnedEnemy = numEnemyToSpawn;
 
             while (numSpawnedEnemy > 0)
@@ -121,7 +124,7 @@ public class EnemyManager : Singleton<EnemyManager>
                 enemy.destination = homeBase;
 
                 Vector3 spawnPosition = new Vector3(0, 20, -1);
-                spawnPosition.x = Random.Range(-0.5f * GamePersistentVariable.screenSizeWorld.x, 0.5f * GamePersistentVariable.screenSizeWorld.x);
+                spawnPosition.x = UnityEngine.Random.Range(-0.5f * GamePersistentVariable.screenSizeWorld.x, 0.5f * GamePersistentVariable.screenSizeWorld.x);
                 enemy.transform.position = spawnPosition;
 
                 enemy.MoveToBase();
@@ -139,6 +142,11 @@ public class EnemyManager : Singleton<EnemyManager>
     public void UpdateTotalEnemyCount()
     {
         totalEnemyText.text = $"{GamePersistentVariable.totalEnemy}";
+
+        if (GamePersistentVariable.totalEnemy <= 0)
+        {
+            winLevelEvent?.Invoke();
+        }
     }
 
     string ConvertSecondsToMinutesSeconds(float seconds)

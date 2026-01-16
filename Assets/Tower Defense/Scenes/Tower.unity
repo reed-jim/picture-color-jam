@@ -3143,6 +3143,52 @@ MonoBehaviour:
   m_MinRegionArea: 0
   m_HideEditorLogs: 0
   m_NavMeshData: {fileID: 23800000, guid: ebe502cb7107ff84a870d2344d72c3d0, type: 2}
+--- !u!1 &1202196599
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1202196601}
+  - component: {fileID: 1202196600}
+  m_Layer: 0
+  m_Name: Game State Machine
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1202196600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1202196599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8bad0e0e2d9a224e8dddc5c19913f9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  screwBoxesObserver: {fileID: 11400000, guid: 4267c2c43005a7e4ab25c441ead4cb81, type: 2}
+  delayToEnableInputAfterRevived: 1
+--- !u!4 &1202196601
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1202196599}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1233558369
 GameObject:
   m_ObjectHideFlags: 0
@@ -4462,4 +4508,5 @@ SceneRoots:
   - {fileID: 145658914}
   - {fileID: 301688452}
   - {fileID: 629271587}
+  - {fileID: 1202196601}
   - {fileID: 1360505084}
