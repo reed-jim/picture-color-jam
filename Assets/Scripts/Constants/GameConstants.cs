@@ -199,5 +199,6 @@ public static class GameConstants
     public static string balistaSound = "balistaSound";
     public static string cannonSound = "cannonSound";
     public static string bladeTowerSound = "bladeTowerSound";
+    public static string equipmentUIItem = "equipmentUIItem";
     #endregion
 }

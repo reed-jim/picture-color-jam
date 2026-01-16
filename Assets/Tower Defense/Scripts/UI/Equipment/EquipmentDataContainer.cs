@@ -16,6 +16,7 @@ public enum Rarity
 public class EquipmentDataContainer : ScriptableObject
 {
     public EquipmentData[] items;
+    public Sprite[] rarityBackgrounds;
 }
 
 public class EquipmentData
