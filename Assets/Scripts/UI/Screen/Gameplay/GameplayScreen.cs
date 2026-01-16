@@ -26,16 +26,18 @@ public class GameplayScreen : MonoBehaviour
     {
         localizedLevelText.textTranslatedEvent += OnLevelTextTranslated;
         LevelLoader.setLevelNumberEvent += SetLevelText;
+        ResourceEarnPopup.removeAdsEvent += OnAdsRemoved;
+        SaferioIAPManager.removeAdsEvent += OnAdsRemoved;
 
         pauseButton.onClick.AddListener(Pause);
         replayButton.onClick.AddListener(Replay);
         openRemoveAdsPopupButton.onClick.AddListener(OpenRemoveAdsPopupButton);
         openDebugPopupButton.onClick.AddListener(OpenDebugPopupButton);
 
-        // if (UserData.IsRemoveAds)
-        // {
-        //     openRemoveAdsPopupButton.gameObject.SetActive(false);
-        // }
+        if (UserData.IsRemoveAds)
+        {
+            openRemoveAdsPopupButton.gameObject.SetActive(false);
+        }
 
         if (!gameSetting.IsDebug)
         {
@@ -47,14 +49,16 @@ public class GameplayScreen : MonoBehaviour
     {
         localizedLevelText.textTranslatedEvent -= OnLevelTextTranslated;
         LevelLoader.setLevelNumberEvent -= SetLevelText;
+        ResourceEarnPopup.removeAdsEvent -= OnAdsRemoved;
+        SaferioIAPManager.removeAdsEvent -= OnAdsRemoved;
     }
 
-    private async void Pause()
+    private void Pause()
     {
         switchRouteEvent?.Invoke(ScreenRoute.Pause);
     }
 
-    private async void Replay()
+    private void Replay()
     {
         if (GamePersistentVariable.isLevelDirty)
         {
@@ -89,5 +93,10 @@ public class GameplayScreen : MonoBehaviour
     private int GetDisplayedLevel()
     {
         return currentLevel.Value;
+    }
+
+    private void OnAdsRemoved()
+    {
+        openRemoveAdsPopupButton.gameObject.SetActive(false);
     }
 }

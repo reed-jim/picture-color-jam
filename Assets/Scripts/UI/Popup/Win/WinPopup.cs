@@ -194,9 +194,7 @@ public class WinPopup : BasePopup
         x5CoinButton.interactable = false;
         continueButton.interactable = false;
 
-        _tweens.Add(Tween.Scale(x5CoinButton.transform, 1.1f, duration: 0.15f)
-            .OnComplete(() => _tweens.Add(Tween.Scale(x5CoinButton.transform, 0, duration: 0.3f)))
-        );
+        TweenUtil.PunchHide(x5CoinButton.transform);
 
         continueButton.transform.localScale = Vector3.zero;
 
