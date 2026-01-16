@@ -72,6 +72,7 @@ public class BoosterUI : MonoBehaviour
         BaseBlock.useTeleportBoosterEvent += ConfirmTeleportBooster;
         LevelTimeCounter.unfreezeTimeEvent += UnfreezeTime;
         LevelTimeCounter.compensateUnfreezeBoosterEvent += CompensateUnfreezeBooster;
+        BaseBlock.compensateTeleportBoosterEvent += CompensateTeleportBooster;
         BlockSelectionInput.startVacumnEvent += HideUIWhileMagneting;
 
         addMoreScrewPortButton.onClick.AddListener(() => UseBooster(BoosterType.FreezeTime));
@@ -106,6 +107,7 @@ public class BoosterUI : MonoBehaviour
         BaseBlock.useTeleportBoosterEvent -= ConfirmTeleportBooster;
         LevelTimeCounter.unfreezeTimeEvent -= UnfreezeTime;
         LevelTimeCounter.compensateUnfreezeBoosterEvent -= CompensateUnfreezeBooster;
+        BaseBlock.compensateTeleportBoosterEvent -= CompensateTeleportBooster;
         BlockSelectionInput.startVacumnEvent -= HideUIWhileMagneting;
 
         CommonUtil.StopAllTweens(_tweens);
@@ -204,6 +206,13 @@ public class BoosterUI : MonoBehaviour
         userResourcesObserver.ChangeBoosterQuantity(0, 1);
 
         updateBoosterQuantityEvent?.Invoke(0);
+    }
+
+    private void CompensateTeleportBooster()
+    {
+        userResourcesObserver.ChangeBoosterQuantity(3, 1);
+
+        updateBoosterQuantityEvent?.Invoke(3);
     }
 
     private void EnableBreakObjectMode()

@@ -136,6 +136,7 @@ public class BaseBlock : MonoBehaviour
 
     public static event Action<string, string> showNotificationEvent;
     public static event Action<bool> enableInputEvent;
+    public static event Action compensateTeleportBoosterEvent;
 
     #region MOVEMENT
     private Vector3 _moveDirection;
@@ -1394,6 +1395,8 @@ public class BaseBlock : MonoBehaviour
 
                 enableInputEvent?.Invoke(true);
             });
+
+            compensateTeleportBoosterEvent?.Invoke();
         }
         else
         {
