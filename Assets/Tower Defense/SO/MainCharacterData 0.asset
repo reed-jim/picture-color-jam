@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a84999803e587ca4abccb8e2e52c8a24, type: 3}
   m_Name: MainCharacterData 0
   m_EditorClassIdentifier: Assembly-CSharp::MainCharacterData
-  icon: {fileID: 0}
-  characterName: 
-  videoUrl: 
+  icon: {fileID: 21300000, guid: 10351a881ad9cc64a8765e9ae6d77a7c, type: 3}
+  characterName: Anh Tu
+  videoUrl: "Assets/Tower Defense/Videos/anh T\xFA chuy\u1EC3n \u0111\u1ED9ng_1.mp4"

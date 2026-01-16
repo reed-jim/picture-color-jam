@@ -71,18 +71,19 @@ public class CharacterSelectionPopup : BasePopup
 
         nameText.text = $"{mainCharacterData.characterName}";
 
+        staticIcon.gameObject.SetActive(true);
+        staticIcon.sprite = mainCharacterData.icon;
+        staticIcon.color = Color.white;
+
         videoPlayer.url = mainCharacterData.videoUrl;
         videoPlayer.Prepare();
         videoPlayer.prepareCompleted += OnVideoPrepareCompleted;
-
-        staticIcon.gameObject.SetActive(true);
-        staticIcon.color = Color.white;
 
         void OnVideoPrepareCompleted(VideoPlayer videoPlayer)
         {
             videoPlayer.prepareCompleted -= OnVideoPrepareCompleted;
 
-            Tween.Alpha(staticIcon, 0, duration: 0.3f).OnComplete(() =>
+            Tween.Alpha(staticIcon, 0, duration: 0.3f, startDelay: 0.3f).OnComplete(() =>
             {
                 staticIcon.gameObject.SetActive(false);
             });
