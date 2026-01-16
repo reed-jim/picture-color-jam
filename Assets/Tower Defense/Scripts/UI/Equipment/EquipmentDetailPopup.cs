@@ -42,12 +42,16 @@ public class EquipmentDetailPopup : BasePopup
     {
         icon.sprite = equipmentData.icon;
         damageText.text = $"{equipmentData.damage}";
-        attackSpeedText.text = $"{equipmentData.attackSpeed}";
-        damageText.text = $"{equipmentData.attackRadius}";
+        attackSpeedText.text = $"{equipmentData.attackSpeed:F2}";
+        attackRadiusText.text = $"{equipmentData.attackRadius:F2}";
+
+        equipButton.interactable = !equipmentData.isOwned;
     }
 
     public void Equip()
     {
         EquipmentScreen.Instance.Equip(equipmentData);
+
+        Hide();
     }
 }

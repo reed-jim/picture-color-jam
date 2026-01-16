@@ -13,14 +13,20 @@ MonoBehaviour:
   m_Name: EquipmentDataContainer
   m_EditorClassIdentifier: Assembly-CSharp::EquipmentDataContainer
   items:
-  - id: 
-    icon: {fileID: 0}
+  - icon: {fileID: 21300000, guid: 0066c7d66c2e3df40b3c37729ec88bd8, type: 2}
     equipmentType: 0
     rarity: 0
+    isOwned: 1
+    damage: 100
+    attackSpeed: 1
+    attackRadius: 6
+  - icon: {fileID: 21300000, guid: ce19ae16e967d3644ba0c8d305f86177, type: 2}
+    equipmentType: 0
+    rarity: 1
     isOwned: 0
-    damage: 0
-    attackSpeed: 0
-    attackRadius: 0
+    damage: 100
+    attackSpeed: 1
+    attackRadius: 6
   rarityBackgrounds:
   - {fileID: 21300000, guid: a63292a219b29834f8c1efc3cde280e5, type: 2}
   - {fileID: 21300000, guid: 2a4f9242a36a5a64589dda414696b715, type: 2}

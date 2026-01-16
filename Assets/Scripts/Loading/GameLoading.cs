@@ -43,7 +43,7 @@ public class GameLoading : MonoBehaviour
 
         StartCoroutine(SlowTransititon());
 
-        _gameplaySceneHandle = Addressables.LoadSceneAsync(GameConstants.GAMEPLAY_SCENE, LoadSceneMode.Additive);
+        _gameplaySceneHandle = Addressables.LoadSceneAsync(GameConstants.MENU_SCENE, LoadSceneMode.Additive);
     }
 
     private void OnDestroy()
@@ -162,7 +162,7 @@ public class GameLoading : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (scene.name == GameConstants.GAMEPLAY_SCENE)
+        if (scene.name == GameConstants.MENU_SCENE)
         {
             _isMenuSceneLoaded = true;
         }

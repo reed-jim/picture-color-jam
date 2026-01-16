@@ -11,9 +11,10 @@ using static GameEnum;
 public class MenuScreen : MonoBehaviour
 {
     [SerializeField] private Button startGameButton;
-    [SerializeField] private Image startGameButtonImage;
+    // [SerializeField] private Image startGameButtonImage;
     [SerializeField] private TMP_Text startGameButtonText;
     [SerializeField] private Button openRemoveAdPopupButton;
+    [SerializeField] private Button openEquipmentPopupButton;
     [SerializeField] private RectTransform openRemoveAdPopupButtonRT;
     [SerializeField] private Image openRemoveAdPopupButtonImage;
     [SerializeField] private Button luckyWheelButton;
@@ -51,6 +52,7 @@ public class MenuScreen : MonoBehaviour
 
         startGameButton.onClick.AddListener(StartGame);
         openRemoveAdPopupButton.onClick.AddListener(OpenRemoveAdPopup);
+        openEquipmentPopupButton.onClick.AddListener(OpenEquipmentPopup);
         luckyWheelButton.onClick.AddListener(OpenLuckyWheelScreen);
         weeklyTaskButton.onClick.AddListener(OpenWeeklyTaskScreen);
 
@@ -85,7 +87,7 @@ public class MenuScreen : MonoBehaviour
             spriteIndex = 1;
         }
 
-        startGameButtonImage.sprite = startButtonSprites[spriteIndex];
+        // startGameButtonImage.sprite = startButtonSprites[spriteIndex];
         startGameButtonText.fontMaterial = textMaterials[spriteIndex];
     }
 
@@ -95,12 +97,12 @@ public class MenuScreen : MonoBehaviour
 
         showMenuBlackScreenEvent?.Invoke(isFirstTimeOpenApp);
 
-        if (UserData.IsFirstTimeOpenApp)
-        {
-            StartGame();
+        // if (UserData.IsFirstTimeOpenApp)
+        // {
+        //     StartGame();
 
-            // DataUtility.Save(GameConstants.IS_FIRST_TIME_OPEN_APP, false);
-        }
+        //     // DataUtility.Save(GameConstants.IS_FIRST_TIME_OPEN_APP, false);
+        // }
     }
 
     void OnDestroy()
@@ -150,6 +152,11 @@ public class MenuScreen : MonoBehaviour
     private void OpenRemoveAdPopup()
     {
         switchRouteEvent?.Invoke(ScreenRoute.RemoveAd);
+    }
+
+    private void OpenEquipmentPopup()
+    {
+        switchRouteEvent?.Invoke(ScreenRoute.Equipment);
     }
 
     private void OpenLuckyWheelScreen()

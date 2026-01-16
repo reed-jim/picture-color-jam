@@ -27,25 +27,25 @@ public class EquipmentScreen : Singleton<EquipmentScreen>
         defaultCharacterEquipmentData.characterEquipmentSlots[0] = new CharacterEquipmentSlot()
         {
             equipmentType = EquipmentType.Weapon,
-            equipmentId = ""
+            equipmentId = "swing 1"
         };
 
         defaultCharacterEquipmentData.characterEquipmentSlots[1] = new CharacterEquipmentSlot()
         {
             equipmentType = EquipmentType.Helmet,
-            equipmentId = ""
+            equipmentId = "swing 1"
         };
 
         defaultCharacterEquipmentData.characterEquipmentSlots[2] = new CharacterEquipmentSlot()
         {
             equipmentType = EquipmentType.Accessory,
-            equipmentId = ""
+            equipmentId = "swing 1"
         };
 
         defaultCharacterEquipmentData.characterEquipmentSlots[3] = new CharacterEquipmentSlot()
         {
             equipmentType = EquipmentType.Offhand,
-            equipmentId = ""
+            equipmentId = "swing 1"
         };
 
         MainCharacterEquipmentData = DataUtility.Load("MainCharacterEquipmentData", defaultCharacterEquipmentData);
@@ -57,31 +57,39 @@ public class EquipmentScreen : Singleton<EquipmentScreen>
         }
     }
 
+    void Start()
+    {
+        UpdateGears();
+    }
+
     public void UpdateGears()
     {
+        if (equipmentUIItems.Count < equipmentDataContainer.items.Length)
+        {
+            for (int i = 0; i < equipmentDataContainer.items.Length; i++)
+            {
+                EquipmentUIItem equipmentUIItem = ObjectPoolingEverything.GetFromPool<EquipmentUIItem>(GameConstants.equipmentUIItem);
+
+                equipmentUIItem.transform.SetParent(gearArea.transform);
+                equipmentUIItem.transform.localScale = Vector3.one;
+
+                equipmentUIItems.Add(equipmentUIItem);
+            }
+        }
+
         for (int i = 0; i < equipmentDataContainer.items.Length; i++)
         {
             int index = i;
 
-            EquipmentData equipmentData = equipmentDataContainer.items[i];
+            EquipmentData equipmentData = equipmentDataContainer.items[index];
 
-            EquipmentUIItem equipmentUIItem;
+            EquipmentUIItem equipmentUIItem = equipmentUIItems[index];
 
-            if (IsListContainIndex(equipmentUIItems, index))
-            {
-                equipmentUIItem = equipmentUIItems[index];
-            }
-            else
-            {
-                equipmentUIItem = ObjectPoolingEverything.GetFromPool<EquipmentUIItem>(GameConstants.equipmentUIItem);
-
-                equipmentUIItems.Add(equipmentUIItem);
-            }
+            equipmentUIItem.SetData(equipmentData);
 
             if (equipmentData.isOwned)
             {
                 equipmentUIItem.Unlock();
-                equipmentUIItem.SetData(equipmentData);
             }
             else
             {

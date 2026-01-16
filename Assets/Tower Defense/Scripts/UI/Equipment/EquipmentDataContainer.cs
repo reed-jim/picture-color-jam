@@ -31,7 +31,7 @@ public class EquipmentDataContainer : ScriptableObject
 [Serializable]
 public class EquipmentData
 {
-    public string id;
+    public string id => icon.name;
     public Sprite icon;
     public EquipmentType equipmentType;
     public Rarity rarity;

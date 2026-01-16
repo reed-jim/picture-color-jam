@@ -49,6 +49,8 @@ public class ObjectPoolingEverythingInitializer : MonoBehaviour
     public GameObject balistaSound;
     public GameObject cannonSound;
     public GameObject bladeTowerSound;
+
+    public GameObject equipmentUIItem;
     #endregion
 
     private bool _isInitialized;
@@ -114,6 +116,8 @@ public class ObjectPoolingEverythingInitializer : MonoBehaviour
         RegisterPool<AudioSource>(GameConstants.balistaSound, balistaSound, 12);
         RegisterPool<AudioSource>(GameConstants.cannonSound, cannonSound, 12);
         RegisterPool<AudioSource>(GameConstants.bladeTowerSound, hitSound, 12);
+
+        RegisterPool<EquipmentUIItem>(GameConstants.equipmentUIItem, equipmentUIItem, 24);
     }
 
     private void RegisterPool<T>(string key, GameObject prefab, int poolSize)
