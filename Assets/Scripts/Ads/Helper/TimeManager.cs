@@ -43,7 +43,6 @@ public class TimeManager
     {
         time = ParseTimeStartDay(time);
         int timePass = (int)time.DayOfWeek - 1;
-        Debug.Log("time.DayOfWeek " + time.DayOfWeek);
         System.DateTime a = time.AddDays(-timePass);
         return new System.DateTime(a.Year, a.Month, a.Day);
     }

@@ -109,7 +109,6 @@ public class AdmobAdsMax : MonoBehaviour
         #region Applovin Ads
         MaxSdkCallbacks.OnSdkInitializedEvent += (MaxSdkBase.SdkConfiguration sdkConfiguration) =>
         {
-            // Debug.Log("LongTH_ MAX SDK Initialized");
             InitInterstitial();
             InitRewardVideo();
             //InitializeBannerAds();
@@ -278,7 +277,6 @@ public class AdmobAdsMax : MonoBehaviour
         {
             isReloadBannerCollap = false;
             isLoadedCollap = true;
-            Debug.Log("load admob banner collap  success=====");
         }
 
         void OnAdPaid(AdValue adValue)
@@ -329,7 +327,6 @@ public class AdmobAdsMax : MonoBehaviour
 
     public void DestroyBannerCollap()
     {
-        Debug.Log("destroy banner admob collap========");
         isShowingCollap = false;
         timerCooldownDestroyCollap = 0;
         _bannerViewCollap?.Hide();
@@ -482,8 +479,6 @@ public class AdmobAdsMax : MonoBehaviour
 
     private void OnBannerAdLoadedEvent(string obj, MaxSdk.AdInfo adInfo)
     {
-        // Debug.Log($"LongTH_ Banner - OnBannerAdLoadedEvent ++ {adInfo} \n");
-        // Debug.Log("Request success");
         if (reloadBannerCoru != null)
         {
             StopCoroutine(reloadBannerCoru);
@@ -493,9 +488,7 @@ public class AdmobAdsMax : MonoBehaviour
 
     private void OnBannerAdClickedEvent(string obj, MaxSdk.AdInfo adInfo)
     {
-        //inter click
-        // Debug.Log($"LongTH_ Banner - OnBannerAdClickedEvent ++ {adInfo} \n");
-        // Debug.Log("Click Baner !!!");
+
     }
 
     private void OnBannerAdLoadFailedEvent(string arg1, MaxSdk.ErrorInfo errInfo)
@@ -658,13 +651,8 @@ public class AdmobAdsMax : MonoBehaviour
             {
                 if (error != null || ad == null)
                 {
-                    Debug.LogError("interstitial ad failed to load an ad " +
-                                   "with error : " + error);
                     return;
                 }
-
-                Debug.Log("Interstitial ad loaded with response : "
-                          + ad.GetResponseInfo());
 
                 _interstitialAdmob = ad;
 
@@ -742,15 +730,15 @@ public class AdmobAdsMax : MonoBehaviour
         };
         interstitialAd.OnAdImpressionRecorded += () =>
         {
-            Debug.Log("Interstitial ad recorded an impression.");
+            
         };
         interstitialAd.OnAdClicked += () =>
         {
-            Debug.Log("Interstitial ad was clicked.");
+            
         };
         interstitialAd.OnAdFullScreenContentOpened += () =>
         {
-            Debug.Log("Interstitial ad full screen content opened.");
+            
         };
         interstitialAd.OnAdFullScreenContentClosed += () =>
         {
@@ -847,15 +835,12 @@ public class AdmobAdsMax : MonoBehaviour
 
     private void MaxSdkCallbacks_OnInterstitialDisplayedEvent(string adUnitId, MaxSdk.AdInfo adInfo)
     {
-        // Debug.Log($"LongTH_ Interstitial - MaxSdkCallbacks_OnInterstitialDisplayedEvent  ++ {adInfo} \n");
-        // Debug.Log("InterstitialAdOpenedEvent");
         _isLoading = false;
         Time.timeScale = 0;
     }
 
     private void MaxSdkCallbacks_OnInterstitialClickedEvent(string adUnitId, MaxSdk.AdInfo adInfo)
     {
-        // Debug.Log($"LongTH_ Interstitial - MaxSdkCallbacks_OnInterstitialClickedEvent  ++ {adInfo} \n");
         GameController.Instance.AnalyticsController.LogInterClick();
         _isLoading = false;
     }
@@ -864,12 +849,8 @@ public class AdmobAdsMax : MonoBehaviour
         UnityAction actionIniterClose = null, UnityAction actionIniterShow = null, string level = null,
         bool isInGame = true, bool isShowAdBreak = true)
     {
-        // Debug.Log("show inter ========" + countdownAds);
-
         if (UserData.IsRemoveAds)
         {
-            // Debug.Log("show inter ======== is RemoveAds ");
-
             //if (!isInGame)
 
             actionIniterClose?.Invoke();
@@ -932,7 +913,6 @@ public class AdmobAdsMax : MonoBehaviour
 
             if (isInGame)
             {
-                // Debug.Log("show inter ======");
                 // AdBreakBox.Setup().Show(() =>
                 // {
                 //     actionInterstitialClose = actionIniterClose;
@@ -1166,7 +1146,6 @@ public class AdmobAdsMax : MonoBehaviour
                 ShowInterstitial(isShowImmediatly: true, actionType.ToString(), actionIniterClose: () => { });
                 GameController.Instance.AnalyticsController.LogWatchVideo(actionType, true, true,
                     UserData.CurrentLevel.ToString());
-                // Debug.Log("ShowInterstitial !!!");
                 countdownAds = 0;
                 try
                 {
@@ -1181,7 +1160,6 @@ public class AdmobAdsMax : MonoBehaviour
             else
             {
                 //ConfirmBox.Setup().AddMessageYes(Localization.Get("s_noti"), Localization.Get("s_TryAgain"), () => { });
-                // Debug.Log("No ads !!!");
                 actionNotLoadedVideo?.Invoke();
                 GameController.Instance.AnalyticsController.LogWatchVideo(actionType, false, true,
                     UserData.CurrentLevel.ToString());
@@ -1394,7 +1372,6 @@ public class AdmobAdsMax : MonoBehaviour
             rewardedInterstitialAd = null;
         }
 
-        Debug.Log("Loading the rewarded interstitial ad.");
         // create our request used to load the ad.
         var adRequest = new GoogleMobileAds.Api.AdRequest();
         // send the request to load the ad.
@@ -1409,9 +1386,6 @@ public class AdmobAdsMax : MonoBehaviour
                     //LoadMoreRewardInter(_adUnitIdMedium);
                     return;
                 }
-
-                Debug.Log("Rewarded interstitial ad loaded with response : "
-                          + ad.GetResponseInfo());
 
                 rewardedInterstitialAd = ad;
                 //InitRegister(ad);
@@ -1440,7 +1414,6 @@ public class AdmobAdsMax : MonoBehaviour
     //        rewardedInterstitialAd.Show((Reward reward) =>
     //        {
     //            actionRewardInter = actionReward;
-    //            Debug.Log("=========show");
     //            isRewardInter = true;
     //            GameController.Instance.AnalyticsController.LogWatchVideo(actionType, true, true, "");
     //            // TODO: Reward the user.
@@ -1475,7 +1448,6 @@ public class AdmobAdsMax : MonoBehaviour
 
     private void OnAdContentclose()
     {
-        // Debug.Log("=======close");
         Invoke("CloseAdReward", 0.1f);
         if (actionCloseRewardInter != null)
             actionCloseRewardInter.Invoke();

@@ -285,9 +285,6 @@ public class BlockCollider : MonoBehaviour
                         {
                             if (direction.x > 0)
                             {
-                                // Debug.Log("SAFERIO " + barricadeTile.Faction + "/" + direction + "/" + random);
-                                // Debug.Log("SAFERIO " + barricadeTile.transform.position + "/" + transform.position + "/" + random);
-
                                 if (barricadeTile.transform.position.x > transform.position.x)
                                 {
                                     return false;
