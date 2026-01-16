@@ -12,10 +12,10 @@ public class WinPopup : BasePopup
 {
     [SerializeField] private Button continueButton;
     [SerializeField] private Button returnHomeButton;
-    [SerializeField] private Button x5CoinButton;
-    [SerializeField] private RectTransform coinContainer;
+    // [SerializeField] private Button x5CoinButton;
+    // [SerializeField] private RectTransform coinContainer;
     [SerializeField] private TMP_Text coinText;
-    [SerializeField] private LeanLocalizedTextMeshProUGUI localizedMultiplyCoinText;
+    // [SerializeField] private LeanLocalizedTextMeshProUGUI localizedMultiplyCoinText;
 
     [SerializeField] private IntVariable currentLevel;
     [SerializeField] private UserResourcesObserver userResourcesObserver;
@@ -41,7 +41,7 @@ public class WinPopup : BasePopup
 
         continueButton.onClick.AddListener(Continue);
         returnHomeButton.onClick.AddListener(ReturnHome);
-        x5CoinButton.onClick.AddListener(X5Coin);
+        // x5CoinButton.onClick.AddListener(X5Coin);
     }
 
     protected override void UnregisterMoreEvent()
@@ -59,16 +59,16 @@ public class WinPopup : BasePopup
 
         continueButton.interactable = true;
         returnHomeButton.interactable = true;
-        x5CoinButton.interactable = true;
+        // x5CoinButton.interactable = true;
 
-        x5CoinButton.transform.localScale = Vector3.one;
+        // x5CoinButton.transform.localScale = Vector3.one;
 
         // REMOTE CONFIG IS COLLECT COIN
         _isCollectCoinRemoteConfig = RemoteConfigController.GetBoolConfig(FirebaseConfig.IS_COLLECT_COIN_WIN_LEVEL, true);
         _multiplierCoinWinLevel = RemoteConfigController.GetIntConfig(FirebaseConfig.MULTIPLIER_COIN_WIN_LEVEL, 5);
 
-        coinContainer.gameObject.SetActive(_isCollectCoinRemoteConfig);
-        x5CoinButton.gameObject.SetActive(_isCollectCoinRemoteConfig);
+        // coinContainer.gameObject.SetActive(_isCollectCoinRemoteConfig);
+        // x5CoinButton.gameObject.SetActive(_isCollectCoinRemoteConfig);
 
         if (!_isCollectCoinRemoteConfig)
         {
@@ -76,14 +76,14 @@ public class WinPopup : BasePopup
         }
         else
         {
-            localizedMultiplyCoinText.transform.localScale = Vector3.zero;
+            // localizedMultiplyCoinText.transform.localScale = Vector3.zero;
 
-            _tweens.Add(Tween.Delay(0.2f).OnComplete(() =>
-            {
-                localizedMultiplyCoinText.UpdateTranslationWithParameter("value", $"{_multiplierCoinWinLevel}");
+            // _tweens.Add(Tween.Delay(0.2f).OnComplete(() =>
+            // {
+            //     localizedMultiplyCoinText.UpdateTranslationWithParameter("value", $"{_multiplierCoinWinLevel}");
 
-                _tweens.Add(Tween.Scale(localizedMultiplyCoinText.transform, 1, duration: 0.3f));
-            }));
+            //     _tweens.Add(Tween.Scale(localizedMultiplyCoinText.transform, 1, duration: 0.3f));
+            // }));
         }
         //
 
@@ -188,12 +188,12 @@ public class WinPopup : BasePopup
 
     private void OnRewaredAdCompleted()
     {
-        x5CoinButton.interactable = false;
+        // x5CoinButton.interactable = false;
         continueButton.interactable = false;
 
-        _tweens.Add(Tween.Scale(x5CoinButton.transform, 1.1f, duration: 0.15f)
-            .OnComplete(() => _tweens.Add(Tween.Scale(x5CoinButton.transform, 0, duration: 0.3f)))
-        );
+        // _tweens.Add(Tween.Scale(x5CoinButton.transform, 1.1f, duration: 0.15f)
+        //     .OnComplete(() => _tweens.Add(Tween.Scale(x5CoinButton.transform, 0, duration: 0.3f)))
+        // );
 
         continueButton.transform.localScale = Vector3.zero;
 
