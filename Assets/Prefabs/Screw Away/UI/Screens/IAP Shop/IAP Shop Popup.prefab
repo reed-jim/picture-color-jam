@@ -2043,6 +2043,10 @@ PrefabInstance:
       propertyPath: m_hasFontAssetChanged
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3686018873243109024, guid: bbede263f8219f34282929eb3ca64b8e, type: 3}
+      propertyPath: _packageData
+      value: 
+      objectReference: {fileID: 11400000, guid: ffc953ff3b8dd894886a130fe99984e1, type: 2}
     - target: {fileID: 3826542551473040542, guid: bbede263f8219f34282929eb3ca64b8e, type: 3}
       propertyPath: m_Name
       value: Daily Pack
@@ -3001,7 +3005,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 300384342500485065, guid: bbede263f8219f34282929eb3ca64b8e, type: 3}
       propertyPath: m_fontSize
-      value: 42.1
+      value: 50.8
       objectReference: {fileID: 0}
     - target: {fileID: 300384342500485065, guid: bbede263f8219f34282929eb3ca64b8e, type: 3}
       propertyPath: m_fontAsset
@@ -3026,7 +3030,7 @@ PrefabInstance:
     - target: {fileID: 300384342500485065, guid: bbede263f8219f34282929eb3ca64b8e, type: 3}
       propertyPath: m_sharedMaterial
       value: 
-      objectReference: {fileID: 5888327073166192097, guid: 468cd137d4d22474b9da72bf17d4d308, type: 2}
+      objectReference: {fileID: 2100000, guid: 1c8f0cf76a589ef4db4cc55e5d2c2bb5, type: 2}
     - target: {fileID: 300384342500485065, guid: bbede263f8219f34282929eb3ca64b8e, type: 3}
       propertyPath: m_fontColor32.rgba
       value: 4294967295
@@ -3304,6 +3308,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8893113520334933908, guid: bbede263f8219f34282929eb3ca64b8e, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 440
+      objectReference: {fileID: 0}
+    - target: {fileID: 8893113520334933908, guid: bbede263f8219f34282929eb3ca64b8e, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -72
       objectReference: {fileID: 0}
@@ -3436,6 +3444,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3686018873243109024, guid: bbede263f8219f34282929eb3ca64b8e, type: 3}
+      propertyPath: _packageData
+      value: 
+      objectReference: {fileID: 11400000, guid: ffc953ff3b8dd894886a130fe99984e1, type: 2}
     - target: {fileID: 3826542551473040542, guid: bbede263f8219f34282929eb3ca64b8e, type: 3}
       propertyPath: m_Name
       value: Starter Pack
