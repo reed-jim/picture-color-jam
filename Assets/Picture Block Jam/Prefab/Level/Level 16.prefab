@@ -944,7 +944,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1953803898992045816, guid: edb5ad59c41828e4bad3a3de2419f846, type: 3}
       propertyPath: m_text
-      value: You have unlocked the <color=#FEBA00>Teleport!
+      value: You have unlocked the Freeze Time
       objectReference: {fileID: 0}
     - target: {fileID: 2053890951247215826, guid: edb5ad59c41828e4bad3a3de2419f846, type: 3}
       propertyPath: m_SizeDelta.x
@@ -964,11 +964,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2600725477837294480, guid: edb5ad59c41828e4bad3a3de2419f846, type: 3}
       propertyPath: m_text
-      value: Move a block to any free space!
+      value: Freezes time for 10 senconds
       objectReference: {fileID: 0}
     - target: {fileID: 2600725477837294480, guid: edb5ad59c41828e4bad3a3de2419f846, type: 3}
       propertyPath: m_fontSize
-      value: 41.65
+      value: 44.9
       objectReference: {fileID: 0}
     - target: {fileID: 2708919734349890879, guid: edb5ad59c41828e4bad3a3de2419f846, type: 3}
       propertyPath: m_Pivot.x
@@ -1064,7 +1064,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5906303244143975495, guid: edb5ad59c41828e4bad3a3de2419f846, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5966821542411784646, guid: edb5ad59c41828e4bad3a3de2419f846, type: 3}
       propertyPath: m_IsActive
@@ -1072,7 +1072,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6178797279919768332, guid: edb5ad59c41828e4bad3a3de2419f846, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 437
+      value: 301
+      objectReference: {fileID: 0}
+    - target: {fileID: 6178797279919768332, guid: edb5ad59c41828e4bad3a3de2419f846, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 134
       objectReference: {fileID: 0}
     - target: {fileID: 6475216019181111128, guid: edb5ad59c41828e4bad3a3de2419f846, type: 3}
       propertyPath: m_IsActive

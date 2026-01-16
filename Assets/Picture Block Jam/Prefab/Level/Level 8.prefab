@@ -278,7 +278,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1953803898992045816, guid: edb5ad59c41828e4bad3a3de2419f846, type: 3}
       propertyPath: m_text
-      value: You have unlocked the <color=#FEBA00>Hammer!
+      value: You have unlocked the Freeze Time
       objectReference: {fileID: 0}
     - target: {fileID: 2053890951247215826, guid: edb5ad59c41828e4bad3a3de2419f846, type: 3}
       propertyPath: m_SizeDelta.x
@@ -298,11 +298,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2600725477837294480, guid: edb5ad59c41828e4bad3a3de2419f846, type: 3}
       propertyPath: m_text
-      value: Break a block into 1x1 pieces!
+      value: Freezes time for 10 senconds
       objectReference: {fileID: 0}
     - target: {fileID: 2600725477837294480, guid: edb5ad59c41828e4bad3a3de2419f846, type: 3}
       propertyPath: m_fontSize
-      value: 44.5
+      value: 44.9
       objectReference: {fileID: 0}
     - target: {fileID: 2708919734349890879, guid: edb5ad59c41828e4bad3a3de2419f846, type: 3}
       propertyPath: m_Pivot.x
@@ -406,7 +406,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6178797279919768332, guid: edb5ad59c41828e4bad3a3de2419f846, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -84
+      value: -201.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6178797279919768332, guid: edb5ad59c41828e4bad3a3de2419f846, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 114.2
       objectReference: {fileID: 0}
     - target: {fileID: 6475216019181111128, guid: edb5ad59c41828e4bad3a3de2419f846, type: 3}
       propertyPath: m_IsActive
