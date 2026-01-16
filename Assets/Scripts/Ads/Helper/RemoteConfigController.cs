@@ -430,6 +430,8 @@ public class RemoteConfigController : MonoBehaviour
         }
         #endregion
 
+        GamePersistentVariable.bannerCooldown = GetIntConfig(FirebaseConfig.COOLDOWN_ADMOB_REFRESH, 30);
+
         FirebaseRemoteConfigFetchedEvent?.Invoke();
     }
 

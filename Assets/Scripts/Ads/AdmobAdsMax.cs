@@ -426,8 +426,7 @@ public class AdmobAdsMax : MonoBehaviour
             // var isEnableAdmobBanner = RemoteConfigController.GetBoolConfig(FirebaseConfig.ENABLE_ADMOB_BANNER, true);
 
             // _isShowAdmobBanner = isEnableAdmobBanner;
-            _cooldownAdmobBannerTimer =
-                RemoteConfigController.GetFloatConfig(FirebaseConfig.COOLDOWN_ADMOB_REFRESH, 30);
+            _cooldownAdmobBannerTimer = GamePersistentVariable.bannerCooldown;
 
             isLoadedAdBanner = true;
 
@@ -1372,7 +1371,7 @@ public class AdmobAdsMax : MonoBehaviour
 
         string currentSceneName = SceneManager.GetActiveScene().name;
 
-        if (isAdmobInitDone && currentSceneName != "Gameplay")
+        if (isAdmobInitDone)
         {
             if (state == AppState.Foreground && TimeManager.CaculateTime(oldTime, DateTime.Now) > 30 && !isShowingAds)
             {
@@ -1514,7 +1513,7 @@ public class AdmobAdsMax : MonoBehaviour
 
     private void Update()
     {
-        if (!_isBannerLoaded)
+        if (GamePersistentVariable.isShowBanner)
         {
             if (_isShowAdmobBanner)
             {
@@ -1525,45 +1524,28 @@ public class AdmobAdsMax : MonoBehaviour
                     {
                         RefreshAdmobBanner();
                         _cooldownAdmobBannerTimer = GamePersistentVariable.bannerCooldown;
-
-                        _loadBannerRetryTime++;
-
-                        if (_loadBannerRetryTime >= 2)
-                        {
-                            _isBannerLoaded = true;
-                        }
                     }
                 }
             }
-
-            if (!_isShowAdmobBanner)
+            else
             {
-                if (GamePersistentVariable.isShowBanner)
+                if (!_isBannerLoaded)
                 {
                     ShowBannerMax();
+
+                    _isBannerLoaded = true;
                 }
 
-                _isBannerLoaded = true;
-            }
-        }
-
-        if (isReloadBannerCollap)
-        {
-            timerReloadBannerCollap += Time.deltaTime;
-            if (timerReloadBannerCollap >= timeReloadBannerCollap)
-            {
-                RefreshBannerCollap();
-                timerReloadBannerCollap = 0;
-            }
-        }
-
-        if (isShowingCollap)
-        {
-            IsCooldownAdmobBanner = false;
-            timerCooldownDestroyCollap += Time.deltaTime;
-            if (timerCooldownDestroyCollap > 30)
-            {
-                DestroyBannerCollap();
+                // Manually Refresh
+                // if (IsCooldownAdmobBanner)
+                // {
+                //     _cooldownAdmobBannerTimer -= Time.unscaledDeltaTime;
+                //     if (_cooldownAdmobBannerTimer <= 0)
+                //     {
+                //         ShowBannerMax();
+                //         _cooldownAdmobBannerTimer = GamePersistentVariable.bannerCooldown;
+                //     }
+                // }
             }
         }
 
