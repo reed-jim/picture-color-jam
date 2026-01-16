@@ -1,3 +1,4 @@
+using Spine.Unity;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
@@ -6,11 +7,14 @@ public class BaseEnemy : MonoBehaviour
 {
     public Transform destination;
 
+    public SkeletonAnimation skeletonAnimation;
     public LazyHealthBar lazyHealthBar;
 
     public float attackDamage;
     public float health;
     public float currentHealth;
+
+    [SpineAnimation] public string moveAnimation;
 
     void Start()
     {
@@ -31,6 +35,8 @@ public class BaseEnemy : MonoBehaviour
     public void MoveToBase()
     {
         GetComponent<NavMeshAgent>().destination = destination.position;
+
+        skeletonAnimation.AnimationState.SetAnimation(0, moveAnimation, true);
     }
 
     void OnCollisionEnter2D(Collision2D collision)
