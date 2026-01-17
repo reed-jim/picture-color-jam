@@ -61,8 +61,7 @@ public class EquipmentScreen : Singleton<EquipmentScreen>
 
         for (int i = 0; i < characterEquipmentUIItems.Length; i++)
         {
-            characterEquipmentUIItems[i].Unlock();
-            characterEquipmentUIItems[i].SetData(GetEquipmentData(MainCharacterEquipmentData.characterEquipmentSlots[i].equipmentId));
+            EquipEquipmentType((EquipmentType)i);
         }
     }
 
@@ -134,6 +133,16 @@ public class EquipmentScreen : Singleton<EquipmentScreen>
                 break;
             }
         }
+
+        equipmentData.isEquiped = true;
+
+        for (int i = 0; i < equipmentDataContainer.items.Length; i++)
+        {
+            if (equipmentDataContainer.items[i].id != equipmentData.id && equipmentDataContainer.items[i].equipmentType == equipmentData.equipmentType)
+            {
+                equipmentDataContainer.items[i].isEquiped = false;
+            }
+        }
     }
 
     public EquipmentData GetEquipmentData(string id)
@@ -146,6 +155,22 @@ public class EquipmentScreen : Singleton<EquipmentScreen>
         equipmentTypeFilter = equipmentType;
 
         UpdateGears();
+    }
+
+    public void EquipEquipmentType(EquipmentType equipmentType)
+    {
+        if (equipmentDataContainer.items.Any(item => item.isEquiped && item.equipmentType == equipmentType))
+        {
+            EquipmentData equipmentData = equipmentDataContainer.items.First(item => item.isEquiped && item.equipmentType == equipmentType);
+
+            characterEquipmentUIItems[(int)equipmentType].SetData(equipmentData);
+        }
+        else
+        {
+            characterEquipmentUIItems[(int)equipmentType].MarkEmpty();
+        }
+
+        characterEquipmentUIItems[(int)equipmentType].Unlock();
     }
 
     private bool IsListContainIndex<T>(List<T> list, int index)

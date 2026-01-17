@@ -36,6 +36,7 @@ public class EquipmentData
     public EquipmentType equipmentType;
     public Rarity rarity;
     public bool isOwned;
+    public bool isEquiped;
     public float damage;
     public float attackSpeed;
     public float attackRadius;

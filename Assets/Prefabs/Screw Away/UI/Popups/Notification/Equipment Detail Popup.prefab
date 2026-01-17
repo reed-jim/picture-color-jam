@@ -275,6 +275,7 @@ MonoBehaviour:
   attackSpeedText: {fileID: 578840501961262454}
   attackRadiusText: {fileID: 2936849890924324126}
   equipButton: {fileID: 6341381116521728507}
+  equipButtonText: {fileID: 4745464444601029022}
 --- !u!114 &2878686236699059345
 MonoBehaviour:
   m_ObjectHideFlags: 0

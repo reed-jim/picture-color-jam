@@ -10,6 +10,7 @@ public class EquipmentDetailPopup : BasePopup
     public TMP_Text attackSpeedText;
     public TMP_Text attackRadiusText;
     public Button equipButton;
+    public TMP_Text equipButtonText;
 
     private EquipmentData equipmentData;
 
@@ -45,7 +46,8 @@ public class EquipmentDetailPopup : BasePopup
         attackSpeedText.text = $"{equipmentData.attackSpeed:F2}";
         attackRadiusText.text = $"{equipmentData.attackRadius:F2}";
 
-        equipButton.interactable = !equipmentData.isOwned;
+        equipButton.interactable = !equipmentData.isEquiped;
+        equipButtonText.text = equipmentData.isEquiped ? "Equiped" : "Equip";
     }
 
     public void Equip()

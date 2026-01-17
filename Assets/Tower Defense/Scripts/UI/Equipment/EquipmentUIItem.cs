@@ -52,4 +52,9 @@ public class EquipmentUIItem : MonoBehaviour
     {
         showEquipmentDetailEvent?.Invoke(equipmentData);
     }
+
+    public void MarkEmpty()
+    {
+        icon.gameObject.SetActive(false);
+    }
 }
