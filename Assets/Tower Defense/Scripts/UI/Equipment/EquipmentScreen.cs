@@ -1,11 +1,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EquipmentScreen : Singleton<EquipmentScreen>
 {
     public CanvasGroup characterArea;
     public CanvasGroup gearArea;
+    public Button[] changeEquipmentTypeButtons;
 
     public List<EquipmentUIItem> equipmentUIItems;
     public EquipmentUIItem[] characterEquipmentUIItems;
@@ -14,9 +16,16 @@ public class EquipmentScreen : Singleton<EquipmentScreen>
 
     public EquipmentDataContainer equipmentDataContainer;
 
+    public EquipmentType equipmentTypeFilter;
+
     protected override void MoreActionOnAwake()
     {
         base.MoreActionOnAwake();
+
+        changeEquipmentTypeButtons[0].onClick.AddListener(() => ChangeEquipmentTypeFilter(EquipmentType.Weapon));
+        changeEquipmentTypeButtons[1].onClick.AddListener(() => ChangeEquipmentTypeFilter(EquipmentType.Helmet));
+        changeEquipmentTypeButtons[2].onClick.AddListener(() => ChangeEquipmentTypeFilter(EquipmentType.Accessory));
+        changeEquipmentTypeButtons[3].onClick.AddListener(() => ChangeEquipmentTypeFilter(EquipmentType.Offhand));
 
         equipmentUIItems = new List<EquipmentUIItem>();
 
@@ -77,11 +86,21 @@ public class EquipmentScreen : Singleton<EquipmentScreen>
             }
         }
 
+        for (int i = 0; i < equipmentUIItems.Count; i++)
+        {
+            equipmentUIItems[i].gameObject.SetActive(false);
+        }
+
         for (int i = 0; i < equipmentDataContainer.items.Length; i++)
         {
             int index = i;
 
             EquipmentData equipmentData = equipmentDataContainer.items[index];
+
+            if (equipmentData.equipmentType != equipmentTypeFilter)
+            {
+                continue;
+            }
 
             EquipmentUIItem equipmentUIItem = equipmentUIItems[index];
 
@@ -95,6 +114,8 @@ public class EquipmentScreen : Singleton<EquipmentScreen>
             {
                 equipmentUIItem.Lock();
             }
+
+            equipmentUIItem.gameObject.SetActive(true);
         }
     }
 
@@ -118,6 +139,13 @@ public class EquipmentScreen : Singleton<EquipmentScreen>
     public EquipmentData GetEquipmentData(string id)
     {
         return equipmentDataContainer.items.First(item => item.id == id);
+    }
+
+    public void ChangeEquipmentTypeFilter(EquipmentType equipmentType)
+    {
+        equipmentTypeFilter = equipmentType;
+
+        UpdateGears();
     }
 
     private bool IsListContainIndex<T>(List<T> list, int index)

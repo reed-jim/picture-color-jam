@@ -557,6 +557,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EquipmentScreen
   characterArea: {fileID: 2919644905880888587}
   gearArea: {fileID: 3906575789735634532}
+  changeEquipmentTypeButtons:
+  - {fileID: 4873117210211354970}
+  - {fileID: 6619934502643719433}
+  - {fileID: 3007569965464209290}
+  - {fileID: 3704089155385629530}
   equipmentUIItems: []
   characterEquipmentUIItems:
   - {fileID: 3144318273939348490}
@@ -564,6 +569,7 @@ MonoBehaviour:
   - {fileID: 9012114522862845307}
   - {fileID: 7099953499129950228}
   equipmentDataContainer: {fileID: 11400000, guid: bc83848b13ae3e64184f912ce8d7dac6, type: 2}
+  equipmentTypeFilter: 0
 --- !u!114 &949430735459518306
 MonoBehaviour:
   m_ObjectHideFlags: 0

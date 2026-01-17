@@ -27,6 +27,13 @@ MonoBehaviour:
     damage: 100
     attackSpeed: 1
     attackRadius: 6
+  - icon: {fileID: 21300000, guid: 05d507fbf5be80f45bce58d1d79f8c77, type: 2}
+    equipmentType: 1
+    rarity: 0
+    isOwned: 0
+    damage: 100
+    attackSpeed: 1
+    attackRadius: 6
   rarityBackgrounds:
   - {fileID: 21300000, guid: a63292a219b29834f8c1efc3cde280e5, type: 2}
   - {fileID: 21300000, guid: 2a4f9242a36a5a64589dda414696b715, type: 2}
