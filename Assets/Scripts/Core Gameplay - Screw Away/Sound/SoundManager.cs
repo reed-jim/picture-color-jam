@@ -11,6 +11,7 @@ public class SoundManager : MonoBehaviour
 
     #region PRIVATE FIELD
     private bool _isEnableGameSound;
+    private bool _isDelayPlayHitSFX;
     #endregion
 
     void Awake()
@@ -188,7 +189,19 @@ public class SoundManager : MonoBehaviour
 
     public void PlaySoundHit()
     {
+        if (_isDelayPlayHitSFX)
+        {
+            return;
+        }
+
+        _isDelayPlayHitSFX = true;
+
         PlaySound(GameConstants.hitSound);
+
+        Tween.Delay(0.5f).OnComplete(() =>
+        {
+            _isDelayPlayHitSFX = false;
+        });
     }
 
     public void PlaySound(string key)

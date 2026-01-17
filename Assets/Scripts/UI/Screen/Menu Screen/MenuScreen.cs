@@ -234,7 +234,7 @@ public class MenuScreen : MonoBehaviour
 
     void OnSceneLoaded(UnityEngine.SceneManagement.Scene scene, LoadSceneMode mode)
     {
-        if (scene.name == GameConstants.GAMEPLAY_SCENE)
+        if (scene.name == "Tower")
         {
             menuScreenAudioListener.enabled = false;
 

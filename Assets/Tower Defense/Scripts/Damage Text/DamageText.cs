@@ -31,6 +31,8 @@ public class DamageText : MonoBehaviour
 
                 ObjectPoolingEverything.ReturnToPool(GameConstants.damageText, gameObject);
 
+                isInTransition = false;
+
                 // TweenUtil.PunchHide(text.transform, 1, onCompleted: () =>
                 // {
                 //     isInTransition = false;
