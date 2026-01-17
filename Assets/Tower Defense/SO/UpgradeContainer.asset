@@ -34,4 +34,4 @@ MonoBehaviour:
   - towerType: 1
     icon: {fileID: 21300000, guid: ba62d2486f8ec324e9c86ef06c27d808, type: 2}
   - towerType: 2
-    icon: {fileID: 21300000, guid: 4ec359b672a61764d8c3fc7feae6b5b5, type: 3}
+    icon: {fileID: 21300000, guid: f370fcbc575f9a04197b4b0deec9b36e, type: 3}

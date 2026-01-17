@@ -24,14 +24,18 @@ public class DamageText : MonoBehaviour
 
         TweenUtil.PunchShow(text.transform, Vector3.one, onCompleted: () =>
         {
-            Tween.PositionY(text.transform, text.transform.position.y + 0.5f, duration: 0.3f);
-            // .OnComplete(() =>
-            // {
-            //     TweenUtil.PunchHide(text.transform, 1, onCompleted: () =>
-            //     {
-            //         isInTransition = false;
-            //     });
-            // });
+            Tween.PositionY(text.transform, text.transform.position.y + 0.5f, duration: 0.3f)
+            .OnComplete(() =>
+            {
+                text.alpha = 1;
+
+                ObjectPoolingEverything.ReturnToPool(GameConstants.damageText, gameObject);
+
+                // TweenUtil.PunchHide(text.transform, 1, onCompleted: () =>
+                // {
+                //     isInTransition = false;
+                // });
+            });
 
             Tween.Alpha(text, 0, duration: 0.3f);
         });
