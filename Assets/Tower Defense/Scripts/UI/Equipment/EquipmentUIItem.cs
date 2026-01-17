@@ -32,7 +32,10 @@ public class EquipmentUIItem : MonoBehaviour
 
     public void SetData(EquipmentData data)
     {
+        TweenUtil.PunchShow(icon.transform, Vector3.one);
+
         icon.sprite = data.icon;
+        icon.SetNativeSize();
         rarityBackground.sprite = equipmentDataContainer.rarityBackgrounds[(int)data.rarity];
 
         equipmentData = data;
@@ -50,11 +53,16 @@ public class EquipmentUIItem : MonoBehaviour
 
     public void ShowEquipmentDetail()
     {
-        showEquipmentDetailEvent?.Invoke(equipmentData);
+        if (equipmentData != null)
+        {
+            showEquipmentDetailEvent?.Invoke(equipmentData);
+        }
     }
 
     public void MarkEmpty()
     {
-        icon.gameObject.SetActive(false);
+        TweenUtil.PunchHide(icon.transform);
+
+        equipmentData = null;
     }
 }

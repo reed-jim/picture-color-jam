@@ -17,6 +17,7 @@ MonoBehaviour:
     equipmentType: 0
     rarity: 0
     isOwned: 1
+    isEquiped: 1
     damage: 100
     attackSpeed: 1
     attackRadius: 6
@@ -24,16 +25,34 @@ MonoBehaviour:
     equipmentType: 0
     rarity: 1
     isOwned: 0
+    isEquiped: 0
     damage: 100
     attackSpeed: 1
     attackRadius: 6
   - icon: {fileID: 21300000, guid: 05d507fbf5be80f45bce58d1d79f8c77, type: 2}
     equipmentType: 1
     rarity: 0
-    isOwned: 0
+    isOwned: 1
+    isEquiped: 1
     damage: 100
     attackSpeed: 1
     attackRadius: 6
+  - icon: {fileID: 21300000, guid: 8233935b4d96dd0439d13456240c6035, type: 3}
+    equipmentType: 0
+    rarity: 5
+    isOwned: 0
+    isEquiped: 0
+    damage: 999
+    attackSpeed: 3.99
+    attackRadius: 3
+  - icon: {fileID: 21300000, guid: fd7a49f9a4e734149b851d1c25789be2, type: 3}
+    equipmentType: 0
+    rarity: 6
+    isOwned: 0
+    isEquiped: 0
+    damage: 1999
+    attackSpeed: 3.99
+    attackRadius: 2
   rarityBackgrounds:
   - {fileID: 21300000, guid: a63292a219b29834f8c1efc3cde280e5, type: 2}
   - {fileID: 21300000, guid: 2a4f9242a36a5a64589dda414696b715, type: 2}

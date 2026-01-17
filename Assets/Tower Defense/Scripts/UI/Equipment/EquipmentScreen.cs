@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,6 +16,10 @@ public class EquipmentScreen : Singleton<EquipmentScreen>
     public CharacterEquipmentData MainCharacterEquipmentData;
 
     public EquipmentDataContainer equipmentDataContainer;
+
+    public TMP_Text attackDamageText;
+    public TMP_Text attackSpeedText;
+    public TMP_Text attackRadiusText;
 
     public EquipmentType equipmentTypeFilter;
 
@@ -63,6 +68,8 @@ public class EquipmentScreen : Singleton<EquipmentScreen>
         {
             EquipEquipmentType((EquipmentType)i);
         }
+
+        SetCharacterStat();
     }
 
     void Start()
@@ -143,6 +150,17 @@ public class EquipmentScreen : Singleton<EquipmentScreen>
                 equipmentDataContainer.items[i].isEquiped = false;
             }
         }
+
+        SetCharacterStat();
+    }
+
+    public void Unequip(EquipmentData equipmentData)
+    {
+        characterEquipmentUIItems[(int)equipmentData.equipmentType].MarkEmpty();
+
+        equipmentData.isEquiped = false;
+
+        SetCharacterStat();
     }
 
     public EquipmentData GetEquipmentData(string id)
@@ -171,6 +189,34 @@ public class EquipmentScreen : Singleton<EquipmentScreen>
         }
 
         characterEquipmentUIItems[(int)equipmentType].Unlock();
+    }
+
+    public void SetCharacterStat()
+    {
+        SetAttackDamage();
+        SetAttackSpeed();
+        SetAttackRadius();
+    }
+
+    public void SetAttackDamage()
+    {
+        float attackDamage = equipmentDataContainer.items.Where(item => item.isEquiped).Sum(item => item.damage);
+
+        attackDamageText.text = $"{attackDamage}";
+    }
+
+    public void SetAttackSpeed()
+    {
+        float attackSpeed = equipmentDataContainer.items.Where(item => item.isEquiped).Sum(item => item.attackSpeed);
+
+        attackSpeedText.text = $"{attackSpeed:F2}";
+    }
+
+    public void SetAttackRadius()
+    {
+        float attackRadius = equipmentDataContainer.items.Where(item => item.isEquiped).Sum(item => item.attackRadius);
+
+        attackRadiusText.text = $"{attackRadius:F2}";
     }
 
     private bool IsListContainIndex<T>(List<T> list, int index)

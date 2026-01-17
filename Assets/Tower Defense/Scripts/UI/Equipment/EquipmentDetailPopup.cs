@@ -42,17 +42,31 @@ public class EquipmentDetailPopup : BasePopup
     public void UpdateContent(EquipmentData equipmentData)
     {
         icon.sprite = equipmentData.icon;
+        icon.SetNativeSize();
+        icon.rectTransform.sizeDelta *= 2;
         damageText.text = $"{equipmentData.damage}";
         attackSpeedText.text = $"{equipmentData.attackSpeed:F2}";
         attackRadiusText.text = $"{equipmentData.attackRadius:F2}";
 
-        equipButton.interactable = !equipmentData.isEquiped;
-        equipButtonText.text = equipmentData.isEquiped ? "Equiped" : "Equip";
+        equipButton.interactable = equipmentData.isOwned;
+        equipButtonText.text = equipmentData.isEquiped ? "Unequip" : "Equip";
+
+        if (!equipmentData.isOwned)
+        {
+            equipButtonText.text = "Not Owned";
+        }
     }
 
     public void Equip()
     {
-        EquipmentScreen.Instance.Equip(equipmentData);
+        if (equipmentData.isEquiped)
+        {
+            EquipmentScreen.Instance.Unequip(equipmentData);
+        }
+        else
+        {
+            EquipmentScreen.Instance.Equip(equipmentData);
+        }
 
         Hide();
     }
