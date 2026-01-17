@@ -1,4 +1,5 @@
 using PrimeTween;
+using Saferio.Util.SaferioTween;
 using TMPro;
 using UnityEngine;
 
@@ -18,17 +19,16 @@ public class DamageText : MonoBehaviour
         DamageTextContainer.Instance.AddDamageText(this);
 
         text.text = $"{damage}";
-        text.transform.position = position;
+        text.transform.position = position.ChangeZ(text.transform.position.z);
+        text.color = Color.red;
 
         isInTransition = true;
 
         TweenUtil.PunchShow(text.transform, Vector3.one, onCompleted: () =>
         {
-            Tween.PositionY(text.transform, text.transform.position.y + 0.5f, duration: 0.3f)
+            Tween.PositionY(text.transform, text.transform.position.y + 0.3f, duration: 0.3f)
             .OnComplete(() =>
             {
-                text.alpha = 1;
-
                 ObjectPoolingEverything.ReturnToPool(GameConstants.damageText, gameObject);
 
                 isInTransition = false;

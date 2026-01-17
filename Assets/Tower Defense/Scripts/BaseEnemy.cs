@@ -93,7 +93,7 @@ public class BaseEnemy : MonoBehaviour
 
     public void Die()
     {
-        ParticleSystem fx = ObjectPoolingEverything.GetFromPool<ParticleSystem>(GameConstants.blockMergeFx);
+        ParticleSystem fx = ObjectPoolingEverything.GetFromPool<ParticleSystem>(GameConstants.hitFx);
 
         fx.transform.position = transform.position;
 
@@ -122,6 +122,8 @@ public class BaseEnemy : MonoBehaviour
     public void ShowDamageText(float damage)
     {
         DamageText damageText = ObjectPoolingEverything.GetFromPool<DamageText>(GameConstants.damageText);
+
+        damageText.gameObject.SetActive(true);
 
         damageText.ShowText(damage, transform.position + new Vector3(0, 1, 0));
     }

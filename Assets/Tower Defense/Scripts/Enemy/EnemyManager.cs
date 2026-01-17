@@ -37,7 +37,7 @@ public class EnemyManager : Singleton<EnemyManager>
             {
                 new EnemyTypeAndNumberPair()
                 {
-                    enemyType = EnemyType.Melee,
+                    enemyType = (EnemyType)UnityEngine.Random.Range(0, 1),
                     number = 10
                 }
             };

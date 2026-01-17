@@ -40,10 +40,12 @@ public class ObjectPoolingEverythingInitializer : MonoBehaviour
     public GameObject towerCannon;
     public GameObject towerMelee;
     public GameObject towerUIItem;
-    public GameObject enemy;
     public GameObject damageText;
     public GameObject hitFx;
     public GameObject buffFx;
+
+    public GameObject slime;
+    public GameObject ork;
 
     public GameObject hitSound;
     public GameObject balistaSound;
@@ -107,7 +109,8 @@ public class ObjectPoolingEverythingInitializer : MonoBehaviour
         RegisterPool<BaseTower>(TowerType.Cannon.ToString(), towerCannon, 20);
         RegisterPool<BaseTower>(TowerType.Spear.ToString(), towerMelee, 20);
         RegisterPool<TowerUIItem>(GameConstants.towerUIItem, towerUIItem, 20);
-        RegisterPool<BaseEnemy>(EnemyType.Melee.ToString(), enemy, 60);
+        RegisterPool<BaseEnemy>(EnemyType.Slime.ToString(), slime, 60);
+        RegisterPool<BaseEnemy>(EnemyType.Ork.ToString(), ork, 60);
         RegisterPool<DamageText>(GameConstants.damageText, damageText, 30);
         RegisterPool<ParticleSystem>(GameConstants.hitFx, hitFx, 30);
         RegisterPool<ParticleSystem>(GameConstants.buffFx, buffFx, 12);

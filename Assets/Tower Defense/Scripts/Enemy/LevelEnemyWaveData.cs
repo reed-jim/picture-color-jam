@@ -4,7 +4,8 @@ using UnityEngine;
 
 public enum EnemyType
 {
-    Melee,
+    Slime,
+    Ork,
     Boss
 }
 

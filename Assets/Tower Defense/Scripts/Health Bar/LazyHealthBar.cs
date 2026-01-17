@@ -8,28 +8,24 @@ public class LazyHealthBar : MonoBehaviour
     public Image healthBar;
     public Image lazyHealthBar;
 
-    public float prevValue;
-
     private Tween healthBarTween;
     private Tween lazyHealthBarTween;
 
     void Start()
     {
-        prevValue = 1;
-
-        container.gameObject.SetActive(false);
+        // container.gameObject.SetActive(false);
     }
 
     public void Reset()
     {
         ChangeValue(1);
-        
+
         container.gameObject.SetActive(false);
     }
 
     public void ChangeValue(float value)
     {
-        if (!container.gameObject.activeInHierarchy)
+        if (value != 1)
         {
             container.gameObject.SetActive(true);
         }

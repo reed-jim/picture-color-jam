@@ -3510,7 +3510,7 @@ MonoBehaviour:
   clearScrewPortsSoundPrefab: {fileID: 7606835583939712495, guid: 3734458f6d3896141824ba0b0e6dbdbd, type: 3}
   destroyObjectPartFxPrefab: {fileID: 7243412146976613399, guid: 7f6a5f6ed46040745825be46b3f25418, type: 3}
   clockBoosterItemPrefab: {fileID: 6152802032738210302, guid: d9d9025bf5c091846ba6f2f3f4e92d18, type: 3}
-  blockMergeFx: {fileID: 8771972552311404799, guid: b5b43e1799b88e448a004a6c190102d7, type: 3}
+  blockMergeFx: {fileID: 6143467867895953418, guid: be01741081bb2c944aad51a527b3e120, type: 3}
   taskItemUIPrefab: {fileID: 413993787269842527, guid: cfbf48fdb9ee8ba438323f24aaa9fe07, type: 3}
   normalProjectile: {fileID: 2764698954615587065, guid: be3b8299b0d42b345bb1ffe7c50ab8e3, type: 3}
   explosiveProjectile: {fileID: 2764698954615587065, guid: aafed7e042e2a944d8736efa32eebf9c, type: 3}
@@ -3518,10 +3518,11 @@ MonoBehaviour:
   towerCannon: {fileID: 5434978929448508002, guid: 731b306cff8ffe84babecb982d792ac0, type: 3}
   towerMelee: {fileID: 5731005604631344723, guid: 22f2cec8cb07c7244ba05b3275bb9846, type: 3}
   towerUIItem: {fileID: 4186707232104964077, guid: 641b9230980a2774cb89d56f295e5f51, type: 3}
-  enemy: {fileID: 5881449097057878862, guid: 8b87e1c571e54a04181ba842cd7ef6b6, type: 3}
   damageText: {fileID: 7349725410979463786, guid: 39ae7f863dca2dd4da78e4c7b5d6fa8a, type: 3}
   hitFx: {fileID: 1596968038650794416, guid: cb034de192fc63c489a02fd4c843bfde, type: 3}
   buffFx: {fileID: 4021103657954561961, guid: 5c755f9bc5253ea418e919994537dcc7, type: 3}
+  slime: {fileID: 5881449097057878862, guid: 8b87e1c571e54a04181ba842cd7ef6b6, type: 3}
+  ork: {fileID: 5881449097057878862, guid: fa5206366413e424f87825c952bb3fe0, type: 3}
   hitSound: {fileID: 7606835583939712495, guid: 309406595c4ef2c47ade89c3ac402062, type: 3}
   balistaSound: {fileID: 7606835583939712495, guid: a241cf8f00aa94143b18a9e072132e6a, type: 3}
   cannonSound: {fileID: 7606835583939712495, guid: e6c287bb3d42d3f43a3e4244538e416a, type: 3}
@@ -9687,7 +9688,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 1.9, y: 0}
-  m_SizeDelta: {x: 772, y: 116}
+  m_SizeDelta: {x: 456, y: 84}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3858867804018486933
 CanvasRenderer:
@@ -9714,7 +9715,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 900, y: 50}
+  m_SizeDelta: {x: 360, y: 48}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &4966268569629004399
 MonoBehaviour:
@@ -9736,7 +9737,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 57cee2b0df0200f438987684636cfaed, type: 3}
+  m_Sprite: {fileID: 21300000, guid: df07b8546fae1784f9debf53c2100cd2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -9808,7 +9809,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0.5, y: 0}
-  m_SizeDelta: {x: 756, y: 104}
+  m_SizeDelta: {x: 420, y: 48}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5718580518736409268
 CanvasRenderer:
@@ -10043,10 +10044,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 64
+  m_fontSize: 41.3
   m_fontSizeBase: 64
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -10236,7 +10237,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d1c581d2acef36d469e7336acb6ac354, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cff2733e855755d45a0299d2d11bf198, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
