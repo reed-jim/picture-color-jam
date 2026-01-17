@@ -2,5 +2,5 @@ using UnityEngine;
 
 public class WeaponCollider : MonoBehaviour
 {
-    public float attackDamage;
+    public float attackDamage => GamePersistentVariable.mainCharacterStat.damage;
 }

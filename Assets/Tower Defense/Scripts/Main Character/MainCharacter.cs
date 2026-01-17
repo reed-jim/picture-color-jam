@@ -88,7 +88,14 @@ public class MainCharacter : MonoBehaviour
                 }
             }
 
-            yield return waitForSeconds;
+            yield return new WaitForSeconds(1 / GamePersistentVariable.mainCharacterStat.attackSpeed);
         }
     }
+}
+
+public class MainCharacterStat
+{
+    public float damage;
+    public float attackSpeed;
+    public float attackRadius;
 }

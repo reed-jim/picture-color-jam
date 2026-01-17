@@ -69,6 +69,8 @@ public class EquipmentScreen : Singleton<EquipmentScreen>
             EquipEquipmentType((EquipmentType)i);
         }
 
+        GamePersistentVariable.mainCharacterStat = new MainCharacterStat();
+
         SetCharacterStat();
     }
 
@@ -203,6 +205,8 @@ public class EquipmentScreen : Singleton<EquipmentScreen>
         float attackDamage = equipmentDataContainer.items.Where(item => item.isEquiped).Sum(item => item.damage);
 
         attackDamageText.text = $"{attackDamage}";
+
+        GamePersistentVariable.mainCharacterStat.damage = attackDamage;
     }
 
     public void SetAttackSpeed()
@@ -210,6 +214,8 @@ public class EquipmentScreen : Singleton<EquipmentScreen>
         float attackSpeed = equipmentDataContainer.items.Where(item => item.isEquiped).Sum(item => item.attackSpeed);
 
         attackSpeedText.text = $"{attackSpeed:F2}";
+
+        GamePersistentVariable.mainCharacterStat.attackSpeed = attackSpeed;
     }
 
     public void SetAttackRadius()
@@ -217,6 +223,8 @@ public class EquipmentScreen : Singleton<EquipmentScreen>
         float attackRadius = equipmentDataContainer.items.Where(item => item.isEquiped).Sum(item => item.attackRadius);
 
         attackRadiusText.text = $"{attackRadius:F2}";
+
+        GamePersistentVariable.mainCharacterStat.attackRadius = attackRadius;
     }
 
     private bool IsListContainIndex<T>(List<T> list, int index)
