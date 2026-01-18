@@ -36,6 +36,7 @@ public class ObjectPoolingEverythingInitializer : MonoBehaviour
     #region TOWER
     public GameObject normalProjectile;
     public GameObject explosiveProjectile;
+    public GameObject lightningProjectile;
     public GameObject towerBalista;
     public GameObject towerCannon;
     public GameObject towerMelee;
@@ -43,6 +44,7 @@ public class ObjectPoolingEverythingInitializer : MonoBehaviour
     public GameObject damageText;
     public GameObject hitFx;
     public GameObject buffFx;
+    public GameObject lightningFx;
 
     public GameObject slime;
     public GameObject ork;
@@ -105,6 +107,7 @@ public class ObjectPoolingEverythingInitializer : MonoBehaviour
 
         RegisterPool<BaseProjectile>(ProjectileType.Normal.ToString(), normalProjectile, 100);
         RegisterPool<BaseProjectile>(ProjectileType.Explosive.ToString(), explosiveProjectile, 10);
+        RegisterPool<BaseProjectile>(ProjectileType.Lightning.ToString(), lightningProjectile, 10);
         RegisterPool<BaseTower>(TowerType.Arrow.ToString(), towerBalista, 20);
         RegisterPool<BaseTower>(TowerType.Cannon.ToString(), towerCannon, 20);
         RegisterPool<BaseTower>(TowerType.Spear.ToString(), towerMelee, 20);
@@ -114,6 +117,7 @@ public class ObjectPoolingEverythingInitializer : MonoBehaviour
         RegisterPool<DamageText>(GameConstants.damageText, damageText, 30);
         RegisterPool<ParticleSystem>(GameConstants.hitFx, hitFx, 30);
         RegisterPool<ParticleSystem>(GameConstants.buffFx, buffFx, 12);
+        RegisterPool<ParticleSystem>(GameConstants.lightningFx, lightningFx, 12);
 
         RegisterPool<AudioSource>(GameConstants.hitSound, hitSound, 12);
         RegisterPool<AudioSource>(GameConstants.balistaSound, balistaSound, 12);

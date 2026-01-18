@@ -18,7 +18,7 @@ public class DamageText : MonoBehaviour
 
         DamageTextContainer.Instance.AddDamageText(this);
 
-        text.text = $"{damage}";
+        text.text = $"{(int)damage}";
         text.transform.position = position.ChangeZ(text.transform.position.z);
         text.color = Color.red;
 

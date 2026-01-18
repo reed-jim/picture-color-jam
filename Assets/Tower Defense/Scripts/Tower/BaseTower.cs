@@ -8,7 +8,8 @@ using static GameEnum;
 public enum ProjectileType
 {
     Normal,
-    Explosive
+    Explosive,
+    Lightning
 }
 
 public class BaseTower : MonoBehaviour
@@ -30,16 +31,19 @@ public class BaseTower : MonoBehaviour
         towerProperty.damage = towerProperty.baseDamage;
         towerProperty.attackRadius = towerProperty.baseAttackRadius;
         towerProperty.rateOfFire = towerProperty.baseRateOfFire;
+    }
 
+    public void StartAutoShooting()
+    {
         StartCoroutine(AutoShooting());
     }
 
     protected virtual IEnumerator AutoShooting()
     {
-        WaitForSeconds waitForSeconds = new WaitForSeconds(1);
-
         while (true)
         {
+            Debug.Log("SAFERIO AutoShooting " + name);
+
             if (isActive)
             {
                 Transform target = FindNearestTarget();

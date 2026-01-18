@@ -61,6 +61,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77f617696b6bb444e94228d0f459412a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TowerSelectionItem
+  container: {fileID: 7607407673673202317}
   selectButton: {fileID: 7448450014049889844}
   icon: {fileID: 3695602044553636959}
   description: {fileID: 3035734438514828411}

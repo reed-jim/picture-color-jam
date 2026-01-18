@@ -60,6 +60,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cd524b1bcb223440b5f40defc3ed563, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TowerUIItem
+  container: {fileID: 3801288739112136440}
   selectButton: {fileID: 8764658993808964044}
   icon: {fileID: 3896809958778521921}
   upgradeContainer: {fileID: 11400000, guid: 953ad98aaac31d44f86f9b7313e38d52, type: 2}

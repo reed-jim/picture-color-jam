@@ -6,6 +6,7 @@ using static GameEnum;
 
 public class TowerUIItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
+    public RectTransform container;
     [SerializeField] private Button selectButton;
     public Image icon;
 
@@ -39,6 +40,7 @@ public class TowerUIItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     public void UpdateItem()
     {
         icon.sprite = upgradeContainer.towerTypeAndIconPairs.First(item => item.towerType == towerType).icon;
-        icon.SetNativeSize();
+        UIUtil.SetSizeKeepRatioY(icon, 0.6f * container.sizeDelta.x);
+        // icon.SetNativeSize();
     }
 }

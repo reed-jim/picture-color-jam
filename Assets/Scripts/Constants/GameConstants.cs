@@ -200,5 +200,6 @@ public static class GameConstants
     public static string cannonSound = "cannonSound";
     public static string bladeTowerSound = "bladeTowerSound";
     public static string equipmentUIItem = "equipmentUIItem";
+    public static string lightningFx = "lightningFx";
     #endregion
 }

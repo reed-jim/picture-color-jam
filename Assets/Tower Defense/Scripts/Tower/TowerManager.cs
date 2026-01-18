@@ -35,6 +35,8 @@ public class TowerManager : Singleton<TowerManager>
     void Start()
     {
         placeTowerPreview.gameObject.SetActive(false);
+
+        AddTowerToPool(TowerType.Spear);
     }
 
     void Update()
@@ -107,6 +109,7 @@ public class TowerManager : Singleton<TowerManager>
         else
         {
             tower.isActive = true;
+            tower.StartAutoShooting();
 
             towers.Add(tower);
 

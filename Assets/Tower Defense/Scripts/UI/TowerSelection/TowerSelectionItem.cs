@@ -7,6 +7,7 @@ using static GameEnum;
 
 public class TowerSelectionItem : MonoBehaviour
 {
+    public RectTransform container;
     public Button selectButton;
     public Image icon;
     public TMP_Text description;
@@ -41,8 +42,9 @@ public class TowerSelectionItem : MonoBehaviour
     public void UpdateItem(UpgradeOption upgradeOption)
     {
         icon.sprite = upgradeContainer.towerTypeAndIconPairs.First(item => item.towerType == upgradeOption.towerType).icon;
-        icon.SetNativeSize();
-        icon.rectTransform.sizeDelta *= 1.5f;
+        UIUtil.SetSizeKeepRatioY(icon, 0.5f * container.sizeDelta.x);
+        // icon.SetNativeSize();
+        // icon.rectTransform.sizeDelta *= 1.5f;
 
         if (upgradeOption.isBuff)
         {
