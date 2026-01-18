@@ -17,11 +17,16 @@ public class MainCharacter : MonoBehaviour
     public LayerMask checkAttackLayerMask;
 
     private string currentAnimation;
+    private Vector3 weaponInitialPosition;
+    private Vector3 weaponInitialAngle;
 
     void Awake()
     {
         JoystickController.controlPlayerEvent += Move;
         JoystickController.stopControlPlayerEvent += Stop;
+
+        weaponInitialPosition = weaponCollider.transform.localPosition;
+        weaponInitialAngle = weaponCollider.transform.localEulerAngles;
     }
 
     void OnDestroy()
@@ -83,6 +88,9 @@ public class MainCharacter : MonoBehaviour
 
                     Tween.EulerAngles(weapon, new Vector3(0, 0, 0), new Vector3(0, 0, -360), duration: 0.15f).OnComplete(() =>
                     {
+                        weaponCollider.transform.localPosition = weaponInitialPosition;
+                        weaponCollider.transform.localEulerAngles = weaponInitialAngle;
+
                         weaponCollider.enabled = false;
                     });
                 }

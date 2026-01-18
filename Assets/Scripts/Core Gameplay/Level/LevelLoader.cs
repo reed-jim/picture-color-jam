@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using NavMeshPlus.Components;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
@@ -9,7 +10,7 @@ using static GameEnum;
 
 public class LevelLoader : MonoBehaviour
 {
-    [SerializeField] private GameObject roundedCornerPrefab;
+    [SerializeField] private NavMeshSurface navMeshSurface;
 
     [Header("SCRIPTABLE OBJECT")]
     [SerializeField] private IntVariable currentLevel;
@@ -115,7 +116,6 @@ public class LevelLoader : MonoBehaviour
 
         setLevelNumberEvent?.Invoke();
 
-        Debug.Log("SAFERIO check later");
         // nextLevel = RemoteConfigLevelManager.GetReplacedLevelIndex(nextLevel);
 
         GamePersistentVariable.levelPrefab = nextLevel;
@@ -130,6 +130,8 @@ public class LevelLoader : MonoBehaviour
 
                 GamePersistentVariable.isLevelDirty = false;
 
+                navMeshSurface.BuildNavMesh();
+
                 // MANUAL CAMERA FOV MODIFIER
                 // LevelCameraModifier levelCameraModifier = level.GetComponent<LevelCameraModifier>();
 
@@ -142,18 +144,18 @@ public class LevelLoader : MonoBehaviour
                 //     setLevelCameraOrthographicSize?.Invoke(GameConstants.DEFAULT_CAMERA_FIELD_OF_VIEW);
                 // }
 
-                ManageBaseBlocks(level.transform);
+                // ManageBaseBlocks(level.transform);
 
-                AdjustLevelPosition(level.transform);
+                // AdjustLevelPosition(level.transform);
 
-                AutoFitLevelCamera();
+                // AutoFitLevelCamera();
 
                 // AssignPhysicsMaterialAll(level.transform);
 
-                if (!isLoopLevel)
-                {
-                    SaferioTracking.TrackLevelStart(currentLevel.Value);
-                }
+                // if (!isLoopLevel)
+                // {
+                //     SaferioTracking.TrackLevelStart(currentLevel.Value);
+                // }
 
                 GamePersistentVariable.isLevelLost = false;
             }
@@ -398,82 +400,6 @@ public class LevelLoader : MonoBehaviour
 
             return 90;
         }
-
-        // Generate bound collider
-        // Physics Material
-        PhysicsMaterial physicsMaterial = new PhysicsMaterial();
-
-        physicsMaterial.staticFriction = 0;
-        physicsMaterial.dynamicFriction = 0;
-        physicsMaterial.frictionCombine = PhysicsMaterialCombine.Minimum;
-        physicsMaterial.bounceCombine = PhysicsMaterialCombine.Minimum;
-
-        GameObject boundContainer = new GameObject("Bound Container");
-
-        boundContainer.transform.SetParent(barricades[0].transform.parent.parent);
-
-        GameObject topBoundCollider = new GameObject("topBoundCollider");
-
-        topBoundCollider.transform.SetParent(boundContainer.transform);
-        topBoundCollider.transform.position = new Vector3(0, 0, topBound + 1);
-        BoxCollider topBoundColliderComponent = topBoundCollider.AddComponent<BoxCollider>();
-        topBoundColliderComponent.size = new Vector3(100, 33, 1.8f);
-        topBoundColliderComponent.material = physicsMaterial;
-
-        GameObject bottomBoundCollider = new GameObject("bottomBoundCollider");
-
-        bottomBoundCollider.transform.SetParent(boundContainer.transform);
-        bottomBoundCollider.transform.position = new Vector3(0, 0, bottomBound - 1);
-        BoxCollider bottomBoundColliderComponent = bottomBoundCollider.AddComponent<BoxCollider>();
-        bottomBoundColliderComponent.size = new Vector3(100, 33, 1.8f);
-        bottomBoundColliderComponent.material = physicsMaterial;
-
-        GameObject rightBoundCollider = new GameObject("rightBoundCollider");
-
-        rightBoundCollider.transform.SetParent(boundContainer.transform);
-        rightBoundCollider.transform.position = new Vector3(rightBound + 1, 0, 0);
-        BoxCollider rightBoundColliderComponent = rightBoundCollider.AddComponent<BoxCollider>();
-        rightBoundColliderComponent.size = new Vector3(1.8f, 33, 100);
-        rightBoundColliderComponent.material = physicsMaterial;
-
-        GameObject leftBoundCollider = new GameObject("leftBoundCollider");
-
-        leftBoundCollider.transform.SetParent(boundContainer.transform);
-        leftBoundCollider.transform.position = new Vector3(leftBound - 1, 0, 0);
-        BoxCollider leftBoundColliderComponent = leftBoundCollider.AddComponent<BoxCollider>();
-        leftBoundColliderComponent.size = new Vector3(1.8f, 33, 100);
-        leftBoundColliderComponent.material = physicsMaterial;
-
-        topBoundCollider.layer = LayerMask.NameToLayer("Tile");
-        bottomBoundCollider.layer = LayerMask.NameToLayer("Tile");
-        rightBoundCollider.layer = LayerMask.NameToLayer("Tile");
-        leftBoundCollider.layer = LayerMask.NameToLayer("Tile");
-
-        if (level.GetComponent<ManualLevelCorner>() != null)
-        {
-            return;
-        }
-
-        // Generate Rounded corner
-        Transform topLeftCorner = Instantiate(roundedCornerPrefab, boundContainer.transform).transform;
-
-        topLeftCorner.position = new Vector3(leftBound - 1f, 1.4f, topBound + 1f);
-        topLeftCorner.eulerAngles = new Vector3(0, 0, 0);
-
-        Transform topRightCorner = Instantiate(roundedCornerPrefab, boundContainer.transform).transform;
-
-        topRightCorner.position = new Vector3(rightBound + 1f, 1.4f, topBound + 1f);
-        topRightCorner.eulerAngles = new Vector3(0, 90, 0);
-
-        Transform bottomRightCorner = Instantiate(roundedCornerPrefab, boundContainer.transform).transform;
-
-        bottomRightCorner.position = new Vector3(rightBound + 1f, 1.4f, bottomBound - 1f);
-        bottomRightCorner.eulerAngles = new Vector3(0, 180, 0);
-
-        Transform bottomLeftCorner = Instantiate(roundedCornerPrefab, boundContainer.transform).transform;
-
-        bottomLeftCorner.position = new Vector3(leftBound - 1f, 1.4f, bottomBound - 1f);
-        bottomLeftCorner.eulerAngles = new Vector3(0, -90, 0);
     }
 
     private void AdjustLevelPosition(Transform level)

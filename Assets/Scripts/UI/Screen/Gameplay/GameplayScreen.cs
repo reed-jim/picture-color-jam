@@ -9,10 +9,10 @@ using static GameEnum;
 public class GameplayScreen : MonoBehaviour
 {
     [SerializeField] private Button pauseButton;
-    [SerializeField] private Button replayButton;
-    [SerializeField] private Button openRemoveAdsPopupButton;
+    // [SerializeField] private Button replayButton;
+    // [SerializeField] private Button openRemoveAdsPopupButton;
     [SerializeField] private Button openDebugPopupButton;
-    [SerializeField] private LeanLocalizedTextMeshProUGUI localizedLevelText;
+    // [SerializeField] private LeanLocalizedTextMeshProUGUI localizedLevelText;
 
     [SerializeField] private IntVariable currentLevel;
     [SerializeField] private GameSetting gameSetting;
@@ -24,12 +24,12 @@ public class GameplayScreen : MonoBehaviour
 
     void Awake()
     {
-        localizedLevelText.textTranslatedEvent += OnLevelTextTranslated;
+        // localizedLevelText.textTranslatedEvent += OnLevelTextTranslated;
         LevelLoader.setLevelNumberEvent += SetLevelText;
 
         pauseButton.onClick.AddListener(Pause);
-        replayButton.onClick.AddListener(Replay);
-        openRemoveAdsPopupButton.onClick.AddListener(OpenRemoveAdsPopupButton);
+        // replayButton.onClick.AddListener(Replay);
+        // openRemoveAdsPopupButton.onClick.AddListener(OpenRemoveAdsPopupButton);
         openDebugPopupButton.onClick.AddListener(OpenDebugPopupButton);
 
         // if (UserData.IsRemoveAds)
@@ -45,7 +45,7 @@ public class GameplayScreen : MonoBehaviour
 
     void OnDestroy()
     {
-        localizedLevelText.textTranslatedEvent -= OnLevelTextTranslated;
+        // localizedLevelText.textTranslatedEvent -= OnLevelTextTranslated;
         LevelLoader.setLevelNumberEvent -= SetLevelText;
     }
 
@@ -78,12 +78,12 @@ public class GameplayScreen : MonoBehaviour
 
     private void OnLevelTextTranslated()
     {
-        localizedLevelText.UpdateTranslationWithParameter(GameConstants.LEVEL_PARAMETER, $"{GetDisplayedLevel()}");
+        // localizedLevelText.UpdateTranslationWithParameter(GameConstants.LEVEL_PARAMETER, $"{GetDisplayedLevel()}");
     }
 
     private void SetLevelText()
     {
-        localizedLevelText.UpdateTranslationWithParameter(GameConstants.LEVEL_PARAMETER, $"{GetDisplayedLevel()}");
+        // localizedLevelText.UpdateTranslationWithParameter(GameConstants.LEVEL_PARAMETER, $"{GetDisplayedLevel()}");
     }
 
     private int GetDisplayedLevel()
