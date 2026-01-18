@@ -103,6 +103,21 @@ public class BaseEnemy : MonoBehaviour
         }
     }
 
+    public void Hit(float attackDamage)
+    {
+        currentHealth -= attackDamage;
+
+        lazyHealthBar.ChangeValue(currentHealth / health);
+
+        PlayHitFx();
+        ShowDamageText(attackDamage);
+
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
+    }
+
     public void Hit(WeaponCollider weaponCollider)
     {
         currentHealth -= weaponCollider.attackDamage;

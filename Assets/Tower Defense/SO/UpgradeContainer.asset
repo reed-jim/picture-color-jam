@@ -30,8 +30,8 @@ MonoBehaviour:
     buffRatio: 1.5
   towerTypeAndIconPairs:
   - towerType: 0
-    icon: {fileID: 21300000, guid: 8633966971b2e4843b8ebf7be2803cce, type: 3}
+    icon: {fileID: 21300000, guid: 91d2adc10f5a05a4ca6d56cab6f83bf2, type: 3}
   - towerType: 1
-    icon: {fileID: 21300000, guid: ba62d2486f8ec324e9c86ef06c27d808, type: 2}
+    icon: {fileID: 21300000, guid: 384d47c150fce7740b1a860ec254a1d8, type: 3}
   - towerType: 2
-    icon: {fileID: 21300000, guid: f370fcbc575f9a04197b4b0deec9b36e, type: 3}
+    icon: {fileID: 21300000, guid: c22bced497c06fb4fad09c2cdd2be846, type: 3}

@@ -19,8 +19,8 @@ MonoBehaviour:
     isOwned: 1
     isEquiped: 1
     damage: 100
-    attackSpeed: 0.6
-    attackRadius: 6
+    attackSpeed: 0.3
+    attackRadius: 2
   - icon: {fileID: 21300000, guid: ce19ae16e967d3644ba0c8d305f86177, type: 2}
     equipmentType: 0
     rarity: 1
