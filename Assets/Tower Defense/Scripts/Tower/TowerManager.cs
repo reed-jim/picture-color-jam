@@ -127,6 +127,7 @@ public class TowerManager : Singleton<TowerManager>
         TowerUIItem towerUIItem = ObjectPoolingEverything.GetFromPool<TowerUIItem>(GameConstants.towerUIItem);
 
         towerUIItem.transform.SetParent(placeTowerCanvasGroup.transform);
+        towerUIItem.transform.localScale = Vector3.one;
         towerUIItem.towerType = towerType;
         towerUIItem.UpdateItem();
 
