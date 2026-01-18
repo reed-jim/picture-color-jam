@@ -8,6 +8,11 @@ public class AutoSpear : BaseTower
 
     public Collider2D bladeCollider;
 
+    void Awake()
+    {
+        bladeCollider.enabled = false;
+    }
+
     protected override IEnumerator AutoShooting()
     {
         TrackEntry trackEntry;
@@ -16,18 +21,26 @@ public class AutoSpear : BaseTower
         {
             if (isActive)
             {
-                Transform target = FindNearestTarget();
+                // Transform target = FindNearestTarget();
 
-                if (target != null)
-                {
-                    bladeCollider.enabled = true;
+                // if (target != null)
+                // {
+                //     bladeCollider.enabled = true;
 
-                    trackEntry = skeletonAnimation.AnimationState.SetAnimation(0, attackAnimation, false);
+                //     trackEntry = skeletonAnimation.AnimationState.SetAnimation(0, attackAnimation, false);
 
-                    SoundManager.Instance.PlaySound(fireSound);
+                //     SoundManager.Instance.PlaySound(fireSound);
 
-                    trackEntry.Complete += OnAttackAnimationComplete;
-                }
+                //     trackEntry.Complete += OnAttackAnimationComplete;
+                // }
+
+                bladeCollider.enabled = true;
+
+                trackEntry = skeletonAnimation.AnimationState.SetAnimation(0, attackAnimation, false);
+
+                SoundManager.Instance.PlaySound(fireSound);
+
+                trackEntry.Complete += OnAttackAnimationComplete;
             }
 
             yield return new WaitForSeconds(1f / towerProperty.rateOfFire);

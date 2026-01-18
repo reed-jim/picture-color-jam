@@ -44,11 +44,14 @@ public class BaseTower : MonoBehaviour
             {
                 Transform target = FindNearestTarget();
 
+                Debug.Log("SAFERIO " + name + "/" + target);
+
                 if (target != null)
                 {
                     BaseProjectile projectile = ObjectPoolingEverything.GetFromPool<BaseProjectile>(projectileType.ToString());
 
                     projectile.transform.position = transform.position;
+                    projectile.transform.localScale = Vector3.one;
 
                     projectile.ShootAt(target.position, towerProperty.damage);
 

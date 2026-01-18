@@ -440,7 +440,7 @@ RectTransform:
   m_GameObject: {fileID: 107098435}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 329097811}
@@ -1139,11 +1139,11 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1124622171}
-  - {fileID: 1691584041}
   - {fileID: 1235778355}
-  - {fileID: 790792324}
   - {fileID: 107098439}
   - {fileID: 713042600}
+  - {fileID: 1691584041}
+  - {fileID: 790792324}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1729,7 +1729,7 @@ RectTransform:
   m_GameObject: {fileID: 713042599}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 329097811}
@@ -3732,7 +3732,7 @@ RectTransform:
   m_GameObject: {fileID: 1235778354}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.6, y: 1.6, z: 1.6}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 238174473}
@@ -3742,7 +3742,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 160, y: -220}
+  m_AnchoredPosition: {x: 120, y: -220}
   m_SizeDelta: {x: 132, y: 340}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1235778356
@@ -4130,6 +4130,7 @@ GameObject:
   - component: {fileID: 1391953437}
   - component: {fileID: 1391953434}
   - component: {fileID: 1391953432}
+  - component: {fileID: 1391953438}
   - component: {fileID: 1391953436}
   m_Layer: 0
   m_Name: Base
@@ -4291,7 +4292,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HomeBase
   health: 1000
   currentHealth: 0
-  healthBar: {fileID: 0}
+  healthBar: {fileID: 1874395948}
+--- !u!50 &1391953438
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1391953431}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1417892430
 GameObject:
   m_ObjectHideFlags: 0
@@ -4930,6 +4958,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5203305755099610813, guid: 3746b03a2ae766a4596debf7054b7fc2, type: 3}
   m_PrefabInstance: {fileID: 1874395946}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1874395948 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2821681106359314687, guid: 3746b03a2ae766a4596debf7054b7fc2, type: 3}
+  m_PrefabInstance: {fileID: 1874395946}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09aee42a8dee53741851cde75b5b23be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LazyHealthBar
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

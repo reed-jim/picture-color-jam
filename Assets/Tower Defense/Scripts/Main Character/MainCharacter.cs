@@ -7,13 +7,13 @@ using UnityEngine;
 public class MainCharacter : MonoBehaviour
 {
     public Transform weapon;
+    public Transform shotPosition;
     public Collider2D weaponCollider;
     public SkeletonAnimation skeletonAnimation;
     [SpineAnimation] public string idleAnimation;
     [SpineAnimation] public string moveAnimation;
 
     public float speedMultiply;
-    public float attackRadius;
     public LayerMask checkAttackLayerMask;
 
     private string currentAnimation;
@@ -78,26 +78,60 @@ public class MainCharacter : MonoBehaviour
 
         while (true)
         {
-            Collider2D collider2D = Physics2D.OverlapCircle(transform.position, attackRadius, checkAttackLayerMask);
+            // Collider2D collider2D = Physics2D.OverlapCircle(transform.position, attackRadius, checkAttackLayerMask);
 
-            if (collider2D != null)
+            // if (collider2D != null)
+            // {
+            //     if (collider2D.GetComponent<BaseEnemy>() != null)
+            //     {
+            //         weaponCollider.enabled = true;
+
+            //         Tween.EulerAngles(weapon, new Vector3(0, 0, 0), new Vector3(0, 0, -360), duration: 0.15f).OnComplete(() =>
+            //         {
+            //             weaponCollider.transform.localPosition = weaponInitialPosition;
+            //             weaponCollider.transform.localEulerAngles = weaponInitialAngle;
+
+            //             weaponCollider.enabled = false;
+            //         });
+            //     }
+            // }
+
+            Transform target = FindNearestTarget();
+
+            if (target != null)
             {
-                if (collider2D.GetComponent<BaseEnemy>() != null)
-                {
-                    weaponCollider.enabled = true;
+                BaseProjectile projectile = ObjectPoolingEverything.GetFromPool<BaseProjectile>(ProjectileType.Normal.ToString());
 
-                    Tween.EulerAngles(weapon, new Vector3(0, 0, 0), new Vector3(0, 0, -360), duration: 0.15f).OnComplete(() =>
-                    {
-                        weaponCollider.transform.localPosition = weaponInitialPosition;
-                        weaponCollider.transform.localEulerAngles = weaponInitialAngle;
+                projectile.transform.position = shotPosition.position;
+                projectile.transform.localScale = 0.5f * Vector3.one;
 
-                        weaponCollider.enabled = false;
-                    });
-                }
+                projectile.ShootAt(target.position, GamePersistentVariable.mainCharacterStat.damage);
+
+                SoundManager.Instance.PlaySound(GameConstants.balistaSound);
             }
 
             yield return new WaitForSeconds(1 / GamePersistentVariable.mainCharacterStat.attackSpeed);
         }
+    }
+
+    public Transform FindNearestTarget()
+    {
+        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, GamePersistentVariable.mainCharacterStat.attackRadius, checkAttackLayerMask);
+
+        Transform nearest = null;
+        float minDistance = Mathf.Infinity;
+
+        foreach (Collider2D hit in hits)
+        {
+            float dist = Vector2.Distance(transform.position, hit.transform.position);
+            if (dist < minDistance)
+            {
+                minDistance = dist;
+                nearest = hit.transform;
+            }
+        }
+
+        return nearest;
     }
 }
 

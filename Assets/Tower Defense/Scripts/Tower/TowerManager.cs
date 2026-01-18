@@ -71,7 +71,7 @@ public class TowerManager : Singleton<TowerManager>
             Vector3 mouseScreenPos = Input.mousePosition;
             Vector3 mouseWorldPos = mainCamera.ScreenToWorldPoint(mouseScreenPos);
 
-            isCancel = mouseWorldPos.y < -0.35f * GamePersistentVariable.screenSizeWorld.y;
+            isCancel = mouseWorldPos.y < -0.45f * GamePersistentVariable.screenSizeWorld.y;
 
             mouseWorldPos.y += 5;
             mouseWorldPos.z = -2;
