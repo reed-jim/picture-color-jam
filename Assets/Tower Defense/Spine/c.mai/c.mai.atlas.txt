@@ -1,0 +1,38 @@
+c.mai.png
+size:2644,1052
+filter:Linear,Linear
+pma:true
+ao sau mai
+bounds:1307,81,247,307
+ao trc mai
+bounds:1719,50,499,428
+offsets:0,14,563,442
+chan p mai
+bounds:2222,15,166,206
+rotate:90
+chan t mai
+bounds:2432,15,166,206
+rotate:90
+dau mai
+bounds:1053,392,653,553
+offsets:1,1,655,555
+rotate:90
+gay mai
+bounds:2222,185,407,458
+offsets:1,1,409,460
+kinh mai
+bounds:1610,482,341,161
+offsets:1,1,343,163
+matt mai
+bounds:1558,32,356,157
+offsets:9,6,374,164
+rotate:90
+mu mai
+bounds:1610,647,875,398
+nguoi mai
+bounds:1053,70,318,250
+rotate:90
+tay mai
+bounds:2489,836,151,209
+thap
+bounds:4,4,1045,1041

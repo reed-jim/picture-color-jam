@@ -1,0 +1,34 @@
+a.van.png
+size:1944,1132
+filter:Linear,Linear
+pma:true
+Tay t Van
+bounds:1700,57,233,322
+chan p Van
+bounds:1648,598,211,240
+rotate:90
+chan t Van
+bounds:1648,383,211,239
+rotate:90
+cung Van
+bounds:1049,971,156,698
+rotate:90
+dau Van
+bounds:1049,455,595,512
+offsets:1,1,597,514
+mat Van
+bounds:1751,813,314,188
+offsets:5,5,323,195
+rotate:90
+nguoi Van
+bounds:1049,12,439,433
+rotate:90
+tay p Van
+bounds:1486,4,210,375
+ten Van
+bounds:4,7,71,418
+offsets:1,1,73,420
+rotate:90
+thap
+bounds:4,82,1045,1041
+rotate:90

@@ -1,0 +1,36 @@
+l.anh.png
+size:2844,1056
+filter:Linear,Linear
+pma:true
+ao L.anh
+bounds:1049,377,672,652
+rotate:90
+boom L.anh
+bounds:2545,19,295,264
+offsets:1,1,297,266
+chaan p L.anh
+bounds:2587,637,201,215
+rotate:90
+chan t L.anh
+bounds:2587,842,207,218
+rotate:90
+co ao L.anh
+bounds:1049,16,800,357
+dau L.anh
+bounds:1705,486,563,518
+offsets:1,1,565,520
+rotate:90
+mat L.anh
+bounds:2545,287,346,287
+offsets:1,1,348,289
+rotate:90
+tay p L.anh
+bounds:2280,214,261,428
+tay t L.anh
+bounds:2227,646,356,403
+than L.anh
+bounds:1853,57,423,425
+offsets:0,45,423,470
+thap
+bounds:4,4,1045,1041
+rotate:90

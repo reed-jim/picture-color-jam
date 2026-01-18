@@ -1,0 +1,33 @@
+atu.png
+size:1256,1132
+filter:Linear,Linear
+pma:true
+ap choang tu
+bounds:4,11,517,395
+rotate:90
+chan p tu
+bounds:1063,455,188,212
+chan t tu
+bounds:1063,455,188,212
+dau tu
+bounds:4,532,594,526
+offsets:1,1,596,528
+rotate:90
+khan tu
+bounds:534,660,466,228
+offsets:1,1,468,230
+rotate:90
+kiem tu
+bounds:403,32,432,496
+offsets:1,1,434,498
+mat tu
+bounds:1036,13,309,191
+offsets:1,1,311,193
+rotate:90
+tay p tu
+bounds:839,326,220,341
+tay t tu
+bounds:839,4,193,318
+than tu
+bounds:766,671,455,439
+rotate:90
