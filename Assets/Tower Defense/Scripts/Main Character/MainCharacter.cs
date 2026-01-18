@@ -85,7 +85,7 @@ public class MainCharacter : MonoBehaviour
             {
                 if (collider2D.GetComponent<BaseEnemy>() != null)
                 {
-                    PlayAnimation(attackAnimation);
+                    skeletonAnimation.AnimationState.SetAnimation(1, attackAnimation, false);
 
                     Tween.Delay(0.8f).OnComplete(() =>
                     {
