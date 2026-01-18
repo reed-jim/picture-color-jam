@@ -15,6 +15,11 @@ MonoBehaviour:
   m_GroupName: Default Local Group
   m_GUID: 7e8d303fa02a93040a1ce94ca6882b06
   m_SerializeEntries:
+  - m_GUID: 245bdb25dd32cb44db75bc7e2154d010
+    m_Address: Menu
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 350a6fe689bfc5e47ad7fe34e3946221
     m_Address: Assets/Scriptable Objects/Block Materials Container/Game Faction Sprite
       Container.asset

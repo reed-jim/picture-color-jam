@@ -21,10 +21,9 @@ public class EnemyManager : Singleton<EnemyManager>
 
     public static event Action winLevelEvent;
 
-    void Start()
+    public void StartSpawnEnemy()
     {
         currentLevelEnemyWaveData = new LevelEnemyWaveData();
-        // currentLevelEnemyWaveData.enemyWaves = levelEnemyWaveData.enemyWaves;
 
         currentLevelEnemyWaveData.enemyWaves = new List<EnemyWave>();
 
@@ -37,7 +36,7 @@ public class EnemyManager : Singleton<EnemyManager>
             {
                 new EnemyTypeAndNumberPair()
                 {
-                    enemyType = (EnemyType)UnityEngine.Random.Range(0, 1),
+                    enemyType = (EnemyType)UnityEngine.Random.Range(0, 2),
                     number = 10
                 }
             };

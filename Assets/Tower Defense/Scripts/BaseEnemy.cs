@@ -1,3 +1,5 @@
+using System.Collections;
+using Saferio.Util.SaferioTween;
 using Spine.Unity;
 using UnityEngine;
 using UnityEngine.AI;
@@ -16,6 +18,8 @@ public class BaseEnemy : MonoBehaviour
 
     [SpineAnimation] public string moveAnimation;
 
+    private float prevPositionX;
+
     void Start()
     {
         var agent = GetComponent<NavMeshAgent>();
@@ -23,6 +27,29 @@ public class BaseEnemy : MonoBehaviour
         agent.updateUpAxis = false;
 
         currentHealth = health;
+
+        StartCoroutine(UpdateDirection());
+    }
+
+    private IEnumerator UpdateDirection()
+    {
+        WaitForSeconds waitForSeconds = new WaitForSeconds(0.5f);
+
+        while (true)
+        {
+            if (transform.position.x > prevPositionX)
+            {
+                transform.localScale = transform.localScale.ChangeX(1);
+            }
+            else
+            {
+                transform.localScale = transform.localScale.ChangeX(-1);
+            }
+
+            prevPositionX = transform.position.x;
+
+            yield return waitForSeconds;
+        }
     }
 
     public void Reset()
