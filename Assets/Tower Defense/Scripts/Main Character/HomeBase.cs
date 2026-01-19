@@ -25,6 +25,13 @@ public class HomeBase : MonoBehaviour
             currentHealth--;
 
             healthBar.ChangeValue(currentHealth / health);
+            ShowDamageText(1);
+
+            ParticleSystem fx = ObjectPoolingEverything.GetFromPool<ParticleSystem>(GameConstants.dieFx);
+
+            fx.transform.position = enemy.transform.position;
+
+            fx.Play();
 
             enemy.gameObject.SetActive(false);
 
@@ -33,5 +40,14 @@ public class HomeBase : MonoBehaviour
                 loseLevelEvent?.Invoke();
             }
         }
+    }
+
+    public void ShowDamageText(float damage)
+    {
+        DamageText damageText = ObjectPoolingEverything.GetFromPool<DamageText>(GameConstants.damageText);
+
+        damageText.gameObject.SetActive(true);
+
+        damageText.ShowText(damage, transform.position + new Vector3(0, 1, 0));
     }
 }

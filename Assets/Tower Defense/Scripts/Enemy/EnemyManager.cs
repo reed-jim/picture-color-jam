@@ -21,6 +21,7 @@ public class EnemyManager : Singleton<EnemyManager>
     public int currentWave;
 
     private bool isSpawnBoss;
+    private bool isPendingWin;
 
     public static event Action winLevelEvent;
 
@@ -166,12 +167,16 @@ public class EnemyManager : Singleton<EnemyManager>
     {
         totalEnemyText.text = $"{GamePersistentVariable.totalEnemy}";
 
-        if (GamePersistentVariable.totalEnemy <= 0)
+        if (GamePersistentVariable.totalEnemy <= 0 && !isPendingWin)
         {
-            Tween.Delay(2).OnComplete(() =>
+            Tween.Delay(5).OnComplete(() =>
             {
                 winLevelEvent?.Invoke();
+
+                isPendingWin = false;
             });
+
+            isPendingWin = true;
         }
     }
 
