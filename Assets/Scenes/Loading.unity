@@ -3525,6 +3525,9 @@ MonoBehaviour:
   lightningFx: {fileID: 5885933331027135771, guid: 7296979f7da21d34683bec01108dc48c, type: 3}
   slime: {fileID: 5881449097057878862, guid: 8b87e1c571e54a04181ba842cd7ef6b6, type: 3}
   ork: {fileID: 5881449097057878862, guid: fa5206366413e424f87825c952bb3fe0, type: 3}
+  bat: {fileID: 0}
+  monster: {fileID: 0}
+  boss: {fileID: 5881449097057878862, guid: afba31214c4b55f40b70f4ad3c45adf1, type: 3}
   hitSound: {fileID: 7606835583939712495, guid: 309406595c4ef2c47ade89c3ac402062, type: 3}
   balistaSound: {fileID: 7606835583939712495, guid: a241cf8f00aa94143b18a9e072132e6a, type: 3}
   cannonSound: {fileID: 7606835583939712495, guid: e6c287bb3d42d3f43a3e4244538e416a, type: 3}

@@ -19,6 +19,8 @@ public class EnemyManager : Singleton<EnemyManager>
     public int timeToNextWave;
     public int currentWave;
 
+    private bool isSpawnBoss;
+
     public static event Action winLevelEvent;
 
     public void StartSpawnEnemy()
@@ -31,13 +33,13 @@ public class EnemyManager : Singleton<EnemyManager>
         {
             EnemyWave enemyWave = new EnemyWave();
 
-            enemyWave.totalSeconds = 10;
+            enemyWave.totalSeconds = 15;
             List<EnemyTypeAndNumberPair> list = new List<EnemyTypeAndNumberPair>
             {
                 new EnemyTypeAndNumberPair()
                 {
                     enemyType = (EnemyType)UnityEngine.Random.Range(0, 2),
-                    number = 8
+                    number = 4 + i
                 }
             };
 
@@ -47,6 +49,7 @@ public class EnemyManager : Singleton<EnemyManager>
         }
 
         timeToNextWave = 10;
+        isSpawnBoss = false;
 
         StartCoroutine(SpawnEnemy());
     }
@@ -104,6 +107,13 @@ public class EnemyManager : Singleton<EnemyManager>
                 isNewWave = true;
             }
 
+            if (!isSpawnBoss && currentWave == currentLevelEnemyWaveData.enemyWaves.Count - 2)
+            {
+                SpawnBoss();
+
+                isSpawnBoss = true;
+            }
+
             yield return waitForSeconds;
         }
     }
@@ -136,6 +146,19 @@ public class EnemyManager : Singleton<EnemyManager>
                 break;
             }
         }
+    }
+
+    private void SpawnBoss()
+    {
+        BaseEnemy enemy = ObjectPoolingEverything.GetFromPool<BaseEnemy>(EnemyType.Boss.ToString());
+        enemy.Reset();
+        enemy.destination = homeBase;
+
+        Vector3 spawnPosition = new Vector3(0, 8, -1);
+        spawnPosition.x = UnityEngine.Random.Range(-0.5f * GamePersistentVariable.screenSizeWorld.x, 0.5f * GamePersistentVariable.screenSizeWorld.x);
+        enemy.transform.position = spawnPosition;
+
+        enemy.MoveToBase();
     }
 
     public void UpdateTotalEnemyCount()

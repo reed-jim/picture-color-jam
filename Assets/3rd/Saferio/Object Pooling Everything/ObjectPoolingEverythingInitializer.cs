@@ -48,6 +48,9 @@ public class ObjectPoolingEverythingInitializer : MonoBehaviour
 
     public GameObject slime;
     public GameObject ork;
+    public GameObject bat;
+    public GameObject monster;
+    public GameObject boss;
 
     public GameObject hitSound;
     public GameObject balistaSound;
@@ -116,6 +119,7 @@ public class ObjectPoolingEverythingInitializer : MonoBehaviour
         RegisterPool<TowerUIItem>(GameConstants.towerUIItem, towerUIItem, 20);
         RegisterPool<BaseEnemy>(EnemyType.Slime.ToString(), slime, 60);
         RegisterPool<BaseEnemy>(EnemyType.Ork.ToString(), ork, 60);
+        RegisterPool<BaseEnemy>(EnemyType.Boss.ToString(), boss, 2);
         RegisterPool<DamageText>(GameConstants.damageText, damageText, 30);
         RegisterPool<ParticleSystem>(GameConstants.hitFx, hitFx, 30);
         RegisterPool<ParticleSystem>(GameConstants.buffFx, buffFx, 12);
