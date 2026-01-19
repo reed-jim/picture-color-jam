@@ -116,10 +116,12 @@ public class ObjectPoolingEverythingInitializer : MonoBehaviour
         RegisterPool<BaseProjectile>(ProjectileType.Lightning.ToString(), lightningProjectile, 10);
         RegisterPool<BaseTower>(TowerType.Arrow.ToString(), towerBalista, 20);
         RegisterPool<BaseTower>(TowerType.Cannon.ToString(), towerCannon, 20);
-        RegisterPool<BaseTower>(TowerType.Spear.ToString(), towerMelee, 20);
+        RegisterPool<BaseTower>(TowerType.Wizard.ToString(), towerMelee, 20);
         RegisterPool<TowerUIItem>(GameConstants.towerUIItem, towerUIItem, 20);
         RegisterPool<BaseEnemy>(EnemyType.Slime.ToString(), slime, 60);
         RegisterPool<BaseEnemy>(EnemyType.Ork.ToString(), ork, 60);
+        RegisterPool<BaseEnemy>(EnemyType.Bat.ToString(), bat, 60);
+        RegisterPool<BaseEnemy>(EnemyType.Monster.ToString(), monster, 60);
         RegisterPool<BaseEnemy>(EnemyType.Boss.ToString(), boss, 2);
         RegisterPool<DamageText>(GameConstants.damageText, damageText, 30);
         RegisterPool<ParticleSystem>(GameConstants.hitFx, hitFx, 30);

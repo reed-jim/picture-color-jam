@@ -6,6 +6,8 @@ public enum EnemyType
 {
     Slime,
     Ork,
+    Bat,
+    Monster,
     Boss
 }
 

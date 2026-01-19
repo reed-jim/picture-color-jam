@@ -29,7 +29,7 @@ public class GameStateMachine : MonoBehaviour
         EnemyManager.winLevelEvent += EnterWinState;
         BlockManager.winLevelEvent += EnterWinState;
         LevelTimeCounter.loseLevelEvent += EnterLoseState;
-        TimingBomb.loseLevelEvent += EnterLoseState;
+        HomeBase.loseLevelEvent += EnterLoseState;
         RevivePopup.reviveEvent += OnRevived;
 
         ChangeState(new GameStatePlaying());
@@ -41,7 +41,7 @@ public class GameStateMachine : MonoBehaviour
         EnemyManager.winLevelEvent -= EnterWinState;
         BlockManager.winLevelEvent -= EnterWinState;
         LevelTimeCounter.loseLevelEvent -= EnterLoseState;
-        TimingBomb.loseLevelEvent -= EnterLoseState;
+        HomeBase.loseLevelEvent -= EnterLoseState;
         RevivePopup.reviveEvent -= OnRevived;
     }
 

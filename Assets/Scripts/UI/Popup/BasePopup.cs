@@ -160,6 +160,11 @@ public class BasePopup : MonoBehaviour
             return;
         }
 
+        if (gameObject.activeSelf)
+        {
+            return;
+        }
+
         ActualShowAfterAd(onCompletedAction);
 
         // if (isShowingInterAdOnInteract && GamePersistentVariable.doubleInterAdsConfig.IsValidShowInterInteractPopup())

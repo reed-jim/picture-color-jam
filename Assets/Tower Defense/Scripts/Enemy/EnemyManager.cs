@@ -40,7 +40,7 @@ public class EnemyManager : Singleton<EnemyManager>
             {
                 new EnemyTypeAndNumberPair()
                 {
-                    enemyType = (EnemyType)UnityEngine.Random.Range(0, 2),
+                    enemyType = (EnemyType)UnityEngine.Random.Range(0, 4),
                     number = 4 + i
                 }
             };
@@ -169,7 +169,7 @@ public class EnemyManager : Singleton<EnemyManager>
 
         if (GamePersistentVariable.totalEnemy <= 0 && !isPendingWin)
         {
-            Tween.Delay(5).OnComplete(() =>
+            Tween.Delay(3).OnComplete(() =>
             {
                 winLevelEvent?.Invoke();
 

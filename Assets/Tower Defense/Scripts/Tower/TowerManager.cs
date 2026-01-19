@@ -36,7 +36,7 @@ public class TowerManager : Singleton<TowerManager>
     {
         placeTowerPreview.gameObject.SetActive(false);
 
-        AddTowerToPool(TowerType.Spear);
+        AddTowerToPool(TowerType.Wizard);
     }
 
     void Update()

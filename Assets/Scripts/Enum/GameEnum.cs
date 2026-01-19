@@ -7,7 +7,7 @@ public class GameEnum : MonoBehaviour
     {
         Arrow,
         Cannon,
-        Spear
+        Wizard
     }
 
     public enum ScreenRoute

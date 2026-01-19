@@ -68,7 +68,7 @@ public class LightningProjectile : BaseProjectile
 
                 SoundManager.Instance.PlaySoundLightningZap();
 
-                Tween.Position(lightningTrail.transform, enemy.transform.position, duration: 0.15f)
+                Tween.Position(lightningTrail.transform, enemy.transform.position, duration: 0.1f)
                 .OnComplete(() =>
                 {
                     enemy.Hit(this);

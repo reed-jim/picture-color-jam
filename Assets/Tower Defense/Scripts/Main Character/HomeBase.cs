@@ -11,9 +11,30 @@ public class HomeBase : MonoBehaviour
 
     public static event Action loseLevelEvent;
 
+    void Awake()
+    {
+        LevelLoader.startLevelEvent += OnLevelLoaded;
+    }
+
+    void OnDestroy()
+    {
+        LevelLoader.startLevelEvent -= OnLevelLoaded;
+    }
+
     void Start()
     {
         currentHealth = health;
+    }
+
+    private void Reset()
+    {
+        currentHealth = health;
+        gameObject.SetActive(true);
+    }
+
+    private void OnLevelLoaded()
+    {
+        Reset();
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -37,6 +58,8 @@ public class HomeBase : MonoBehaviour
 
             if (currentHealth <= 0)
             {
+                gameObject.SetActive(false);
+
                 loseLevelEvent?.Invoke();
             }
         }
