@@ -41,7 +41,26 @@ public class TowerSelectionPopup : BasePopup
 
     public void RandomizeUpgrades()
     {
-        UpgradeOption[] pool = GetRandomItems(upgradeContainer.upgradeOptions, 3);
+        List<UpgradeOption> validUpgrades = new List<UpgradeOption>();
+
+        for (int i = 0; i < upgradeContainer.upgradeOptions.Length; i++)
+        {
+            UpgradeOption upgradeOption = upgradeContainer.upgradeOptions[i];
+
+            if (upgradeOption.isBuff)
+            {
+                if (TowerManager.Instance.towers.Any(item => item.towerType == upgradeOption.towerType))
+                {
+                    validUpgrades.Add(upgradeOption);
+                }
+            }
+            else
+            {
+                validUpgrades.Add(upgradeOption);
+            }
+        }
+
+        UpgradeOption[] pool = GetRandomItems(validUpgrades.ToArray(), 3);
 
         for (int i = 0; i < items.Length; i++)
         {

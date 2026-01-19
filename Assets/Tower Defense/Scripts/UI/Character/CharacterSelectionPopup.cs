@@ -25,6 +25,11 @@ public class CharacterSelectionPopup : BasePopup
         prevButton.onClick.AddListener(Prev);
     }
 
+    void Start()
+    {
+        UpdateNewCharacter();
+    }
+
     private void Select()
     {
         CharacterManager.Instance.SelectMainCharacter();
