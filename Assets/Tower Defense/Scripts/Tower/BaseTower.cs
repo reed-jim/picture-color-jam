@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Saferio.Util.SaferioTween;
 using Spine.Unity;
 using UnityEngine;
 using static GameEnum;
@@ -42,13 +43,9 @@ public class BaseTower : MonoBehaviour
     {
         while (true)
         {
-            Debug.Log("SAFERIO AutoShooting " + name);
-
             if (isActive)
             {
                 Transform target = FindNearestTarget();
-
-                Debug.Log("SAFERIO " + name + "/" + target);
 
                 if (target != null)
                 {
@@ -56,6 +53,15 @@ public class BaseTower : MonoBehaviour
 
                     projectile.transform.position = transform.position;
                     projectile.transform.localScale = Vector3.one;
+
+                    if (target.position.x > transform.position.x)
+                    {
+                        transform.localScale = transform.localScale.ChangeX(1);
+                    }
+                    else
+                    {
+                        transform.localScale = transform.localScale.ChangeX(-1);
+                    }
 
                     projectile.ShootAt(target.position, towerProperty.damage);
 
