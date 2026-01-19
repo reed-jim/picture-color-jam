@@ -193,6 +193,11 @@ public class BoardGeneratorTool : EditorWindow
             ChangePositions();
         }
 
+        if (GUILayout.Button("Paste Properties From Block To Block"))
+        {
+            PastePropertiesFromBlockToBlock();
+        }
+
         if (GUILayout.Button("Paste Properties To Freezed Block"))
         {
             PastePropertiesToFreezedBlock();
@@ -841,6 +846,22 @@ public class BoardGeneratorTool : EditorWindow
     #endregion
 
     #region Freezed Block
+    private void PastePropertiesFromBlockToBlock()
+    {
+        BaseBlock toPasteBlock = Selection.transforms[0].GetComponent<BaseBlock>();
+        BaseBlock toCopyBlock = Selection.transforms[1].GetComponent<BaseBlock>();
+
+        toPasteBlock.gameFactionSpriteContainer = toCopyBlock.gameFactionSpriteContainer;
+        toPasteBlock.originalTileIndexes = toCopyBlock.originalTileIndexes;
+        toPasteBlock.tileIndexes = toCopyBlock.tileIndexes;
+
+        toPasteBlock.GetComponent<BlockFaction>().Faction = toCopyBlock.GetComponent<BlockFaction>().Faction;
+        toPasteBlock.GetComponent<BlockMaterialPropertyBlock>().icon.sprite =
+            toCopyBlock.GetComponent<BlockMaterialPropertyBlock>().icon.sprite;
+
+        EditorUtility.SetDirty(toPasteBlock);
+    }
+
     private void PastePropertiesToFreezedBlock()
     {
         FreezeBlock freezeBlock = Selection.transforms[0].GetComponent<FreezeBlock>();
