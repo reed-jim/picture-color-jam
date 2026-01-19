@@ -91,6 +91,7 @@ public class LightningProjectile : BaseProjectile
         if (!isFound)
         {
             gameObject.SetActive(false);
+            lightningTrail.localPosition = Vector3.zero;
         }
     }
 
