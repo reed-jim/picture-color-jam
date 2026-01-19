@@ -12,6 +12,7 @@ public class SoundManager : MonoBehaviour
     #region PRIVATE FIELD
     private bool _isEnableGameSound;
     private bool _isDelayPlayHitSFX;
+    private bool _isDelayPlayLightningZapSFX;
     #endregion
 
     void Awake()
@@ -206,7 +207,19 @@ public class SoundManager : MonoBehaviour
 
     public void PlaySoundLightningZap()
     {
+        if (_isDelayPlayLightningZapSFX)
+        {
+            return;
+        }
+
+        _isDelayPlayLightningZapSFX = true;
+
         PlaySound(GameConstants.lightningZapSound);
+
+        Tween.Delay(1f).OnComplete(() =>
+        {
+            _isDelayPlayLightningZapSFX = false;
+        });
     }
 
     public void PlaySound(string key)

@@ -63,6 +63,7 @@ public class BaseTower : MonoBehaviour
                         transform.localScale = transform.localScale.ChangeX(-1);
                     }
 
+                    projectile.SetShooterPosition(transform);
                     projectile.ShootAt(target.position, towerProperty.damage);
 
                     SoundManager.Instance.PlaySound(fireSound);

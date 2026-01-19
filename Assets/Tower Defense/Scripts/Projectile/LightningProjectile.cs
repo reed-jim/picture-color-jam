@@ -11,7 +11,8 @@ public class LightningProjectile : BaseProjectile
 
     public List<BaseEnemy> hitTargets;
 
-    public Transform lightningTrail;
+    // public Transform lightningTrail;
+
 
     public override void ShootAt(Vector2 targetPosition, float attackDamage)
     {
@@ -21,6 +22,9 @@ public class LightningProjectile : BaseProjectile
 
         this.attackDamage = attackDamage;
         startAttackDamage = attackDamage;
+
+        gameObject.SetActive(true);
+        transform.position = shooterPosition;
 
         TransitionTo(targetPosition);
     }
@@ -36,45 +40,57 @@ public class LightningProjectile : BaseProjectile
 
         this.attackDamage = Mathf.Max(remaningPower * startAttackDamage, 0);
 
-        Collider2D hit = Physics2D.OverlapCircle(startPosition, 1, hitLayerMask);
+        Collider2D[] hits = Physics2D.OverlapCircleAll(startPosition, 2, hitLayerMask);
 
-        BaseEnemy enemy = hit.GetComponent<BaseEnemy>();
+        bool isFound = false;
 
-        if (enemy != null)
+        for (int i = 0; i < hits.Length; i++)
         {
-            if (hitTargets.Contains(enemy))
-            {
-                lightningTrail.gameObject.SetActive(false);
+            BaseEnemy enemy = hits[i].GetComponent<BaseEnemy>();
 
-                return;
+            if (enemy != null)
+            {
+                if (hitTargets.Contains(enemy))
+                {
+                    continue;
+                }
+                else
+                {
+                    hitTargets.Add(enemy);
+
+                    isFound = true;
+                }
+
+                // lightningTrail.gameObject.SetActive(true);
+
+                SoundManager.Instance.PlaySoundLightningZap();
+
+                Tween.Position(transform, enemy.transform.position, duration: 0.3f)
+                .OnComplete(() =>
+                {
+                    enemy.Hit(this);
+
+                    TransitionTo(enemy.transform.position);
+                });
+
+                break;
+
+                // ParticleSystem fx = ObjectPoolingEverything.GetFromPool<ParticleSystem>(GameConstants.lightningFx);
+
+                // fx.transform.position = enemy.transform.position;
+
+                // fx.Play();
+
+                // Tween.Delay(0.2f).OnComplete(() =>
+                // {
+                //     TransitionTo(enemy.transform.position);
+                // });
             }
-            else
-            {
-                hitTargets.Add(enemy);
-            }
+        }
 
-            lightningTrail.gameObject.SetActive(true);
-
-            SoundManager.Instance.PlaySoundLightningZap();
-
-            Tween.Position(lightningTrail, enemy.transform.position, duration: 0.15f)
-            .OnComplete(() =>
-            {
-                enemy.Hit(this);
-
-                TransitionTo(enemy.transform.position);
-            });
-
-            // ParticleSystem fx = ObjectPoolingEverything.GetFromPool<ParticleSystem>(GameConstants.lightningFx);
-
-            // fx.transform.position = enemy.transform.position;
-
-            // fx.Play();
-
-            // Tween.Delay(0.2f).OnComplete(() =>
-            // {
-            //     TransitionTo(enemy.transform.position);
-            // });
+        if (!isFound)
+        {
+            gameObject.SetActive(false);
         }
     }
 

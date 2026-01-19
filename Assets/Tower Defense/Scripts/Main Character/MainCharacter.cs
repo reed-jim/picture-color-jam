@@ -87,7 +87,7 @@ public class MainCharacter : MonoBehaviour
                 {
                     skeletonAnimation.AnimationState.SetAnimation(1, attackAnimation, false);
 
-                    Tween.Delay(0.8f).OnComplete(() =>
+                    Tween.Delay(0.8f / skeletonAnimation.timeScale).OnComplete(() =>
                     {
                         Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, GamePersistentVariable.mainCharacterStat.attackRadius, checkAttackLayerMask);
 

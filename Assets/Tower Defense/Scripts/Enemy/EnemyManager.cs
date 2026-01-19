@@ -37,7 +37,7 @@ public class EnemyManager : Singleton<EnemyManager>
                 new EnemyTypeAndNumberPair()
                 {
                     enemyType = (EnemyType)UnityEngine.Random.Range(0, 2),
-                    number = 10
+                    number = 8
                 }
             };
 
@@ -122,7 +122,7 @@ public class EnemyManager : Singleton<EnemyManager>
                 enemy.Reset();
                 enemy.destination = homeBase;
 
-                Vector3 spawnPosition = new Vector3(0, 20, -1);
+                Vector3 spawnPosition = new Vector3(0, 12, -1);
                 spawnPosition.x = UnityEngine.Random.Range(-0.5f * GamePersistentVariable.screenSizeWorld.x, 0.5f * GamePersistentVariable.screenSizeWorld.x);
                 enemy.transform.position = spawnPosition;
 

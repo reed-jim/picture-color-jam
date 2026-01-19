@@ -7,6 +7,13 @@ public class BaseProjectile : MonoBehaviour
     public float force;
     public float attackDamage;
 
+    public Vector3 shooterPosition;
+
+    public void SetShooterPosition(Transform shooter)
+    {
+        shooterPosition = shooter.position;
+    }
+
     public virtual void ShootAt(Vector2 targetPosition, float attackDamage)
     {
         Vector2 direction = (targetPosition - (Vector2)transform.position).normalized;
