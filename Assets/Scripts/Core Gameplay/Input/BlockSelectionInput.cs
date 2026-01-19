@@ -231,6 +231,21 @@ public class BlockSelectionInput : MonoBehaviour
 
         startVacumnEvent?.Invoke();
 
+        // Touch FX
+        try
+        {
+            Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+
+            RaycastHit2D hit = Physics2D.GetRayIntersection(ray, Mathf.Infinity, LayerMask.GetMask("Default"));
+
+            VFXManager.Instance.PlayTouchFX(hit.point);
+        }
+        catch (Exception)
+        {
+
+        }
+        //
+
         vacumn.Vacumn(onCompletedAction: (vacumnPosition) =>
         {
             Vector3 vacumnHead = vacumnPosition + new Vector3(0, 0, 8);
