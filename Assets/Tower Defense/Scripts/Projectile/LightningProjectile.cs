@@ -11,6 +11,8 @@ public class LightningProjectile : BaseProjectile
 
     public List<BaseEnemy> hitTargets;
 
+    public Transform lightningTrail;
+
     public override void ShootAt(Vector2 targetPosition, float attackDamage)
     {
         remaningPower = 1;
@@ -24,6 +26,59 @@ public class LightningProjectile : BaseProjectile
     }
 
     public void TransitionTo(Vector2 startPosition)
+    {
+        remaningPower -= 0.1f;
+
+        if (remaningPower <= 0)
+        {
+            return;
+        }
+
+        this.attackDamage = Mathf.Max(remaningPower * startAttackDamage, 0);
+
+        Collider2D hit = Physics2D.OverlapCircle(startPosition, 1, hitLayerMask);
+
+        BaseEnemy enemy = hit.GetComponent<BaseEnemy>();
+
+        if (enemy != null)
+        {
+            if (hitTargets.Contains(enemy))
+            {
+                lightningTrail.gameObject.SetActive(false);
+
+                return;
+            }
+            else
+            {
+                hitTargets.Add(enemy);
+            }
+
+            lightningTrail.gameObject.SetActive(true);
+
+            SoundManager.Instance.PlaySoundLightningZap();
+
+            Tween.Position(lightningTrail, enemy.transform.position, duration: 0.15f)
+            .OnComplete(() =>
+            {
+                enemy.Hit(this);
+
+                TransitionTo(enemy.transform.position);
+            });
+
+            // ParticleSystem fx = ObjectPoolingEverything.GetFromPool<ParticleSystem>(GameConstants.lightningFx);
+
+            // fx.transform.position = enemy.transform.position;
+
+            // fx.Play();
+
+            // Tween.Delay(0.2f).OnComplete(() =>
+            // {
+            //     TransitionTo(enemy.transform.position);
+            // });
+        }
+    }
+
+    public void TransitionToAll(Vector2 startPosition)
     {
         remaningPower -= 0.1f;
 

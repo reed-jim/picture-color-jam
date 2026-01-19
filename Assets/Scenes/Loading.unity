@@ -3529,6 +3529,8 @@ MonoBehaviour:
   balistaSound: {fileID: 7606835583939712495, guid: a241cf8f00aa94143b18a9e072132e6a, type: 3}
   cannonSound: {fileID: 7606835583939712495, guid: e6c287bb3d42d3f43a3e4244538e416a, type: 3}
   bladeTowerSound: {fileID: 7606835583939712495, guid: 9cae6f9b94cd18c40a2bf0327c21dfb4, type: 3}
+  lightningCastSound: {fileID: 7606835583939712495, guid: 2500d32dca281744f96f5a6eb9423e45, type: 3}
+  lightningZapSound: {fileID: 7606835583939712495, guid: 087fdaf887c10ed4aacb83fd401675f8, type: 3}
   equipmentUIItem: {fileID: 8533393535248770324, guid: 5854501c3f5c39542a958eab6f4c4895, type: 3}
 --- !u!1 &799918446
 GameObject:

@@ -53,6 +53,8 @@ public class ObjectPoolingEverythingInitializer : MonoBehaviour
     public GameObject balistaSound;
     public GameObject cannonSound;
     public GameObject bladeTowerSound;
+    public GameObject lightningCastSound;
+    public GameObject lightningZapSound;
 
     public GameObject equipmentUIItem;
     #endregion
@@ -122,7 +124,9 @@ public class ObjectPoolingEverythingInitializer : MonoBehaviour
         RegisterPool<AudioSource>(GameConstants.hitSound, hitSound, 12);
         RegisterPool<AudioSource>(GameConstants.balistaSound, balistaSound, 12);
         RegisterPool<AudioSource>(GameConstants.cannonSound, cannonSound, 12);
-        RegisterPool<AudioSource>(GameConstants.bladeTowerSound, hitSound, 12);
+        RegisterPool<AudioSource>(GameConstants.lightningCastSound, lightningCastSound, 12);
+        RegisterPool<AudioSource>(GameConstants.lightningZapSound, lightningZapSound, 12);
+        // RegisterPool<AudioSource>(GameConstants.bladeTowerSound, hitSound, 12);
 
         RegisterPool<EquipmentUIItem>(GameConstants.equipmentUIItem, equipmentUIItem, 24);
     }

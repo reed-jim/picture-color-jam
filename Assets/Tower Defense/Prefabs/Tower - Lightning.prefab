@@ -323,7 +323,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4096
   attackAnimation: acttack
-  fireSound: cannonSound
+  fireSound: lightningCastSound
 --- !u!212 &6816314308020197075
 SpriteRenderer:
   serializedVersion: 2

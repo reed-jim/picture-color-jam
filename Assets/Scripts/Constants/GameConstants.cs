@@ -201,5 +201,7 @@ public static class GameConstants
     public static string bladeTowerSound = "bladeTowerSound";
     public static string equipmentUIItem = "equipmentUIItem";
     public static string lightningFx = "lightningFx";
+    public static string lightningCastSound = "lightningCastSound";
+    public static string lightningZapSound = "lightningZapSound";
     #endregion
 }

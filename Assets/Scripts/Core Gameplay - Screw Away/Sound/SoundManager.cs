@@ -204,6 +204,11 @@ public class SoundManager : MonoBehaviour
         });
     }
 
+    public void PlaySoundLightningZap()
+    {
+        PlaySound(GameConstants.lightningZapSound);
+    }
+
     public void PlaySound(string key)
     {
         if (!_isEnableGameSound)
