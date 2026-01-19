@@ -97,7 +97,7 @@ public class BaseEnemy : MonoBehaviour
             Die();
         }
 
-        if (projectile is not ExplosiveProjectile)
+        if (projectile is not ExplosiveProjectile && projectile is not LightningProjectile)
         {
             projectile.gameObject.SetActive(false);
         }

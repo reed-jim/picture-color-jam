@@ -11,8 +11,7 @@ public class LightningProjectile : BaseProjectile
 
     public List<BaseEnemy> hitTargets;
 
-    // public Transform lightningTrail;
-
+    public Transform lightningTrail;
 
     public override void ShootAt(Vector2 targetPosition, float attackDamage)
     {
@@ -25,6 +24,7 @@ public class LightningProjectile : BaseProjectile
 
         gameObject.SetActive(true);
         transform.position = shooterPosition;
+        lightningTrail.localPosition = Vector3.zero;
 
         TransitionTo(targetPosition);
     }
@@ -61,11 +61,11 @@ public class LightningProjectile : BaseProjectile
                     isFound = true;
                 }
 
-                // lightningTrail.gameObject.SetActive(true);
+                lightningTrail.gameObject.SetActive(true);
 
                 SoundManager.Instance.PlaySoundLightningZap();
 
-                Tween.Position(transform, enemy.transform.position, duration: 0.3f)
+                Tween.Position(lightningTrail.transform, enemy.transform.position, duration: 0.3f)
                 .OnComplete(() =>
                 {
                     enemy.Hit(this);

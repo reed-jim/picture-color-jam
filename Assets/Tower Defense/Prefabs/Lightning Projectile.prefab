@@ -49,6 +49,7 @@ MonoBehaviour:
   projectileRigidbody: {fileID: 302038915661101669}
   force: 0
   attackDamage: 0
+  shooterPosition: {x: 0, y: 0, z: 0}
   hitLayerMask:
     serializedVersion: 2
     m_Bits: 4096
@@ -101,15 +102,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1713666824295229142, guid: 9b6c337ff80454b4b8c30f73ddad95ee, type: 3}
       propertyPath: m_LocalScale.x
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1713666824295229142, guid: 9b6c337ff80454b4b8c30f73ddad95ee, type: 3}
       propertyPath: m_LocalScale.y
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1713666824295229142, guid: 9b6c337ff80454b4b8c30f73ddad95ee, type: 3}
       propertyPath: m_LocalScale.z
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1713666824295229142, guid: 9b6c337ff80454b4b8c30f73ddad95ee, type: 3}
       propertyPath: m_LocalPosition.x
