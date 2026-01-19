@@ -101,7 +101,7 @@ public class BlockSelectionInput : MonoBehaviour
             return;
         }
 
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
 
         RaycastHit2D hit = Physics2D.GetRayIntersection(ray, Mathf.Infinity, LayerMask.GetMask("Default"));
 
@@ -137,7 +137,7 @@ public class BlockSelectionInput : MonoBehaviour
             return null;
         }
 
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
 
         RaycastHit2D hit = Physics2D.GetRayIntersection(ray, Mathf.Infinity, LayerMask.GetMask("Default"));
 

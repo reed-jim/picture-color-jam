@@ -1198,6 +1198,21 @@ public class BaseBlock : MonoBehaviour
 
         enableInputEvent?.Invoke(false);
 
+        // Touch FX
+        try
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+            RaycastHit2D hit = Physics2D.GetRayIntersection(ray, Mathf.Infinity, LayerMask.GetMask("Default"));
+
+            VFXManager.Instance.PlayTouchFX(hit.point);
+        }
+        catch (Exception)
+        {
+
+        }
+        //
+
         hammer.HitTarget(transform, onCompletedAction: () =>
         {
             Tween.ShakeScale(transform, 1.2f * Vector3.one, duration: 0.3f).OnComplete(() =>

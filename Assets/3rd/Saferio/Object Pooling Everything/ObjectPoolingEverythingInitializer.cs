@@ -37,6 +37,7 @@ public class ObjectPoolingEverythingInitializer : MonoBehaviour
     [SerializeField] private GameObject blockMergeFx;
     [SerializeField] private GameObject blockBreakFx;
     [SerializeField] private GameObject magnetFx;
+    [SerializeField] private GameObject touchFx;
 
     [SerializeField] private GameObject taskItemUIPrefab;
 
@@ -94,6 +95,7 @@ public class ObjectPoolingEverythingInitializer : MonoBehaviour
         RegisterPool<ParticleSystem>(GameConstants.blockMergeFx, blockMergeFx, 16);
         RegisterPool<ParticleSystem>(GameConstants.blockBreakFx, blockBreakFx, 5);
         RegisterPool<ParticleSystem>(GameConstants.magnetFx, magnetFx, 5);
+        RegisterPool<ParticleSystem>(GameConstants.touchFx, touchFx, 5);
         RegisterPool<SpriteRenderer>(GameConstants.BOOSTER_CLOCK_ITEM, clockBoosterItemPrefab, 2);
         RegisterPool<BaseBlock>(GameConstants.block1x1, block1x1Prefab, 30);
     }

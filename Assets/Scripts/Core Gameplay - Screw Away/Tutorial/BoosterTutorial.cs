@@ -9,8 +9,8 @@ using static GameEnum;
 public class BoosterTutorial : MonoBehaviour
 {
     [SerializeField] private Button claimButton;
-    [SerializeField] private Button boosterButton;
-    [SerializeField] private CanvasGroup canvasGroup;
+    [SerializeField] protected Button boosterButton;
+    [SerializeField] protected CanvasGroup canvasGroup;
     [SerializeField] private CanvasGroup canvasGroupBooster;
 
     [SerializeField] private RectTransform tutorialHand;
@@ -31,6 +31,23 @@ public class BoosterTutorial : MonoBehaviour
 
         canvasGroupBooster.alpha = 0;
         canvasGroupBooster.interactable = false;
+
+        RegisterMoreEvent();
+    }
+
+    void OnDestroy()
+    {
+        UnregisterMoreEvent();
+    }
+
+    protected virtual void RegisterMoreEvent()
+    {
+
+    }
+
+    protected virtual void UnregisterMoreEvent()
+    {
+
     }
 
     private void Claim()
@@ -91,9 +108,14 @@ public class BoosterTutorial : MonoBehaviour
         Tween.Alpha(blackBackground, 0, duration: 0.3f);
         Tween.Alpha(tutorialHandImage, 0, duration: 0.3f).OnComplete(() =>
         {
-            gameObject.SetActive(false);
+            OnBoosterClick();
         });
 
         useBoosterType?.Invoke(boosterType);
+    }
+
+    protected virtual void OnBoosterClick()
+    {
+        gameObject.SetActive(false);
     }
 }

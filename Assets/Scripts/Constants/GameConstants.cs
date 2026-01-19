@@ -22,6 +22,7 @@ public static class GameConstants
     public static string blockMergeFx = "blockMergeFx";
     public static string blockBreakFx = "blockBreakFx";
     public static string magnetFx = "magnetFx";
+    public static string touchFx = "touchFx";
     #endregion
 
     #region COMMON TEXT

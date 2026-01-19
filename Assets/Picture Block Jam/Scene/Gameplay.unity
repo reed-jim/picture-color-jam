@@ -1193,6 +1193,7 @@ Transform:
   - {fileID: 703473666}
   - {fileID: 758211007}
   - {fileID: 300626598}
+  - {fileID: 1019326735}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &244685027
@@ -3557,6 +3558,50 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7163538139800953621, guid: ff595a133fba26b409af1b1dc3314be9, type: 3}
   m_PrefabInstance: {fileID: 995976757}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1019326734
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1019326735}
+  - component: {fileID: 1019326736}
+  m_Layer: 0
+  m_Name: VFX Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1019326735
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1019326734}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 214764618}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1019326736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1019326734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93c485bc2432e8749b65530e94b53543, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VFXManager
 --- !u!114 &1027620255 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7514876032806078328, guid: 7d9b9d6ba328b6a48bab2d8b3a7ab757, type: 3}
