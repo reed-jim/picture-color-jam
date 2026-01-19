@@ -1,0 +1,13 @@
+dơi.png
+size:988,628
+filter:Linear,Linear
+pma:true
+canh_1
+bounds:753,392,231,231
+offsets:0,0,231,232
+canh_2
+bounds:753,157,231,231
+offsets:0,0,231,232
+than_doi
+bounds:4,4,619,745
+rotate:90

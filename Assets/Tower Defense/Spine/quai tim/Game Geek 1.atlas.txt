@@ -1,0 +1,18 @@
+Game Geek 1.png
+size:916,548
+filter:Linear,Linear
+pma:true
+chan_tim_1
+bounds:673,37,111,143
+offsets:1,1,113,145
+chan_tim_2
+bounds:788,34,97,146
+offsets:21,1,119,148
+tay_tim_1
+bounds:811,231,100,312
+tay_tim__2
+bounds:673,184,134,359
+than
+bounds:4,4,539,665
+offsets:0,51,539,716
+rotate:90
