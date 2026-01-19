@@ -251,6 +251,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpecialLevelTutorial
   canvasGroup: {fileID: 3241305165359538613}
+  glow: {fileID: 935120065979816940}
   continueButton: {fileID: 2689841342983055627}
 --- !u!223 &9147483807126020149
 Canvas:
