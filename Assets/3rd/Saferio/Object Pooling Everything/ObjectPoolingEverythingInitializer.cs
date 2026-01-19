@@ -43,6 +43,7 @@ public class ObjectPoolingEverythingInitializer : MonoBehaviour
     public GameObject towerUIItem;
     public GameObject damageText;
     public GameObject hitFx;
+    public GameObject dieFx;
     public GameObject buffFx;
     public GameObject lightningFx;
 
@@ -122,6 +123,7 @@ public class ObjectPoolingEverythingInitializer : MonoBehaviour
         RegisterPool<BaseEnemy>(EnemyType.Boss.ToString(), boss, 2);
         RegisterPool<DamageText>(GameConstants.damageText, damageText, 30);
         RegisterPool<ParticleSystem>(GameConstants.hitFx, hitFx, 30);
+        RegisterPool<ParticleSystem>(GameConstants.dieFx, dieFx, 20);
         RegisterPool<ParticleSystem>(GameConstants.buffFx, buffFx, 12);
         RegisterPool<ParticleSystem>(GameConstants.lightningFx, lightningFx, 12);
 

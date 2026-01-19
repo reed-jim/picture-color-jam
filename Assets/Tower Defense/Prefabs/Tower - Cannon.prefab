@@ -187,12 +187,13 @@ MonoBehaviour:
     damage: 0
     baseAttackRadius: 8
     attackRadius: 0
-    baseRateOfFire: 0.5
+    baseRateOfFire: 1
     rateOfFire: 0
   projectileType: 1
   targetLayer:
     serializedVersion: 2
     m_Bits: 4096
+  delayAttack: 0.85
   attackAnimation: acttack
   fireSound: cannonSound
 --- !u!212 &6816314308020197075

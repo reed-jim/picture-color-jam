@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using PrimeTween;
 using TMPro;
 using UnityEngine;
 
@@ -167,7 +168,10 @@ public class EnemyManager : Singleton<EnemyManager>
 
         if (GamePersistentVariable.totalEnemy <= 0)
         {
-            winLevelEvent?.Invoke();
+            Tween.Delay(2).OnComplete(() =>
+            {
+                winLevelEvent?.Invoke();
+            });
         }
     }
 

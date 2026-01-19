@@ -15,31 +15,43 @@ public class ExplosiveProjectile : BaseProjectile
         rb.gravityScale = gravityScale;
     }
 
-    public override void ShootAt(Vector2 targetPosition, float attackDamage)
+    // public override void ShootAt(Vector2 targetPosition, float attackDamage)
+    // {
+    //     try
+    //     {
+    //         Vector2 direction = targetPosition - (Vector2)transform.position;
+
+    //         float height = 2f;
+
+    //         Vector2 velocity = CalculateParabolaVelocity(direction, height);
+    //         rb.linearVelocity = velocity;
+    //     }
+    //     catch (System.Exception)
+    //     {
+
+    //     }
+
+    //     this.attackDamage = attackDamage;
+
+    //     StartCoroutine(Explode());
+    // }
+
+    protected override void OnCollisionEnter2D(Collision2D collision)
     {
-        try
-        {
-            Vector2 direction = targetPosition - (Vector2)transform.position;
+        base.OnCollisionEnter2D(collision);
 
-            float height = 2f;
-
-            Vector2 velocity = CalculateParabolaVelocity(direction, height);
-            rb.linearVelocity = velocity;
-        }
-        catch (System.Exception)
-        {
-
-        }
-
-        this.attackDamage = attackDamage;
-
-        StartCoroutine(Explode());
+        ExplodeNow();
     }
 
     private IEnumerator Explode()
     {
         yield return new WaitForSeconds(0.8f);
 
+        ExplodeNow();
+    }
+
+    private void ExplodeNow()
+    {
         Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, 1, hitLayerMask);
 
         foreach (var hit in hits)

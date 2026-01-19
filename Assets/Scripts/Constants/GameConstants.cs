@@ -194,6 +194,7 @@ public static class GameConstants
     public static string basicEnemy = "basicEnemy";
     public static string damageText = "damageText";
     public static string hitFx = "hitFx";
+    public static string dieFx = "dieFx";
     public static string buffFx = "buffFx";
     public static string hitSound = "hitSound";
     public static string balistaSound = "balistaSound";

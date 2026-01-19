@@ -312,7 +312,7 @@ MonoBehaviour:
   skeletonAnimation: {fileID: 4201212251420124416}
   lazyHealthBar: {fileID: 3542121043026390379}
   attackDamage: 10
-  health: 100
+  health: 500
   currentHealth: 0
   moveAnimation: Move
 --- !u!195 &3301157782970798693

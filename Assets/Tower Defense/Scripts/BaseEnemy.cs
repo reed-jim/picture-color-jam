@@ -135,7 +135,7 @@ public class BaseEnemy : MonoBehaviour
 
     public void Die()
     {
-        ParticleSystem fx = ObjectPoolingEverything.GetFromPool<ParticleSystem>(GameConstants.hitFx);
+        ParticleSystem fx = ObjectPoolingEverything.GetFromPool<ParticleSystem>(GameConstants.dieFx);
 
         fx.transform.position = transform.position;
 

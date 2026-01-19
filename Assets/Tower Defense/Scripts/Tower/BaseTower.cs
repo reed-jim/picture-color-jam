@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using PrimeTween;
 using Saferio.Util.SaferioTween;
 using Spine.Unity;
 using UnityEngine;
@@ -23,6 +24,7 @@ public class BaseTower : MonoBehaviour
     public TowerProperty towerProperty;
     public ProjectileType projectileType;
     public LayerMask targetLayer;
+    public float delayAttack;
 
     [SpineAnimation] public string attackAnimation;
     public string fireSound;
@@ -49,30 +51,33 @@ public class BaseTower : MonoBehaviour
 
                 if (target != null)
                 {
-                    BaseProjectile projectile = ObjectPoolingEverything.GetFromPool<BaseProjectile>(projectileType.ToString());
-
-                    projectile.transform.position = transform.position;
-                    projectile.transform.localScale = Vector3.one;
-
-                    if (target.position.x > transform.position.x)
+                    Tween.Delay(delayAttack).OnComplete(() =>
                     {
-                        transform.localScale = transform.localScale.ChangeX(1);
-                    }
-                    else
-                    {
-                        transform.localScale = transform.localScale.ChangeX(-1);
-                    }
+                        BaseProjectile projectile = ObjectPoolingEverything.GetFromPool<BaseProjectile>(projectileType.ToString());
 
-                    projectile.SetShooterPosition(transform);
-                    projectile.ShootAt(target.position, towerProperty.damage);
+                        projectile.transform.position = transform.position;
+                        projectile.transform.localScale = Vector3.one;
 
-                    SoundManager.Instance.PlaySound(fireSound);
+                        if (target.position.x > transform.position.x)
+                        {
+                            transform.localScale = transform.localScale.ChangeX(1);
+                        }
+                        else
+                        {
+                            transform.localScale = transform.localScale.ChangeX(-1);
+                        }
+
+                        projectile.SetShooterPosition(transform);
+                        projectile.ShootAt(target.position, towerProperty.damage);
+
+                        SoundManager.Instance.PlaySound(fireSound);
+                    });
 
                     skeletonAnimation.AnimationState.SetAnimation(0, attackAnimation, false);
                 }
             }
 
-            yield return new WaitForSeconds(1f / towerProperty.rateOfFire);
+            yield return new WaitForSeconds(1f / towerProperty.rateOfFire + delayAttack);
         }
     }
 

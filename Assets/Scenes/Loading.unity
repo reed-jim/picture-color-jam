@@ -3520,7 +3520,8 @@ MonoBehaviour:
   towerMelee: {fileID: 5434978929448508002, guid: 57a3b8fba53f05c4785789f09f059755, type: 3}
   towerUIItem: {fileID: 4186707232104964077, guid: 641b9230980a2774cb89d56f295e5f51, type: 3}
   damageText: {fileID: 7349725410979463786, guid: 39ae7f863dca2dd4da78e4c7b5d6fa8a, type: 3}
-  hitFx: {fileID: 1596968038650794416, guid: cb034de192fc63c489a02fd4c843bfde, type: 3}
+  hitFx: {fileID: 7458652613773166844, guid: 4473d9d85f7eabe4eb91877fabdd69cb, type: 3}
+  dieFx: {fileID: 1596968038650794416, guid: cb034de192fc63c489a02fd4c843bfde, type: 3}
   buffFx: {fileID: 4021103657954561961, guid: 5c755f9bc5253ea418e919994537dcc7, type: 3}
   lightningFx: {fileID: 5885933331027135771, guid: 7296979f7da21d34683bec01108dc48c, type: 3}
   slime: {fileID: 5881449097057878862, guid: 8b87e1c571e54a04181ba842cd7ef6b6, type: 3}

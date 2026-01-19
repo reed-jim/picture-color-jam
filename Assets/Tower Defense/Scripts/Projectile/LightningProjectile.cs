@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using PrimeTween;
 using UnityEngine;
 
@@ -42,6 +43,8 @@ public class LightningProjectile : BaseProjectile
 
         Collider2D[] hits = Physics2D.OverlapCircleAll(startPosition, 2, hitLayerMask);
 
+        hits = hits.OrderBy(item => Vector3.Distance(item.transform.position, shooterPosition)).ToArray();
+
         bool isFound = false;
 
         for (int i = 0; i < hits.Length; i++)
@@ -65,7 +68,7 @@ public class LightningProjectile : BaseProjectile
 
                 SoundManager.Instance.PlaySoundLightningZap();
 
-                Tween.Position(lightningTrail.transform, enemy.transform.position, duration: 0.3f)
+                Tween.Position(lightningTrail.transform, enemy.transform.position, duration: 0.2f)
                 .OnComplete(() =>
                 {
                     enemy.Hit(this);
