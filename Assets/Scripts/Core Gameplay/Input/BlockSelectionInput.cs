@@ -194,7 +194,7 @@ public class BlockSelectionInput : MonoBehaviour
             return;
         }
 
-        if (!block.IsValidToMerge())
+        if (!block.IsValidToMerge() || block.GetComponent<AvoidHammerBooster>() != null)
         {
             showNotificationEvent?.Invoke(GameConstants.WARNING, GameConstants.cannotUseBooster);
 
