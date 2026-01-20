@@ -1292,7 +1292,7 @@ public class BaseBlock : MonoBehaviour
 
         sequence.Chain(Tween.PositionZ(transform, startPosition.z, duration: 0.6f));
         sequence.Group(Tween.ShakeScale(transform, strength: 0.15f * Vector3.one, duration: 0.6f));
-        sequence.Chain(Tween.Position(transform, startPosition - 1.5f * direction, duration: 0.5f));
+        sequence.Chain(Tween.Position(transform, startPosition - 1f * direction, duration: 0.5f));
         sequence.Chain(Tween.Position(transform, endPosition, duration: 0.3f))
         .OnComplete(() =>
         {

@@ -128,9 +128,7 @@ public class WinPopup : BasePopup
             {
                 if (_isCollectCoinRemoteConfig)
                 {
-                    userResourcesObserver.UserResources.CoinQuantity += numCoin - _currentCollectedCoin;
-
-                    userResourcesObserver.Save();
+                    userResourcesObserver.ChangeCoin(numCoin - _currentCollectedCoin);
 
                     _currentCollectedCoin += numCoin;
                 }
