@@ -196,6 +196,7 @@ public static class GameConstants
     public static string hitFx = "hitFx";
     public static string dieFx = "dieFx";
     public static string buffFx = "buffFx";
+    public static string placeTowerFx = "placeTowerFx";
     public static string hitSound = "hitSound";
     public static string balistaSound = "balistaSound";
     public static string cannonSound = "cannonSound";

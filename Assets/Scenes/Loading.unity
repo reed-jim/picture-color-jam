@@ -3524,6 +3524,7 @@ MonoBehaviour:
   dieFx: {fileID: 1596968038650794416, guid: cb034de192fc63c489a02fd4c843bfde, type: 3}
   buffFx: {fileID: 4021103657954561961, guid: 5c755f9bc5253ea418e919994537dcc7, type: 3}
   lightningFx: {fileID: 5885933331027135771, guid: 7296979f7da21d34683bec01108dc48c, type: 3}
+  placeTowerFx: {fileID: 1147590679914176, guid: 9b69a83a2d393a84f8a860f9966c861a, type: 3}
   slime: {fileID: 5881449097057878862, guid: fa54f95dd9a5beb4c9fc7dafa08c7f18, type: 3}
   ork: {fileID: 5881449097057878862, guid: dc08001924225a0499f131a1df1170d8, type: 3}
   bat: {fileID: 5881449097057878862, guid: 8b87e1c571e54a04181ba842cd7ef6b6, type: 3}

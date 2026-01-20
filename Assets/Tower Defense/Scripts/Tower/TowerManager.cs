@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using CandyCoded.HapticFeedback;
 using PrimeTween;
 using Saferio.Util.SaferioTween;
 using UnityEngine;
@@ -108,10 +109,25 @@ public class TowerManager : Singleton<TowerManager>
         }
         else
         {
-            tower.isActive = true;
-            tower.StartAutoShooting();
+            Vector3 currentPosition = tower.transform.position;
 
-            towers.Add(tower);
+            Tween.LocalPositionY(tower.transform, currentPosition.y + 0.5f, duration: 0.15f)
+            .OnComplete(() =>
+            {
+                Tween.LocalPositionY(tower.transform, currentPosition.y, duration: 0.15f)
+                .OnComplete(() =>
+                {
+                    tower.isActive = true;
+                    tower.StartAutoShooting();
+
+                    towers.Add(tower);
+
+                    VFXManager.Instance.PlayPlaceTowerFX(tower.transform.position);
+                    SoundManager.Instance.PlaySoundHit();
+
+                    HapticFeedback.MediumFeedback();
+                });
+            });
 
             ObjectPoolingEverything.ReturnToPool(GameConstants.towerUIItem, towerUIItem.gameObject);
         }

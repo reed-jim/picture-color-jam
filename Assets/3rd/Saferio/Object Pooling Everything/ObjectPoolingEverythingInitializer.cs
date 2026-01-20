@@ -46,6 +46,7 @@ public class ObjectPoolingEverythingInitializer : MonoBehaviour
     public GameObject dieFx;
     public GameObject buffFx;
     public GameObject lightningFx;
+    public GameObject placeTowerFx;
 
     public GameObject slime;
     public GameObject ork;
@@ -128,6 +129,7 @@ public class ObjectPoolingEverythingInitializer : MonoBehaviour
         RegisterPool<ParticleSystem>(GameConstants.dieFx, dieFx, 20);
         RegisterPool<ParticleSystem>(GameConstants.buffFx, buffFx, 12);
         RegisterPool<ParticleSystem>(GameConstants.lightningFx, lightningFx, 12);
+        RegisterPool<ParticleSystem>(GameConstants.placeTowerFx, placeTowerFx, 2);
 
         RegisterPool<AudioSource>(GameConstants.hitSound, hitSound, 12);
         RegisterPool<AudioSource>(GameConstants.balistaSound, balistaSound, 12);
