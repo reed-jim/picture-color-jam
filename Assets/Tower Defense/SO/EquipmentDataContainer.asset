@@ -53,6 +53,22 @@ MonoBehaviour:
     damage: 1999
     attackSpeed: 3.99
     attackRadius: 2
+  - icon: {fileID: 21300000, guid: fd7a49f9a4e734149b851d1c25789be2, type: 3}
+    equipmentType: 2
+    rarity: 6
+    isOwned: 0
+    isEquiped: 0
+    damage: 1999
+    attackSpeed: 3.99
+    attackRadius: 2
+  - icon: {fileID: 21300000, guid: 6b884181db51ad544ac3ed792658a1e8, type: 3}
+    equipmentType: 3
+    rarity: 6
+    isOwned: 0
+    isEquiped: 0
+    damage: 1999
+    attackSpeed: 3.99
+    attackRadius: 2
   rarityBackgrounds:
   - {fileID: 21300000, guid: a63292a219b29834f8c1efc3cde280e5, type: 2}
   - {fileID: 21300000, guid: 2a4f9242a36a5a64589dda414696b715, type: 2}

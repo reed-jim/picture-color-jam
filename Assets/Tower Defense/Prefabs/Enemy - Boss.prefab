@@ -311,7 +311,7 @@ MonoBehaviour:
   destination: {fileID: 0}
   skeletonAnimation: {fileID: 4201212251420124416}
   lazyHealthBar: {fileID: 3542121043026390379}
-  attackDamage: 10
+  attackDamage: 5
   health: 500
   currentHealth: 0
   moveAnimation: Move
@@ -450,7 +450,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: c0cd552a4824d19419c609bdd02a8e74, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
