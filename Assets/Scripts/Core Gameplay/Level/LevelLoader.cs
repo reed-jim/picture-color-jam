@@ -133,6 +133,7 @@ public class LevelLoader : MonoBehaviour
                 navMeshSurface.BuildNavMesh();
 
                 EnemyManager.Instance.StartSpawnEnemy();
+                TowerManager.Instance.Reset();
 
                 // MANUAL CAMERA FOV MODIFIER
                 // LevelCameraModifier levelCameraModifier = level.GetComponent<LevelCameraModifier>();

@@ -45,6 +45,22 @@ public class TowerManager : Singleton<TowerManager>
         SelectTower();
     }
 
+    public void Reset()
+    {
+        for (int i = 0; i < towers.Count; i++)
+        {
+            ObjectPoolingEverything.ReturnToPool(towers[i].towerType.ToString(), towers[i].gameObject);
+        }
+
+        for (int i = 0; i < towerPool.Count; i++)
+        {
+            ObjectPoolingEverything.ReturnToPool(GameConstants.towerUIItem, towerPool[i].gameObject);
+        }
+
+        towers = new List<BaseTower>();
+        towerPool = new List<TowerUIItem>();
+    }
+
     public void PlaceTower(TowerUIItem towerUIItem)
     {
         StartCoroutine(PlacingTower(towerUIItem));
