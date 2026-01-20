@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: MainCharacterData 1
   m_EditorClassIdentifier: Assembly-CSharp::MainCharacterData
   icon: {fileID: 21300000, guid: 7438f858446606b42bd613de4377fd6d, type: 3}
-  characterName: Lam Anh
+  characterName: "Anh L\xE2m Anh"
   videoUrl: "Assets/StreamingAssets/Videos/anh L\xE2m Anh chuy\u1EC3n \u0111\u1ED9ng_1.mp4"
