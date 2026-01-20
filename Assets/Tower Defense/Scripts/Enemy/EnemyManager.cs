@@ -23,6 +23,8 @@ public class EnemyManager : Singleton<EnemyManager>
     private bool isSpawnBoss;
     public bool isPendingWin;
 
+    private Coroutine spawnEnemyCoroutine;
+
     public static event Action winLevelEvent;
 
     public void StartSpawnEnemy()
@@ -35,7 +37,7 @@ public class EnemyManager : Singleton<EnemyManager>
         {
             EnemyWave enemyWave = new EnemyWave();
 
-            enemyWave.totalSeconds = 15;
+            enemyWave.totalSeconds = 20;
             List<EnemyTypeAndNumberPair> list = new List<EnemyTypeAndNumberPair>
             {
                 new EnemyTypeAndNumberPair()
@@ -52,8 +54,15 @@ public class EnemyManager : Singleton<EnemyManager>
 
         timeToNextWave = 10;
         isSpawnBoss = false;
+        currentWave = 0;
+        GamePersistentVariable.totalEnemy = 0;
 
-        StartCoroutine(SpawnEnemy());
+        if (spawnEnemyCoroutine != null)
+        {
+            StopCoroutine(spawnEnemyCoroutine);
+        }
+
+        spawnEnemyCoroutine = StartCoroutine(SpawnEnemy());
     }
 
     private IEnumerator SpawnEnemy()

@@ -20,6 +20,21 @@ public class BaseEnemy : MonoBehaviour
 
     private float prevPositionX;
 
+    void Awake()
+    {
+        LevelLoader.startLevelEvent += OnLevelStarted;
+    }
+
+    void OnDestroy()
+    {
+        LevelLoader.startLevelEvent -= OnLevelStarted;
+    }
+
+    private void OnLevelStarted()
+    {
+        gameObject.SetActive(false);
+    }
+
     void Start()
     {
         var agent = GetComponent<NavMeshAgent>();
