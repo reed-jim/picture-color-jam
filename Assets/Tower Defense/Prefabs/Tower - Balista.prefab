@@ -196,7 +196,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8f52c71174acc2e4d8cf0dc3c8a7b930, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -321,6 +321,7 @@ MonoBehaviour:
   targetLayer:
     serializedVersion: 2
     m_Bits: 4096
+  delayAttack: 0
   attackAnimation: acttack
   fireSound: balistaSound
 --- !u!61 &8860436721395512872

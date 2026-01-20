@@ -25,6 +25,7 @@ public class LightningProjectile : BaseProjectile
 
         gameObject.SetActive(true);
         transform.position = shooterPosition;
+        lightningTrail.gameObject.SetActive(false);
         lightningTrail.localPosition = Vector3.zero;
 
         TransitionTo(targetPosition);

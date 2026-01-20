@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MainCharacterData
   icon: {fileID: 21300000, guid: 7963afc2669deb94fbd786406cd8079d, type: 3}
   characterName: "Ch\u1ECB Mai"
-  videoUrl: "Assets/StreamingAssets/Videos/ch\u1ECB Mai chuy\u1EC3n \u0111\u1ED9ng_1.mp4"
+  videoName: "ch\u1ECB Mai chuy\u1EC3n \u0111\u1ED9ng_1.mp4"

@@ -88,7 +88,7 @@ public class MenuScreen : MonoBehaviour
         }
 
         // startGameButtonImage.sprite = startButtonSprites[spriteIndex];
-        startGameButtonText.fontMaterial = textMaterials[spriteIndex];
+        // startGameButtonText.fontMaterial = textMaterials[spriteIndex];
     }
 
     private void Start()

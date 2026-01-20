@@ -43,7 +43,7 @@ public class HomeBase : MonoBehaviour
 
         if (enemy != null)
         {
-            currentHealth--;
+            currentHealth -= enemy.attackDamage;
 
             healthBar.ChangeValue(currentHealth / health);
             ShowDamageText(1);

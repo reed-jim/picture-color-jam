@@ -604,7 +604,7 @@ MonoBehaviour:
   idleAnimation: idle
   moveAnimation: move
   attackAnimation: acttack
-  speedMultiply: 0.0004
+  speedMultiply: 0.0005
   checkAttackLayerMask:
     serializedVersion: 2
     m_Bits: 4096

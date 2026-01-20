@@ -577,6 +577,7 @@ MonoBehaviour:
   totalEnemyText: {fileID: 1340868592}
   timeToNextWave: 0
   currentWave: 0
+  isPendingWin: 0
 --- !u!4 &145658914
 Transform:
   m_ObjectHideFlags: 0
@@ -982,6 +983,7 @@ GameObject:
   - component: {fileID: 325610455}
   - component: {fileID: 325610457}
   - component: {fileID: 325610456}
+  - component: {fileID: 325610458}
   m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
@@ -1021,7 +1023,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.627451, g: 0.627451, b: 0.627451, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1046,6 +1048,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 325610454}
   m_CullTransparentMesh: 1
+--- !u!114 &325610458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 325610454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01cbdd27f0e60a0488b469913f7c538d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BackgroundMapPicker
+  background: {fileID: 325610456}
+  backgroundSprites:
+  - {fileID: 21300000, guid: 0d73ee50f5155aa40bb65bac2a47a5af, type: 2}
+  - {fileID: 21300000, guid: 0761112dd7187a247a01518e22684a55, type: 3}
 --- !u!1 &329097807
 GameObject:
   m_ObjectHideFlags: 0

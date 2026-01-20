@@ -147,7 +147,10 @@ public class TowerManager : Singleton<TowerManager>
 
     public void ShowTowerSelectionPopup()
     {
-        switchRouteEvent?.Invoke(ScreenRoute.TowerSelection);
+        if (!EnemyManager.Instance.isPendingWin)
+        {
+            switchRouteEvent?.Invoke(ScreenRoute.TowerSelection);
+        }
     }
 
     public static void SelectTower()

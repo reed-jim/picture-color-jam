@@ -80,7 +80,7 @@ public class CharacterSelectionPopup : BasePopup
         staticIcon.sprite = mainCharacterData.icon;
         staticIcon.color = Color.white;
 
-        videoPlayer.url = mainCharacterData.videoUrl;
+        videoPlayer.url = System.IO.Path.Combine(Application.streamingAssetsPath, "Videos", mainCharacterData.videoName);
         videoPlayer.Prepare();
         videoPlayer.prepareCompleted += OnVideoPrepareCompleted;
 
