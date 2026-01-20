@@ -224,7 +224,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1617231298972431747, guid: db8d087b2129ada4eac9952eb61083d8, type: 3}
       propertyPath: m_Name
-      value: Block 2x2 L-Shaped Horizontal Variant
+      value: Block 2x2 L-Shaped Horizontal
       objectReference: {fileID: 0}
     - target: {fileID: 1988503320676499618, guid: db8d087b2129ada4eac9952eb61083d8, type: 3}
       propertyPath: m_LocalPosition.x
