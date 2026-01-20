@@ -5,7 +5,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using PrimeTween;
 using Saferio.Util.SaferioTween;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
@@ -1270,7 +1269,9 @@ public class BaseBlock : MonoBehaviour
             return;
         }
 
-        Vector2 endPosition = TileMapper.Instance.GetBlockVacumnPosition(this);
+        Vector3 startPosition = transform.position.AddZ(-1.5f);
+        Vector3 endPosition = TileMapper.Instance.GetBlockVacumnPosition(this);
+        endPosition.z = startPosition.z;
 
         _blockRigidBody.simulated = false;
 
@@ -1285,7 +1286,14 @@ public class BaseBlock : MonoBehaviour
         magnetFx.transform.localPosition = Vector3.zero;
         magnetFx.Play();
 
-        Tween.Position(transform, endPosition, duration: 0.6f)
+        Vector3 direction = (endPosition - startPosition).normalized;
+
+        Sequence sequence = Sequence.Create();
+
+        sequence.Chain(Tween.PositionZ(transform, startPosition.z, duration: 0.6f));
+        sequence.Group(Tween.ShakeScale(transform, strength: 0.15f * Vector3.one, duration: 0.6f));
+        sequence.Chain(Tween.Position(transform, startPosition - 1.5f * direction, duration: 0.5f));
+        sequence.Chain(Tween.Position(transform, endPosition, duration: 0.3f))
         .OnComplete(() =>
         {
             blockProperty.IsDone = true;

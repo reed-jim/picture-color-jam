@@ -19,11 +19,13 @@ public class BoosterTeleportTutorial : BoosterTutorial
     protected override void RegisterMoreEvent()
     {
         BaseBlock.useTeleportBoosterEvent += OnTeleportBoosterUsed;
+        BoosterUI.disableBreakObjectModeEvent += OnTeleportBoosterUsed;
     }
 
     protected override void UnregisterMoreEvent()
     {
         BaseBlock.useTeleportBoosterEvent -= OnTeleportBoosterUsed;
+        BoosterUI.disableBreakObjectModeEvent -= OnTeleportBoosterUsed;
     }
 
     protected override void OnBoosterClick()

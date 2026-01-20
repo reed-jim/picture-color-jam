@@ -13,11 +13,13 @@ public class BoosterHammerTutorial : BoosterTutorial
     protected override void RegisterMoreEvent()
     {
         BlockSelectionInput.breakObjectEvent += OnHammerBoosterUsed;
+        BoosterUI.disableBreakObjectModeEvent += OnHammerBoosterUsed;
     }
 
     protected override void UnregisterMoreEvent()
     {
         BlockSelectionInput.breakObjectEvent -= OnHammerBoosterUsed;
+        BoosterUI.disableBreakObjectModeEvent -= OnHammerBoosterUsed;
     }
 
     protected override void OnBoosterClick()

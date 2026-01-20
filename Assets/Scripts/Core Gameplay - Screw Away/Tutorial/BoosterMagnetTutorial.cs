@@ -13,11 +13,13 @@ public class BoosterMagnetTutorial : BoosterTutorial
     protected override void RegisterMoreEvent()
     {
         BlockSelectionInput.startVacumnEvent += OnMagnetBoosterUsed;
+        BoosterUI.disableBreakObjectModeEvent += OnMagnetBoosterUsed;
     }
 
     protected override void UnregisterMoreEvent()
     {
         BlockSelectionInput.startVacumnEvent -= OnMagnetBoosterUsed;
+        BoosterUI.disableBreakObjectModeEvent -= OnMagnetBoosterUsed;
     }
 
     protected override void OnBoosterClick()
