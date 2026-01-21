@@ -210,6 +210,17 @@ public class BlockManager : Singleton<BlockManager>
                 SoundManager.Instance.PlaySoundClearBlock();
 
                 LevelIconUIManager.Instance.HideIcon(iconWorldPosition, group[0].spriteType);
+
+                // Teleport Booster
+                foreach (var block in worldTileIndexesOfBlock.Keys)
+                {
+                    if (block.BlockProperty.IsUsingTeleportBooster)
+                    {
+                        block.InvokeConfirmUseBoosterTeleportEvent();
+
+                        break;
+                    }
+                }
             }
         }
 

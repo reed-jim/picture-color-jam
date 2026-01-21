@@ -279,7 +279,7 @@ PrefabInstance:
     - target: {fileID: 9044333737526666923, guid: 627f1b0d75449ab4da35db608f8ee074, type: 3}
       propertyPath: blockCollider2D
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 7777679375914192207}
     - target: {fileID: 9044333737526666923, guid: 627f1b0d75449ab4da35db608f8ee074, type: 3}
       propertyPath: outlineRenderer
       value: 
@@ -315,3 +315,8 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 627f1b0d75449ab4da35db608f8ee074, type: 3}
+--- !u!60 &7777679375914192207 stripped
+PolygonCollider2D:
+  m_CorrespondingSourceObject: {fileID: 7297604686251525716, guid: 627f1b0d75449ab4da35db608f8ee074, type: 3}
+  m_PrefabInstance: {fileID: 1056537091267152667}
+  m_PrefabAsset: {fileID: 0}

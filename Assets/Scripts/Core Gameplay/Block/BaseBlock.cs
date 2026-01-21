@@ -179,6 +179,7 @@ public class BaseBlock : MonoBehaviour
     public static event Action<int, bool> movePairedBlock;
     public static event Action disableHighlightTilesEvent;
     public static event Action useTeleportBoosterEvent;
+    public static event Action confirmUseTeleportBoosterEvent;
 
 
     #region TEST MOVE
@@ -1374,35 +1375,6 @@ public class BaseBlock : MonoBehaviour
         int maxCount = 32;
         int count = 0;
 
-        // Auto move out of other blocks
-        // while (count < maxCount)
-        // {
-        //     Collider2D col = blockServiceLocator.blockCollider2D;
-
-        //     Collider2D[] hits = Physics2D.OverlapBoxAll(col.bounds.center, col.bounds.size, 0, LayerMask.GetMask("Default"));
-
-        //     if (hits.Length == 0)
-        //     {
-        //         yield break;
-        //     }
-        //     else
-        //     {
-
-        //     }
-
-        //     foreach (var h in hits)
-        //     {
-        //         if (h == col) continue;
-
-        //         var dist = col.Distance(h);     // gives direction + distance out of overlap
-        //         col.transform.position += 0.1f * (Vector3)dist.normal * dist.distance;
-        //     }
-
-        //     count++;
-
-        //     yield return waitForSeconds;
-        // }
-
         float penetrationDepth = GetColliderPenetrationDepth();
 
         if (penetrationDepth > 0.2f)
@@ -1425,14 +1397,28 @@ public class BaseBlock : MonoBehaviour
         else
         {
             Snap();
+
+            confirmUseTeleportBoosterEvent?.Invoke();
         }
 
         blockProperty.isResolveBlockOverlapping = false;
     }
 
+    public void InvokeConfirmUseBoosterTeleportEvent()
+    {
+        confirmUseTeleportBoosterEvent?.Invoke();
+    }
+
     private float GetColliderPenetrationDepth()
     {
         Collider2D col = blockServiceLocator.blockCollider2D;
+
+        if (col == null)
+        {
+            blockServiceLocator.blockCollider2D = GetComponent<Collider2D>();
+
+            col = blockServiceLocator.blockCollider2D;
+        }
 
         Collider2D[] hits = Physics2D.OverlapBoxAll(col.bounds.center, col.bounds.size, 0, LayerMask.GetMask("Default"));
 

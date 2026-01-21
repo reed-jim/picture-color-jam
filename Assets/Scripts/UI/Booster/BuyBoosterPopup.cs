@@ -41,6 +41,8 @@ public class BuyBoosterPopup : BasePopup
         ScrewBoxUI.showBuyBoosterPopupEvent += ShowBuyBoosterPopup;
         BlockSelectionInput.breakObjectEvent += OnConfirmedBreakObject;
         BlockSelectionInput.vacumnEvent += OnConfirmedVacumn;
+        BaseBlock.confirmUseTeleportBoosterEvent += OnConfirmedTeleport;
+        BoosterUI.disableBreakObjectModeEvent += OnConfirmedBreakObject;
 
         buyWithDiamondButton.onClick.AddListener(GetWithCoin);
         getWithAdsButton.onClick.AddListener(GetWithAds);
@@ -53,6 +55,8 @@ public class BuyBoosterPopup : BasePopup
         ScrewBoxUI.showBuyBoosterPopupEvent -= ShowBuyBoosterPopup;
         BlockSelectionInput.breakObjectEvent -= OnConfirmedBreakObject;
         BlockSelectionInput.vacumnEvent -= OnConfirmedVacumn;
+        BaseBlock.confirmUseTeleportBoosterEvent -= OnConfirmedTeleport;
+        BoosterUI.disableBreakObjectModeEvent -= OnConfirmedBreakObject;
     }
 
     private void ShowBuyBoosterPopup(BoosterType boosterType)
@@ -187,6 +191,18 @@ public class BuyBoosterPopup : BasePopup
     }
 
     private void OnConfirmedVacumn(string spriteType)
+    {
+        if (_isBoughtBreakObjectBoosterByCoin)
+        {
+            userResourcesObserver.ChangeCoin(-boosterDataObserver.BoosterCosts[(int)_boosterType]);
+
+            updateCoinTextEvent?.Invoke(userResourcesObserver.UserResources.CoinQuantity);
+
+            _isBoughtBreakObjectBoosterByCoin = false;
+        }
+    }
+
+    private void OnConfirmedTeleport()
     {
         if (_isBoughtBreakObjectBoosterByCoin)
         {

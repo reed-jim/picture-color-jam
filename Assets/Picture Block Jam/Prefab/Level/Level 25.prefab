@@ -2747,6 +2747,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7383872311750999419, guid: 326b2ea4333413f4590a57494fdc0dc3, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7383872311750999419, guid: 326b2ea4333413f4590a57494fdc0dc3, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 156
+      objectReference: {fileID: 0}
     - target: {fileID: 8561233363106064696, guid: 326b2ea4333413f4590a57494fdc0dc3, type: 3}
       propertyPath: translationName
       value: Arrowed block moves only in one direction

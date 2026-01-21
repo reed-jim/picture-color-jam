@@ -509,8 +509,6 @@ public class LevelLoader : MonoBehaviour
         // visibleWidth = aspectRatio * visibleHeight = aspectRatio * 2 * distance * tan(FOV / 2)
         float horizontalFOV = 2f * Mathf.Atan(expectedSizeX / (aspectRatio * 2f * distanceToBoard)) * Mathf.Rad2Deg;
 
-        Debug.Log($"AutoFitLevelCamera {expectedSizeX} {expectedSizeY} {horizontalFOV} {verticalFOV}");
-
         float moreZoom = 0.97f;
 
         float finalCameraFOV = moreZoom * Mathf.Max(verticalFOV, horizontalFOV);
