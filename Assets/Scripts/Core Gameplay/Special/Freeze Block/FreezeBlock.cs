@@ -12,6 +12,7 @@ public class FreezeBlock : BaseBlock
     // [SerializeField] private ParticleSystem breakIceFx;
 
     private bool _isFreeze;
+    private Tween _remainingTextTween;
 
     public int RemainingBlockToMelt
     {
@@ -106,6 +107,15 @@ public class FreezeBlock : BaseBlock
                 canvas.gameObject.SetActive(false);
                 ice.gameObject.SetActive(false);
             });
+        }
+        else
+        {
+            if (_remainingTextTween.isAlive)
+            {
+                _remainingTextTween.Stop();
+            }
+            
+            _remainingTextTween = TweenUtil.ScaleUpDown(remainingBlockToMeltText.transform, strength: 1.1f);
         }
 
         remainingBlockToMeltText.text = $"{remainingBlockToMelt}";

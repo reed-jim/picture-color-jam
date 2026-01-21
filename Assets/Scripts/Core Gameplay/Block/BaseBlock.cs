@@ -306,6 +306,7 @@ public class BaseBlock : MonoBehaviour
     {
         SnapImmediately();
         PlaceBlockIcon();
+        ScaleColliderSmaller();
     }
 
     protected virtual void MoreLogicInAwake()
@@ -1577,6 +1578,27 @@ public class BaseBlock : MonoBehaviour
                     element.Use();
                 }
             }
+        }
+    }
+    #endregion
+
+    #region Collider
+    private void ScaleColliderSmaller()
+    {
+        PolygonCollider2D polygonCollider2D = GetComponent<PolygonCollider2D>();
+
+        float scaleMultiplier = 0.98f;
+
+        if (polygonCollider2D != null)
+        {
+            Vector2[] modifiedPoints = polygonCollider2D.points;
+
+            for (int i = 0; i < modifiedPoints.Length; i++)
+            {
+                modifiedPoints[i] *= scaleMultiplier;
+            }
+
+            polygonCollider2D.points = modifiedPoints;
         }
     }
     #endregion
