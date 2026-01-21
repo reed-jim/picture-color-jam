@@ -183,10 +183,13 @@ public class BoosterItemUI : MonoBehaviour
 
             if (quantity > 0)
             {
-                quantityTextContainer.gameObject.SetActive(true);
-                addButtonRT.gameObject.SetActive(false);
+                if (!isLock)
+                {
+                    quantityTextContainer.gameObject.SetActive(true);
+                    addButtonRT.gameObject.SetActive(false);
 
-                quantityText.text = $"{quantity}";
+                    quantityText.text = $"{quantity}";
+                }
             }
             else
             {
