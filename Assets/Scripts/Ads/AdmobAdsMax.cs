@@ -175,7 +175,7 @@ public class AdmobAdsMax : MonoBehaviour
 #if TESTER
     private const string BANNER_COLLAPSE_ADMOB_ID = "ca-app-pub-3940256099942544/9214589741";
 #else
-    private const string BANNER_COLLAPSE_ADMOB_ID = "ca-app-pub-8467610367562059/2463242652"; // check here
+    private const string BANNER_COLLAPSE_ADMOB_ID = "ca-app-pub-8467610367562059/6856609774"; // check here
 #endif
 #elif UNITY_IOS
 #if TESTER
@@ -230,6 +230,7 @@ public class AdmobAdsMax : MonoBehaviour
         IsCooldownAdmobBanner = true;
 
         LoadBannerAdmob();
+        LoadBannerCollap();
     }
 
     #region Collap Banner
@@ -264,7 +265,6 @@ public class AdmobAdsMax : MonoBehaviour
         _bannerViewCollap.OnBannerAdLoadFailed += OnBannerAdLoadFailed;
         _bannerViewCollap.OnAdFullScreenContentClosed += () =>
         {
-
             //HideBannerCollap();
         };
         timerReloadBannerCollap = 0;
@@ -299,7 +299,6 @@ public class AdmobAdsMax : MonoBehaviour
 
         void OnBannerAdLoadFailed(LoadAdError error)
         {
-            Debug.LogError("load admob banner collap fail=====");
             isLoadedCollap = false;
             isReloadBannerCollap = true;
             timerReloadBannerCollap = 0;
@@ -340,7 +339,7 @@ public class AdmobAdsMax : MonoBehaviour
         IsCooldownAdmobBanner = true;
         _bannerViewCollap?.Hide();
         ShowBanner();
-        LoadBannerCollap();
+        RefreshBannerCollap();
     }
     #endregion
 
@@ -493,7 +492,6 @@ public class AdmobAdsMax : MonoBehaviour
 
     private void OnBannerAdLoadFailedEvent(string arg1, MaxSdk.ErrorInfo errInfo)
     {
-        // Debug.Log($"LongTH_ Banner - OnBannerAdLoadFailedEvent ++ {errInfo} \n");
         if (reloadBannerCoru != null)
         {
             StopCoroutine(reloadBannerCoru);
@@ -762,14 +760,12 @@ public class AdmobAdsMax : MonoBehaviour
     #region Interstitial
     private void OnInterstitialLoadedEvent(string adUnitId, MaxSdk.AdInfo adInfo)
     {
-        // Debug.Log($"LongTH_ Interstitial - OnInterstitialLoadedEvent ++ {adInfo} \n");
         _isLoading = true;
         GameController.Instance.AnalyticsController.LogInterReady();
     }
 
     private void OnInterstitialFailedEvent(string adUnitId, MaxSdk.ErrorInfo errInfo)
     {
-        // Debug.Log($"LongTH_ Interstitial - OnInterstitialFailedEvent ++ {errInfo} \n");
         _isLoading = false;
         actionInterstitialClose?.Invoke();
         actionInterstitialClose = null;
@@ -792,7 +788,6 @@ public class AdmobAdsMax : MonoBehaviour
 
     private void InterstitialFailedToDisplayEvent(string adUnitId, MaxSdk.ErrorInfo errInfo, MaxSdk.AdInfo adInfo)
     {
-        // Debug.Log($"LongTH_ Interstitial - InterstitialFailedToDisplayEvent ++ {errInfo} ++ {adInfo} \n");
         _isLoading = false;
         actionInterstitialClose?.Invoke();
         actionInterstitialClose = null;
@@ -802,7 +797,6 @@ public class AdmobAdsMax : MonoBehaviour
     private void OnInterstitialHiddenEvent(string adUnitId, MaxSdk.AdInfo adInfo)
     {
         _isLoading = false;
-        // Debug.Log($"LongTH_ Interstitial - OnInterstitialHiddenEvent  ++ {adInfo} \n");
         Time.timeScale = 1;
 
         _actionRewardVideo?.Invoke();
@@ -994,13 +988,11 @@ public class AdmobAdsMax : MonoBehaviour
 
     private void OnRewardedAdLoadedEvent(string adUnitId, MaxSdkBase.AdInfo adInfo)
     {
-        // Debug.Log($"LongTH_ Rewarded - OnRewardedAdLoadedEvent  ++ {adInfo} \n");
         GameController.Instance.AnalyticsController.LogVideoRewardReady();
     }
 
     private void OnRewardedAdFailedEvent(string adUnitId, MaxSdkBase.ErrorInfo errInfo)
     {
-        // Debug.Log($"LongTH_ Rewarded - OnRewardedAdFailedEvent  ++ {errInfo} \n");
         Invoke("LoadRewardedAd", 15);
         GameController.Instance.AnalyticsController.LogVideoRewardLoadFail(actionWatchVideo.ToString(),
             errInfo.Message.ToString());
@@ -1008,7 +1000,6 @@ public class AdmobAdsMax : MonoBehaviour
 
     private void OnRewardedAdFailedToDisplayEvent(string adUnitId, MaxSdkBase.ErrorInfo errInfo, MaxSdkBase.AdInfo adInfo)
     {
-        // Debug.Log($"LongTH_ Rewarded - OnRewardedAdFailedToDisplayEvent  ++ {errInfo} ++ {adInfo} \n");
         isVideoDone = false;
 
         //if (IsLoadedInterstitial())
@@ -1024,13 +1015,11 @@ public class AdmobAdsMax : MonoBehaviour
 
     private void OnRewardedAdDisplayedEvent(string adUnitId, MaxSdkBase.AdInfo adInfo)
     {
-        // Debug.Log($"LongTH_ Rewarded - OnRewardedAdDisplayedEvent ++ {adInfo} \n");
         isVideoDone = false;
     }
 
     private void OnRewardedAdClickedEvent(string adUnitId, MaxSdkBase.AdInfo adInfo)
     {
-        Debug.Log($"LongTH_ Rewarded - OnRewardedAdClickedEvent ++ {adInfo} \n");
         isVideoDone = true;
         GameController.Instance.AnalyticsController.LogClickToVideoReward(actionWatchVideo.ToString());
     }
@@ -1043,7 +1032,6 @@ public class AdmobAdsMax : MonoBehaviour
         //}
 
         // Rewarded ad is hidden. Pre-load the next ad
-        // Debug.Log($"LongTH_ Rewarded - OnRewardedAdDismissedEvent ++ {adInfo} \n");
         _actionClose?.Invoke();
         _actionClose = null;
         if (_actionRewardVideo != null)
@@ -1066,7 +1054,6 @@ public class AdmobAdsMax : MonoBehaviour
     private void OnRewardedAdReceivedRewardEvent(string adUnitId, MaxSdk.Reward reward, MaxSdkBase.AdInfo adInfo)
     {
         // Rewarded ad was displayed and user should receive the reward
-        // Debug.Log($"LongTH_ Rewarded - OnRewardedAdReceivedRewardEvent ++ {adInfo} ++ {reward} \n");
         isVideoDone = true;
         _actionRewardVideo?.Invoke();
         _actionRewardVideo = null;
@@ -1417,7 +1404,6 @@ public class AdmobAdsMax : MonoBehaviour
     //            isRewardInter = true;
     //            GameController.Instance.AnalyticsController.LogWatchVideo(actionType, true, true, "");
     //            // TODO: Reward the user.
-    //            Debug.Log(String.Format(rewardMsg, reward.Type, reward.Amount));
     //            // actionReward.Invoke();
     //        });
     //    }

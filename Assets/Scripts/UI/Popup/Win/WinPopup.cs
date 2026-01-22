@@ -178,6 +178,8 @@ public class WinPopup : BasePopup
         SaferioTracking.TrackInterstitialAdCompleted(currentLevel.Value, "next_level");
 
         AdsDurationObserver.duration = 0;
+
+        AdmobAdsMax.Instance.HideBannerCollap();
     }
 
     #region X5 Coin
@@ -207,6 +209,8 @@ public class WinPopup : BasePopup
         SaferioTracking.TrackRewardedAdCompleted(currentLevel.Value, "multiply_coin_win_level");
 
         _isAlreadyWatchRewardedAd = true;
+
+        AdmobAdsMax.Instance.HideBannerCollap();
     }
 
     private void ShowAdsNotLoadedPopup()
