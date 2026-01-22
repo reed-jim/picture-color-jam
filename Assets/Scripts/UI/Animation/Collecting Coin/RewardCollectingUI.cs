@@ -72,6 +72,8 @@ public class RewardCollectingUI : MonoBehaviour
                 addCoinEvent?.Invoke((float)totalValue / poolSize);
 
                 _rewards[index].gameObject.SetActive(false);
+
+                SoundManager.Instance.PlaySoundCollectCoin();
             });
         }
     }

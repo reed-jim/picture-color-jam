@@ -24,7 +24,6 @@ public class GameplayScreen : MonoBehaviour
 
     void Awake()
     {
-        localizedLevelText.textTranslatedEvent += OnLevelTextTranslated;
         LevelLoader.setLevelNumberEvent += SetLevelText;
         ResourceEarnPopup.removeAdsEvent += OnAdsRemoved;
         SaferioIAPManager.removeAdsEvent += OnAdsRemoved;
@@ -47,7 +46,6 @@ public class GameplayScreen : MonoBehaviour
 
     void OnDestroy()
     {
-        localizedLevelText.textTranslatedEvent -= OnLevelTextTranslated;
         LevelLoader.setLevelNumberEvent -= SetLevelText;
         ResourceEarnPopup.removeAdsEvent -= OnAdsRemoved;
         SaferioIAPManager.removeAdsEvent -= OnAdsRemoved;

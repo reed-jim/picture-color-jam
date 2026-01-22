@@ -3989,6 +3989,8 @@ MonoBehaviour:
   magnetSoundPrefab: {fileID: 7606835583939712495, guid: fc10f6bbe2cd0384e95b83304f0d48ea, type: 3}
   pictureCompleteSoundPrefab: {fileID: 7606835583939712495, guid: d301c58c906827648850bd7cfe3a79c9, type: 3}
   timeTickSoundPrefab: {fileID: 7606835583939712495, guid: 6e60693067552bc43a30196d899faa69, type: 3}
+  clickBlockSoundPrefab: {fileID: 7606835583939712495, guid: f78093df844ccc14388c73c162abf189, type: 3}
+  collectCoinSoundPrefab: {fileID: 7606835583939712495, guid: 782873bb1051b67479c2e369fba1fed4, type: 3}
   destroyObjectPartFxPrefab: {fileID: 7243412146976613399, guid: 7f6a5f6ed46040745825be46b3f25418, type: 3}
   clockBoosterItemPrefab: {fileID: 6152802032738210302, guid: d9d9025bf5c091846ba6f2f3f4e92d18, type: 3}
   blockMergeFx: {fileID: 8771972552311404799, guid: b5b43e1799b88e448a004a6c190102d7, type: 3}

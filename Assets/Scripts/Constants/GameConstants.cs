@@ -87,6 +87,8 @@ public static class GameConstants
     public static string magnetSound = "magnetSound";
     public static string timeTickSound = "timeTickSound";
     public static string pictureCompleteSound = "pictureCompleteSound";
+    public static string clickBlockSound = "clickBlockSound";
+    public static string collectCoinSound = "collectCoinSound";
     #endregion
 
     #region ANIMATION

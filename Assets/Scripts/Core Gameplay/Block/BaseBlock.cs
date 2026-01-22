@@ -1207,6 +1207,7 @@ public class BaseBlock : MonoBehaviour
             RaycastHit2D hit = Physics2D.GetRayIntersection(ray, Mathf.Infinity, LayerMask.GetMask("Default"));
 
             VFXManager.Instance.PlayTouchFX(hit.point);
+            SoundManager.Instance.PlaySoundClickBlock();
         }
         catch (Exception)
         {
@@ -1324,6 +1325,8 @@ public class BaseBlock : MonoBehaviour
                         fx.transform.position = TileMapper.TileToWorld(originalTileIndexes[i] - originalCenter);
                         fx.Play();
                     }
+
+                    SoundManager.Instance.PlaySoundClearBlock();
 
                     LevelIconUIManager.Instance.HideIcon(Vector3.zero, spriteType);
 

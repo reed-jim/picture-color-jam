@@ -89,7 +89,7 @@ public class BlockSelectionInput : MonoBehaviour
         }
     }
 
-    private async void SelectBlock()
+    private void SelectBlock()
     {
         if (_selectedBlock != null)
         {
@@ -239,6 +239,7 @@ public class BlockSelectionInput : MonoBehaviour
             RaycastHit2D hit = Physics2D.GetRayIntersection(ray, Mathf.Infinity, LayerMask.GetMask("Default"));
 
             VFXManager.Instance.PlayTouchFX(hit.point);
+            SoundManager.Instance.PlaySoundClickBlock();
         }
         catch (Exception)
         {

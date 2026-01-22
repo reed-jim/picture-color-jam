@@ -47,8 +47,6 @@ public class MenuScreen : MonoBehaviour
         SaferioIAPManager.removeAdsEvent += OnAdsRemoved;
         SceneManager.sceneLoaded += OnSceneLoaded;
 
-        localizedLevelText.textTranslatedEvent += OnLevelTextTranslated;
-
         startGameButton.onClick.AddListener(StartGame);
         openRemoveAdPopupButton.onClick.AddListener(OpenRemoveAdPopup);
         luckyWheelButton.onClick.AddListener(OpenLuckyWheelScreen);
@@ -110,8 +108,6 @@ public class MenuScreen : MonoBehaviour
         ResourceEarnPopup.removeAdsEvent -= OnAdsRemoved;
         SaferioIAPManager.removeAdsEvent -= OnAdsRemoved;
         SceneManager.sceneLoaded -= OnSceneLoaded;
-
-        localizedLevelText.textTranslatedEvent -= OnLevelTextTranslated;
     }
 
     private void OnLevelTextTranslated()

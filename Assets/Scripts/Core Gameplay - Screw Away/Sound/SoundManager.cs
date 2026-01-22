@@ -11,6 +11,7 @@ public class SoundManager : MonoBehaviour
 
     #region PRIVATE FIELD
     private bool _isEnableGameSound;
+    private bool _isDelayPlayCollectCoinSound;
     #endregion
 
     void Awake()
@@ -219,6 +220,26 @@ public class SoundManager : MonoBehaviour
     public void PlaySoundPictureComplete()
     {
         PlaySound(GameConstants.pictureCompleteSound);
+    }
+
+    public void PlaySoundClickBlock()
+    {
+        PlaySound(GameConstants.clickBlockSound);
+    }
+
+    public void PlaySoundCollectCoin()
+    {
+        if (!_isDelayPlayCollectCoinSound)
+        {
+            PlaySound(GameConstants.collectCoinSound);
+
+            _isDelayPlayCollectCoinSound = true;
+
+            Tween.Delay(0.5f, onComplete: () =>
+            {
+                _isDelayPlayCollectCoinSound = false;
+            });
+        }
     }
 
     private void PlaySound(string key)
