@@ -1,5 +1,19 @@
 {
   "dependencies": {
+    "com.applovin.mediation.adapters.bidmachine.android": {
+      "version": "3050100.0.0",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://unity.packages.applovin.com"
+    },
+    "com.applovin.mediation.adapters.bidmachine.ios": {
+      "version": "305010000.0.0",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://unity.packages.applovin.com"
+    },
     "com.applovin.mediation.adapters.bytedance.android": {
       "version": "604000600.0.0",
       "depth": 0,
