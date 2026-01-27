@@ -30,11 +30,6 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 267b2b8c023d126408b6ab5cf10f05f7
-    m_Address: Assets/Sprites/UI/UI Art/gameplay/gameplay_14.png
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 2d3cebcb3d6831645b2c38ac38c2eb48
     m_Address: Assets/Picture Block Jam/Sprite/Ui art/gameplay/gameplay_8.png
     m_ReadOnly: 0
@@ -87,11 +82,6 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 6ddcc7df8ed85f9439ddfe0a26017e69
     m_Address: Assets/Picture Block Jam/Sprite/Ui art/gameplay/gameplay_18.png
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 75ada24f819524a4a99dd893c1d08511
-    m_Address: Assets/Sprites/UI/UI Art/gameplay/gameplay_12.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -162,11 +152,6 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: d5009df21089ef647ac973bfcc684bb5
     m_Address: Assets/Picture Block Jam/Sprite/Ui art/gameplay/gameplay_6.png
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: d8bf8b50316a9f947aa7e7937c5a9657
-    m_Address: Assets/Sprites/UI/UI Art/gameplay/gameplay_11.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
