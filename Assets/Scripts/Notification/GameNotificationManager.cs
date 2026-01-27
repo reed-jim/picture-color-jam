@@ -1,4 +1,4 @@
-using Unity.Notifications.Android;
+// using Unity.Notifications.Android;
 using UnityEngine;
 
 public class GameNotificationManager : MonoBehaviour
@@ -15,32 +15,32 @@ public class GameNotificationManager : MonoBehaviour
 #endif
     }
 
-    private void Register()
-    {
-        var channel = new AndroidNotificationChannel()
-        {
-            Id = "channel_id",
-            Name = "Default Channel",
-            Importance = Importance.Default,
-            Description = "Generic notifications",
-        };
+    // private void Register()
+    // {
+    //     var channel = new AndroidNotificationChannel()
+    //     {
+    //         Id = "channel_id",
+    //         Name = "Default Channel",
+    //         Importance = Importance.Default,
+    //         Description = "Generic notifications",
+    //     };
 
-        AndroidNotificationCenter.Initialize();
+    //     AndroidNotificationCenter.Initialize();
 
-        AndroidNotificationCenter.RegisterNotificationChannel(channel);
-    }
+    //     AndroidNotificationCenter.RegisterNotificationChannel(channel);
+    // }
 
-    private void SendNotification()
-    {
-        Register();
+    // private void SendNotification()
+    // {
+    //     Register();
 
-        var notification = new AndroidNotification();
-        notification.Title = "Saferio";
-        notification.Text = GetRandomText();
-        notification.FireTime = System.DateTime.Now.AddHours(12);
+    //     var notification = new AndroidNotification();
+    //     notification.Title = "Saferio";
+    //     notification.Text = GetRandomText();
+    //     notification.FireTime = System.DateTime.Now.AddHours(12);
 
-        AndroidNotificationCenter.SendNotification(notification, "channel_id");
-    }
+    //     AndroidNotificationCenter.SendNotification(notification, "channel_id");
+    // }
 
     private static readonly string[] TextPool =
     {

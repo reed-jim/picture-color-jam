@@ -348,7 +348,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: LeanLocalization.TMP::Lean.Localization.LeanLocalizedTextMeshProUGUI
   translationName: Move the blocks to complete a picture
-  parameter: 
   FallbackText: Swipe to Gate
 --- !u!1 &4286948889653714985
 GameObject:
