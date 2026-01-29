@@ -3,17 +3,17 @@
 <plist version="1.0">
 <dict>
 	<key>API_KEY</key>
-	<string>AIzaSyA7W5k2JnkXbBgO_fLjfhzXS-jseD03mVs</string>
+	<string>AIzaSyDhlUaT_iwoxDvAs0Pppn8CgQrX6R-qOak</string>
 	<key>GCM_SENDER_ID</key>
-	<string>962031599975</string>
+	<string>623725581704</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.gplay.wood.jam.color.block</string>
+	<string>com.gplay.picturefit</string>
 	<key>PROJECT_ID</key>
-	<string>wood-jam-color-block-ios</string>
+	<string>block-picturefit----ios</string>
 	<key>STORAGE_BUCKET</key>
-	<string>wood-jam-color-block-ios.firebasestorage.app</string>
+	<string>block-picturefit----ios.firebasestorage.app</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -25,6 +25,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:962031599975:ios:e3ea1a91e5208723b76fc2</string>
+	<string>1:623725581704:ios:b2527a5b03e9959f7c563d</string>
 </dict>
 </plist>
