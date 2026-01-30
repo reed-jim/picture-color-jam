@@ -6,8 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/User Consent - Android.unity
-    guid: e98e8347eaf32f841bf82da36ee4a878
+    path: Assets/Samples/iOS 14 Advertising Support/1.0.1/01 Context Screen/Context
+      Screen Sample.unity
+    guid: a2154acf9dc1c46e5a8df649580ad6b9
   - enabled: 1
     path: Assets/Scenes/Loading.unity
     guid: 356008f1f8288fa4092626687a6e0ec7

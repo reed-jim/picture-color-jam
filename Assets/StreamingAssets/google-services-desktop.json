@@ -1,26 +1,28 @@
 {
   "project_info": {
-    "project_number": "332526880880",
-    "project_id": "picturefit-755bd",
-    "storage_bucket": "picturefit-755bd.firebasestorage.app"
+    "project_number": "623725581704",
+    "project_id": "block-picturefit----ios",
+    "storage_bucket": "block-picturefit----ios.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:332526880880:android:46e833e36bb8597fd9ccb5",
+        "mobilesdk_app_id": "1:623725581704:ios:b2527a5b03e9959f7c563d",
         "android_client_info": {
           "package_name": "com.gplay.picturefit"
         }
       },
-      "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyB44yR2it5-sK23QEn6gt5cgGWHGCq_Kjo"
+          "current_key": "AIzaSyDhlUaT_iwoxDvAs0Pppn8CgQrX6R-qOak"
         }
       ],
       "services": {
+        "analytics_service": {
+          "status": 0
+        },
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "status": 1
         }
       }
     }
