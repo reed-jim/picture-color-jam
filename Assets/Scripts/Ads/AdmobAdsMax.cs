@@ -133,6 +133,7 @@ public class AdmobAdsMax : MonoBehaviour
         testDeviceIds.Add("07276CEBDF187D3173080B9D8CF4FAB4");
         testDeviceIds.Add("5360A1B78DFA03B5BF8E964B5E27F91A");
         testDeviceIds.Add("0341324B7D1CC133EC548EFE96B59A7E");
+        testDeviceIds.Add("d2d504d0ae821f199048b44c1c586a3f");
 
         MobileAds.SetRequestConfiguration(new RequestConfiguration
         {
@@ -190,7 +191,6 @@ public class AdmobAdsMax : MonoBehaviour
 #endif
 #endif
     private bool _isShowAdmobBanner;
-    private bool _isShowAdmobCollap;
     private GoogleMobileAds.Api.AdRequest bannerHomeLoadRequest;
     private DateTime lastRefreshCollapseBanner;
 
@@ -271,8 +271,6 @@ public class AdmobAdsMax : MonoBehaviour
         isReloadBannerCollap = false;
         timeReloadBannerCollap = RemoteConfigController.GetFloatConfig(FirebaseConfig.RELOAD_BANNER_COLLAPSE_TIME, 15);
 
-        _isShowAdmobCollap = RemoteConfigController.GetBoolConfig(FirebaseConfig.ENABLE_ADMOB_BANNER_COLLAP, true);
-
         void OnBannerAdLoaded()
         {
             isReloadBannerCollap = false;
@@ -314,7 +312,7 @@ public class AdmobAdsMax : MonoBehaviour
             if (UserData.IsRemoveAds)
                 return;
 
-            if (_isShowAdmobCollap)
+            if (RemoteConfigController.GetBoolConfig(FirebaseConfig.ENABLE_ADMOB_BANNER_COLLAP, true))
             {
                 _bannerView?.Hide();
                 MaxSdk.HideBanner(BanerAdUnitId);
@@ -627,7 +625,7 @@ public class AdmobAdsMax : MonoBehaviour
 #if UNITY_ANDROID
     private string _adUnitId = "ca-app-pub-8467610367562059/1169168827";
 #elif UNITY_IPHONE
-  private string _adUnitId = "ca-app-pub-8467610367562059/4505256481"; // check here
+    private string _adUnitId = "ca-app-pub-8467610367562059/4505256481"; // check here
 #else
   private string _adUnitId = "unused";
 #endif
@@ -1335,7 +1333,6 @@ public class AdmobAdsMax : MonoBehaviour
         // }
 
         string currentSceneName = SceneManager.GetActiveScene().name;
-
         if (isAdmobInitDone)
         {
             if (state == AppState.Foreground && TimeManager.CaculateTime(oldTime, DateTime.Now) > 30 && !isShowingAds)
