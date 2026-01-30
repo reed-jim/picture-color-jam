@@ -66,7 +66,7 @@ public class IAPReviewPopup : BasePopup
         priceText.text = localizedPrices[packagesIAP[packIndex].ProductId];
         icon.sprite = packIcons[packIndex];
 
-        UIUtil.SetSizeKeepRatioX(icon, 0.5f * container.sizeDelta.x);
+        UIUtil.SetSizeKeepRatioX(icon, 0.25f * container.sizeDelta.x);
     }
 
     private void ReviewBuy()

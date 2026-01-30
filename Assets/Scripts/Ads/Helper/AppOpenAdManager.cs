@@ -96,7 +96,6 @@ public class AppOpenAdManager
         {
             return;
         }
-
         if (!IsAdAvailable || isShowingAd)
         {
             LoadAd();
