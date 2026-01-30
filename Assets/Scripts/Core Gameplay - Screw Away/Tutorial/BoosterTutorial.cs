@@ -33,6 +33,15 @@ public class BoosterTutorial : MonoBehaviour
         canvasGroupBooster.interactable = false;
 
         RegisterMoreEvent();
+
+        if (DataUtility.Load($"Tutorial {transform.parent.name}", false))
+        {
+            gameObject.SetActive(false);
+        }
+        else
+        {
+            DataUtility.Save($"Tutorial {transform.parent.name}", true);
+        }
     }
 
     void OnDestroy()

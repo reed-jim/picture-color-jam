@@ -12,6 +12,15 @@ public class SpecialLevelTutorial : MonoBehaviour
     void Awake()
     {
         continueButton.onClick.AddListener(Continue);
+
+        if (DataUtility.Load($"Tutorial {transform.parent.name}", false))
+        {
+            gameObject.SetActive(false);
+        }
+        else
+        {
+            DataUtility.Save($"Tutorial {transform.parent.name}", true);
+        }
     }
 
     private void Continue()
