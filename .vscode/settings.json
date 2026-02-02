@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "GStudio-Color-Block-Jam.sln"
+    "dotnet.defaultSolution": "GStudio-Picture-Color-Jam.sln"
 }

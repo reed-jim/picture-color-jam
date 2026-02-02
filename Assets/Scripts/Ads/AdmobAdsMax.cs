@@ -120,7 +120,7 @@ public class AdmobAdsMax : MonoBehaviour
 
         MaxSdk.SetHasUserConsent(UserData.IsTrackedPremission);
         // MaxSdk.SetVerboseLogging(true);
-        MaxSdk.SetSdkKey(MaxSdkKey);
+        // MaxSdk.SetSdkKey(MaxSdkKey);
         // MaxSdk.SetTestDeviceAdvertisingIdentifiers(new string[] { "a48c99cb-6de5-4884-9eb2-09547c185f4f" });
         MaxSdk.InitializeSdk();
         #endregion
@@ -317,7 +317,7 @@ public class AdmobAdsMax : MonoBehaviour
             if (_isShowAdmobCollap)
             {
                 _bannerView?.Hide();
-                MaxSdk.HideBanner(BanerAdUnitId);
+                // MaxSdk.HideBanner(BanerAdUnitId);
                 _bannerViewCollap?.Show();
                 isShowingCollap = true;
             }
@@ -463,17 +463,17 @@ public class AdmobAdsMax : MonoBehaviour
         MaxSdkCallbacks.Banner.OnAdLoadFailedEvent += OnBannerAdLoadFailedEvent;
         MaxSdkCallbacks.Banner.OnAdClickedEvent += OnBannerAdClickedEvent;
         MaxSdkCallbacks.Banner.OnAdRevenuePaidEvent += OnAdRevenuePaidEvent;
-        MaxSdk.CreateBanner(BanerAdUnitId, MaxSdkBase.BannerPosition.BottomCenter);
-        MaxSdk.SetBannerPlacement(BanerAdUnitId, "MY_BANNER_PLACEMENT");
-        MaxSdk.SetBannerBackgroundColor(BanerAdUnitId, Color.clear);
-        MaxSdk.SetBannerExtraParameter(BanerAdUnitId, "adaptive_banner", "true");
+        // MaxSdk.CreateBanner(BanerAdUnitId, MaxSdkBase.BannerPosition.BottomCenter);
+        // MaxSdk.SetBannerPlacement(BanerAdUnitId, "MY_BANNER_PLACEMENT");
+        // MaxSdk.SetBannerBackgroundColor(BanerAdUnitId, Color.clear);
+        // MaxSdk.SetBannerExtraParameter(BanerAdUnitId, "adaptive_banner", "true");
         ShowBanner();
     }
 
     private void CreateMaxBannerAd()
     {
-        MaxSdk.CreateBanner(BanerAdUnitId, MaxSdkBase.BannerPosition.BottomCenter);
-        MaxSdk.SetBannerPlacement(BanerAdUnitId, "MY_BANNER_PLACEMENT");
+        // MaxSdk.CreateBanner(BanerAdUnitId, MaxSdkBase.BannerPosition.BottomCenter);
+        // MaxSdk.SetBannerPlacement(BanerAdUnitId, "MY_BANNER_PLACEMENT");
     }
 
     private void OnBannerAdLoadedEvent(string obj, MaxSdk.AdInfo adInfo)
@@ -629,7 +629,7 @@ public class AdmobAdsMax : MonoBehaviour
 #elif UNITY_IPHONE
   private string _adUnitId = "ca-app-pub-3940256099942544/4411468910";
 #else
-  private string _adUnitId = "unused";
+  // private string _adUnitId = "unused";
 #endif
 
     private Action _actionInterAdmobClosed;
@@ -781,7 +781,7 @@ public class AdmobAdsMax : MonoBehaviour
     {
         if (_isLoading) return;
 
-        MaxSdk.LoadInterstitial(InterstitialAdUnitId);
+        // MaxSdk.LoadInterstitial(InterstitialAdUnitId);
         GameController.Instance.AnalyticsController.LogInterLoad();
         _isLoading = true;
     }
@@ -887,7 +887,8 @@ public class AdmobAdsMax : MonoBehaviour
 
     public bool IsLoadedInterstitial()
     {
-        return MaxSdk.IsInterstitialReady(InterstitialAdUnitId);
+        return false;
+        // return MaxSdk.IsInterstitialReady(InterstitialAdUnitId);
     }
 
     private void ShowInterstitialHandle(bool isShowImmediatly = false, string actionWatchLog = "other",
@@ -924,7 +925,7 @@ public class AdmobAdsMax : MonoBehaviour
 
                 AdsDurationObserver.startTime = DateTime.Now;
 
-                MaxSdk.ShowInterstitial(InterstitialAdUnitId, actionWatchLog);
+                // MaxSdk.ShowInterstitial(InterstitialAdUnitId, actionWatchLog);
 
                 countdownAds = 0;
                 GameController.Instance.AnalyticsController.LogInterShow(actionWatchLog);
@@ -939,7 +940,7 @@ public class AdmobAdsMax : MonoBehaviour
 
                 AdsDurationObserver.startTime = DateTime.Now;
 
-                MaxSdk.ShowInterstitial(InterstitialAdUnitId, actionWatchLog);
+                // MaxSdk.ShowInterstitial(InterstitialAdUnitId, actionWatchLog);
 
                 countdownAds = 0;
                 GameController.Instance.AnalyticsController.LogInterShow(actionWatchLog);
@@ -983,7 +984,7 @@ public class AdmobAdsMax : MonoBehaviour
     #region Rewarded
     private void LoadRewardedAd()
     {
-        MaxSdk.LoadRewardedAd(RewardedAdUnitId);
+        // MaxSdk.LoadRewardedAd(RewardedAdUnitId);
     }
 
     private void OnRewardedAdLoadedEvent(string adUnitId, MaxSdkBase.AdInfo adInfo)
@@ -1079,13 +1080,13 @@ public class AdmobAdsMax : MonoBehaviour
 
     public bool IsLoadedVideoReward()
     {
-        var result = MaxSdk.IsRewardedAdReady(RewardedAdUnitId);
-        if (!result)
-        {
-            RequestInterstitial();
-        }
+        // var result = MaxSdk.IsRewardedAdReady(RewardedAdUnitId);
+        // if (!result)
+        // {
+        //     RequestInterstitial();
+        // }
 
-        return result;
+        return false;
     }
 
     /// <summary>
@@ -1117,7 +1118,7 @@ public class AdmobAdsMax : MonoBehaviour
             this._actionClose = actionClose;
             this._actionRewardVideo = actionReward;
 
-            MaxSdk.ShowRewardedAd(RewardedAdUnitId, actionType.ToString());
+            // MaxSdk.ShowRewardedAd(RewardedAdUnitId, actionType.ToString());
             GameController.Instance.AnalyticsController.LogWatchVideo(actionType, true, true,
                 UserData.CurrentLevel.ToString());
             GameController.Instance.AnalyticsController.LogVideoRewardShow(actionWatchVideo.ToString());
@@ -1192,7 +1193,7 @@ public class AdmobAdsMax : MonoBehaviour
 
     public void ShowBannerAdmob()
     {
-        MaxSdk.HideBanner(BanerAdUnitId);
+        // MaxSdk.HideBanner(BanerAdUnitId);
         _bannerView?.Show();
 
         TryHideBannerCollap();
@@ -1200,7 +1201,7 @@ public class AdmobAdsMax : MonoBehaviour
 
     public void ShowBannerMax()
     {
-        MaxSdk.ShowBanner(BanerAdUnitId);
+        // MaxSdk.ShowBanner(BanerAdUnitId);
         // RequestBanner();
         _bannerView?.Hide();
 
@@ -1209,7 +1210,7 @@ public class AdmobAdsMax : MonoBehaviour
 
     public void HideBanner()
     {
-        MaxSdk.HideBanner(BanerAdUnitId);
+        // MaxSdk.HideBanner(BanerAdUnitId);
         _bannerView?.Hide();
 
         TryHideBannerCollap();
@@ -1217,7 +1218,7 @@ public class AdmobAdsMax : MonoBehaviour
 
     public void DestroyBanner()
     {
-        MaxSdk.DestroyBanner(BanerAdUnitId);
+        // MaxSdk.DestroyBanner(BanerAdUnitId);
 
         // Admob
         if (_bannerView != null)
@@ -1254,7 +1255,7 @@ public class AdmobAdsMax : MonoBehaviour
     public void InitializeMRecAds()
     {
         // MRECs are sized to 300x250 on phones and tablets
-        MaxSdk.CreateMRec(mrecAdUnitId, MaxSdkBase.AdViewPosition.TopCenter);
+        // MaxSdk.CreateMRec(mrecAdUnitId, MaxSdkBase.AdViewPosition.TopCenter);
 
         MaxSdkCallbacks.MRec.OnAdLoadedEvent += OnMRecAdLoadedEvent;
         MaxSdkCallbacks.MRec.OnAdLoadFailedEvent += OnMRecAdLoadFailedEvent;
@@ -1281,17 +1282,17 @@ public class AdmobAdsMax : MonoBehaviour
             return;
         }
 
-        MaxSdk.ShowMRec(mrecAdUnitId);
+        // MaxSdk.ShowMRec(mrecAdUnitId);
     }
 
     public void HideMRec()
     {
-        MaxSdk.HideMRec(mrecAdUnitId);
+        // MaxSdk.HideMRec(mrecAdUnitId);
     }
 
     public void DestroyMRec()
     {
-        MaxSdk.DestroyMRec(mrecAdUnitId);
+        // MaxSdk.DestroyMRec(mrecAdUnitId);
     }
 
     public void OnMRecAdLoadedEvent(string adUnitId, MaxSdkBase.AdInfo adInfo)
@@ -1362,21 +1363,21 @@ public class AdmobAdsMax : MonoBehaviour
         // create our request used to load the ad.
         var adRequest = new GoogleMobileAds.Api.AdRequest();
         // send the request to load the ad.
-        RewardedInterstitialAd.Load(REWARD_INTER_ID, adRequest,
-            (RewardedInterstitialAd ad, LoadAdError error) =>
-            {
-                // if error is not null, the load request failed.
-                if (error != null || ad == null)
-                {
-                    Debug.LogError("rewarded interstitial ad failed to load an ad " +
-                                   "with error : " + error);
-                    //LoadMoreRewardInter(_adUnitIdMedium);
-                    return;
-                }
+        // RewardedInterstitialAd.Load(REWARD_INTER_ID, adRequest,
+        //     (RewardedInterstitialAd ad, LoadAdError error) =>
+        //     {
+        //         // if error is not null, the load request failed.
+        //         if (error != null || ad == null)
+        //         {
+        //             Debug.LogError("rewarded interstitial ad failed to load an ad " +
+        //                            "with error : " + error);
+        //             //LoadMoreRewardInter(_adUnitIdMedium);
+        //             return;
+        //         }
 
-                rewardedInterstitialAd = ad;
-                //InitRegister(ad);
-            });
+        //         rewardedInterstitialAd = ad;
+        //         //InitRegister(ad);
+        //     });
     }
 
     private UnityAction actionRewardInter;

@@ -24,7 +24,7 @@ public class SaferioButton : MonoBehaviour, IPointerEnterHandler
     {
         _button = GetComponent<Button>();
 
-        _button.onClick.AddListener(PlaySoundOnClick);
+        // _button.onClick.AddListener(PlaySoundOnClick);
     }
 
     private void OnDestroy()
