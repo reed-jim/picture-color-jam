@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using CandyCoded.HapticFeedback;
+// using CandyCoded.HapticFeedback;
 using PrimeTween;
 using UnityEngine;
 
@@ -176,7 +176,7 @@ public class BlockManager : Singleton<BlockManager>
 
                 if (GamePersistentVariable.IsVibrate)
                 {
-                    HapticFeedback.MediumFeedback();
+                    // HapticFeedback.MediumFeedback();
                 }
 
                 for (int i = 0; i < group.Count; i++)

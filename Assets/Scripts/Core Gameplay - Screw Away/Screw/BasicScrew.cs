@@ -1,6 +1,6 @@
 using System;
 using System.Threading.Tasks;
-using CandyCoded.HapticFeedback;
+// using CandyCoded.HapticFeedback;
 using PrimeTween;
 using UnityEngine;
 
@@ -94,7 +94,7 @@ public class BasicScrew : BaseScrew
 
                 SoundManager.Instance.PlaySoundLoosenScrewFail();
 
-                HapticFeedback.MediumFeedback();
+                // HapticFeedback.MediumFeedback();
 
                 _tweens.Add(Tween.ShakeScale(fakeScrew.transform, strength: 0.3f * Vector3.one, duration: 0.3f)
                 .OnComplete(() =>
@@ -144,7 +144,7 @@ public class BasicScrew : BaseScrew
 
             SoundManager.Instance.PlaySoundLoosenScrew();
 
-            HapticFeedback.MediumFeedback();
+            // HapticFeedback.MediumFeedback();
         }
     }
 

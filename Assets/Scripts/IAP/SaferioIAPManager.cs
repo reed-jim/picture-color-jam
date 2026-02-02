@@ -203,7 +203,7 @@ public class SaferioIAPManager : MonoBehaviour, IDetailedStoreListener
 
         try
         {
-            validator.Validate(e.purchasedProduct.receipt);
+            // validator.Validate(e.purchasedProduct.receipt);
         }
         catch (IAPSecurityException)
         {

@@ -250,61 +250,61 @@ public class AdmobAdsMax : MonoBehaviour
 
     private void LoadBannerCollap()
     {
-        GoogleMobileAds.Api.AdSize adaptiveSize =
-            GoogleMobileAds.Api.AdSize.GetCurrentOrientationAnchoredAdaptiveBannerAdSizeWithWidth(GoogleMobileAds.Api.AdSize.FullWidth);
-        _bannerViewCollap?.Destroy();
-        _bannerViewCollap = new BannerView(BANNER_COLLAPSE_ADMOB_ID, adaptiveSize, AdPosition.Bottom);
-        _bannerViewCollap.Hide();
-        bannerCollapLoadRequest = new GoogleMobileAds.Api.AdRequest();
-        //Admob request
-        bannerCollapLoadRequest.Extras.Add("collapsible", "bottom");
+        // GoogleMobileAds.Api.AdSize adaptiveSize =
+        //     GoogleMobileAds.Api.AdSize.GetCurrentOrientationAnchoredAdaptiveBannerAdSizeWithWidth(GoogleMobileAds.Api.AdSize.FullWidth);
+        // _bannerViewCollap?.Destroy();
+        // _bannerViewCollap = new BannerView(BANNER_COLLAPSE_ADMOB_ID, adaptiveSize, AdPosition.Bottom);
+        // _bannerViewCollap.Hide();
+        // bannerCollapLoadRequest = new GoogleMobileAds.Api.AdRequest();
+        // //Admob request
+        // bannerCollapLoadRequest.Extras.Add("collapsible", "bottom");
 
-        _bannerViewCollap.LoadAd(bannerCollapLoadRequest);
-        _bannerViewCollap.OnBannerAdLoaded += OnBannerAdLoaded;
-        _bannerViewCollap.OnAdPaid += OnAdPaid;
-        _bannerViewCollap.OnBannerAdLoadFailed += OnBannerAdLoadFailed;
-        _bannerViewCollap.OnAdFullScreenContentClosed += () =>
-        {
-            //HideBannerCollap();
-        };
-        timerReloadBannerCollap = 0;
-        isReloadBannerCollap = false;
-        timeReloadBannerCollap = RemoteConfigController.GetFloatConfig(FirebaseConfig.RELOAD_BANNER_COLLAPSE_TIME, 15);
+        // _bannerViewCollap.LoadAd(bannerCollapLoadRequest);
+        // _bannerViewCollap.OnBannerAdLoaded += OnBannerAdLoaded;
+        // _bannerViewCollap.OnAdPaid += OnAdPaid;
+        // _bannerViewCollap.OnBannerAdLoadFailed += OnBannerAdLoadFailed;
+        // _bannerViewCollap.OnAdFullScreenContentClosed += () =>
+        // {
+        //     //HideBannerCollap();
+        // };
+        // timerReloadBannerCollap = 0;
+        // isReloadBannerCollap = false;
+        // timeReloadBannerCollap = RemoteConfigController.GetFloatConfig(FirebaseConfig.RELOAD_BANNER_COLLAPSE_TIME, 15);
 
-        _isShowAdmobCollap = RemoteConfigController.GetBoolConfig(FirebaseConfig.ENABLE_ADMOB_BANNER_COLLAP, true);
+        // _isShowAdmobCollap = RemoteConfigController.GetBoolConfig(FirebaseConfig.ENABLE_ADMOB_BANNER_COLLAP, true);
 
-        void OnBannerAdLoaded()
-        {
-            isReloadBannerCollap = false;
-            isLoadedCollap = true;
-        }
+        // void OnBannerAdLoaded()
+        // {
+        //     isReloadBannerCollap = false;
+        //     isLoadedCollap = true;
+        // }
 
-        void OnAdPaid(AdValue adValue)
-        {
-            if (adValue == null) return;
-            var revenue = adValue.Value / 1000000d;
-            try
-            {
-                AppFlyerGplay.LogRevenue("collapsible", "admob", "collapsible", "collapsible", revenue, "USD");
+        // void OnAdPaid(AdValue adValue)
+        // {
+        //     if (adValue == null) return;
+        //     var revenue = adValue.Value / 1000000d;
+        //     try
+        //     {
+        //         AppFlyerGplay.LogRevenue("collapsible", "admob", "collapsible", "collapsible", revenue, "USD");
 
-                AnalyticsController.LogAdsRevenue("ad_impression", currentLevel.Value, "admob", "collapsible", "collapsible", revenue, adValue.CurrencyCode);
-                AnalyticsController.LogAdsRevenue("ad_revenue_sdk", currentLevel.Value, "admob", "collapsible", "collapsible", revenue, adValue.CurrencyCode);
-                AnalyticsController.LogAdsRevenue("sub_revenue", currentLevel.Value, "admob", "collapsible", "collapsible", revenue, adValue.CurrencyCode);
-            }
-            catch (Exception e)
-            {
-                // ignored
-            }
-        }
+        //         AnalyticsController.LogAdsRevenue("ad_impression", currentLevel.Value, "admob", "collapsible", "collapsible", revenue, adValue.CurrencyCode);
+        //         AnalyticsController.LogAdsRevenue("ad_revenue_sdk", currentLevel.Value, "admob", "collapsible", "collapsible", revenue, adValue.CurrencyCode);
+        //         AnalyticsController.LogAdsRevenue("sub_revenue", currentLevel.Value, "admob", "collapsible", "collapsible", revenue, adValue.CurrencyCode);
+        //     }
+        //     catch (Exception e)
+        //     {
+        //         // ignored
+        //     }
+        // }
 
-        void OnBannerAdLoadFailed(LoadAdError error)
-        {
-            isLoadedCollap = false;
-            isReloadBannerCollap = true;
-            timerReloadBannerCollap = 0;
-            timeReloadBannerCollap = RemoteConfigController.GetFloatConfig(FirebaseConfig.RELOAD_BANNER_COLLAPSE_TIME, 15);
-            ShowBanner();
-        }
+        // void OnBannerAdLoadFailed(LoadAdError error)
+        // {
+        //     isLoadedCollap = false;
+        //     isReloadBannerCollap = true;
+        //     timerReloadBannerCollap = 0;
+        //     timeReloadBannerCollap = RemoteConfigController.GetFloatConfig(FirebaseConfig.RELOAD_BANNER_COLLAPSE_TIME, 15);
+        //     ShowBanner();
+        // }
     }
 
     public void ShowBannerCollap()
@@ -392,68 +392,68 @@ public class AdmobAdsMax : MonoBehaviour
 
     public void LoadBannerAdmob()
     {
-        GoogleMobileAds.Api.AdSize adaptiveSize =
-             GoogleMobileAds.Api.AdSize.GetCurrentOrientationAnchoredAdaptiveBannerAdSizeWithWidth(GoogleMobileAds.Api.AdSize.FullWidth);
-        _bannerView?.Destroy();
-        _bannerView = new BannerView(BANNER_ADMOB_ID, adaptiveSize, AdPosition.Bottom);
-        _bannerView.Hide();
-        bannerHomeLoadRequest = new GoogleMobileAds.Api.AdRequest();
-        lastRefreshCollapseBanner = DateTime.Now;
-        IsCooldownAdmobBanner = true;
-        //Admob request
-        //bannerHomeLoadRequest.Extras.Add("collapsible", "bottom");
+        // GoogleMobileAds.Api.AdSize adaptiveSize =
+        //      GoogleMobileAds.Api.AdSize.GetCurrentOrientationAnchoredAdaptiveBannerAdSizeWithWidth(GoogleMobileAds.Api.AdSize.FullWidth);
+        // _bannerView?.Destroy();
+        // _bannerView = new BannerView(BANNER_ADMOB_ID, adaptiveSize, AdPosition.Bottom);
+        // _bannerView.Hide();
+        // bannerHomeLoadRequest = new GoogleMobileAds.Api.AdRequest();
+        // lastRefreshCollapseBanner = DateTime.Now;
+        // IsCooldownAdmobBanner = true;
+        // //Admob request
+        // //bannerHomeLoadRequest.Extras.Add("collapsible", "bottom");
 
-        // bannerHomeLoadRequest.Extras.Add("collapsible_request_id", Guid.NewGuid().ToString());
-        _isTryLoadAdmobBanner = true;
-        _bannerView.LoadAd(bannerHomeLoadRequest);
+        // // bannerHomeLoadRequest.Extras.Add("collapsible_request_id", Guid.NewGuid().ToString());
+        // _isTryLoadAdmobBanner = true;
+        // _bannerView.LoadAd(bannerHomeLoadRequest);
 
-        _bannerView.OnBannerAdLoaded += OnBannerAdLoaded;
+        // _bannerView.OnBannerAdLoaded += OnBannerAdLoaded;
 
-        _bannerView.OnAdPaid += OnAdPaid;
+        // _bannerView.OnAdPaid += OnAdPaid;
 
-        _bannerView.OnBannerAdLoadFailed += OnBannerAdLoadFailed;
+        // _bannerView.OnBannerAdLoadFailed += OnBannerAdLoadFailed;
 
-        _isShowAdmobBanner = RemoteConfigController.GetBoolConfig(FirebaseConfig.ENABLE_ADMOB_BANNER, false);
+        // _isShowAdmobBanner = RemoteConfigController.GetBoolConfig(FirebaseConfig.ENABLE_ADMOB_BANNER, false);
 
-        void OnBannerAdLoaded()
-        {
-            _isTryLoadAdmobBanner = false;
+        // void OnBannerAdLoaded()
+        // {
+        //     _isTryLoadAdmobBanner = false;
 
-            // var isEnableAdmobBanner = RemoteConfigController.GetBoolConfig(FirebaseConfig.ENABLE_ADMOB_BANNER, true);
+        //     // var isEnableAdmobBanner = RemoteConfigController.GetBoolConfig(FirebaseConfig.ENABLE_ADMOB_BANNER, true);
 
-            // _isShowAdmobBanner = isEnableAdmobBanner;
-            _cooldownAdmobBannerTimer = GamePersistentVariable.bannerCooldown;
+        //     // _isShowAdmobBanner = isEnableAdmobBanner;
+        //     _cooldownAdmobBannerTimer = GamePersistentVariable.bannerCooldown;
 
-            isLoadedAdBanner = true;
+        //     isLoadedAdBanner = true;
 
-            ShowBanner();
-        }
+        //     ShowBanner();
+        // }
 
-        void OnAdPaid(AdValue adValue)
-        {
-            var revenue = adValue.Value / 1000000d;
-            try
-            {
-                AppFlyerGplay.LogRevenue("banner", "admob", "banner", "banner", revenue, "USD");
+        // void OnAdPaid(AdValue adValue)
+        // {
+        //     var revenue = adValue.Value / 1000000d;
+        //     try
+        //     {
+        //         AppFlyerGplay.LogRevenue("banner", "admob", "banner", "banner", revenue, "USD");
 
-                AnalyticsController.LogAdsRevenue("ad_impression", currentLevel.Value, "admob", "banner", "banner", revenue, adValue.CurrencyCode);
-                AnalyticsController.LogAdsRevenue("ad_revenue_sdk", currentLevel.Value, "admob", "banner", "banner", revenue, adValue.CurrencyCode);
-                AnalyticsController.LogAdsRevenue("sub_revenue", currentLevel.Value, "admob", "banner", "banner", revenue, adValue.CurrencyCode);
-            }
-            catch (Exception e)
-            {
-                // ignored
-            }
-        }
+        //         AnalyticsController.LogAdsRevenue("ad_impression", currentLevel.Value, "admob", "banner", "banner", revenue, adValue.CurrencyCode);
+        //         AnalyticsController.LogAdsRevenue("ad_revenue_sdk", currentLevel.Value, "admob", "banner", "banner", revenue, adValue.CurrencyCode);
+        //         AnalyticsController.LogAdsRevenue("sub_revenue", currentLevel.Value, "admob", "banner", "banner", revenue, adValue.CurrencyCode);
+        //     }
+        //     catch (Exception e)
+        //     {
+        //         // ignored
+        //     }
+        // }
 
-        void OnBannerAdLoadFailed(LoadAdError error)
-        {
-            // Debug.LogError("load admob banner fail=====");
-            isLoadedAdBanner = false;
-            _isTryLoadAdmobBanner = true;
-            _cooldownAdmobBannerTimer = 15;
-            ShowBanner();
-        }
+        // void OnBannerAdLoadFailed(LoadAdError error)
+        // {
+        //     // Debug.LogError("load admob banner fail=====");
+        //     isLoadedAdBanner = false;
+        //     _isTryLoadAdmobBanner = true;
+        //     _cooldownAdmobBannerTimer = 15;
+        //     ShowBanner();
+        // }
     }
     #endregion
 

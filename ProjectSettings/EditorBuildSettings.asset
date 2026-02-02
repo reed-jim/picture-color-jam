@@ -6,11 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/User Consent - Android.unity
-    guid: e98e8347eaf32f841bf82da36ee4a878
-  - enabled: 1
-    path: Assets/Scenes/Loading.unity
-    guid: 356008f1f8288fa4092626687a6e0ec7
+    path: Assets/Volume Calculator/VolumeCalculator.unity
+    guid: a12b2c10c3864be4686b077c73ab11df
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 2ff5115a157157d41ac27306588a007a, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}

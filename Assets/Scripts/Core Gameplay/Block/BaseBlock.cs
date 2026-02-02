@@ -1123,7 +1123,7 @@ public class BaseBlock : MonoBehaviour
 
         if (GamePersistentVariable.IsVibrate)
         {
-            CandyCoded.HapticFeedback.HapticFeedback.HeavyFeedback();
+            // CandyCoded.HapticFeedback.HapticFeedback.HeavyFeedback();
         }
 
         SoundManager.Instance.PlaySoundBreakObject();

@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using CandyCoded.HapticFeedback;
+// using CandyCoded.HapticFeedback;
 using PrimeTween;
 using Saferio.Util.SaferioTween;
 using UnityEngine;
@@ -118,7 +118,7 @@ public class ScrewBox : MonoBehaviour
                 shakeCameraEvent?.Invoke();
                 // Tween.ShakeCamera(Camera.main, strengthFactor: 0.3f, duration: closeBoxLidDuration);
 
-                HapticFeedback.HeavyFeedback();
+                // HapticFeedback.HeavyFeedback();
             })
             .Chain(Tween.ScaleY(transform, 0.6f * _initialScale.y, duration: scaleDownDuration)
             .Chain(Tween.LocalPositionY(transform, transform.position.y + 8, startDelay: delayMoveOutDuration, duration: moveOutDuration).OnComplete(() =>
