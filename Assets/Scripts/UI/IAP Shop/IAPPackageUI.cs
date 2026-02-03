@@ -16,6 +16,7 @@ public class IAPPackageUI : MonoBehaviour
 
     [Header("CUSTOMIZE")]
     [SerializeField] private bool isContainRemoveAd;
+    [SerializeField] private bool isRemoveAfterBoughtRemoveAds;
 
     [SerializeField] private IAPPackageData _packageData;
 
@@ -102,9 +103,9 @@ public class IAPPackageUI : MonoBehaviour
 
     private void OnAdsRemoved()
     {
-        // if (isContainRemoveAd)
-        // {
-        //     gameObject.SetActive(false);
-        // }
+        if (isRemoveAfterBoughtRemoveAds)
+        {
+            gameObject.SetActive(false);
+        }
     }
 }

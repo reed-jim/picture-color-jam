@@ -872,7 +872,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   translationName: Shop
-  parameter: 
   FallbackText: Shop
 --- !u!1 &5779932394712142480
 GameObject:
@@ -1661,7 +1660,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 9cd1041154d71d34e81f7fab335fa590, type: 3}
     - target: {fileID: 3155043891602445180, guid: bbede263f8219f34282929eb3ca64b8e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 117.3
+      value: 116.5
       objectReference: {fileID: 0}
     - target: {fileID: 3354454989710561649, guid: bbede263f8219f34282929eb3ca64b8e, type: 3}
       propertyPath: m_fontAsset
@@ -2031,6 +2030,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 9cd1041154d71d34e81f7fab335fa590, type: 3}
+    - target: {fileID: 3155043891602445180, guid: bbede263f8219f34282929eb3ca64b8e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 116.5
+      objectReference: {fileID: 0}
     - target: {fileID: 3354454989710561649, guid: bbede263f8219f34282929eb3ca64b8e, type: 3}
       propertyPath: m_fontAsset
       value: 
@@ -2421,7 +2424,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 9cd1041154d71d34e81f7fab335fa590, type: 3}
     - target: {fileID: 3155043891602445180, guid: bbede263f8219f34282929eb3ca64b8e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 117.3
+      value: 116.5
       objectReference: {fileID: 0}
     - target: {fileID: 3354454989710561649, guid: bbede263f8219f34282929eb3ca64b8e, type: 3}
       propertyPath: m_fontAsset
@@ -3173,7 +3176,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3155043891602445180, guid: bbede263f8219f34282929eb3ca64b8e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 117.5
+      value: 116.5
       objectReference: {fileID: 0}
     - target: {fileID: 3354454989710561649, guid: bbede263f8219f34282929eb3ca64b8e, type: 3}
       propertyPath: m_fontAsset
@@ -3197,6 +3200,10 @@ PrefabInstance:
       objectReference: {fileID: 7563829998671687213}
     - target: {fileID: 3686018873243109024, guid: bbede263f8219f34282929eb3ca64b8e, type: 3}
       propertyPath: isContainRemoveAd
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3686018873243109024, guid: bbede263f8219f34282929eb3ca64b8e, type: 3}
+      propertyPath: isRemoveAfterBoughtRemoveAds
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3826542551473040542, guid: bbede263f8219f34282929eb3ca64b8e, type: 3}
@@ -3444,10 +3451,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3155043891602445180, guid: bbede263f8219f34282929eb3ca64b8e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 118.5
+      objectReference: {fileID: 0}
     - target: {fileID: 3686018873243109024, guid: bbede263f8219f34282929eb3ca64b8e, type: 3}
       propertyPath: _packageData
       value: 
-      objectReference: {fileID: 11400000, guid: ffc953ff3b8dd894886a130fe99984e1, type: 2}
+      objectReference: {fileID: 11400000, guid: c0abd2543dd5291489b839ed0b453c12, type: 2}
     - target: {fileID: 3826542551473040542, guid: bbede263f8219f34282929eb3ca64b8e, type: 3}
       propertyPath: m_Name
       value: Starter Pack
@@ -3814,7 +3825,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: f4aba1333854aaa4591ed1f72efc5b07, type: 3}
     - target: {fileID: 3155043891602445180, guid: bbede263f8219f34282929eb3ca64b8e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 117.5
+      value: 116.5
       objectReference: {fileID: 0}
     - target: {fileID: 3354454989710561649, guid: bbede263f8219f34282929eb3ca64b8e, type: 3}
       propertyPath: m_fontAsset
